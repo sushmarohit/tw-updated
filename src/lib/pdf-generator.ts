@@ -52,7 +52,7 @@ export async function generatePDFReport(options: PDFReportOptions): Promise<Blob
   yPosition += 10;
 
   // Content sections
-  options.content.forEach((section, sectionIndex) => {
+  options.content.forEach((section) => {
     // Check if we need a new page
     if (yPosition > pageHeight - 40) {
       doc.addPage();

@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { CheckCircle, TrendingDown, Users } from 'lucide-react';
+import { TrendingDown } from 'lucide-react';
 
 export default function MSMECaseStudyPage() {
   const { t } = useTranslation(['case-studies-msme', 'common']);

@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { TrendingUp, DollarSign, Target } from 'lucide-react';
+import { TrendingUp } from 'lucide-react';
 
 export default function FinTechCaseStudyPage() {
   const { t } = useTranslation(['case-studies-fintech', 'common']);

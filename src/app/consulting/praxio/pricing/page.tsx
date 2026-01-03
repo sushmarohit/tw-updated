@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CheckCircle } from 'lucide-react';
-import { formatCurrency } from '@/lib/utils';
 
 export default function PraxioPricingPage() {
   const { t } = useTranslation(['praxio-pricing', 'common']);

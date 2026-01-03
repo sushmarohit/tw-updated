@@ -1,10 +1,29 @@
+/**
+ * @jest-environment node
+ */
 import { POST } from '../operational-health/route';
 import { prisma } from '@/lib/db';
 import { upsertHubSpotContact } from '@/lib/integrations/hubspot';
 import { sendCalculatorReportEmail } from '@/lib/integrations/sendgrid';
 
 // Mock dependencies
-jest.mock('@/lib/db');
+jest.mock('@/lib/db', () => ({
+  prisma: {
+    user: {
+      upsert: jest.fn(),
+    },
+    assessmentSession: {
+      create: jest.fn(),
+    },
+    indexScore: {
+      create: jest.fn(),
+    },
+    userResponse: {
+      create: jest.fn(),
+    },
+  },
+}));
+
 jest.mock('@/lib/integrations/hubspot');
 jest.mock('@/lib/integrations/sendgrid');
 

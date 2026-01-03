@@ -61,8 +61,8 @@ export function calculateBurnoutRisk(input: BurnoutRiskInput): BurnoutRiskResult
   else if (overallRiskScore < 70) overallRisk = 'High';
   else overallRisk = 'Critical';
 
-  // Determine urgency
-  let urgency: BurnoutRiskResult['urgency'] = overallRisk;
+  // Determine urgency (map Moderate to Medium)
+  const urgency: BurnoutRiskResult['urgency'] = overallRisk === 'Moderate' ? 'Medium' : overallRisk;
 
   // Factor risk levels
   const getRiskLevel = (score: number): string => {

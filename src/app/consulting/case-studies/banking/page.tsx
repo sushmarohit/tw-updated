@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { CheckCircle, TrendingDown, Clock } from 'lucide-react';
+import { CheckCircle, TrendingDown } from 'lucide-react';
 
 export default function BankingCaseStudyPage() {
   const { t } = useTranslation(['case-studies-banking', 'common']);

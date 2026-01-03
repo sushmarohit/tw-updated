@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Brain, Target, TrendingDown } from 'lucide-react';
+import { Target, TrendingDown } from 'lucide-react';
 
 export default function SageMethodologyPage() {
   const { t } = useTranslation(['framework-sage', 'common']);

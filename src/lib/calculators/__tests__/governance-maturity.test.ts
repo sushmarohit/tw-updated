@@ -154,7 +154,6 @@ describe('Governance Maturity Calculator', () => {
 
       const result = calculateGovernanceMaturity(input);
       const highPriority = result.improvements.filter((imp) => imp.currentScore < 50);
-      const mediumPriority = result.improvements.filter((imp) => imp.currentScore >= 50 && imp.currentScore < 70);
 
       expect(highPriority.length).toBeGreaterThan(0);
       highPriority.forEach((imp) => {

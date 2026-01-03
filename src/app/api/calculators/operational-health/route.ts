@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
           sessionData: {
             answers,
             result,
-          },
+          } as any,
         },
       });
       sessionId = session.id;

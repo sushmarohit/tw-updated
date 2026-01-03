@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { BarChart3, FileText, Brain, Users, Shield, Zap } from 'lucide-react';
+import { BarChart3, FileText, Users, Shield } from 'lucide-react';
 
 export default function PraxioFeaturesPage() {
   const { t } = useTranslation(['praxio-features', 'common']);

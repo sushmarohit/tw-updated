@@ -58,12 +58,13 @@ export default function GovernanceMaturityPage() {
   };
 
   if (step === 'result' && result) {
-    const maturityColors = {
+    const maturityColorMap: Record<string, string> = {
       Initial: 'text-gray-500',
       Developing: 'text-warning-500',
       Mature: 'text-teal-500',
       Leading: 'text-gold-300',
-    }[result.maturityLevel];
+    };
+    const maturityColors = maturityColorMap[result.maturityLevel as string] || 'text-gray-500';
 
     return (
       <div className="min-h-screen bg-gray-50 section-padding">

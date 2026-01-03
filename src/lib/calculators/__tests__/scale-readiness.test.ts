@@ -155,7 +155,6 @@ describe('Scale Readiness Calculator', () => {
 
       const result = calculateScaleReadiness(input);
       const highPriorityGaps = result.gaps.filter((gap) => gap.priority === 'High');
-      const mediumPriorityGaps = result.gaps.filter((gap) => gap.priority === 'Medium');
 
       expect(highPriorityGaps.length).toBeGreaterThan(0);
       highPriorityGaps.forEach((gap) => {

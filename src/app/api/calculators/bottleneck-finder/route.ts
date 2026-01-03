@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
           status: 'completed',
           overallScore: result.bottleneckIndex,
           completedAt: new Date(),
-          sessionData: { input, result },
+          sessionData: { input, result } as any,
         },
       });
 

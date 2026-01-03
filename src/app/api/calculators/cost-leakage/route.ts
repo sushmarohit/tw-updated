@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
           status: 'completed',
           overallScore: result.annualLeakage,
           completedAt: new Date(),
-          sessionData: { input, result },
+          sessionData: { input, result } as any,
         },
       });
 

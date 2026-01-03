@@ -58,12 +58,13 @@ export default function BurnoutRiskPage() {
   };
 
   if (step === 'result' && result) {
-    const riskColor = {
+    const riskColorMap: Record<string, string> = {
       Low: 'text-success-500',
       Moderate: 'text-warning-500',
       High: 'text-error-500',
       Critical: 'text-error-600',
-    }[result.overallRisk];
+    };
+    const riskColor = riskColorMap[result.overallRisk as string] || 'text-gray-500';
 
     return (
       <div className="min-h-screen bg-gray-50 section-padding">

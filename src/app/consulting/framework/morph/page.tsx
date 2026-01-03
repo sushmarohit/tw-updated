@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Sparkles, TrendingUp, Target } from 'lucide-react';
+import { TrendingUp, Target } from 'lucide-react';
 
 export default function MorphMethodologyPage() {
   const { t } = useTranslation(['framework-morph', 'common']);

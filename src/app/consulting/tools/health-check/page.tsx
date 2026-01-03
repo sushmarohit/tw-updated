@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { OPERATIONAL_HEALTH_QUESTIONS, calculateHealthScore, type UserAnswer } from '@/lib/calculators/operational-health';
-import { trackCalculatorStart, trackCalculatorComplete } from '@/lib/analytics/events';
+import { trackCalculatorComplete } from '@/lib/analytics/events';
 
 export default function OperationalHealthCheckPage() {
   const { t } = useTranslation(['tools-health-check', 'common']);

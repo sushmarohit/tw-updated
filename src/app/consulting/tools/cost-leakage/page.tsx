@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { calculateCostLeakage, type CostLeakageInput } from '@/lib/calculators/cost-leakage';
 import { trackCalculatorStart, trackCalculatorComplete } from '@/lib/analytics/events';
-import { formatCurrency, formatIndianNumber } from '@/lib/utils';
+import { formatCurrency } from '@/lib/utils';
 
 export default function CostLeakagePage() {
   const { t } = useTranslation(['tools-cost-leakage', 'common']);

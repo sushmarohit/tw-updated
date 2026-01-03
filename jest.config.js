@@ -7,6 +7,7 @@ const createJestConfig = nextJest({
 
 // Add any custom config to be passed to Jest
 const customJestConfig = {
+  setupFiles: ['<rootDir>/jest.polyfills.js'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
@@ -34,6 +35,14 @@ const customJestConfig = {
     '**/?(*.)+(spec|test).[jt]s?(x)',
   ],
   testTimeout: 10000,
+  watchPathIgnorePatterns: [
+    '<rootDir>/node_modules',
+    '<rootDir>/.next',
+    '<rootDir>/.next/export',
+    '<rootDir>/.git',
+    '<rootDir>/dist',
+    '<rootDir>/build',
+  ],
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

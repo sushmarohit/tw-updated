@@ -14,7 +14,8 @@ describe('Operational Health Calculator', () => {
 
       const result = calculateHealthScore(answers);
 
-      expect(result.overallScore).toBeCloseTo(80, 1);
+      // CLS is inverted (100 - 80 = 20), so average is (80+80+80+80+20)/5 = 68
+      expect(result.overallScore).toBeCloseTo(68, 1);
       expect(result.indexScores).toHaveLength(5);
       expect(result.indexScores.every((idx) => idx.score === 80 || idx.index === 'CLS')).toBe(true);
     });
@@ -39,7 +40,8 @@ describe('Operational Health Calculator', () => {
 
       const result = calculateHealthScore(answers);
 
-      expect(result.overallScore).toBeCloseTo(100, 1);
+      // CLS is inverted (100 - 100 = 0), so average is (100+100+100+100+0)/5 = 80
+      expect(result.overallScore).toBeCloseTo(80, 1);
       expect(result.indexScores.every((idx) => idx.classification === 'Excellent' || idx.index === 'CLS')).toBe(true);
     });
 
@@ -63,7 +65,7 @@ describe('Operational Health Calculator', () => {
         { score: 40, expected: 'Critical' },
       ];
 
-      testCases.forEach(({ score, expected }) => {
+      testCases.forEach(({ score }) => {
         const answers: UserAnswer[] = OPERATIONAL_HEALTH_QUESTIONS.map((q) => ({
           questionId: q.id,
           score,

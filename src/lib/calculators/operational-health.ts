@@ -179,7 +179,8 @@ export function calculateHealthScore(answers: UserAnswer[]): HealthScoreResult {
     const score = data.count > 0 ? data.sum / data.count : 0;
     
     // Invert CLS (lower is better, so invert the score)
-    const finalScore = index === 'CLS' ? 100 - score : score;
+    // Only invert if we have actual answers (count > 0)
+    const finalScore = index === 'CLS' && data.count > 0 ? 100 - score : score;
     
     return {
       index: index as G2PIndex,

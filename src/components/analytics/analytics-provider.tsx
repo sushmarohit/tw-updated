@@ -1,13 +1,13 @@
 'use client';
 
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, Suspense, useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 interface AnalyticsProviderProps {
   children: ReactNode;
 }
 
-export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
+function AnalyticsTracker() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -25,7 +25,18 @@ export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
     }
   }, [pathname, searchParams]);
 
-  return <>{children}</>;
+  return null;
+}
+
+export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
+  return (
+    <>
+      <Suspense fallback={null}>
+        <AnalyticsTracker />
+      </Suspense>
+      {children}
+    </>
+  );
 }
 
 // Extend Window interface for gtag
