@@ -36,7 +36,7 @@ export function SliderSection() {
   };
 
   return (
-    <section className="bg-navy-500 text-white py-4">
+    <section className="bg-navy-500 text-white py-4 pt-24 text-center">
       <div className="container-custom">
         <div className="relative max-w-4xl mx-auto">
           <AnimatePresence mode="wait">
@@ -48,7 +48,7 @@ export function SliderSection() {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <p className="body-large">{slides[currentIndex]}</p>
+              <p className="body-large text-white">{slides[currentIndex]}</p>
             </motion.div>
           </AnimatePresence>
 

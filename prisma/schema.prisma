@@ -35,7 +35,7 @@ model AssessmentSession {
   startedAt    DateTime @default(now()) @map("started_at")
   completedAt  DateTime? @map("completed_at")
   status       String   @default("in_progress") // in_progress, completed, abandoned
-  overallScore Float?   @map("overall_score") @db.Decimal(5, 2)
+  overallScore Decimal? @map("overall_score") @db.Decimal(5, 2)
   reportUrl    String?  @map("report_url")
   sessionData  Json?    @map("session_data") // stores intermediate calculation state
   createdAt    DateTime @default(now()) @map("created_at")
