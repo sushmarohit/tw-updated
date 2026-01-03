@@ -1,0 +1,28 @@
+{
+  "title": "Scale Readiness Analyzer",
+  "description": "Is your business ready for 2–3x growth?",
+  "teamReadiness": "Team Readiness (0-100)",
+  "sopMaturity": "SOP Maturity (0-100)",
+  "collaborationScore": "Collaboration Score (0-100)",
+  "kpiTracking": "KPI Tracking (0-100)",
+  "scalabilityScore": "Scalability Score (0-100)",
+  "calculate": "Analyze Readiness",
+  "scaleReadinessAnalysis": "Scale Readiness Analysis",
+  "overallReadinessScore": "Overall Readiness Score",
+  "status": "Status:",
+  "bottlenecksIdentified": "Bottlenecks Identified",
+  "improvementGaps": "Improvement Gaps",
+  "area": "Area",
+  "priority": "Priority",
+  "recommendations": "Recommendations",
+  "getDetailedReport": "Get Your Detailed Report",
+  "name": "Name",
+  "email": "Email",
+  "company": "Company",
+  "getFullReport": "Get Full Report",
+  "calculateAgain": "Calculate Again",
+  "submitting": "Submitting...",
+  "resultsSaved": "Results saved! Check your email for the detailed report.",
+  "failedToSave": "Failed to save results. Please try again."
+}
+

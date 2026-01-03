@@ -1,0 +1,46 @@
+{
+  "title": "Real Results From Real Clients",
+  "subtitle": "See how TwelfthKey transformed operations across banking, FinTech, SaaS, and beyond",
+  "banking": {
+    "title": "Banking Operations",
+    "industry": "Banking",
+    "size": "45 Cr revenue, 200+ employees",
+    "challenge": "Process errors slowing transactions, compliance gaps",
+    "result": "68% error reduction, audit findings → near zero"
+  },
+  "fintech": {
+    "title": "FinTech Scale-Up",
+    "industry": "FinTech",
+    "size": "Scale-up, 50-500 employees",
+    "challenge": "Cost leakage + weak governance oversight",
+    "result": "₹44L cost recovery in 3 months, governance score 62 → 92"
+  },
+  "telecom": {
+    "title": "Telecom Transformation",
+    "industry": "Telecom",
+    "size": "MSME, 100+ employees",
+    "challenge": "Customer onboarding bottlenecks limiting growth",
+    "result": "3x capacity increase, customer churn ↓ 21%"
+  },
+  "msme": {
+    "title": "MSME Manufacturing",
+    "industry": "Manufacturing",
+    "size": "MSME, 150+ employees",
+    "challenge": "SLA compliance issues, team burnout",
+    "result": "64% SLA improvement, burnout risk ↓ 37%"
+  },
+  "ecommerce": {
+    "title": "E-commerce Fulfillment",
+    "industry": "E-commerce",
+    "size": "Scale-up, 200+ employees",
+    "challenge": "Operational unpredictability, cost overruns",
+    "result": "49% predictability improvement, 36% cost reduction"
+  },
+  "challenge": "Challenge:",
+  "result": "Result:",
+  "readFullStory": "Read Full Story",
+  "readyTitle": "Ready to See Similar Results?",
+  "readyDescription": "Get a custom assessment for your business",
+  "getCustomAssessment": "Get Custom Assessment"
+}
+

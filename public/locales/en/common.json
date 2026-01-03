@@ -35,6 +35,16 @@
   "failedToSave": "Failed to save results. Please try again.",
   "selectLanguage": "Select Language",
   "english": "English",
-  "hindi": "हिंदी"
+  "hindi": "हिंदी",
+  "bookYourDiscoveryCall": "Book Your Discovery Call",
+  "schedule45MinuteCall": "Schedule a 45-minute call to discuss your operational challenges and explore how TwelfthKey can help",
+  "calendlyNotConfigured": "Calendly integration not configured. Please contact us directly.",
+  "getInTouch": "Get In Touch",
+  "contactSubtitle": "Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+  "address": "Address",
+  "messageSentSuccess": "Message sent successfully! We'll get back to you soon.",
+  "messageSendFailed": "Failed to send message. Please try again or contact us directly.",
+  "sending": "Sending...",
+  "sendMessage": "Send Message"
 }
 

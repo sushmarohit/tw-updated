@@ -1,0 +1,55 @@
+{
+  "title": "PraXio™ Features – Built for Real-Time Governance",
+  "subtitle": "Everything you need to run your business with discipline and visibility",
+  "dashboardBuilder": "Dashboard Builder",
+  "dashboardBuilderDescription": "Drag-and-drop interface, no-code dashboard creation",
+  "executiveSummary": "Executive Summary (business health at a glance)",
+  "operations": "Operations (real-time process KPIs)",
+  "financial": "Financial (revenue, cost, burn, profitability)",
+  "teamTalent": "Team & Talent (capacity, engagement, attrition)",
+  "customer": "Customer (NPS, churn, CSAT, retention)",
+  "predictive": "Predictive (forecasts, anomalies, risk alerts)",
+  "automatedReporting": "Automated Reporting",
+  "dailyReport": {
+    "title": "Daily Report",
+    "desc": "Executive summary (key metrics, alerts, action items)"
+  },
+  "weeklyReport": {
+    "title": "Weekly Report",
+    "desc": "Team performance, SLA tracking, escalations"
+  },
+  "monthlyReport": {
+    "title": "Monthly Report",
+    "desc": "Governance health, improvement trends, recommendations"
+  },
+  "quarterlyReport": {
+    "title": "Quarterly Report",
+    "desc": "Strategic review, capability assessment, roadmap"
+  },
+  "aiAnomalyDetection": "AI Anomaly Detection",
+  "aiStep1": "Learn normal patterns (first 30 days)",
+  "aiStep2": "Set baselines per metric",
+  "aiStep3": "Monitor in real-time",
+  "aiStep4": "Alert when deviation >threshold (customizable)",
+  "aiStep5": "Suggest root cause and action",
+  "securityCompliance": "Security & Compliance",
+  "dataEncryption": {
+    "title": "Data Encryption",
+    "desc": "At rest and in transit"
+  },
+  "roleBasedAccess": {
+    "title": "Role-based Access",
+    "desc": "CEO, CBO, team leads, contributors"
+  },
+  "auditLogging": {
+    "title": "Audit Logging",
+    "desc": "Who accessed what, when"
+  },
+  "complianceReady": {
+    "title": "Compliance Ready",
+    "desc": "GDPR, SOC 2, ISO 27001 path"
+  },
+  "readyTitle": "Ready to See PraXio™ in Action?",
+  "requestDemo": "Request Demo"
+}
+

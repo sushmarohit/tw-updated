@@ -1,0 +1,64 @@
+{
+  "title": "Analytics Visualization Suite",
+  "subtitle": "AI-driven dashboards, predictive KPIs, automated alerts—turn data into decisions",
+  "visualizeYourData": "Visualize Your Data",
+  "whatsIncluded": "What's Included",
+  "item1": "Custom dashboard design (10–15 dashboards)",
+  "item2": "KPI definition and predictive analytics setup",
+  "item3": "Real-time data integration (CRM, ERP, HR systems)",
+  "item4": "AI anomaly detection and alerting",
+  "item5": "Team training and dashboard navigation",
+  "item6": "Monthly optimization and reporting",
+  "dashboardTypes": "Dashboard Types",
+  "executiveSummary": {
+    "title": "Executive Summary",
+    "desc": "Business health at a glance"
+  },
+  "operationalDashboard": {
+    "title": "Operational Dashboard",
+    "desc": "Real-time process and KPI tracking"
+  },
+  "financialDashboard": {
+    "title": "Financial Dashboard",
+    "desc": "Revenue, cost, profitability, burn analysis"
+  },
+  "teamTalent": {
+    "title": "Team & Talent",
+    "desc": "Capacity, burnout risk, attrition trends"
+  },
+  "customerDashboard": {
+    "title": "Customer Dashboard",
+    "desc": "NPS, churn, CSAT, pipeline health"
+  },
+  "predictiveDashboard": {
+    "title": "Predictive Dashboard",
+    "desc": "Forecasted trends, anomalies, risks"
+  },
+  "aiPoweredInsights": "AI-Powered Insights",
+  "anomalyDetection": {
+    "title": "Anomaly Detection",
+    "desc": "Automatic alert when metrics deviate from normal patterns"
+  },
+  "predictiveAnalysis": {
+    "title": "Predictive Analysis",
+    "desc": "Forecast trends 30–90 days ahead with confidence intervals"
+  },
+  "rootCauseAnalysis": {
+    "title": "Root Cause Analysis",
+    "desc": "AI identifies why metric X changed and suggests actions"
+  },
+  "recommendations": {
+    "title": "Recommendations",
+    "desc": "Automated suggestions for improvement based on data patterns"
+  },
+  "investmentRoi": "Investment & ROI",
+  "investment": "Investment",
+  "typicalRoi": "Typical ROI",
+  "oneTime45Days": "One-time, 45 days",
+  "inBetterDecisionMaking": "In better decision-making and risk prevention",
+  "speedImprovement": "Speed improvement: 50% faster decision cycles",
+  "readyTitle": "Ready to Visualize Your Data?",
+  "readyDescription": "See your business in real-time with AI-powered insights",
+  "scheduleAssessment": "Schedule Your Assessment"
+}
+

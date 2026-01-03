@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { calculateBottleneck, type BottleneckInput } from '@/lib/calculators/bottleneck-finder';
 import { trackCalculatorStart, trackCalculatorComplete } from '@/lib/analytics/events';
 
 export default function BottleneckFinderPage() {
+  const { t } = useTranslation(['tools-bottleneck-finder', 'common']);
   const [step, setStep] = useState<'form' | 'result'>('form');
   const [formData, setFormData] = useState<BottleneckInput>({
     averageApprovalTime: 0,
@@ -45,11 +47,11 @@ export default function BottleneckFinderPage() {
 
       const data = await response.json();
       if (data.success) {
-        alert('Results saved! Check your email for the detailed report.');
+        alert(t('tools-bottleneck-finder:resultsSaved'));
       }
     } catch (error) {
       console.error('Submission error:', error);
-      alert('Failed to save results. Please try again.');
+      alert(t('tools-bottleneck-finder:failedToSave'));
     } finally {
       setIsSubmitting(false);
     }
@@ -60,23 +62,23 @@ export default function BottleneckFinderPage() {
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-4xl">
           <div className="card mb-8">
-            <h1 className="heading-h2 mb-4">Decision Bottleneck Analysis</h1>
+            <h1 className="heading-h2 mb-4">{t('tools-bottleneck-finder:decisionBottleneckAnalysis')}</h1>
             
             <div className="text-center mb-8 p-6 bg-navy-500 text-white rounded-lg">
-              <p className="body-small text-gray-200 mb-2">Bottleneck Index</p>
+              <p className="body-small text-gray-200 mb-2">{t('tools-bottleneck-finder:bottleneckIndex')}</p>
               <div className="text-5xl font-bold text-gold-300 mb-2">
                 {result.bottleneckIndex}/100
               </div>
               <p className="body-default text-gray-200">
-                Severity: <strong>{result.severity}</strong>
+                {t('tools-bottleneck-finder:severity')} <strong>{result.severity}</strong>
               </p>
               <p className="body-small text-gray-300 mt-2">
-                Estimated Time Wasted: <strong>{result.estimatedTimeWasted} hours/month</strong>
+                {t('tools-bottleneck-finder:estimatedTimeWasted')} <strong>{result.estimatedTimeWasted} {t('tools-bottleneck-finder:hoursMonth')}</strong>
               </p>
             </div>
 
             <div className="mb-8">
-              <h3 className="heading-h4 mb-4">Bottleneck Factors</h3>
+              <h3 className="heading-h4 mb-4">{t('tools-bottleneck-finder:bottleneckFactors')}</h3>
               <div className="space-y-4">
                 {Object.entries(result.factors).map(([key, factor]: [string, any]) => (
                   <div key={key} className="border border-gray-200 rounded-lg p-4">
@@ -106,7 +108,7 @@ export default function BottleneckFinderPage() {
             </div>
 
             <div className="mb-8">
-              <h3 className="heading-h4 mb-4">Recommendations</h3>
+              <h3 className="heading-h4 mb-4">{t('tools-bottleneck-finder:recommendations')}</h3>
               <ul className="space-y-2">
                 {result.recommendations.map((rec: string, i: number) => (
                   <li key={i} className="body-default text-gray-700 flex items-start">
@@ -119,25 +121,25 @@ export default function BottleneckFinderPage() {
 
             {!userInfo.email && (
               <div className="border-t pt-6 mb-6">
-                <h3 className="heading-h4 mb-4">Get Your Detailed Report</h3>
+                <h3 className="heading-h4 mb-4">{t('tools-bottleneck-finder:getDetailedReport')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <input
                     type="text"
-                    placeholder="Name"
+                    placeholder={t('tools-bottleneck-finder:name')}
                     className="input"
                     value={userInfo.name}
                     onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}
                   />
                   <input
                     type="email"
-                    placeholder="Email"
+                    placeholder={t('tools-bottleneck-finder:email')}
                     className="input"
                     value={userInfo.email}
                     onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
                   />
                   <input
                     type="text"
-                    placeholder="Company"
+                    placeholder={t('tools-bottleneck-finder:company')}
                     className="input"
                     value={userInfo.companyName}
                     onChange={(e) => setUserInfo({ ...userInfo, companyName: e.target.value })}
@@ -148,10 +150,10 @@ export default function BottleneckFinderPage() {
 
             <div className="flex gap-4">
               <Button variant="primary" onClick={handleSubmit} disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'Get Full Report'}
+                {isSubmitting ? t('tools-bottleneck-finder:submitting') : t('tools-bottleneck-finder:getFullReport')}
               </Button>
               <Button variant="secondary" onClick={() => setStep('form')}>
-                Calculate Again
+                {t('tools-bottleneck-finder:calculateAgain')}
               </Button>
             </div>
           </div>
@@ -164,15 +166,15 @@ export default function BottleneckFinderPage() {
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-3xl">
         <div className="card">
-          <h1 className="heading-h2 mb-6">Decision Bottleneck Finder</h1>
+          <h1 className="heading-h2 mb-6">{t('tools-bottleneck-finder:title')}</h1>
           <p className="body-default text-gray-600 mb-8">
-            Pinpoint approval delays and process slowdowns
+            {t('tools-bottleneck-finder:description')}
           </p>
 
           <div className="space-y-6">
             <div>
               <label className="block font-semibold mb-2">
-                Average Approval Time (hours)
+                {t('tools-bottleneck-finder:averageApprovalTime')}
               </label>
               <input
                 type="number"
@@ -186,7 +188,7 @@ export default function BottleneckFinderPage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                Number of Approval Layers
+                {t('tools-bottleneck-finder:numberOfApprovalLayers')}
               </label>
               <input
                 type="number"
@@ -200,7 +202,7 @@ export default function BottleneckFinderPage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                Decision Delay Frequency (%)
+                {t('tools-bottleneck-finder:decisionDelayFrequency')}
               </label>
               <input
                 type="number"
@@ -215,7 +217,7 @@ export default function BottleneckFinderPage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                Escalation Effectiveness (0-100)
+                {t('tools-bottleneck-finder:escalationEffectiveness')}
               </label>
               <input
                 type="number"
@@ -230,7 +232,7 @@ export default function BottleneckFinderPage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                Autonomy Level (0-100)
+                {t('tools-bottleneck-finder:autonomyLevel')}
               </label>
               <input
                 type="number"
@@ -248,7 +250,7 @@ export default function BottleneckFinderPage() {
               onClick={handleCalculate}
               className="w-full"
             >
-              Find Bottlenecks
+              {t('tools-bottleneck-finder:findBottlenecks')}
             </Button>
           </div>
         </div>

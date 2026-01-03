@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
           userId: userId || undefined,
           calculatorType: 'breakeven',
           status: 'completed',
-          overallScore: result.roi,
+          overallScore: result.netROI,
           completedAt: new Date(),
           sessionData: { input, result },
         },

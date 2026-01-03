@@ -1,0 +1,36 @@
+{
+  "title": "How Our Governance-to-Performance Process Works",
+  "subtitle": "A structured path from diagnostic to dashboards, built for startups and MSMEs that need discipline without corporate bureaucracy.",
+  "bookDiscoveryCall": "Book a Discovery Call",
+  "stepTitle": "5-Step Engagement Engine",
+  "step1": {
+    "title": "Discovery Pre-Engagement Call",
+    "duration": "45 minutes",
+    "description": "Revenue, operating model, key pain points, current governance maturity"
+  },
+  "step2": {
+    "title": "Diagnostic – Business Operational Assessment",
+    "duration": "5–7 days",
+    "description": "Deep-dive interviews, process value-stream mapping, risk modeling, governance gap analysis"
+  },
+  "step3": {
+    "title": "Design – G2P Intervention Blueprint",
+    "duration": "3–5 days",
+    "description": "Select primary methodology, scope phase 1 deliverables, design governance loops"
+  },
+  "step4": {
+    "title": "Execution – Process Excellence Implementation",
+    "duration": "30–90 days",
+    "description": "Build SOPs, train teams, pilot routines, stabilize new value streams"
+  },
+  "step5": {
+    "title": "Govern & Evolve – Ongoing Fractional CBO Leadership",
+    "duration": "Ongoing",
+    "description": "Quarterly governance reviews, continuous improvement, real-time dashboard monitoring"
+  },
+  "readyTitle": "Ready to Begin Your Transformation?",
+  "readyDescription": "Every great business started with a single decision to improve.",
+  "bookYourDiscoveryCall": "Book Your Discovery Call",
+  "tryFreeDiagnostic": "Try Free Diagnostic"
+}
+

@@ -1,0 +1,43 @@
+{
+  "title": "The G2P Framework™",
+  "subtitle": "PhD-backed, research-driven methodology for service companies delivering measurable operational maturity",
+  "learnMore": "Learn More",
+  "sixMethodologies": "Six Adaptive Methodologies",
+  "fiveIndices": "Five Quantified Indices",
+  "cycle": {
+    "name": "CYCLE",
+    "description": "Predictive operational consistency"
+  },
+  "parse": {
+    "name": "PARSE",
+    "description": "Strategic reset and realignment"
+  },
+  "sage": {
+    "name": "SAGE",
+    "description": "Cognitive governance for mature ecosystems"
+  },
+  "morph": {
+    "name": "MORPH",
+    "description": "Institutionalized innovation and reinvention"
+  },
+  "prism": {
+    "name": "PRISM",
+    "description": "Experience-driven governance (CXEX)"
+  },
+  "arc": {
+    "name": "ARC",
+    "description": "Resilience and continuity (crisis-proofing)"
+  },
+  "explore": "Explore",
+  "par": "PAR",
+  "parDesc": "Prediction Accuracy Rate",
+  "aq": "AQ",
+  "aqDesc": "Autonomy Quotient",
+  "cls": "CLS",
+  "clsDesc": "Cognitive Load Score",
+  "lv": "LV",
+  "lvDesc": "Learning Velocity",
+  "mttar": "MTTAR",
+  "mttarDesc": "Mean Time to Auto-Resolution"
+}
+

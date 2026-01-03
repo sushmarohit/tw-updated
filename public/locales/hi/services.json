@@ -1,0 +1,34 @@
+{
+  "title": "हमारी सेवाएं",
+  "subtitle": "अपनी आवश्यकताओं के अनुकूल सगाई मॉडल चुनें",
+  "businessOperationalAssessment": {
+    "name": "व्यापार परिचालन मूल्यांकन",
+    "description": "मूल कारण विश्लेषण और प्राथमिकता वाली रोडमैप"
+  },
+  "operationalExcellenceFoundation": {
+    "name": "परिचालन उत्कृष्टता नींव",
+    "description": "स्केलेबल SOP, शासन लूप, डैशबोर्ड बनाएं"
+  },
+  "governanceIntelligenceProgram": {
+    "name": "शासन बुद्धिमत्ता कार्यक्रम",
+    "description": "पूर्ण G2P कार्यान्वयन, वास्तविक समय निगरानी, निरंतर सुधार"
+  },
+  "analyticsVisualizationSuite": {
+    "name": "एनालिटिक्स विज़ुअलाइज़ेशन सुइट",
+    "description": "AI-संचालित डैशबोर्ड, भविष्यवाणी KPI, स्वचालित अलर्ट"
+  },
+  "enterpriseOpsCommandCenter": {
+    "name": "एंटरप्राइज़ ऑप्स कमांड सेंटर",
+    "description": "मल्टी-ऑर्ग शासन हब, भूमिका-आधारित पहुंच, समेकित रिपोर्टिंग"
+  },
+  "fractionalCBO": {
+    "name": "आंशिक CBO/COO सेवाएं",
+    "description": "ऑन-डिमांड आंशिक कार्यकारी, हाथों से मेंटरशिप, रणनीतिक निगरानी"
+  },
+  "learnMore": "और जानें",
+  "notSureTitle": "निश्चित नहीं कि कौन सी सेवा सही है?",
+  "notSureDescription": "अपने सबसे बड़े अवसरों की पहचान करने के लिए हमारे मुफ्त परिचालन स्वास्थ्य निदान से शुरुआत करें",
+  "startFreeDiagnostic": "मुफ्त निदान शुरू करें",
+  "bookDiscoveryCall": "डिस्कवरी कॉल बुक करें"
+}
+

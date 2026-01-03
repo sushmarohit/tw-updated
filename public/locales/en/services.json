@@ -1,0 +1,34 @@
+{
+  "title": "Our Services",
+  "subtitle": "Choose the engagement model that fits your needs",
+  "businessOperationalAssessment": {
+    "name": "Business Operational Assessment",
+    "description": "Root cause analysis and prioritized roadmap"
+  },
+  "operationalExcellenceFoundation": {
+    "name": "Operational Excellence Foundation",
+    "description": "Build scalable SOPs, governance loops, dashboards"
+  },
+  "governanceIntelligenceProgram": {
+    "name": "Governance Intelligence Program",
+    "description": "Full G2P implementation, real-time monitoring, continuous improvement"
+  },
+  "analyticsVisualizationSuite": {
+    "name": "Analytics Visualization Suite",
+    "description": "AI-driven dashboards, predictive KPIs, automated alerts"
+  },
+  "enterpriseOpsCommandCenter": {
+    "name": "Enterprise Ops Command Center",
+    "description": "Multi-org governance hub, role-based access, consolidated reporting"
+  },
+  "fractionalCBO": {
+    "name": "Fractional CBO/COO Services",
+    "description": "On-demand fractional executive, hands-on mentorship, strategic oversight"
+  },
+  "learnMore": "Learn More",
+  "notSureTitle": "Not Sure Which Service Is Right?",
+  "notSureDescription": "Start with our free Operational Health Diagnostic to identify your biggest opportunities",
+  "startFreeDiagnostic": "Start Free Diagnostic",
+  "bookDiscoveryCall": "Book Discovery Call"
+}
+

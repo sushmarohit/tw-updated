@@ -1,0 +1,26 @@
+{
+  "title": "टीम बर्नआउट रिस्क फाइंडर",
+  "description": "अपनी टीम के बर्नआउट जोखिम का आकलन करें",
+  "averageOvertime": "औसत ओवरटाइम (घंटे/सप्ताह)",
+  "deadlineMissRate": "डेडलाइन मिस दर (%)",
+  "employeeEngagement": "कर्मचारी सगाई स्कोर (0-100)",
+  "absenteeismRate": "अनुपस्थिति दर (%)",
+  "workloadScore": "कार्यभार स्कोर (0-100)",
+  "calculate": "जोखिम की गणना करें",
+  "teamBurnoutRiskAnalysis": "टीम बर्नआउट जोखिम विश्लेषण",
+  "overallBurnoutRisk": "समग्र बर्नआउट जोखिम",
+  "status": "स्थिति:",
+  "urgency": "तात्कालिकता:",
+  "riskFactors": "जोखिम कारक",
+  "recommendations": "सिफारिशें",
+  "getDetailedReport": "अपनी विस्तृत रिपोर्ट प्राप्त करें",
+  "name": "Name",
+  "email": "ईमेल",
+  "company": "कंपनी",
+  "getFullReport": "पूर्ण रिपोर्ट प्राप्त करें",
+  "calculateAgain": "फिर से गणना करें",
+  "submitting": "सबमिट हो रहा है...",
+  "resultsSaved": "परिणाम सहेजे गए! विस्तृत रिपोर्ट के लिए अपना ईमेल जांचें।",
+  "failedToSave": "परिणाम सहेजने में विफल। कृपया पुनः प्रयास करें।"
+}
+

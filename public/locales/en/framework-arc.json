@@ -1,0 +1,23 @@
+{
+  "title": "ARC – Resilience and Continuity",
+  "subtitle": "Resilience and continuity (crisis-proofing)—build systems that auto-resolve issues",
+  "applyButton": "Apply ARC to Your Business",
+  "whenToUse": "When to Use ARC",
+  "useCase1": "Disaster recovery planning",
+  "useCase2": "Business continuity needs",
+  "useCase3": "High-frequency operational issues",
+  "useCase4": "Need for automated issue resolution",
+  "keyFocus": "Key Focus: Mean Time to Auto-Resolution (MTTAR)",
+  "keyFocusDescription": "ARC reduces MTTAR by automating issue detection, escalation, and resolution workflows, building resilient systems that self-correct.",
+  "feature1": "Automated issue detection",
+  "feature2": "Auto-escalation workflows",
+  "feature3": "Self-correcting systems",
+  "expectedOutcomes": "Expected Outcomes",
+  "outcome1": "MTTAR reduced 40–60%",
+  "outcome2": "Operational resilience improved",
+  "outcome3": "Manual firefighting reduced 50–70%",
+  "outcome4": "Business continuity ensured",
+  "readyTitle": "Ready to Build Resilience?",
+  "readyDescription": "Crisis-proof your operations with automated resilience"
+}
+

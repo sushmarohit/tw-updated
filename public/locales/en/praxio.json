@@ -1,0 +1,42 @@
+{
+  "title": "PraXio™ – Your Operational Governance Command Center",
+  "subtitle": "Real-time dashboards, automated reporting, AI anomaly detection—all in one unified platform",
+  "requestDemo": "Request PraXio™ Demo",
+  "viewPricing": "View Pricing",
+  "whatIsTitle": "What Is PraXio™?",
+  "whatIsDescription": "PraXio™ is a unified governance and operations platform built exclusively for TwelfthKey Consulting clients. Unlike fragmented tools (Excel, Slack, email), PraXio™ centralizes all operational data, governance metrics, and team collaboration in one transparent, easy-to-navigate interface.",
+  "keyFeatures": "Key Features",
+  "realTimeVisibility": "Real-time visibility (no lag)",
+  "automatedReporting": "Automated reporting (no manual updates)",
+  "aiAlerts": "AI-driven alerts (predict before crisis)",
+  "teamAccountability": "Team accountability (transparent, governed)",
+  "scalable": "Scalable (grows with your business)",
+  "realTimeKPIDashboards": {
+    "title": "Real-time KPI Dashboards",
+    "description": "Every metric visible, updated live"
+  },
+  "automatedReportingFeature": {
+    "title": "Automated Reporting",
+    "description": "Monthly compliance, performance reports auto-generated"
+  },
+  "aiAnomalyDetection": {
+    "title": "AI Anomaly Detection",
+    "description": "Alerts when metrics deviate from norm"
+  },
+  "roleBasedAccess": {
+    "title": "Role-based Access",
+    "description": "CEO, CBO, team leads, individual contributors see what they need"
+  },
+  "integration": {
+    "title": "Integration",
+    "description": "Connects to HRMS, CRM, ERP, finance systems"
+  },
+  "mobileResponsive": {
+    "title": "Mobile-responsive",
+    "description": "Governance on the go"
+  },
+  "readyTitle": "Ready to Experience PraXio™?",
+  "readyDescription": "See how PraXio™ can transform your operations",
+  "requestDemoButton": "Request Demo"
+}
+

@@ -4,8 +4,10 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { trackFormSubmit } from '@/lib/analytics/events';
+import { useTranslation } from 'react-i18next';
 
 export default function ContactPage() {
+  const { t } = useTranslation('common');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,9 +45,9 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-4xl">
         <div className="text-center mb-12">
-          <h1 className="heading-h2 mb-4">Get In Touch</h1>
+          <h1 className="heading-h2 mb-4">{t('getInTouch')}</h1>
           <p className="body-large text-gray-600">
-            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            {t('contactSubtitle')}
           </p>
         </div>
 
@@ -56,7 +58,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block font-semibold mb-2">
-                      Name *
+                      {t('name')} *
                     </label>
                     <input
                       id="name"
@@ -69,7 +71,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label htmlFor="email" className="block font-semibold mb-2">
-                      Email *
+                      {t('email')} *
                     </label>
                     <input
                       id="email"
@@ -84,7 +86,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="phone" className="block font-semibold mb-2">
-                      Phone
+                      {t('phone')}
                     </label>
                     <input
                       id="phone"
@@ -96,7 +98,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label htmlFor="company" className="block font-semibold mb-2">
-                      Company
+                      {t('company')}
                     </label>
                     <input
                       id="company"
@@ -109,7 +111,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <label htmlFor="message" className="block font-semibold mb-2">
-                    Message *
+                    {t('message')} *
                   </label>
                   <textarea
                     id="message"
@@ -122,19 +124,19 @@ export default function ContactPage() {
                 </div>
                 {submitStatus === 'success' && (
                   <div className="p-4 bg-success-light border border-success rounded-lg text-success-dark">
-                    Message sent successfully! We'll get back to you soon.
+                    {t('messageSentSuccess')}
                   </div>
                 )}
                 {submitStatus === 'error' && (
                   <div className="p-4 bg-error-light border border-error rounded-lg text-error-dark">
-                    Failed to send message. Please try again or contact us directly.
+                    {t('messageSendFailed')}
                   </div>
                 )}
                 <Button type="submit" variant="primary" disabled={isSubmitting} className="w-full">
-                  {isSubmitting ? 'Sending...' : (
+                  {isSubmitting ? t('sending') : (
                     <>
                       <Send className="w-4 h-4 mr-2 inline" />
-                      Send Message
+                      {t('sendMessage')}
                     </>
                   )}
                 </Button>
@@ -159,7 +161,7 @@ export default function ContactPage() {
             </div>
             <div className="card">
               <MapPin className="w-8 h-8 text-teal-500 mb-4" />
-              <h3 className="heading-h4 mb-2">Address</h3>
+              <h3 className="heading-h4 mb-2">{t('address')}</h3>
               <p className="body-default text-gray-600">
                 Mumbai, Maharashtra<br />
                 India

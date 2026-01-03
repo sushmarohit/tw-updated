@@ -1,0 +1,28 @@
+{
+  "title": "स्केल रेडीनेस एनालाइजर",
+  "description": "क्या आपका व्यवसाय 2–3x वृद्धि के लिए तैयार है?",
+  "teamReadiness": "टीम तत्परता (0-100)",
+  "sopMaturity": "SOP परिपक्वता (0-100)",
+  "collaborationScore": "सहयोग स्कोर (0-100)",
+  "kpiTracking": "KPI ट्रैकिंग (0-100)",
+  "scalabilityScore": "स्केलेबिलिटी स्कोर (0-100)",
+  "calculate": "तत्परता का विश्लेषण करें",
+  "scaleReadinessAnalysis": "स्केल तत्परता विश्लेषण",
+  "overallReadinessScore": "समग्र तत्परता स्कोर",
+  "status": "स्थिति:",
+  "bottlenecksIdentified": "पहचाने गए बाधाएं",
+  "improvementGaps": "सुधार अंतराल",
+  "area": "क्षेत्र",
+  "priority": "प्राथमिकता",
+  "recommendations": "सिफारिशें",
+  "getDetailedReport": "अपनी विस्तृत रिपोर्ट प्राप्त करें",
+  "name": "नाम",
+  "email": "ईमेल",
+  "company": "कंपनी",
+  "getFullReport": "पूर्ण रिपोर्ट प्राप्त करें",
+  "calculateAgain": "फिर से गणना करें",
+  "submitting": "सबमिट हो रहा है...",
+  "resultsSaved": "परिणाम सहेजे गए! विस्तृत रिपोर्ट के लिए अपना ईमेल जांचें।",
+  "failedToSave": "परिणाम सहेजने में विफल। कृपया पुनः प्रयास करें।"
+}
+

@@ -1,0 +1,50 @@
+{
+  "title": "Enterprise Ops Command Center",
+  "subtitle": "Multi-org governance hub, consolidated reporting, role-based dashboards for enterprise complexity",
+  "scaleWithGovernance": "Scale with Governance",
+  "whatsIncluded": "What's Included",
+  "item1": "Multi-org governance framework",
+  "item2": "Consolidated reporting (roll-up across teams/departments)",
+  "item3": "Role-based access control (CEO, CBO, team leads, individual contributors)",
+  "item4": "Advanced analytics and benchmarking",
+  "item5": "Compliance tracking and audit trails",
+  "item6": "Integration with legacy systems (ERP, HRMS, CRM)",
+  "item7": "Quarterly reviews and optimization",
+  "enterpriseUseCases": "Enterprise Use Cases",
+  "rapidMaIntegration": {
+    "title": "Rapid M&A Integration",
+    "desc": "Align governance post-merger across organizations"
+  },
+  "multiLocationScaling": {
+    "title": "Multi-Location Scaling",
+    "desc": "Consistent governance across offices and regions"
+  },
+  "complianceAuditReadiness": {
+    "title": "Compliance & Audit Readiness",
+    "desc": "Automated evidence collection and reporting"
+  },
+  "digitalTransformation": {
+    "title": "Digital Transformation",
+    "desc": "Legacy → modern governance migration"
+  },
+  "globalExpansion": {
+    "title": "Global Expansion",
+    "desc": "Multi-currency, multi-language support"
+  },
+  "keyFeatures": "Key Features",
+  "feature1": "Real-time consolidated dashboards (global view)",
+  "feature2": "Department-level governance (autonomy + oversight)",
+  "feature3": "Automated compliance reporting (audit-ready)",
+  "feature4": "Advanced analytics and trend analysis",
+  "feature5": "Custom governance workflows per department",
+  "investmentRoi": "Investment & ROI",
+  "investment": "Investment",
+  "typicalRoi": "Typical ROI",
+  "investmentValue": "90 days + 12-month support",
+  "roiValue": "In operational efficiency + reduced compliance risk",
+  "governanceStandardization": "Governance standardization across organization",
+  "readyTitle": "Ready to Scale with Governance?",
+  "readyDescription": "Enterprise-grade governance for complex organizations",
+  "scheduleAssessment": "Schedule Your Assessment"
+}
+

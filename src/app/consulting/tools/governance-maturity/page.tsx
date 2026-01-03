@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { calculateGovernanceMaturity, type GovernanceMaturityInput } from '@/lib/calculators/governance-maturity';
 import { trackCalculatorStart, trackCalculatorComplete } from '@/lib/analytics/events';
 
 export default function GovernanceMaturityPage() {
+  const { t } = useTranslation(['tools-governance-maturity', 'common']);
   const [step, setStep] = useState<'form' | 'result'>('form');
   const [formData, setFormData] = useState<GovernanceMaturityInput>({
     policyClarity: 0,
@@ -45,11 +47,11 @@ export default function GovernanceMaturityPage() {
 
       const data = await response.json();
       if (data.success) {
-        alert('Results saved! Check your email for the detailed report.');
+        alert(t('tools-governance-maturity:resultsSaved'));
       }
     } catch (error) {
       console.error('Submission error:', error);
-      alert('Failed to save results. Please try again.');
+      alert(t('tools-governance-maturity:failedToSave'));
     } finally {
       setIsSubmitting(false);
     }
@@ -67,20 +69,20 @@ export default function GovernanceMaturityPage() {
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-4xl">
           <div className="card mb-8">
-            <h1 className="heading-h2 mb-4">Governance Maturity Assessment</h1>
+            <h1 className="heading-h2 mb-4">{t('tools-governance-maturity:governanceMaturityAssessment')}</h1>
             
             <div className="text-center mb-8 p-6 bg-navy-500 text-white rounded-lg">
-              <p className="body-small text-gray-200 mb-2">Overall Maturity Score</p>
+              <p className="body-small text-gray-200 mb-2">{t('tools-governance-maturity:overallMaturityScore')}</p>
               <div className={`text-5xl font-bold mb-2 ${maturityColors}`}>
                 {result.overallMaturity}/100
               </div>
               <p className="body-default text-gray-200">
-                Maturity Level: <strong>{result.maturityLevel}</strong>
+                {t('tools-governance-maturity:maturityLevel')} <strong>{result.maturityLevel}</strong>
               </p>
             </div>
 
             <div className="mb-8">
-              <h3 className="heading-h4 mb-4">Dimension Scores</h3>
+              <h3 className="heading-h4 mb-4">{t('tools-governance-maturity:dimensionScores')}</h3>
               <div className="space-y-4">
                 {Object.entries(result.dimensions).map(([key, dim]: [string, any]) => (
                   <div key={key} className="border border-gray-200 rounded-lg p-4">
@@ -156,7 +158,7 @@ export default function GovernanceMaturityPage() {
             )}
 
             <div className="mb-8">
-              <h3 className="heading-h4 mb-4">Recommendations</h3>
+              <h3 className="heading-h4 mb-4">{t('tools-governance-maturity:recommendations')}</h3>
               <ul className="space-y-2">
                 {result.recommendations.map((rec: string, i: number) => (
                   <li key={i} className="body-default text-gray-700 flex items-start">
@@ -169,25 +171,25 @@ export default function GovernanceMaturityPage() {
 
             {!userInfo.email && (
               <div className="border-t pt-6 mb-6">
-                <h3 className="heading-h4 mb-4">Get Your Detailed Report</h3>
+                <h3 className="heading-h4 mb-4">{t('tools-governance-maturity:getDetailedReport')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <input
                     type="text"
-                    placeholder="Name"
+                    placeholder={t('tools-governance-maturity:name')}
                     className="input"
                     value={userInfo.name}
                     onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}
                   />
                   <input
                     type="email"
-                    placeholder="Email"
+                    placeholder={t('tools-governance-maturity:email')}
                     className="input"
                     value={userInfo.email}
                     onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
                   />
                   <input
                     type="text"
-                    placeholder="Company"
+                    placeholder={t('tools-governance-maturity:company')}
                     className="input"
                     value={userInfo.companyName}
                     onChange={(e) => setUserInfo({ ...userInfo, companyName: e.target.value })}
@@ -198,10 +200,10 @@ export default function GovernanceMaturityPage() {
 
             <div className="flex gap-4">
               <Button variant="primary" onClick={handleSubmit} disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'Get Full Report'}
+                {isSubmitting ? t('tools-governance-maturity:submitting') : t('tools-governance-maturity:getFullReport')}
               </Button>
               <Button variant="secondary" onClick={() => setStep('form')}>
-                Calculate Again
+                {t('tools-governance-maturity:calculateAgain')}
               </Button>
             </div>
           </div>
@@ -214,18 +216,18 @@ export default function GovernanceMaturityPage() {
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-3xl">
         <div className="card">
-          <h1 className="heading-h2 mb-6">Governance Maturity Calculator</h1>
+          <h1 className="heading-h2 mb-6">{t('tools-governance-maturity:title')}</h1>
           <p className="body-default text-gray-600 mb-8">
-            Full governance health across 5 dimensions
+            {t('tools-governance-maturity:description')}
           </p>
 
           <div className="space-y-6">
             {[
-              { key: 'policyClarity', label: 'Policy Clarity', desc: 'How clear and documented your governance policies are (0-100)' },
-              { key: 'processReviews', label: 'Process Reviews', desc: 'Frequency and effectiveness of process reviews (0-100)' },
-              { key: 'automation', label: 'Automation', desc: 'Level of governance workflow automation (0-100)' },
-              { key: 'riskManagement', label: 'Risk Management', desc: 'Proactive risk monitoring and mitigation (0-100)' },
-              { key: 'accountability', label: 'Accountability', desc: 'Clear accountability frameworks and ownership (0-100)' },
+              { key: 'policyClarity', label: t('tools-governance-maturity:policyClarity'), desc: 'How clear and documented your governance policies are (0-100)' },
+              { key: 'processReviews', label: t('tools-governance-maturity:processReviews'), desc: 'Frequency and effectiveness of process reviews (0-100)' },
+              { key: 'automation', label: t('tools-governance-maturity:automation'), desc: 'Level of governance workflow automation (0-100)' },
+              { key: 'riskManagement', label: t('tools-governance-maturity:riskManagement'), desc: 'Proactive risk monitoring and mitigation (0-100)' },
+              { key: 'accountability', label: t('tools-governance-maturity:accountability'), desc: 'Clear accountability frameworks and ownership (0-100)' },
             ].map((field) => (
               <div key={field.key}>
                 <label className="block font-semibold mb-2">
@@ -251,7 +253,7 @@ export default function GovernanceMaturityPage() {
               onClick={handleCalculate}
               className="w-full"
             >
-              Calculate Governance Maturity
+              {t('tools-governance-maturity:calculate')}
             </Button>
           </div>
         </div>

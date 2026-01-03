@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { calculateBurnoutRisk, type BurnoutRiskInput } from '@/lib/calculators/burnout-risk';
 import { trackCalculatorStart, trackCalculatorComplete } from '@/lib/analytics/events';
 
 export default function BurnoutRiskPage() {
+  const { t } = useTranslation(['tools-burnout-risk', 'common']);
   const [step, setStep] = useState<'form' | 'result'>('form');
   const [formData, setFormData] = useState<BurnoutRiskInput>({
     averageOvertime: 0,
@@ -45,11 +47,11 @@ export default function BurnoutRiskPage() {
 
       const data = await response.json();
       if (data.success) {
-        alert('Results saved! Check your email for the detailed report.');
+        alert(t('tools-burnout-risk:resultsSaved'));
       }
     } catch (error) {
       console.error('Submission error:', error);
-      alert('Failed to save results. Please try again.');
+      alert(t('tools-burnout-risk:failedToSave'));
     } finally {
       setIsSubmitting(false);
     }
@@ -67,20 +69,20 @@ export default function BurnoutRiskPage() {
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-4xl">
           <div className="card mb-8">
-            <h1 className="heading-h2 mb-4">Team Burnout Risk Analysis</h1>
+            <h1 className="heading-h2 mb-4">{t('tools-burnout-risk:teamBurnoutRiskAnalysis')}</h1>
             
             <div className="text-center mb-8 p-6 bg-navy-500 text-white rounded-lg">
-              <p className="body-small text-gray-200 mb-2">Overall Burnout Risk</p>
+              <p className="body-small text-gray-200 mb-2">{t('tools-burnout-risk:overallBurnoutRisk')}</p>
               <div className={`text-5xl font-bold mb-2 ${riskColor}`}>
                 {result.riskScore}/100
               </div>
               <p className="body-default text-gray-200">
-                Status: <strong>{result.overallRisk}</strong> | Urgency: <strong>{result.urgency}</strong>
+                {t('tools-burnout-risk:status')} <strong>{result.overallRisk}</strong> | {t('tools-burnout-risk:urgency')} <strong>{result.urgency}</strong>
               </p>
             </div>
 
             <div className="mb-8">
-              <h3 className="heading-h4 mb-4">Risk Factors</h3>
+              <h3 className="heading-h4 mb-4">{t('tools-burnout-risk:riskFactors')}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Object.entries(result.factors).map(([key, factor]: [string, any]) => (
                   <div key={key} className="border border-gray-200 rounded-lg p-4">
@@ -112,7 +114,7 @@ export default function BurnoutRiskPage() {
             </div>
 
             <div className="mb-8">
-              <h3 className="heading-h4 mb-4">Recommendations</h3>
+              <h3 className="heading-h4 mb-4">{t('tools-burnout-risk:recommendations')}</h3>
               <ul className="space-y-2">
                 {result.recommendations.map((rec: string, i: number) => (
                   <li key={i} className="body-default text-gray-700 flex items-start">
@@ -125,25 +127,25 @@ export default function BurnoutRiskPage() {
 
             {!userInfo.email && (
               <div className="border-t pt-6 mb-6">
-                <h3 className="heading-h4 mb-4">Get Your Detailed Report</h3>
+                <h3 className="heading-h4 mb-4">{t('tools-burnout-risk:getDetailedReport')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <input
                     type="text"
-                    placeholder="Name"
+                    placeholder={t('tools-burnout-risk:name')}
                     className="input"
                     value={userInfo.name}
                     onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}
                   />
                   <input
                     type="email"
-                    placeholder="Email"
+                    placeholder={t('tools-burnout-risk:email')}
                     className="input"
                     value={userInfo.email}
                     onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
                   />
                   <input
                     type="text"
-                    placeholder="Company"
+                    placeholder={t('tools-burnout-risk:company')}
                     className="input"
                     value={userInfo.companyName}
                     onChange={(e) => setUserInfo({ ...userInfo, companyName: e.target.value })}
@@ -154,10 +156,10 @@ export default function BurnoutRiskPage() {
 
             <div className="flex gap-4">
               <Button variant="primary" onClick={handleSubmit} disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'Get Full Report'}
+                {isSubmitting ? t('tools-burnout-risk:submitting') : t('tools-burnout-risk:getFullReport')}
               </Button>
               <Button variant="secondary" onClick={() => setStep('form')}>
-                Calculate Again
+                {t('tools-burnout-risk:calculateAgain')}
               </Button>
             </div>
           </div>
@@ -170,15 +172,15 @@ export default function BurnoutRiskPage() {
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-3xl">
         <div className="card">
-          <h1 className="heading-h2 mb-6">Team Burnout Risk Finder</h1>
+          <h1 className="heading-h2 mb-6">{t('tools-burnout-risk:title')}</h1>
           <p className="body-default text-gray-600 mb-8">
-            Spot burnout triggers before they impact performance
+            {t('tools-burnout-risk:description')}
           </p>
 
           <div className="space-y-6">
             <div>
               <label className="block font-semibold mb-2">
-                Average Overtime (hours/week)
+                {t('tools-burnout-risk:averageOvertime')}
               </label>
               <input
                 type="number"
@@ -256,7 +258,7 @@ export default function BurnoutRiskPage() {
               onClick={handleCalculate}
               className="w-full"
             >
-              Analyze Burnout Risk
+              {t('tools-burnout-risk:calculate')}
             </Button>
           </div>
         </div>

@@ -1,0 +1,38 @@
+{
+  "title": "The G2P Framework™",
+  "subtitle": "PhD-backed, research-driven methodology for service companies delivering measurable operational maturity",
+  "whatIs": "What Is G2P?",
+  "whatIsDescription": "G2P bridges strategy and execution by making governance measurable. Unlike manufacturing-focused methodologies (Lean, Six Sigma), G2P is built for service businesses where knowledge work, decision-making, and autonomy drive performance.",
+  "coreTenets": "Core Tenets:",
+  "tenet1": "Governance is anticipation, not surveillance",
+  "tenet2": "Autonomy must be earned, not granted",
+  "tenet3": "Decisions improve when cognitive load is managed",
+  "tenet4": "Learning velocity determines competitive advantage",
+  "tenet5": "Resilience comes from automation + human oversight",
+  "sixMethodologies": "Six Adaptive Methodologies",
+  "fiveIndices": "Five Quantified Indices",
+  "implementationStages": "Implementation Stages",
+  "stage1": {
+    "title": "Diagnose",
+    "desc": "Assess current maturity across all 5 indices"
+  },
+  "stage2": {
+    "title": "Design",
+    "desc": "Select the right methodology"
+  },
+  "stage3": {
+    "title": "Execute",
+    "desc": "Implement governance loops and dashboards"
+  },
+  "stage4": {
+    "title": "Measure",
+    "desc": "Track indices on PraXio™ dashboards monthly"
+  },
+  "stage5": {
+    "title": "Evolve",
+    "desc": "Continuous improvement cycles, scaling interventions"
+  },
+  "readyTitle": "Ready to Implement G2P?",
+  "readyDescription": "Start with a free Operational Health Diagnostic to see your G2P indices"
+}
+

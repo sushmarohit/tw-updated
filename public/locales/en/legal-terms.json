@@ -1,0 +1,25 @@
+{
+  "title": "Terms of Service",
+  "lastUpdated": "Last updated: December 2025",
+  "section1": {
+    "title": "1. Service Description",
+    "description": "TwelfthKey Consulting provides operational excellence consulting services, including assessments, process improvement, governance implementation, and fractional CBO/COO services."
+  },
+  "section2": {
+    "title": "2. Engagement Terms",
+    "description": "All engagements are subject to:",
+    "item1": "Written proposal and agreement",
+    "item2": "Payment terms as specified in proposal",
+    "item3": "Deliverables as outlined in scope of work",
+    "item4": "Timeline and milestones"
+  },
+  "section3": {
+    "title": "3. Limitations of Liability",
+    "description": "TwelfthKey Consulting's liability is limited to the fees paid for the specific engagement. We are not liable for indirect, consequential, or incidental damages."
+  },
+  "section4": {
+    "title": "4. Dispute Resolution",
+    "description": "Any disputes shall be resolved through arbitration in Mumbai, India, in accordance with the Arbitration and Conciliation Act, 2015."
+  }
+}
+

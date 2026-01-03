@@ -1,0 +1,21 @@
+{
+  "title": "Data Processing Agreement",
+  "lastUpdated": "Last updated: December 2025",
+  "section1": {
+    "title": "1. Purpose",
+    "description": "This Data Processing Agreement (DPA) governs the processing of personal data by TwelfthKey Consulting on behalf of our clients in accordance with applicable data protection laws."
+  },
+  "section2": {
+    "title": "2. Data Processing",
+    "description": "We process personal data only as instructed by the client and in accordance with applicable data protection laws, including GDPR and the Information Technology Act, 2000 (India)."
+  },
+  "section3": {
+    "title": "3. Security Measures",
+    "description": "We implement appropriate technical and organizational measures to ensure the security of personal data, including encryption, access controls, and regular security assessments."
+  },
+  "section4": {
+    "title": "4. Contact",
+    "description": "For DPA requests, contact:"
+  }
+}
+

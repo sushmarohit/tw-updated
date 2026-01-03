@@ -1,0 +1,64 @@
+{
+  "title": "Governance Intelligence Program",
+  "subtitle": "Full G2P framework, real-time dashboards, AI anomaly detection—60 days to autonomous governance",
+  "establishGovernance": "Establish Governance",
+  "whatsIncluded": "What's Included",
+  "item1": "G2P framework implementation (6 methodologies, 5 indices)",
+  "item2": "Governance framework design (policies, approval workflows, escalation)",
+  "item3": "PraXio™ platform setup and integration",
+  "item4": "Real-time KPI dashboards and alerts",
+  "item5": "12-week implementation and stabilization",
+  "item6": "Quarterly governance reviews (12 months)",
+  "theGovernanceLoop": "The Governance Loop",
+  "plan": {
+    "title": "Plan",
+    "desc": "Set monthly targets and governance cadences"
+  },
+  "monitor": {
+    "title": "Monitor",
+    "desc": "Real-time dashboard visibility"
+  },
+  "analyze": {
+    "title": "Analyze",
+    "desc": "Weekly governance reviews and trend analysis"
+  },
+  "improve": {
+    "title": "Improve",
+    "desc": "Continuous improvement workshops"
+  },
+  "evolve": {
+    "title": "Evolve",
+    "desc": "Scale governance as business grows"
+  },
+  "g2pIndicesTracked": "G2P Indices Tracked",
+  "par": {
+    "name": "PAR",
+    "desc": "Prediction Accuracy (forecast consistency)"
+  },
+  "aq": {
+    "name": "AQ",
+    "desc": "Autonomy Quotient (team empowerment)"
+  },
+  "cls": {
+    "name": "CLS",
+    "desc": "Cognitive Load (decision-maker burden)"
+  },
+  "lv": {
+    "name": "LV",
+    "desc": "Learning Velocity (adaptation speed)"
+  },
+  "mttar": {
+    "name": "MTTAR",
+    "desc": "Mean Time to Auto-Resolution (resilience)"
+  },
+  "investmentRoi": "Investment & ROI",
+  "investment": "Investment",
+  "typicalRoi": "Typical ROI",
+  "investmentValue": "60 days + 12-month partnership",
+  "roiValue": "In cost savings + governance maturity",
+  "governanceScoreImprovement": "Governance score improvement: +25–35 points",
+  "readyTitle": "Ready to Establish Governance?",
+  "readyDescription": "Transform your operations with measurable governance intelligence",
+  "scheduleAssessment": "Schedule Your Assessment"
+}
+

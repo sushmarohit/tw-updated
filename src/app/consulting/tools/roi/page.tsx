@@ -1,12 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { calculateROI, type ROIInput } from '@/lib/calculators/roi';
 import { trackCalculatorStart, trackCalculatorComplete } from '@/lib/analytics/events';
 import { formatCurrency } from '@/lib/utils';
 
 export default function ROIPage() {
+  const { t } = useTranslation(['tools-roi', 'common']);
   const [step, setStep] = useState<'form' | 'result'>('form');
   const [formData, setFormData] = useState<ROIInput>({
     totalCost: 0,
@@ -44,11 +46,11 @@ export default function ROIPage() {
 
       const data = await response.json();
       if (data.success) {
-        alert('Results saved! Check your email for the detailed report.');
+        alert(t('tools-roi:resultsSaved'));
       }
     } catch (error) {
       console.error('Submission error:', error);
-      alert('Failed to save results. Please try again.');
+      alert(t('tools-roi:failedToSave'));
     } finally {
       setIsSubmitting(false);
     }
@@ -59,48 +61,48 @@ export default function ROIPage() {
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-4xl">
           <div className="card mb-8">
-            <h1 className="heading-h2 mb-4">ROI Analysis</h1>
+            <h1 className="heading-h2 mb-4">{t('tools-roi:roiAnalysis')}</h1>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="p-6 bg-gold-50 rounded-lg">
-                <p className="body-small text-gray-600 mb-2">ROI</p>
+                <p className="body-small text-gray-600 mb-2">{t('tools-roi:roi')}</p>
                 <div className={`text-4xl font-bold mb-2 ${result.roi >= 0 ? 'text-gold-300' : 'text-error-500'}`}>
                   {result.roi}%
                 </div>
-                <p className="body-small text-gray-600">Net Benefit: {formatCurrency(result.netBenefit)}/year</p>
+                <p className="body-small text-gray-600">{t('tools-roi:netBenefit')} {formatCurrency(result.netBenefit)}{t('tools-roi:year')}</p>
               </div>
               <div className="p-6 bg-teal-50 rounded-lg">
-                <p className="body-small text-gray-600 mb-2">Payback Period</p>
+                <p className="body-small text-gray-600 mb-2">{t('tools-roi:paybackPeriod')}</p>
                 <div className="text-4xl font-bold text-teal-500 mb-2">
-                  {result.paybackPeriod} months
+                  {result.paybackPeriod} {t('tools-roi:months')}
                 </div>
-                <p className="body-small text-gray-600">Break-even: Month {result.breakEvenMonth}</p>
+                <p className="body-small text-gray-600">{t('tools-roi:breakEven')} {result.breakEvenMonth}</p>
               </div>
             </div>
 
             <div className="mb-8">
-              <h3 className="heading-h4 mb-4">Scenario Analysis</h3>
+              <h3 className="heading-h4 mb-4">{t('tools-roi:scenarioAnalysis')}</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="border border-gray-200 rounded-lg p-4">
-                  <p className="body-small font-semibold text-gray-700 mb-2">Conservative</p>
+                  <p className="body-small font-semibold text-gray-700 mb-2">{t('tools-roi:conservative')}</p>
                   <p className={`text-2xl font-bold ${result.scenarios.conservative.roi >= 0 ? 'text-gray-600' : 'text-error-500'}`}>
                     {result.scenarios.conservative.roi}%
                   </p>
-                  <p className="body-small text-gray-500">Payback: {result.scenarios.conservative.payback} months</p>
+                  <p className="body-small text-gray-500">{t('tools-roi:payback')} {result.scenarios.conservative.payback} {t('tools-roi:months')}</p>
                 </div>
                 <div className="border-2 border-teal-500 rounded-lg p-4 bg-teal-50">
-                  <p className="body-small font-semibold text-teal-700 mb-2">Realistic</p>
+                  <p className="body-small font-semibold text-teal-700 mb-2">{t('tools-roi:realistic')}</p>
                   <p className={`text-2xl font-bold ${result.scenarios.realistic.roi >= 0 ? 'text-teal-500' : 'text-error-500'}`}>
                     {result.scenarios.realistic.roi}%
                   </p>
-                  <p className="body-small text-gray-500">Payback: {result.scenarios.realistic.payback} months</p>
+                  <p className="body-small text-gray-500">{t('tools-roi:payback')} {result.scenarios.realistic.payback} {t('tools-roi:months')}</p>
                 </div>
                 <div className="border border-gray-200 rounded-lg p-4">
-                  <p className="body-small font-semibold text-gray-700 mb-2">Optimistic</p>
+                  <p className="body-small font-semibold text-gray-700 mb-2">{t('tools-roi:optimistic')}</p>
                   <p className={`text-2xl font-bold ${result.scenarios.optimistic.roi >= 0 ? 'text-gray-600' : 'text-error-500'}`}>
                     {result.scenarios.optimistic.roi}%
                   </p>
-                  <p className="body-small text-gray-500">Payback: {result.scenarios.optimistic.payback} months</p>
+                  <p className="body-small text-gray-500">{t('tools-roi:payback')} {result.scenarios.optimistic.payback} {t('tools-roi:months')}</p>
                 </div>
               </div>
             </div>
@@ -113,25 +115,25 @@ export default function ROIPage() {
 
             {!userInfo.email && (
               <div className="border-t pt-6 mb-6">
-                <h3 className="heading-h4 mb-4">Get Your Detailed Report</h3>
+                <h3 className="heading-h4 mb-4">{t('tools-roi:getDetailedReport')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <input
                     type="text"
-                    placeholder="Name"
+                    placeholder={t('tools-roi:name')}
                     className="input"
                     value={userInfo.name}
                     onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}
                   />
                   <input
                     type="email"
-                    placeholder="Email"
+                    placeholder={t('tools-roi:email')}
                     className="input"
                     value={userInfo.email}
                     onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
                   />
                   <input
                     type="text"
-                    placeholder="Company"
+                    placeholder={t('tools-roi:company')}
                     className="input"
                     value={userInfo.companyName}
                     onChange={(e) => setUserInfo({ ...userInfo, companyName: e.target.value })}
@@ -142,10 +144,10 @@ export default function ROIPage() {
 
             <div className="flex gap-4">
               <Button variant="primary" onClick={handleSubmit} disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'Get Full Report'}
+                {isSubmitting ? t('tools-roi:submitting') : t('tools-roi:getFullReport')}
               </Button>
               <Button variant="secondary" onClick={() => setStep('form')}>
-                Calculate Again
+                {t('tools-roi:calculateAgain')}
               </Button>
             </div>
           </div>
@@ -158,15 +160,15 @@ export default function ROIPage() {
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-3xl">
         <div className="card">
-          <h1 className="heading-h2 mb-6">ROI Calculator</h1>
+          <h1 className="heading-h2 mb-6">{t('tools-roi:title')}</h1>
           <p className="body-default text-gray-600 mb-8">
-            Project returns from operational investments
+            {t('tools-roi:description')}
           </p>
 
           <div className="space-y-6">
             <div>
               <label className="block font-semibold mb-2">
-                Total Investment Cost (₹)
+                {t('tools-roi:totalCost')}
               </label>
               <input
                 type="number"
@@ -179,7 +181,7 @@ export default function ROIPage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                Monthly Benefits (₹)
+                {t('tools-roi:monthlyBenefits')}
               </label>
               <input
                 type="number"
@@ -193,7 +195,7 @@ export default function ROIPage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                Implementation Duration (months)
+                {t('tools-roi:implementationDuration')}
               </label>
               <input
                 type="number"
@@ -225,7 +227,7 @@ export default function ROIPage() {
               className="w-full"
               disabled={!formData.totalCost || !formData.monthlyBenefits}
             >
-              Calculate ROI
+              {t('tools-roi:calculate')}
             </Button>
           </div>
         </div>

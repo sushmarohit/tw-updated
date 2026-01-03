@@ -1,0 +1,26 @@
+{
+  "title": "Team Burnout Risk Finder",
+  "description": "Assess your team's burnout risk",
+  "averageOvertime": "Average Overtime (hours/week)",
+  "deadlineMissRate": "Deadline Miss Rate (%)",
+  "employeeEngagement": "Employee Engagement Score (0-100)",
+  "absenteeismRate": "Absenteeism Rate (%)",
+  "workloadScore": "Workload Score (0-100)",
+  "calculate": "Calculate Risk",
+  "teamBurnoutRiskAnalysis": "Team Burnout Risk Analysis",
+  "overallBurnoutRisk": "Overall Burnout Risk",
+  "status": "Status:",
+  "urgency": "Urgency:",
+  "riskFactors": "Risk Factors",
+  "recommendations": "Recommendations",
+  "getDetailedReport": "Get Your Detailed Report",
+  "name": "Name",
+  "email": "Email",
+  "company": "Company",
+  "getFullReport": "Get Full Report",
+  "calculateAgain": "Calculate Again",
+  "submitting": "Submitting...",
+  "resultsSaved": "Results saved! Check your email for the detailed report.",
+  "failedToSave": "Failed to save results. Please try again."
+}
+

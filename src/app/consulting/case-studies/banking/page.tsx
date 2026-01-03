@@ -1,16 +1,20 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CheckCircle, TrendingDown, Clock } from 'lucide-react';
 
 export default function BankingCaseStudyPage() {
+  const { t } = useTranslation(['case-studies-banking', 'common']);
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <h1 className="heading-hero mb-6 text-white">Banking Operations Transformation</h1>
+            <h1 className="heading-hero mb-6 text-white">{t('case-studies-banking:title')}</h1>
             <p className="body-large text-gray-100 mb-8">
-              68% Error Reduction, Audit Findings → Near Zero
+              {t('case-studies-banking:subtitle')}
             </p>
           </div>
         </div>

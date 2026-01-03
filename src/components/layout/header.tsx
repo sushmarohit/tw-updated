@@ -47,13 +47,13 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full',
         isScrolled
           ? 'h-16 bg-white/95 backdrop-blur-md shadow-md'
           : 'h-20 bg-white'
       )}
     >
-      <nav className="container-custom h-full flex items-center justify-between" aria-label="Main navigation">
+      <nav className="w-full h-full flex items-center justify-between" aria-label="Main navigation">
         {/* Logo */}
         <Link
           href="/"
@@ -87,14 +87,14 @@ export function Header() {
           <Button
             variant="secondary"
             asChild
-            className="text-sm px-6 py-2"
+            className="text-sm px-4 py-2 whitespace-nowrap"
           >
             <Link href="/consulting/booking">{t('common:bookDiscoveryCall')}</Link>
           </Button>
           <Button
             variant="primary"
             asChild
-            className="text-sm px-6 py-2"
+            className="text-sm px-4 py-2 whitespace-nowrap"
           >
             <Link href="/consulting/tools/health-check">{t('common:startFreeDiagnostic')}</Link>
           </Button>
@@ -103,7 +103,7 @@ export function Header() {
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className="lg:hidden p-2 text-navy-500 focus-visible-ring rounded-lg"
+          className="lg:hidden p-2 text-navy-500 focus-visible-ring rounded-lg z-[60] relative"
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -126,7 +126,7 @@ export function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+              className="fixed inset-0 bg-black/50 z-[55] lg:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
               aria-hidden="true"
             />
@@ -137,7 +137,7 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-navy-500 z-50 lg:hidden overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-navy-500 z-[60] lg:hidden overflow-y-auto"
             >
               <div className="p-6">
                 <div className="flex items-center justify-between mb-8">

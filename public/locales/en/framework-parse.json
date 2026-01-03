@@ -1,0 +1,41 @@
+{
+  "title": "PARSE – Strategic Reset and Realignment",
+  "subtitle": "Navigate crisis recovery and organizational restructuring with precision",
+  "applyButton": "Apply PARSE to Your Business",
+  "whenToUse": "When to Use PARSE",
+  "useCase1": "Crisis recovery and turnaround",
+  "useCase2": "Organizational restructuring needed",
+  "useCase3": "Strategic realignment required",
+  "useCase4": "Mission-critical recovery situations",
+  "framework": "PARSE Framework",
+  "plan": {
+    "letter": "P",
+    "word": "Plan",
+    "desc": "Strategic planning and crisis assessment"
+  },
+  "align": {
+    "letter": "A",
+    "word": "Align",
+    "desc": "Align resources and priorities"
+  },
+  "reset": {
+    "letter": "R",
+    "word": "Reset",
+    "desc": "Reset processes and governance"
+  },
+  "execute": {
+    "letter": "S",
+    "word": "Execute",
+    "desc": "Execute with precision and monitoring"
+  },
+  "evolve": {
+    "letter": "E",
+    "word": "Evolve",
+    "desc": "Evolve and scale the solution"
+  },
+  "keyMetric": "Key Metric: Strategic Governance Index (SGI)",
+  "keyMetricDescription": "Measures strategic alignment and governance effectiveness during transformation",
+  "readyTitle": "Ready to Apply PARSE?",
+  "readyDescription": "Strategic reset requires expert guidance"
+}
+

@@ -1,0 +1,27 @@
+{
+  "title": "Decision Bottleneck Finder",
+  "description": "Pinpoint approval delays and process slowdowns",
+  "averageApprovalTime": "Average Approval Time (hours)",
+  "numberOfApprovalLayers": "Number of Approval Layers",
+  "decisionDelayFrequency": "Decision Delay Frequency (%)",
+  "escalationEffectiveness": "Escalation Effectiveness (0-100)",
+  "autonomyLevel": "Autonomy Level (0-100)",
+  "findBottlenecks": "Find Bottlenecks",
+  "decisionBottleneckAnalysis": "Decision Bottleneck Analysis",
+  "bottleneckIndex": "Bottleneck Index",
+  "severity": "Severity:",
+  "estimatedTimeWasted": "Estimated Time Wasted:",
+  "hoursMonth": "hours/month",
+  "bottleneckFactors": "Bottleneck Factors",
+  "recommendations": "Recommendations",
+  "getDetailedReport": "Get Your Detailed Report",
+  "name": "Name",
+  "email": "Email",
+  "company": "Company",
+  "getFullReport": "Get Full Report",
+  "calculateAgain": "Calculate Again",
+  "submitting": "Submitting...",
+  "resultsSaved": "Results saved! Check your email for the detailed report.",
+  "failedToSave": "Failed to save results. Please try again."
+}
+

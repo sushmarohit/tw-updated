@@ -1,52 +1,56 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Phone, FileSearch, Map, Cog, TrendingUp } from 'lucide-react';
 
-const steps = [
-  {
-    icon: Phone,
-    title: 'Discovery Pre-Engagement Call',
-    duration: '45 minutes',
-    description: 'Revenue, operating model, key pain points, current governance maturity',
-  },
-  {
-    icon: FileSearch,
-    title: 'Diagnostic – Business Operational Assessment',
-    duration: '5–7 days',
-    description: 'Deep-dive interviews, process value-stream mapping, risk modeling, governance gap analysis',
-  },
-  {
-    icon: Map,
-    title: 'Design – G2P Intervention Blueprint',
-    duration: '3–5 days',
-    description: 'Select primary methodology, scope phase 1 deliverables, design governance loops',
-  },
-  {
-    icon: Cog,
-    title: 'Execution – Process Excellence Implementation',
-    duration: '30–90 days',
-    description: 'Build SOPs, train teams, pilot routines, stabilize new value streams',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Govern & Evolve – Ongoing Fractional CBO Leadership',
-    duration: 'Ongoing',
-    description: 'Quarterly governance reviews, continuous improvement, real-time dashboard monitoring',
-  },
-];
-
 export default function ProcessPage() {
+  const { t } = useTranslation(['process', 'common']);
+
+  const steps = [
+    {
+      icon: Phone,
+      title: t('process:step1.title'),
+      duration: t('process:step1.duration'),
+      description: t('process:step1.description'),
+    },
+    {
+      icon: FileSearch,
+      title: t('process:step2.title'),
+      duration: t('process:step2.duration'),
+      description: t('process:step2.description'),
+    },
+    {
+      icon: Map,
+      title: t('process:step3.title'),
+      duration: t('process:step3.duration'),
+      description: t('process:step3.description'),
+    },
+    {
+      icon: Cog,
+      title: t('process:step4.title'),
+      duration: t('process:step4.duration'),
+      description: t('process:step4.description'),
+    },
+    {
+      icon: TrendingUp,
+      title: t('process:step5.title'),
+      duration: t('process:step5.duration'),
+      description: t('process:step5.description'),
+    },
+  ];
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <h1 className="heading-hero mb-6 text-white">How Our Governance-to-Performance Process Works</h1>
+            <h1 className="heading-hero mb-6 text-white">{t('process:title')}</h1>
             <p className="body-large text-gray-100 mb-8">
-              A structured path from diagnostic to dashboards, built for startups and MSMEs that need discipline without corporate bureaucracy.
+              {t('process:subtitle')}
             </p>
             <Button variant="primary" size="lg" asChild>
-              <Link href="/consulting/booking">Book a Discovery Call</Link>
+              <Link href="/consulting/booking">{t('process:bookDiscoveryCall')}</Link>
             </Button>
           </div>
         </div>
@@ -54,7 +58,7 @@ export default function ProcessPage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          <h2 className="heading-h2 text-center mb-12">5-Step Engagement Engine</h2>
+          <h2 className="heading-h2 text-center mb-12">{t('process:stepTitle')}</h2>
           <div className="space-y-8">
             {steps.map((step, index) => {
               const Icon = step.icon;
@@ -82,16 +86,16 @@ export default function ProcessPage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">Ready to Begin Your Transformation?</h2>
+          <h2 className="heading-h2 mb-4">{t('process:readyTitle')}</h2>
           <p className="body-large text-gray-600 mb-8">
-            Every great business started with a single decision to improve.
+            {t('process:readyDescription')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="primary" size="lg" asChild>
-              <Link href="/consulting/booking">Book Your Discovery Call</Link>
+              <Link href="/consulting/booking">{t('process:bookYourDiscoveryCall')}</Link>
             </Button>
             <Button variant="secondary" size="lg" asChild>
-              <Link href="/consulting/tools/health-check">Try Free Diagnostic</Link>
+              <Link href="/consulting/tools/health-check">{t('process:tryFreeDiagnostic')}</Link>
             </Button>
           </div>
         </div>

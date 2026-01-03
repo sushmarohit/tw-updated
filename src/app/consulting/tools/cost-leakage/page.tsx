@@ -1,12 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { calculateCostLeakage, type CostLeakageInput } from '@/lib/calculators/cost-leakage';
 import { trackCalculatorStart, trackCalculatorComplete } from '@/lib/analytics/events';
 import { formatCurrency, formatIndianNumber } from '@/lib/utils';
 
 export default function CostLeakagePage() {
+  const { t } = useTranslation(['tools-cost-leakage', 'common']);
   const [step, setStep] = useState<'form' | 'result'>('form');
   const [formData, setFormData] = useState<CostLeakageInput>({
     monthlyRevenue: 0,
@@ -46,11 +48,11 @@ export default function CostLeakagePage() {
 
       const data = await response.json();
       if (data.success) {
-        alert('Results saved! Check your email for the detailed report.');
+        alert(t('tools-cost-leakage:resultsSaved'));
       }
     } catch (error) {
       console.error('Submission error:', error);
-      alert('Failed to save results. Please try again.');
+      alert(t('tools-cost-leakage:failedToSave'));
     } finally {
       setIsSubmitting(false);
     }
@@ -61,38 +63,38 @@ export default function CostLeakagePage() {
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-4xl">
           <div className="card mb-8">
-            <h1 className="heading-h2 mb-4">Cost Leakage Analysis</h1>
+            <h1 className="heading-h2 mb-4">{t('tools-cost-leakage:costLeakageAnalysis')}</h1>
             
             <div className="text-center mb-8 p-6 bg-navy-500 text-white rounded-lg">
-              <p className="body-small text-gray-200 mb-2">Estimated Annual Leakage</p>
+              <p className="body-small text-gray-200 mb-2">{t('tools-cost-leakage:estimatedAnnualLeakage')}</p>
               <div className="text-5xl font-bold text-gold-300 mb-2">
                 {formatCurrency(result.annualLeakage)}
               </div>
               <p className="body-default text-gray-200">
-                Monthly: {formatCurrency(result.monthlyLeakage)}
+                {t('tools-cost-leakage:monthly')} {formatCurrency(result.monthlyLeakage)}
               </p>
             </div>
 
             <div className="mb-8">
-              <h2 className="heading-h3 mb-4">Severity: {result.severity}</h2>
+              <h2 className="heading-h3 mb-4">{t('tools-cost-leakage:severity')} {result.severity}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <div className="border border-gray-200 rounded-lg p-4">
-                  <p className="body-small text-gray-600 mb-1">SLA Breaches</p>
+                  <p className="body-small text-gray-600 mb-1">{t('tools-cost-leakage:slaBreaches')}</p>
                   <p className="heading-h4 text-teal-500">{formatCurrency(result.breakdown.slaBreaches)}</p>
                 </div>
                 <div className="border border-gray-200 rounded-lg p-4">
-                  <p className="body-small text-gray-600 mb-1">Manual Rework</p>
+                  <p className="body-small text-gray-600 mb-1">{t('tools-cost-leakage:manualRework')}</p>
                   <p className="heading-h4 text-teal-500">{formatCurrency(result.breakdown.manualRework)}</p>
                 </div>
                 <div className="border border-gray-200 rounded-lg p-4">
-                  <p className="body-small text-gray-600 mb-1">Process Errors</p>
+                  <p className="body-small text-gray-600 mb-1">{t('tools-cost-leakage:processErrors')}</p>
                   <p className="heading-h4 text-teal-500">{formatCurrency(result.breakdown.processErrors)}</p>
                 </div>
               </div>
             </div>
 
             <div className="mb-8">
-              <h3 className="heading-h4 mb-4">Recommendations</h3>
+              <h3 className="heading-h4 mb-4">{t('tools-cost-leakage:recommendations')}</h3>
               <ul className="space-y-2">
                 {result.recommendations.map((rec: string, i: number) => (
                   <li key={i} className="body-default text-gray-700 flex items-start">
@@ -150,15 +152,15 @@ export default function CostLeakagePage() {
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-3xl">
         <div className="card">
-          <h1 className="heading-h2 mb-6">Cost Leakage Estimator</h1>
+          <h1 className="heading-h2 mb-6">{t('tools-cost-leakage:title')}</h1>
           <p className="body-default text-gray-600 mb-8">
-            Quantify revenue lost to operational inefficiency in minutes
+            {t('tools-cost-leakage:description')}
           </p>
 
           <div className="space-y-6">
             <div>
               <label className="block font-semibold mb-2">
-                Monthly Revenue (₹)
+                {t('tools-cost-leakage:monthlyRevenue')}
               </label>
               <input
                 type="number"
@@ -171,7 +173,7 @@ export default function CostLeakagePage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                SLA Breach Rate (%)
+                {t('tools-cost-leakage:slaBreachRate')}
               </label>
               <input
                 type="number"
@@ -187,7 +189,7 @@ export default function CostLeakagePage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                Manual Rework Rate (%)
+                {t('tools-cost-leakage:manualReworkRate')}
               </label>
               <input
                 type="number"
@@ -203,7 +205,7 @@ export default function CostLeakagePage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                Process Error Rate (%)
+                {t('tools-cost-leakage:processErrorRate')}
               </label>
               <input
                 type="number"
@@ -219,7 +221,7 @@ export default function CostLeakagePage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                Average Error Cost (₹)
+                {t('tools-cost-leakage:averageErrorCost')}
               </label>
               <input
                 type="number"
@@ -237,7 +239,7 @@ export default function CostLeakagePage() {
               className="w-full"
               disabled={!formData.monthlyRevenue}
             >
-              Calculate Cost Leakage
+              {t('tools-cost-leakage:calculate')}
             </Button>
           </div>
         </div>

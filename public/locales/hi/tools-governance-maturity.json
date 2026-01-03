@@ -1,0 +1,25 @@
+{
+  "title": "शासन परिपक्वता कैलकुलेटर",
+  "description": "5 आयामों में पूर्ण शासन स्वास्थ्य",
+  "policyClarity": "नीति स्पष्टता (0-100)",
+  "processReviews": "प्रक्रिया समीक्षा (0-100)",
+  "automation": "स्वचालन (0-100)",
+  "riskManagement": "जोखिम प्रबंधन (0-100)",
+  "accountability": "जवाबदेही (0-100)",
+  "calculate": "परिपक्वता की गणना करें",
+  "governanceMaturityAssessment": "शासन परिपक्वता मूल्यांकन",
+  "overallMaturityScore": "समग्र परिपक्वता स्कोर",
+  "maturityLevel": "परिपक्वता स्तर:",
+  "dimensionScores": "आयाम स्कोर",
+  "recommendations": "सिफारिशें",
+  "getDetailedReport": "अपनी विस्तृत रिपोर्ट प्राप्त करें",
+  "name": "नाम",
+  "email": "ईमेल",
+  "company": "कंपनी",
+  "getFullReport": "पूर्ण रिपोर्ट प्राप्त करें",
+  "calculateAgain": "फिर से गणना करें",
+  "submitting": "सबमिट हो रहा है...",
+  "resultsSaved": "परिणाम सहेजे गए! विस्तृत रिपोर्ट के लिए अपना ईमेल जांचें।",
+  "failedToSave": "परिणाम सहेजने में विफल। कृपया पुनः प्रयास करें।"
+}
+

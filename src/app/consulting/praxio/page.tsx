@@ -1,23 +1,27 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Eye, FileText, Brain, Shield } from 'lucide-react';
 
 export default function PraxioPage() {
+  const { t } = useTranslation(['praxio', 'common']);
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <h1 className="heading-hero mb-6 text-white">PraXio™ – Your Operational Governance Command Center</h1>
+            <h1 className="heading-hero mb-6 text-white">{t('praxio:title')}</h1>
             <p className="body-large text-gray-100 mb-8">
-              Real-time dashboards, automated reporting, AI anomaly detection—all in one unified platform
+              {t('praxio:subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="primary" size="lg" asChild>
-                <Link href="/consulting/praxio/demo">Request PraXio™ Demo</Link>
+                <Link href="/consulting/praxio/demo">{t('praxio:requestDemo')}</Link>
               </Button>
               <Button variant="secondary" size="lg" asChild>
-                <Link href="/consulting/praxio/pricing">View Pricing</Link>
+                <Link href="/consulting/praxio/pricing">{t('praxio:viewPricing')}</Link>
               </Button>
             </div>
           </div>
@@ -26,18 +30,18 @@ export default function PraxioPage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          <h2 className="heading-h2 mb-8">What Is PraXio™?</h2>
+          <h2 className="heading-h2 mb-8">{t('praxio:whatIsTitle')}</h2>
           <div className="card mb-12">
             <p className="body-large text-gray-700 mb-4">
-              PraXio™ is a unified governance and operations platform built exclusively for TwelfthKey Consulting clients. Unlike fragmented tools (Excel, Slack, email), PraXio™ centralizes all operational data, governance metrics, and team collaboration in one transparent, easy-to-navigate interface.
+              {t('praxio:whatIsDescription')}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
-                'Real-time visibility (no lag)',
-                'Automated reporting (no manual updates)',
-                'AI-driven alerts (predict before crisis)',
-                'Team accountability (transparent, governed)',
-                'Scalable (grows with your business)',
+                t('praxio:realTimeVisibility'),
+                t('praxio:automatedReporting'),
+                t('praxio:aiAlerts'),
+                t('praxio:teamAccountability'),
+                t('praxio:scalable'),
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <Shield className="w-5 h-5 text-teal-500 flex-shrink-0 mt-1" />
@@ -47,38 +51,38 @@ export default function PraxioPage() {
             </div>
           </div>
 
-          <h2 className="heading-h2 mb-8">Key Features</h2>
+          <h2 className="heading-h2 mb-8">{t('praxio:keyFeatures')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
               {
                 icon: Eye,
-                title: 'Real-time KPI Dashboards',
-                desc: 'Every metric visible, updated live',
+                title: t('praxio:realTimeKPIDashboards.title'),
+                desc: t('praxio:realTimeKPIDashboards.description'),
               },
               {
                 icon: FileText,
-                title: 'Automated Reporting',
-                desc: 'Monthly compliance, performance reports auto-generated',
+                title: t('praxio:automatedReportingFeature.title'),
+                desc: t('praxio:automatedReportingFeature.description'),
               },
               {
                 icon: Brain,
-                title: 'AI Anomaly Detection',
-                desc: 'Alerts when metrics deviate from norm',
+                title: t('praxio:aiAnomalyDetection.title'),
+                desc: t('praxio:aiAnomalyDetection.description'),
               },
               {
                 icon: Shield,
-                title: 'Role-based Access',
-                desc: 'CEO, CBO, team leads, individual contributors see what they need',
+                title: t('praxio:roleBasedAccess.title'),
+                desc: t('praxio:roleBasedAccess.description'),
               },
               {
                 icon: Brain,
-                title: 'Integration',
-                desc: 'Connects to HRMS, CRM, ERP, finance systems',
+                title: t('praxio:integration.title'),
+                desc: t('praxio:integration.description'),
               },
               {
                 icon: Eye,
-                title: 'Mobile-responsive',
-                desc: 'Governance on the go',
+                title: t('praxio:mobileResponsive.title'),
+                desc: t('praxio:mobileResponsive.description'),
               },
             ].map((feature, i) => {
               const Icon = feature.icon;
@@ -96,16 +100,16 @@ export default function PraxioPage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">Ready to Experience PraXio™?</h2>
+          <h2 className="heading-h2 mb-4">{t('praxio:readyTitle')}</h2>
           <p className="body-large text-gray-600 mb-8">
-            See how PraXio™ can transform your operations
+            {t('praxio:readyDescription')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="primary" size="lg" asChild>
-              <Link href="/consulting/praxio/demo">Request Demo</Link>
+              <Link href="/consulting/praxio/demo">{t('praxio:requestDemoButton')}</Link>
             </Button>
             <Button variant="secondary" size="lg" asChild>
-              <Link href="/consulting/praxio/pricing">View Pricing</Link>
+              <Link href="/consulting/praxio/pricing">{t('praxio:viewPricing')}</Link>
             </Button>
           </div>
         </div>

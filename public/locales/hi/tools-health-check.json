@@ -1,0 +1,24 @@
+{
+  "title": "ऑपरेशनल हेल्थ डायग्नोस्टिक",
+  "question": "प्रश्न",
+  "of": "का",
+  "g2pIndex": "G2P सूचकांक:",
+  "previous": "पिछला",
+  "yourOperationalHealthScore": "आपका परिचालन स्वास्थ्य स्कोर",
+  "excellent": "उत्कृष्ट",
+  "good": "अच्छा",
+  "needsImprovement": "सुधार की आवश्यकता",
+  "critical": "गंभीर",
+  "status": "स्थिति:",
+  "topRecommendations": "शीर्ष सिफारिशें",
+  "getDetailedReport": "अपनी विस्तृत रिपोर्ट प्राप्त करें",
+  "name": "नाम",
+  "email": "ईमेल",
+  "company": "कंपनी",
+  "getFullReport": "पूर्ण रिपोर्ट प्राप्त करें",
+  "startOver": "शुरू से शुरू करें",
+  "submitting": "सबमिट हो रहा है...",
+  "resultsSaved": "परिणाम सहेजे गए! विस्तृत रिपोर्ट के लिए अपना ईमेल जांचें।",
+  "failedToSave": "परिणाम सहेजने में विफल। कृपया पुनः प्रयास करें।"
+}
+

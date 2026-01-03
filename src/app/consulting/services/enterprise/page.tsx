@@ -1,19 +1,23 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CheckCircle, Building2, Users, Shield } from 'lucide-react';
 
 export default function EnterpriseServicePage() {
+  const { t } = useTranslation(['services-enterprise', 'common']);
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <h1 className="heading-hero mb-6 text-white">Enterprise Ops Command Center</h1>
+            <h1 className="heading-hero mb-6 text-white">{t('services-enterprise:title')}</h1>
             <p className="body-large text-gray-100 mb-8">
-              Multi-org governance hub, consolidated reporting, role-based dashboards for enterprise complexity
+              {t('services-enterprise:subtitle')}
             </p>
             <Button variant="primary" size="lg" asChild>
-              <Link href="/consulting/booking">Scale with Governance</Link>
+              <Link href="/consulting/booking">{t('services-enterprise:scaleWithGovernance')}</Link>
             </Button>
           </div>
         </div>
@@ -21,16 +25,16 @@ export default function EnterpriseServicePage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          <h2 className="heading-h2 mb-8">What's Included</h2>
+          <h2 className="heading-h2 mb-8">{t('services-enterprise:whatsIncluded')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {[
-              'Multi-org governance framework',
-              'Consolidated reporting (roll-up across teams/departments)',
-              'Role-based access control (CEO, CBO, team leads, individual contributors)',
-              'Advanced analytics and benchmarking',
-              'Compliance tracking and audit trails',
-              'Integration with legacy systems (ERP, HRMS, CRM)',
-              'Quarterly reviews and optimization',
+              t('services-enterprise:item1'),
+              t('services-enterprise:item2'),
+              t('services-enterprise:item3'),
+              t('services-enterprise:item4'),
+              t('services-enterprise:item5'),
+              t('services-enterprise:item6'),
+              t('services-enterprise:item7'),
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-teal-500 flex-shrink-0 mt-1" />
@@ -40,33 +44,33 @@ export default function EnterpriseServicePage() {
           </div>
 
           <div className="mb-12">
-            <h2 className="heading-h2 mb-8">Enterprise Use Cases</h2>
+            <h2 className="heading-h2 mb-8">{t('services-enterprise:enterpriseUseCases')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 {
                   icon: Building2,
-                  title: 'Rapid M&A Integration',
-                  desc: 'Align governance post-merger across organizations',
+                  title: t('services-enterprise:rapidMaIntegration.title'),
+                  desc: t('services-enterprise:rapidMaIntegration.desc'),
                 },
                 {
                   icon: Users,
-                  title: 'Multi-Location Scaling',
-                  desc: 'Consistent governance across offices and regions',
+                  title: t('services-enterprise:multiLocationScaling.title'),
+                  desc: t('services-enterprise:multiLocationScaling.desc'),
                 },
                 {
                   icon: Shield,
-                  title: 'Compliance & Audit Readiness',
-                  desc: 'Automated evidence collection and reporting',
+                  title: t('services-enterprise:complianceAuditReadiness.title'),
+                  desc: t('services-enterprise:complianceAuditReadiness.desc'),
                 },
                 {
                   icon: Building2,
-                  title: 'Digital Transformation',
-                  desc: 'Legacy → modern governance migration',
+                  title: t('services-enterprise:digitalTransformation.title'),
+                  desc: t('services-enterprise:digitalTransformation.desc'),
                 },
                 {
                   icon: Users,
-                  title: 'Global Expansion',
-                  desc: 'Multi-currency, multi-language support',
+                  title: t('services-enterprise:globalExpansion.title'),
+                  desc: t('services-enterprise:globalExpansion.desc'),
                 },
               ].map((item, i) => {
                 const Icon = item.icon;
@@ -82,14 +86,14 @@ export default function EnterpriseServicePage() {
           </div>
 
           <div className="mb-12">
-            <h2 className="heading-h2 mb-8">Key Features</h2>
+            <h2 className="heading-h2 mb-8">{t('services-enterprise:keyFeatures')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                'Real-time consolidated dashboards (global view)',
-                'Department-level governance (autonomy + oversight)',
-                'Automated compliance reporting (audit-ready)',
-                'Advanced analytics and trend analysis',
-                'Custom governance workflows per department',
+                t('services-enterprise:feature1'),
+                t('services-enterprise:feature2'),
+                t('services-enterprise:feature3'),
+                t('services-enterprise:feature4'),
+                t('services-enterprise:feature5'),
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-gold-300 flex-shrink-0 mt-1" />
@@ -100,18 +104,18 @@ export default function EnterpriseServicePage() {
           </div>
 
           <div className="card bg-navy-500 text-white">
-            <h3 className="heading-h3 mb-4">Investment & ROI</h3>
+            <h3 className="heading-h3 mb-4">{t('services-enterprise:investmentRoi')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <p className="body-small text-gray-300 mb-2">Investment</p>
+                <p className="body-small text-gray-300 mb-2">{t('services-enterprise:investment')}</p>
                 <p className="heading-h3 text-gold-300">₹7,99,999</p>
-                <p className="body-small text-gray-300 mt-2">90 days + 12-month support</p>
+                <p className="body-small text-gray-300 mt-2">{t('services-enterprise:investmentValue')}</p>
               </div>
               <div>
-                <p className="body-small text-gray-300 mb-2">Typical ROI</p>
+                <p className="body-small text-gray-300 mb-2">{t('services-enterprise:typicalRoi')}</p>
                 <p className="heading-h3 text-teal-400">₹100–150L</p>
-                <p className="body-small text-gray-300 mt-2">In operational efficiency + reduced compliance risk</p>
-                <p className="body-small text-gray-300">Governance standardization across organization</p>
+                <p className="body-small text-gray-300 mt-2">{t('services-enterprise:roiValue')}</p>
+                <p className="body-small text-gray-300">{t('services-enterprise:governanceStandardization')}</p>
               </div>
             </div>
           </div>
@@ -120,12 +124,12 @@ export default function EnterpriseServicePage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">Ready to Scale with Governance?</h2>
+          <h2 className="heading-h2 mb-4">{t('services-enterprise:readyTitle')}</h2>
           <p className="body-large text-gray-600 mb-8">
-            Enterprise-grade governance for complex organizations
+            {t('services-enterprise:readyDescription')}
           </p>
           <Button variant="primary" size="lg" asChild>
-            <Link href="/consulting/booking">Schedule Your Assessment</Link>
+            <Link href="/consulting/booking">{t('services-enterprise:scheduleAssessment')}</Link>
           </Button>
         </div>
       </section>

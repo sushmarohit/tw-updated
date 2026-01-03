@@ -1,58 +1,62 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Hexagon, RefreshCw, Brain, Sparkles, Eye, Shield } from 'lucide-react';
 
-const methodologies = [
-  {
-    icon: RefreshCw,
-    name: 'CYCLE',
-    description: 'Predictive operational consistency',
-    href: '/consulting/framework/cycle',
-  },
-  {
-    icon: Hexagon,
-    name: 'PARSE',
-    description: 'Strategic reset and realignment',
-    href: '/consulting/framework/parse',
-  },
-  {
-    icon: Brain,
-    name: 'SAGE',
-    description: 'Cognitive governance for mature ecosystems',
-    href: '/consulting/framework/sage',
-  },
-  {
-    icon: Sparkles,
-    name: 'MORPH',
-    description: 'Institutionalized innovation and reinvention',
-    href: '/consulting/framework/morph',
-  },
-  {
-    icon: Eye,
-    name: 'PRISM',
-    description: 'Experience-driven governance (CXEX)',
-    href: '/consulting/framework/prism',
-  },
-  {
-    icon: Shield,
-    name: 'ARC',
-    description: 'Resilience and continuity (crisis-proofing)',
-    href: '/consulting/framework/arc',
-  },
-];
-
 export default function FrameworkPage() {
+  const { t } = useTranslation(['framework', 'common']);
+
+  const methodologies = [
+    {
+      icon: RefreshCw,
+      name: t('framework:cycle.name'),
+      description: t('framework:cycle.description'),
+      href: '/consulting/framework/cycle',
+    },
+    {
+      icon: Hexagon,
+      name: t('framework:parse.name'),
+      description: t('framework:parse.description'),
+      href: '/consulting/framework/parse',
+    },
+    {
+      icon: Brain,
+      name: t('framework:sage.name'),
+      description: t('framework:sage.description'),
+      href: '/consulting/framework/sage',
+    },
+    {
+      icon: Sparkles,
+      name: t('framework:morph.name'),
+      description: t('framework:morph.description'),
+      href: '/consulting/framework/morph',
+    },
+    {
+      icon: Eye,
+      name: t('framework:prism.name'),
+      description: t('framework:prism.description'),
+      href: '/consulting/framework/prism',
+    },
+    {
+      icon: Shield,
+      name: t('framework:arc.name'),
+      description: t('framework:arc.description'),
+      href: '/consulting/framework/arc',
+    },
+  ];
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="heading-hero mb-6 text-white">The G2P Framework™</h1>
+            <h1 className="heading-hero mb-6 text-white">{t('framework:title')}</h1>
             <p className="body-large text-gray-100 mb-8">
-              PhD-backed, research-driven methodology for service companies delivering measurable operational maturity
+              {t('framework:subtitle')}
             </p>
             <Button variant="primary" size="lg" asChild>
-              <Link href="/consulting/framework/g2p">Learn More</Link>
+              <Link href="/consulting/framework/g2p">{t('framework:learnMore')}</Link>
             </Button>
           </div>
         </div>
@@ -60,7 +64,7 @@ export default function FrameworkPage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          <h2 className="heading-h2 text-center mb-12">Six Adaptive Methodologies</h2>
+          <h2 className="heading-h2 text-center mb-12">{t('framework:sixMethodologies')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {methodologies.map((method, index) => {
               const Icon = method.icon;
@@ -72,7 +76,7 @@ export default function FrameworkPage() {
                   <h3 className="heading-h4 mb-2">{method.name}</h3>
                   <p className="body-default text-gray-600 mb-6">{method.description}</p>
                   <Button variant="outline" asChild>
-                    <Link href={method.href}>Explore {method.name}</Link>
+                    <Link href={method.href}>{t('framework:explore')} {method.name}</Link>
                   </Button>
                 </div>
               );
@@ -83,14 +87,14 @@ export default function FrameworkPage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <h2 className="heading-h2 text-center mb-12">Five Quantified Indices</h2>
+          <h2 className="heading-h2 text-center mb-12">{t('framework:fiveIndices')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {[
-              { name: 'PAR', desc: 'Prediction Accuracy Rate' },
-              { name: 'AQ', desc: 'Autonomy Quotient' },
-              { name: 'CLS', desc: 'Cognitive Load Score' },
-              { name: 'LV', desc: 'Learning Velocity' },
-              { name: 'MTTAR', desc: 'Mean Time to Auto-Resolution' },
+              { name: t('framework:par'), desc: t('framework:parDesc') },
+              { name: t('framework:aq'), desc: t('framework:aqDesc') },
+              { name: t('framework:cls'), desc: t('framework:clsDesc') },
+              { name: t('framework:lv'), desc: t('framework:lvDesc') },
+              { name: t('framework:mttar'), desc: t('framework:mttarDesc') },
             ].map((index, i) => (
               <div key={i} className="card text-center">
                 <div className="text-3xl font-bold text-gold-300 mb-2">{index.name}</div>

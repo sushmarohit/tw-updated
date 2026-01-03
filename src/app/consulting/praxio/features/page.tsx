@@ -1,16 +1,20 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { BarChart3, FileText, Brain, Users, Shield, Zap } from 'lucide-react';
 
 export default function PraxioFeaturesPage() {
+  const { t } = useTranslation(['praxio-features', 'common']);
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <h1 className="heading-hero mb-6 text-white">PraXio™ Features – Built for Real-Time Governance</h1>
+            <h1 className="heading-hero mb-6 text-white">{t('praxio-features:title')}</h1>
             <p className="body-large text-gray-100">
-              Everything you need to run your business with discipline and visibility
+              {t('praxio-features:subtitle')}
             </p>
           </div>
         </div>
@@ -19,19 +23,19 @@ export default function PraxioFeaturesPage() {
       <section className="section-padding">
         <div className="container-custom">
           <div className="mb-12">
-            <h2 className="heading-h2 mb-8">Dashboard Builder</h2>
+            <h2 className="heading-h2 mb-8">{t('praxio-features:dashboardBuilder')}</h2>
             <div className="card">
               <p className="body-large text-gray-700 mb-4">
-                Drag-and-drop interface, no-code dashboard creation
+                {t('praxio-features:dashboardBuilderDescription')}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  'Executive Summary (business health at a glance)',
-                  'Operations (real-time process KPIs)',
-                  'Financial (revenue, cost, burn, profitability)',
-                  'Team & Talent (capacity, engagement, attrition)',
-                  'Customer (NPS, churn, CSAT, retention)',
-                  'Predictive (forecasts, anomalies, risk alerts)',
+                  t('praxio-features:executiveSummary'),
+                  t('praxio-features:operations'),
+                  t('praxio-features:financial'),
+                  t('praxio-features:teamTalent'),
+                  t('praxio-features:customer'),
+                  t('praxio-features:predictive'),
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <BarChart3 className="w-5 h-5 text-teal-500 flex-shrink-0 mt-1" />
@@ -43,13 +47,13 @@ export default function PraxioFeaturesPage() {
           </div>
 
           <div className="mb-12">
-            <h2 className="heading-h2 mb-8">Automated Reporting</h2>
+            <h2 className="heading-h2 mb-8">{t('praxio-features:automatedReporting')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { title: 'Daily Report', desc: 'Executive summary (key metrics, alerts, action items)' },
-                { title: 'Weekly Report', desc: 'Team performance, SLA tracking, escalations' },
-                { title: 'Monthly Report', desc: 'Governance health, improvement trends, recommendations' },
-                { title: 'Quarterly Report', desc: 'Strategic review, capability assessment, roadmap' },
+                { title: t('praxio-features:dailyReport.title'), desc: t('praxio-features:dailyReport.desc') },
+                { title: t('praxio-features:weeklyReport.title'), desc: t('praxio-features:weeklyReport.desc') },
+                { title: t('praxio-features:monthlyReport.title'), desc: t('praxio-features:monthlyReport.desc') },
+                { title: t('praxio-features:quarterlyReport.title'), desc: t('praxio-features:quarterlyReport.desc') },
               ].map((report, i) => (
                 <div key={i} className="card">
                   <FileText className="w-10 h-10 text-teal-500 mb-3" />
@@ -61,15 +65,15 @@ export default function PraxioFeaturesPage() {
           </div>
 
           <div className="mb-12">
-            <h2 className="heading-h2 mb-8">AI Anomaly Detection</h2>
+            <h2 className="heading-h2 mb-8">{t('praxio-features:aiAnomalyDetection')}</h2>
             <div className="card">
               <div className="space-y-4">
                 {[
-                  'Learn normal patterns (first 30 days)',
-                  'Set baselines per metric',
-                  'Monitor in real-time',
-                  'Alert when deviation >threshold (customizable)',
-                  'Suggest root cause and action',
+                  t('praxio-features:aiStep1'),
+                  t('praxio-features:aiStep2'),
+                  t('praxio-features:aiStep3'),
+                  t('praxio-features:aiStep4'),
+                  t('praxio-features:aiStep5'),
                 ].map((step, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <div className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -83,13 +87,13 @@ export default function PraxioFeaturesPage() {
           </div>
 
           <div className="mb-12">
-            <h2 className="heading-h2 mb-8">Security & Compliance</h2>
+            <h2 className="heading-h2 mb-8">{t('praxio-features:securityCompliance')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { icon: Shield, title: 'Data Encryption', desc: 'At rest and in transit' },
-                { icon: Users, title: 'Role-based Access', desc: 'CEO, CBO, team leads, contributors' },
-                { icon: FileText, title: 'Audit Logging', desc: 'Who accessed what, when' },
-                { icon: Shield, title: 'Compliance Ready', desc: 'GDPR, SOC 2, ISO 27001 path' },
+                { icon: Shield, title: t('praxio-features:dataEncryption.title'), desc: t('praxio-features:dataEncryption.desc') },
+                { icon: Users, title: t('praxio-features:roleBasedAccess.title'), desc: t('praxio-features:roleBasedAccess.desc') },
+                { icon: FileText, title: t('praxio-features:auditLogging.title'), desc: t('praxio-features:auditLogging.desc') },
+                { icon: Shield, title: t('praxio-features:complianceReady.title'), desc: t('praxio-features:complianceReady.desc') },
               ].map((item, i) => {
                 const Icon = item.icon;
                 return (
@@ -107,9 +111,9 @@ export default function PraxioFeaturesPage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">Ready to See PraXio™ in Action?</h2>
+          <h2 className="heading-h2 mb-4">{t('praxio-features:readyTitle')}</h2>
           <Button variant="primary" size="lg" asChild>
-            <Link href="/consulting/praxio/demo">Request Demo</Link>
+            <Link href="/consulting/praxio/demo">{t('praxio-features:requestDemo')}</Link>
           </Button>
         </div>
       </section>

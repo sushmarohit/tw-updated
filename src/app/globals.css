@@ -58,13 +58,13 @@
   .card {
     @apply bg-white p-6 rounded-xl border border-gray-200 shadow-card;
     @apply hover:shadow-card-hover hover:-translate-y-1;
-    @apply transition-all duration-250;
+    @apply transition-all duration-300;
   }
 
   /* Form Input Styles */
   .input {
     @apply w-full h-12 px-4 py-3 border border-gray-300 rounded-lg;
-    @apply focus:outline-none focus:ring-3 focus:ring-teal-500 focus:border-teal-500;
+    @apply focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500;
     @apply disabled:bg-gray-100 disabled:cursor-not-allowed;
     @apply transition-all duration-200;
   }
@@ -108,7 +108,7 @@
 
   /* Container */
   .container-custom {
-    @apply max-w-7xl mx-auto px-5 md:px-10 lg:px-16;
+    @apply w-full max-w-7xl mx-auto px-5 md:px-10 lg:px-16;
   }
 
   /* Section Spacing */

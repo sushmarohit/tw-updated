@@ -1,0 +1,28 @@
+{
+  "title": "Cost Leakage Estimator",
+  "description": "Quantify revenue lost to operational inefficiency",
+  "monthlyRevenue": "Monthly Revenue (₹)",
+  "slaBreachRate": "SLA Breach Rate (%)",
+  "manualReworkRate": "Manual Rework Rate (%)",
+  "processErrorRate": "Process Error Rate (%)",
+  "averageErrorCost": "Average Error Cost (₹)",
+  "calculate": "Calculate Leakage",
+  "costLeakageAnalysis": "Cost Leakage Analysis",
+  "estimatedAnnualLeakage": "Estimated Annual Leakage",
+  "monthly": "Monthly:",
+  "severity": "Severity:",
+  "slaBreaches": "SLA Breaches",
+  "manualRework": "Manual Rework",
+  "processErrors": "Process Errors",
+  "recommendations": "Recommendations",
+  "getDetailedReport": "Get Your Detailed Report",
+  "name": "Name",
+  "email": "Email",
+  "company": "Company",
+  "getFullReport": "Get Full Report",
+  "calculateAgain": "Calculate Again",
+  "submitting": "Submitting...",
+  "resultsSaved": "Results saved! Check your email for the detailed report.",
+  "failedToSave": "Failed to save results. Please try again."
+}
+

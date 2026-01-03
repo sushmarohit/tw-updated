@@ -1,0 +1,82 @@
+{
+  "title": "Empower Your Business With Instant Diagnostics",
+  "subtitle": "Free tools to diagnose, quantify, and plan your path to operational excellence",
+  "tagline": "Make better decisions in minutes, not months. Try our expert-built calculators.",
+  "operationalHealthDiagnostic": {
+    "name": "Operational Health Diagnostic",
+    "description": "Assess governance maturity across 5 G2P indices in 5 minutes",
+    "time": "5 min"
+  },
+  "costLeakageEstimator": {
+    "name": "Cost Leakage Estimator",
+    "description": "Quantify revenue lost to operational inefficiency",
+    "time": "3 min"
+  },
+  "breakEvenPointCalculator": {
+    "name": "Break-Even Point Calculator",
+    "description": "When will your investments pay off?",
+    "time": "4 min"
+  },
+  "scaleReadinessAnalyzer": {
+    "name": "Scale Readiness Analyzer",
+    "description": "Is your business ready for 2–3x growth?",
+    "time": "3 min"
+  },
+  "teamBurnoutRiskFinder": {
+    "name": "Team Burnout Risk Finder",
+    "description": "Spot burnout triggers before they impact performance",
+    "time": "3 min"
+  },
+  "decisionBottleneckFinder": {
+    "name": "Decision Bottleneck Finder",
+    "description": "Pinpoint approval delays and slowdowns",
+    "time": "4 min"
+  },
+  "roiCalculator": {
+    "name": "ROI Calculator",
+    "description": "Project returns from operational investments",
+    "time": "3 min"
+  },
+  "governanceMaturityCalculator": {
+    "name": "Governance Maturity Calculator",
+    "description": "Full governance health across 5 dimensions",
+    "time": "5 min"
+  },
+  "tryNow": "Try Now",
+  "time": "Time",
+  "howToolsWork": "How Tools Work",
+  "step1": {
+    "title": "Answer Questions",
+    "description": "Simple, jargon-free questions"
+  },
+  "step2": {
+    "title": "Get Instant Results",
+    "description": "Immediate feedback and score"
+  },
+  "step3": {
+    "title": "Download Report",
+    "description": "Personalized PDF report"
+  },
+  "step4": {
+    "title": "Book Discovery Call",
+    "description": "Discuss results with experts"
+  },
+  "faq": "Frequently Asked Questions",
+  "faq1": {
+    "question": "Is my data secure?",
+    "answer": "Yes, encrypted and never shared. Deleted after 90 days unless you request follow-up."
+  },
+  "faq2": {
+    "question": "Do you contact me after I use a tool?",
+    "answer": "Only if you request a callback or book a discovery call. No unsolicited sales."
+  },
+  "faq3": {
+    "question": "Can I use tools multiple times?",
+    "answer": "Absolutely—track progress over time."
+  },
+  "faq4": {
+    "question": "How accurate are the results?",
+    "answer": "Built on TwelfthKey's industry benchmarks and G2P framework. Your report includes context and next-step recommendations."
+  }
+}
+

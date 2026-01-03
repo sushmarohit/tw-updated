@@ -1,0 +1,24 @@
+{
+  "title": "Operational Health Diagnostic",
+  "question": "Question",
+  "of": "of",
+  "g2pIndex": "G2P Index:",
+  "previous": "Previous",
+  "yourOperationalHealthScore": "Your Operational Health Score",
+  "excellent": "Excellent",
+  "good": "Good",
+  "needsImprovement": "Needs Improvement",
+  "critical": "Critical",
+  "status": "Status:",
+  "topRecommendations": "Top Recommendations",
+  "getDetailedReport": "Get Your Detailed Report",
+  "name": "Name",
+  "email": "Email",
+  "company": "Company",
+  "getFullReport": "Get Full Report",
+  "startOver": "Start Over",
+  "submitting": "Submitting...",
+  "resultsSaved": "Results saved! Check your email for the detailed report.",
+  "failedToSave": "Failed to save results. Please try again."
+}
+

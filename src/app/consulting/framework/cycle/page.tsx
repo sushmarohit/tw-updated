@@ -1,19 +1,23 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { RefreshCw, Target, TrendingUp } from 'lucide-react';
 
 export default function CycleMethodologyPage() {
+  const { t } = useTranslation(['framework-cycle', 'common']);
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <h1 className="heading-hero mb-6 text-white">CYCLE – Predictive Operational Consistency</h1>
+            <h1 className="heading-hero mb-6 text-white">{t('framework-cycle:title')}</h1>
             <p className="body-large text-gray-100 mb-8">
-              Stabilize, optimize, and automate for reliable performance
+              {t('framework-cycle:subtitle')}
             </p>
             <Button variant="primary" size="lg" asChild>
-              <Link href="/consulting/booking">Apply CYCLE to Your Business</Link>
+              <Link href="/consulting/booking">{t('framework-cycle:applyButton')}</Link>
             </Button>
           </div>
         </div>
@@ -21,13 +25,13 @@ export default function CycleMethodologyPage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          <h2 className="heading-h2 mb-8">When to Use CYCLE</h2>
+          <h2 className="heading-h2 mb-8">{t('framework-cycle:whenToUse')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {[
-              'High downtime or SLA breaches',
-              'Inconsistent process execution',
-              'Forecasting accuracy poor',
-              'Manual firefighting common',
+              t('framework-cycle:useCase1'),
+              t('framework-cycle:useCase2'),
+              t('framework-cycle:useCase3'),
+              t('framework-cycle:useCase4'),
             ].map((item, i) => (
               <div key={i} className="card">
                 <p className="body-default text-gray-700">{item}</p>
@@ -35,27 +39,27 @@ export default function CycleMethodologyPage() {
             ))}
           </div>
 
-          <h2 className="heading-h2 mb-8">The Four Phases</h2>
+          <h2 className="heading-h2 mb-8">{t('framework-cycle:fourPhases')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {[
               {
-                phase: 'Coordinate',
-                desc: 'Visualize processes, establish baselines',
+                phase: t('framework-cycle:coordinate.phase'),
+                desc: t('framework-cycle:coordinate.desc'),
                 icon: Target,
               },
               {
-                phase: 'Yield',
-                desc: 'Forecast risk, model demand, set thresholds',
+                phase: t('framework-cycle:yield.phase'),
+                desc: t('framework-cycle:yield.desc'),
                 icon: TrendingUp,
               },
               {
-                phase: 'Calibrate',
-                desc: 'Diagnose inefficiencies, optimize workflows',
+                phase: t('framework-cycle:calibrate.phase'),
+                desc: t('framework-cycle:calibrate.desc'),
                 icon: RefreshCw,
               },
               {
-                phase: 'Learn',
-                desc: 'Capture insights, drive actionable learning',
+                phase: t('framework-cycle:learn.phase'),
+                desc: t('framework-cycle:learn.desc'),
                 icon: RefreshCw,
               },
             ].map((item, i) => {
@@ -73,13 +77,13 @@ export default function CycleMethodologyPage() {
           </div>
 
           <div className="mb-12">
-            <h2 className="heading-h2 mb-8">Key Outcomes</h2>
+            <h2 className="heading-h2 mb-8">{t('framework-cycle:keyOutcomes')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                'Process consistency +40–50%',
-                'Downtime reduction 30–50%',
-                'SLA compliance improved 25–40%',
-                'Forecast accuracy (PAR) improved 20–35 points',
+                t('framework-cycle:outcome1'),
+                t('framework-cycle:outcome2'),
+                t('framework-cycle:outcome3'),
+                t('framework-cycle:outcome4'),
               ].map((outcome, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <Target className="w-6 h-6 text-teal-500 flex-shrink-0 mt-1" />
@@ -90,20 +94,20 @@ export default function CycleMethodologyPage() {
           </div>
 
           <div className="card bg-navy-500 text-white mb-12">
-            <h2 className="heading-h2 mb-6">Case Study: Banking Operations</h2>
+            <h2 className="heading-h2 mb-6">{t('framework-cycle:caseStudy')}</h2>
             <div className="space-y-4">
               <div>
-                <p className="body-default font-semibold mb-2">Challenge:</p>
-                <p className="body-default text-gray-200">High error rate, slow transactions</p>
+                <p className="body-default font-semibold mb-2">{t('framework-cycle:challenge')}</p>
+                <p className="body-default text-gray-200">{t('framework-cycle:challengeText')}</p>
               </div>
               <div>
-                <p className="body-default font-semibold mb-2">Approach:</p>
-                <p className="body-default text-gray-200">CYCLE framework applied</p>
+                <p className="body-default font-semibold mb-2">{t('framework-cycle:approach')}</p>
+                <p className="body-default text-gray-200">{t('framework-cycle:approachText')}</p>
               </div>
               <div>
-                <p className="body-default font-semibold mb-2">Result:</p>
+                <p className="body-default font-semibold mb-2">{t('framework-cycle:result')}</p>
                 <p className="body-default text-gray-200">
-                  68% error reduction, audit findings → 0, customer satisfaction +30%
+                  {t('framework-cycle:resultText')}
                 </p>
               </div>
             </div>
@@ -113,12 +117,12 @@ export default function CycleMethodologyPage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">Ready to Apply CYCLE?</h2>
+          <h2 className="heading-h2 mb-4">{t('framework-cycle:readyTitle')}</h2>
           <p className="body-large text-gray-600 mb-8">
-            Start with a free Operational Health Diagnostic
+            {t('framework-cycle:readyDescription')}
           </p>
           <Button variant="primary" size="lg" asChild>
-            <Link href="/consulting/tools/health-check">Start Free Diagnostic</Link>
+            <Link href="/consulting/tools/health-check">{t('common:startFreeDiagnostic')}</Link>
           </Button>
         </div>
       </section>

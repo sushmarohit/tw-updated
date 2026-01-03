@@ -1,19 +1,23 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Hexagon, RefreshCw, Target } from 'lucide-react';
 
 export default function ParseMethodologyPage() {
+  const { t } = useTranslation(['framework-parse', 'common']);
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <h1 className="heading-hero mb-6 text-white">PARSE – Strategic Reset and Realignment</h1>
+            <h1 className="heading-hero mb-6 text-white">{t('framework-parse:title')}</h1>
             <p className="body-large text-gray-100 mb-8">
-              Navigate crisis recovery and organizational restructuring with precision
+              {t('framework-parse:subtitle')}
             </p>
             <Button variant="primary" size="lg" asChild>
-              <Link href="/consulting/booking">Apply PARSE to Your Business</Link>
+              <Link href="/consulting/booking">{t('framework-parse:applyButton')}</Link>
             </Button>
           </div>
         </div>
@@ -21,13 +25,13 @@ export default function ParseMethodologyPage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          <h2 className="heading-h2 mb-8">When to Use PARSE</h2>
+          <h2 className="heading-h2 mb-8">{t('framework-parse:whenToUse')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {[
-              'Crisis recovery and turnaround',
-              'Organizational restructuring needed',
-              'Strategic realignment required',
-              'Mission-critical recovery situations',
+              t('framework-parse:useCase1'),
+              t('framework-parse:useCase2'),
+              t('framework-parse:useCase3'),
+              t('framework-parse:useCase4'),
             ].map((item, i) => (
               <div key={i} className="card">
                 <p className="body-default text-gray-700">{item}</p>
@@ -36,37 +40,37 @@ export default function ParseMethodologyPage() {
           </div>
 
           <div className="mb-12">
-            <h2 className="heading-h2 mb-8">PARSE Framework</h2>
+            <h2 className="heading-h2 mb-8">{t('framework-parse:framework')}</h2>
             <div className="space-y-6">
               {[
                 {
-                  letter: 'P',
-                  word: 'Plan',
-                  desc: 'Strategic planning and crisis assessment',
+                  letter: t('framework-parse:plan.letter'),
+                  word: t('framework-parse:plan.word'),
+                  desc: t('framework-parse:plan.desc'),
                   icon: Target,
                 },
                 {
-                  letter: 'A',
-                  word: 'Align',
-                  desc: 'Align resources and priorities',
+                  letter: t('framework-parse:align.letter'),
+                  word: t('framework-parse:align.word'),
+                  desc: t('framework-parse:align.desc'),
                   icon: RefreshCw,
                 },
                 {
-                  letter: 'R',
-                  word: 'Reset',
-                  desc: 'Reset processes and governance',
+                  letter: t('framework-parse:reset.letter'),
+                  word: t('framework-parse:reset.word'),
+                  desc: t('framework-parse:reset.desc'),
                   icon: Hexagon,
                 },
                 {
-                  letter: 'S',
-                  word: 'Execute',
-                  desc: 'Execute with precision and monitoring',
+                  letter: t('framework-parse:execute.letter'),
+                  word: t('framework-parse:execute.word'),
+                  desc: t('framework-parse:execute.desc'),
                   icon: Target,
                 },
                 {
-                  letter: 'E',
-                  word: 'Evolve',
-                  desc: 'Evolve and scale the solution',
+                  letter: t('framework-parse:evolve.letter'),
+                  word: t('framework-parse:evolve.word'),
+                  desc: t('framework-parse:evolve.desc'),
                   icon: RefreshCw,
                 },
               ].map((item, i) => {
@@ -89,9 +93,9 @@ export default function ParseMethodologyPage() {
           </div>
 
           <div className="card bg-navy-500 text-white mb-12">
-            <h2 className="heading-h2 mb-6">Key Metric: Strategic Governance Index (SGI)</h2>
+            <h2 className="heading-h2 mb-6">{t('framework-parse:keyMetric')}</h2>
             <p className="body-large text-gray-200">
-              Measures strategic alignment and governance effectiveness during transformation
+              {t('framework-parse:keyMetricDescription')}
             </p>
           </div>
         </div>
@@ -99,12 +103,12 @@ export default function ParseMethodologyPage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">Ready to Apply PARSE?</h2>
+          <h2 className="heading-h2 mb-4">{t('framework-parse:readyTitle')}</h2>
           <p className="body-large text-gray-600 mb-8">
-            Strategic reset requires expert guidance
+            {t('framework-parse:readyDescription')}
           </p>
           <Button variant="primary" size="lg" asChild>
-            <Link href="/consulting/booking">Book Discovery Call</Link>
+            <Link href="/consulting/booking">{t('common:bookDiscoveryCall')}</Link>
           </Button>
         </div>
       </section>

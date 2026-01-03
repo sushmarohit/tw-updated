@@ -1,0 +1,27 @@
+{
+  "title": "निर्णय बॉटलनेक फाइंडर",
+  "description": "अनुमोदन में देरी और प्रक्रिया मंदी का पता लगाएं",
+  "averageApprovalTime": "औसत अनुमोदन समय (घंटे)",
+  "numberOfApprovalLayers": "अनुमोदन परतों की संख्या",
+  "decisionDelayFrequency": "निर्णय देरी आवृत्ति (%)",
+  "escalationEffectiveness": "एस्केलेशन प्रभावशीलता (0-100)",
+  "autonomyLevel": "स्वायत्तता स्तर (0-100)",
+  "findBottlenecks": "बाधाएं खोजें",
+  "decisionBottleneckAnalysis": "निर्णय बाधा विश्लेषण",
+  "bottleneckIndex": "बाधा सूचकांक",
+  "severity": "गंभीरता:",
+  "estimatedTimeWasted": "अनुमानित समय बर्बाद:",
+  "hoursMonth": "घंटे/महीना",
+  "bottleneckFactors": "बाधा कारक",
+  "recommendations": "सिफारिशें",
+  "getDetailedReport": "अपनी विस्तृत रिपोर्ट प्राप्त करें",
+  "name": "नाम",
+  "email": "ईमेल",
+  "company": "कंपनी",
+  "getFullReport": "पूर्ण रिपोर्ट प्राप्त करें",
+  "calculateAgain": "फिर से गणना करें",
+  "submitting": "सबमिट हो रहा है...",
+  "resultsSaved": "परिणाम सहेजे गए! विस्तृत रिपोर्ट के लिए अपना ईमेल जांचें।",
+  "failedToSave": "परिणाम सहेजने में विफल। कृपया पुनः प्रयास करें।"
+}
+

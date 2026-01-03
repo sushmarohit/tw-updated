@@ -1,0 +1,42 @@
+{
+  "title": "CYCLE – Predictive Operational Consistency",
+  "subtitle": "Stabilize, optimize, and automate for reliable performance",
+  "applyButton": "Apply CYCLE to Your Business",
+  "whenToUse": "When to Use CYCLE",
+  "useCase1": "High downtime or SLA breaches",
+  "useCase2": "Inconsistent process execution",
+  "useCase3": "Forecasting accuracy poor",
+  "useCase4": "Manual firefighting common",
+  "fourPhases": "The Four Phases",
+  "coordinate": {
+    "phase": "Coordinate",
+    "desc": "Visualize processes, establish baselines"
+  },
+  "yield": {
+    "phase": "Yield",
+    "desc": "Forecast risk, model demand, set thresholds"
+  },
+  "calibrate": {
+    "phase": "Calibrate",
+    "desc": "Diagnose inefficiencies, optimize workflows"
+  },
+  "learn": {
+    "phase": "Learn",
+    "desc": "Capture insights, drive actionable learning"
+  },
+  "keyOutcomes": "Key Outcomes",
+  "outcome1": "Process consistency +40–50%",
+  "outcome2": "Downtime reduction 30–50%",
+  "outcome3": "SLA compliance improved 25–40%",
+  "outcome4": "Forecast accuracy (PAR) improved 20–35 points",
+  "caseStudy": "Case Study: Banking Operations",
+  "challenge": "Challenge:",
+  "challengeText": "High error rate, slow transactions",
+  "approach": "Approach:",
+  "approachText": "CYCLE framework applied",
+  "result": "Result:",
+  "resultText": "68% error reduction, audit findings → 0, customer satisfaction +30%",
+  "readyTitle": "Ready to Apply CYCLE?",
+  "readyDescription": "Start with a free Operational Health Diagnostic"
+}
+

@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { OPERATIONAL_HEALTH_QUESTIONS, calculateHealthScore, type UserAnswer } from '@/lib/calculators/operational-health';
 import { trackCalculatorStart, trackCalculatorComplete } from '@/lib/analytics/events';
 
 export default function OperationalHealthCheckPage() {
+  const { t } = useTranslation(['tools-health-check', 'common']);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [result, setResult] = useState<any>(null);
@@ -55,11 +57,11 @@ export default function OperationalHealthCheckPage() {
       const data = await response.json();
       if (data.success) {
         // Show success message or redirect
-        alert('Results saved! Check your email for the detailed report.');
+        alert(t('tools-health-check:resultsSaved'));
       }
     } catch (error) {
       console.error('Submission error:', error);
-      alert('Failed to save results. Please try again.');
+      alert(t('tools-health-check:failedToSave'));
     } finally {
       setIsSubmitting(false);
     }
@@ -70,13 +72,13 @@ export default function OperationalHealthCheckPage() {
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-4xl">
           <div className="card mb-8">
-            <h1 className="heading-h2 mb-4">Your Operational Health Score</h1>
+            <h1 className="heading-h2 mb-4">{t('tools-health-check:yourOperationalHealthScore')}</h1>
             <div className="text-center mb-8">
               <div className="text-6xl font-bold text-gold-300 mb-2">{result.overallScore}/100</div>
               <p className="body-large text-gray-600">
-                {result.overallScore >= 85 ? 'Excellent' :
-                 result.overallScore >= 70 ? 'Good' :
-                 result.overallScore >= 50 ? 'Needs Improvement' : 'Critical'}
+                {result.overallScore >= 85 ? t('tools-health-check:excellent') :
+                 result.overallScore >= 70 ? t('tools-health-check:good') :
+                 result.overallScore >= 50 ? t('tools-health-check:needsImprovement') : t('tools-health-check:critical')}
               </p>
             </div>
 
@@ -87,13 +89,13 @@ export default function OperationalHealthCheckPage() {
                     <h3 className="heading-h4">{index.index}</h3>
                     <span className="text-2xl font-bold text-teal-500">{index.score}/100</span>
                   </div>
-                  <p className="body-small text-gray-600">Status: {index.classification}</p>
+                  <p className="body-small text-gray-600">{t('tools-health-check:status')} {index.classification}</p>
                 </div>
               ))}
             </div>
 
             <div className="mb-8">
-              <h3 className="heading-h4 mb-4">Top Recommendations</h3>
+              <h3 className="heading-h4 mb-4">{t('tools-health-check:topRecommendations')}</h3>
               <ul className="space-y-2">
                 {result.recommendations.slice(0, 3).map((rec: string, i: number) => (
                   <li key={i} className="body-default text-gray-700 flex items-start">
@@ -106,25 +108,25 @@ export default function OperationalHealthCheckPage() {
 
             {!userInfo.email && (
               <div className="border-t pt-6">
-                <h3 className="heading-h4 mb-4">Get Your Detailed Report</h3>
+                <h3 className="heading-h4 mb-4">{t('tools-health-check:getDetailedReport')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                   <input
                     type="text"
-                    placeholder="Name"
+                    placeholder={t('tools-health-check:name')}
                     className="input"
                     value={userInfo.name}
                     onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}
                   />
                   <input
                     type="email"
-                    placeholder="Email"
+                    placeholder={t('tools-health-check:email')}
                     className="input"
                     value={userInfo.email}
                     onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
                   />
                   <input
                     type="text"
-                    placeholder="Company"
+                    placeholder={t('tools-health-check:company')}
                     className="input"
                     value={userInfo.companyName}
                     onChange={(e) => setUserInfo({ ...userInfo, companyName: e.target.value })}
@@ -135,10 +137,10 @@ export default function OperationalHealthCheckPage() {
 
             <div className="flex gap-4">
               <Button variant="primary" onClick={handleSubmit} disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'Get Full Report'}
+                {isSubmitting ? t('tools-health-check:submitting') : t('tools-health-check:getFullReport')}
               </Button>
               <Button variant="secondary" onClick={() => window.location.reload()}>
-                Start Over
+                {t('tools-health-check:startOver')}
               </Button>
             </div>
           </div>
@@ -154,7 +156,7 @@ export default function OperationalHealthCheckPage() {
           <div className="mb-6">
             <div className="flex justify-between items-center mb-4">
               <span className="body-small text-gray-600">
-                Question {currentQuestion + 1} of {OPERATIONAL_HEALTH_QUESTIONS.length}
+                {t('tools-health-check:question')} {currentQuestion + 1} {t('tools-health-check:of')} {OPERATIONAL_HEALTH_QUESTIONS.length}
               </span>
               <div className="w-32 h-2 bg-gray-200 rounded-full">
                 <div
@@ -164,7 +166,7 @@ export default function OperationalHealthCheckPage() {
               </div>
             </div>
             <h2 className="heading-h3 mb-4">{question.text}</h2>
-            <p className="body-small text-gray-500 mb-6">G2P Index: {question.g2pIndex}</p>
+            <p className="body-small text-gray-500 mb-6">{t('tools-health-check:g2pIndex')} {question.g2pIndex}</p>
           </div>
 
           <div className="space-y-3">
@@ -185,7 +187,7 @@ export default function OperationalHealthCheckPage() {
               onClick={() => setCurrentQuestion(currentQuestion - 1)}
               className="mt-6"
             >
-              Previous
+              {t('tools-health-check:previous')}
             </Button>
           )}
         </div>

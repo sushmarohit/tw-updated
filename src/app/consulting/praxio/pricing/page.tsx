@@ -1,81 +1,85 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CheckCircle } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 
-const tiers = [
-  {
-    name: 'Governance',
-    price: 4.99,
-    priceAnnual: 414,
-    users: 'Up to 10',
-    features: [
-      '3 basic dashboards',
-      'Monthly, basic reporting',
-      'No AI monitoring',
-      'Basic integrations (2–3)',
-      'Email support',
-      'Month-to-month contract',
-    ],
-    color: 'teal',
-  },
-  {
-    name: 'Reporting',
-    price: 7.99,
-    priceAnnual: 663,
-    users: 'Up to 10',
-    features: [
-      '5 custom dashboards',
-      'Weekly + monthly reporting',
-      'No AI monitoring',
-      'Extended integrations (5–7)',
-      'Email + chat support',
-      'Month-to-month contract',
-    ],
-    color: 'teal',
-  },
-  {
-    name: 'Analytics',
-    price: 11.99,
-    priceAnnual: 995,
-    users: 'Up to 10',
-    features: [
-      '13 real-time dashboards',
-      'Daily + custom reporting',
-      'Anomaly detection',
-      'Full integrations (20+)',
-      'Priority support',
-      '6-month minimum contract',
-    ],
-    color: 'gold',
-    popular: true,
-  },
-  {
-    name: 'AIQuantum',
-    price: 19.99,
-    priceAnnual: 1659,
-    users: 'Up to 50',
-    features: [
-      'Unlimited dashboards',
-      'Real-time + AI reporting',
-      'Full AI suite',
-      'White-label API',
-      'Dedicated CSM',
-      '12-month minimum contract',
-    ],
-    color: 'gold',
-  },
-];
-
 export default function PraxioPricingPage() {
+  const { t } = useTranslation(['praxio-pricing', 'common']);
+
+  const tiers = [
+    {
+      name: t('praxio-pricing:governance.name'),
+      price: 4.99,
+      priceAnnual: 414,
+      users: t('praxio-pricing:governance.users'),
+      features: [
+        t('praxio-pricing:governance.feature1'),
+        t('praxio-pricing:governance.feature2'),
+        t('praxio-pricing:governance.feature3'),
+        t('praxio-pricing:governance.feature4'),
+        t('praxio-pricing:governance.feature5'),
+        t('praxio-pricing:governance.feature6'),
+      ],
+      color: 'teal',
+    },
+    {
+      name: t('praxio-pricing:reporting.name'),
+      price: 7.99,
+      priceAnnual: 663,
+      users: t('praxio-pricing:reporting.users'),
+      features: [
+        t('praxio-pricing:reporting.feature1'),
+        t('praxio-pricing:reporting.feature2'),
+        t('praxio-pricing:reporting.feature3'),
+        t('praxio-pricing:reporting.feature4'),
+        t('praxio-pricing:reporting.feature5'),
+        t('praxio-pricing:reporting.feature6'),
+      ],
+      color: 'teal',
+    },
+    {
+      name: t('praxio-pricing:analytics.name'),
+      price: 11.99,
+      priceAnnual: 995,
+      users: t('praxio-pricing:analytics.users'),
+      features: [
+        t('praxio-pricing:analytics.feature1'),
+        t('praxio-pricing:analytics.feature2'),
+        t('praxio-pricing:analytics.feature3'),
+        t('praxio-pricing:analytics.feature4'),
+        t('praxio-pricing:analytics.feature5'),
+        t('praxio-pricing:analytics.feature6'),
+      ],
+      color: 'gold',
+      popular: true,
+    },
+    {
+      name: t('praxio-pricing:aiQuantum.name'),
+      price: 19.99,
+      priceAnnual: 1659,
+      users: t('praxio-pricing:aiQuantum.users'),
+      features: [
+        t('praxio-pricing:aiQuantum.feature1'),
+        t('praxio-pricing:aiQuantum.feature2'),
+        t('praxio-pricing:aiQuantum.feature3'),
+        t('praxio-pricing:aiQuantum.feature4'),
+        t('praxio-pricing:aiQuantum.feature5'),
+        t('praxio-pricing:aiQuantum.feature6'),
+      ],
+      color: 'gold',
+    },
+  ];
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="heading-hero mb-6 text-white">PraXio™ Pricing – Transparent, Scalable, Fair</h1>
+            <h1 className="heading-hero mb-6 text-white">{t('praxio-pricing:title')}</h1>
             <p className="body-large text-gray-100">
-              4 tiers to fit your governance maturity and team size
+              {t('praxio-pricing:subtitle')}
             </p>
           </div>
         </div>
@@ -92,7 +96,7 @@ export default function PraxioPricingPage() {
                 {tier.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="bg-gold-300 text-navy-500 px-4 py-1 rounded-full text-sm font-semibold">
-                      Most Popular
+                      {t('praxio-pricing:mostPopular')}
                     </span>
                   </div>
                 )}
@@ -105,7 +109,7 @@ export default function PraxioPricingPage() {
                     (₹{tier.priceAnnual.toLocaleString('en-IN')}/mo equivalent)
                   </p>
                 </div>
-                <p className="body-small text-gray-600 mb-4">{tier.users} users included</p>
+                <p className="body-small text-gray-600 mb-4">{tier.users} {t('praxio-pricing:usersIncluded')}</p>
                 <ul className="space-y-2 mb-6">
                   {tier.features.map((feature, j) => (
                     <li key={j} className="flex items-start gap-2">
@@ -119,25 +123,25 @@ export default function PraxioPricingPage() {
                   className="w-full"
                   asChild
                 >
-                  <Link href="/consulting/praxio/demo">Get Started</Link>
+                  <Link href="/consulting/praxio/demo">{t('praxio-pricing:getStarted')}</Link>
                 </Button>
               </div>
             ))}
           </div>
 
           <div className="card bg-navy-500 text-white mb-12">
-            <h2 className="heading-h2 mb-6 text-white">Billing & Discounts</h2>
+            <h2 className="heading-h2 mb-6 text-white">{t('praxio-pricing:billingDiscounts')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <p className="body-default font-semibold mb-2">Annual Prepay</p>
+                <p className="body-default font-semibold mb-2">{t('praxio-pricing:annualPrepay')}</p>
                 <p className="body-large text-gold-300">10% discount</p>
               </div>
               <div>
-                <p className="body-default font-semibold mb-2">Multi-year (3-year)</p>
+                <p className="body-default font-semibold mb-2">{t('praxio-pricing:multiYear')}</p>
                 <p className="body-large text-gold-300">15% discount</p>
               </div>
               <div>
-                <p className="body-default font-semibold mb-2">Free Trial</p>
+                <p className="body-default font-semibold mb-2">{t('praxio-pricing:freeTrial')}</p>
                 <p className="body-large text-gold-300">14 days, all features</p>
               </div>
             </div>
@@ -147,12 +151,12 @@ export default function PraxioPricingPage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">Not Sure Which Tier?</h2>
+          <h2 className="heading-h2 mb-4">{t('praxio-pricing:notSureTitle')}</h2>
           <p className="body-large text-gray-600 mb-8">
-            Start with a free trial and upgrade as you grow
+            {t('praxio-pricing:notSureDescription')}
           </p>
           <Button variant="primary" size="lg" asChild>
-            <Link href="/consulting/praxio/demo">Start Free Trial</Link>
+            <Link href="/consulting/praxio/demo">{t('praxio-pricing:freeTrial')}</Link>
           </Button>
         </div>
       </section>

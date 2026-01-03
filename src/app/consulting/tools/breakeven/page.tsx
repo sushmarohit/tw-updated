@@ -1,12 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { calculateBreakEven, type BreakEvenInput } from '@/lib/calculators/breakeven';
 import { trackCalculatorStart, trackCalculatorComplete } from '@/lib/analytics/events';
 import { formatCurrency } from '@/lib/utils';
 
 export default function BreakEvenPage() {
+  const { t } = useTranslation(['tools-breakeven', 'common']);
   const [step, setStep] = useState<'form' | 'result'>('form');
   const [formData, setFormData] = useState<BreakEvenInput>({
     investmentCost: 0,
@@ -45,11 +47,11 @@ export default function BreakEvenPage() {
 
       const data = await response.json();
       if (data.success) {
-        alert('Results saved! Check your email for the detailed report.');
+        alert(t('tools-breakeven:resultsSaved'));
       }
     } catch (error) {
       console.error('Submission error:', error);
-      alert('Failed to save results. Please try again.');
+      alert(t('tools-breakeven:failedToSave'));
     } finally {
       setIsSubmitting(false);
     }
@@ -60,76 +62,76 @@ export default function BreakEvenPage() {
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-4xl">
           <div className="card mb-8">
-            <h1 className="heading-h2 mb-4">Break-Even Analysis</h1>
+            <h1 className="heading-h2 mb-4">{t('tools-breakeven:breakEvenAnalysis')}</h1>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="p-6 bg-teal-50 rounded-lg">
-                <p className="body-small text-gray-600 mb-2">Break-Even Period</p>
+                <p className="body-small text-gray-600 mb-2">{t('tools-breakeven:breakEvenPeriod')}</p>
                 <div className="text-4xl font-bold text-teal-500 mb-2">
-                  {result.breakEvenMonths} months
+                  {result.breakEvenMonths} {t('tools-breakeven:months')}
                 </div>
-                <p className="body-small text-gray-600">Break-even date: {result.breakEvenDate}</p>
+                <p className="body-small text-gray-600">{t('tools-breakeven:breakEvenDate')} {result.breakEvenDate}</p>
               </div>
               <div className="p-6 bg-gold-50 rounded-lg">
-                <p className="body-small text-gray-600 mb-2">ROI</p>
+                <p className="body-small text-gray-600 mb-2">{t('tools-breakeven:roi')}</p>
                 <div className="text-4xl font-bold text-gold-300 mb-2">
                   {result.roi}%
                 </div>
-                <p className="body-small text-gray-600">Net Benefit: {formatCurrency(result.netBenefit)}/year</p>
+                <p className="body-small text-gray-600">{t('tools-breakeven:netBenefit')} {formatCurrency(result.netBenefit)}{t('tools-breakeven:year')}</p>
               </div>
             </div>
 
             <div className="mb-8">
-              <h3 className="heading-h4 mb-4">Scenario Analysis</h3>
+              <h3 className="heading-h4 mb-4">{t('tools-breakeven:scenarioAnalysis')}</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="border border-gray-200 rounded-lg p-4">
-                  <p className="body-small font-semibold text-gray-700 mb-2">Conservative</p>
+                  <p className="body-small font-semibold text-gray-700 mb-2">{t('tools-breakeven:conservative')}</p>
                   <p className="text-2xl font-bold text-gray-600">{result.scenarios.conservative.roi}%</p>
-                  <p className="body-small text-gray-500">Payback: {result.scenarios.conservative.payback} months</p>
+                  <p className="body-small text-gray-500">{t('tools-breakeven:payback')} {result.scenarios.conservative.payback} {t('tools-breakeven:months')}</p>
                 </div>
                 <div className="border-2 border-teal-500 rounded-lg p-4 bg-teal-50">
-                  <p className="body-small font-semibold text-teal-700 mb-2">Realistic</p>
+                  <p className="body-small font-semibold text-teal-700 mb-2">{t('tools-breakeven:realistic')}</p>
                   <p className="text-2xl font-bold text-teal-500">{result.scenarios.realistic.roi}%</p>
-                  <p className="body-small text-gray-500">Payback: {result.scenarios.realistic.payback} months</p>
+                  <p className="body-small text-gray-500">{t('tools-breakeven:payback')} {result.scenarios.realistic.payback} {t('tools-breakeven:months')}</p>
                 </div>
                 <div className="border border-gray-200 rounded-lg p-4">
-                  <p className="body-small font-semibold text-gray-700 mb-2">Optimistic</p>
+                  <p className="body-small font-semibold text-gray-700 mb-2">{t('tools-breakeven:optimistic')}</p>
                   <p className="text-2xl font-bold text-gray-600">{result.scenarios.optimistic.roi}%</p>
-                  <p className="body-small text-gray-500">Payback: {result.scenarios.optimistic.payback} months</p>
+                  <p className="body-small text-gray-500">{t('tools-breakeven:payback')} {result.scenarios.optimistic.payback} {t('tools-breakeven:months')}</p>
                 </div>
               </div>
             </div>
 
             <div className="mb-8 p-4 bg-navy-50 rounded-lg">
               <p className="body-default text-gray-700">
-                <strong>Total Benefit (3 years):</strong> {formatCurrency(result.totalBenefit)}
+                <strong>{t('tools-breakeven:totalBenefit3Years')}</strong> {formatCurrency(result.totalBenefit)}
               </p>
               <p className="body-default text-gray-700 mt-2">
-                <strong>Payback Period:</strong> {result.paybackPeriod} months
+                <strong>{t('tools-breakeven:paybackPeriod')}</strong> {result.paybackPeriod} {t('tools-breakeven:months')}
               </p>
             </div>
 
             {!userInfo.email && (
               <div className="border-t pt-6 mb-6">
-                <h3 className="heading-h4 mb-4">Get Your Detailed Report</h3>
+                <h3 className="heading-h4 mb-4">{t('tools-breakeven:getDetailedReport')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <input
                     type="text"
-                    placeholder="Name"
+                    placeholder={t('tools-breakeven:name')}
                     className="input"
                     value={userInfo.name}
                     onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}
                   />
                   <input
                     type="email"
-                    placeholder="Email"
+                    placeholder={t('tools-breakeven:email')}
                     className="input"
                     value={userInfo.email}
                     onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
                   />
                   <input
                     type="text"
-                    placeholder="Company"
+                    placeholder={t('tools-breakeven:company')}
                     className="input"
                     value={userInfo.companyName}
                     onChange={(e) => setUserInfo({ ...userInfo, companyName: e.target.value })}
@@ -140,10 +142,10 @@ export default function BreakEvenPage() {
 
             <div className="flex gap-4">
               <Button variant="primary" onClick={handleSubmit} disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'Get Full Report'}
+                {isSubmitting ? t('tools-breakeven:submitting') : t('tools-breakeven:getFullReport')}
               </Button>
               <Button variant="secondary" onClick={() => setStep('form')}>
-                Calculate Again
+                {t('tools-breakeven:calculateAgain')}
               </Button>
             </div>
           </div>
@@ -156,15 +158,15 @@ export default function BreakEvenPage() {
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-3xl">
         <div className="card">
-          <h1 className="heading-h2 mb-6">Break-Even Point Calculator</h1>
+          <h1 className="heading-h2 mb-6">{t('tools-breakeven:title')}</h1>
           <p className="body-default text-gray-600 mb-8">
-            Calculate when your investments will pay off
+            {t('tools-breakeven:description')}
           </p>
 
           <div className="space-y-6">
             <div>
               <label className="block font-semibold mb-2">
-                Investment Cost (₹)
+                {t('tools-breakeven:investmentCost')}
               </label>
               <input
                 type="number"
@@ -177,7 +179,7 @@ export default function BreakEvenPage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                Monthly Savings (₹)
+                {t('tools-breakeven:monthlySavings')}
               </label>
               <input
                 type="number"
@@ -190,7 +192,7 @@ export default function BreakEvenPage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                Monthly Revenue Increase (₹)
+                {t('tools-breakeven:monthlyRevenueIncrease')}
               </label>
               <input
                 type="number"
@@ -203,7 +205,7 @@ export default function BreakEvenPage() {
 
             <div>
               <label className="block font-semibold mb-2">
-                Ramp-Up Time (months)
+                {t('tools-breakeven:rampUpTime')}
               </label>
               <input
                 type="number"
@@ -213,7 +215,7 @@ export default function BreakEvenPage() {
                 onChange={(e) => handleChange('rampUpTime', parseInt(e.target.value) || 0)}
                 placeholder="2"
               />
-              <p className="body-small text-gray-500 mt-1">Time to reach full benefits</p>
+              <p className="body-small text-gray-500 mt-1">{t('tools-breakeven:timeToReachFullBenefits')}</p>
             </div>
 
             <Button
@@ -222,7 +224,7 @@ export default function BreakEvenPage() {
               className="w-full"
               disabled={!formData.investmentCost || (!formData.monthlySavings && !formData.monthlyRevenueIncrease)}
             >
-              Calculate Break-Even
+              {t('tools-breakeven:calculateBreakEven')}
             </Button>
           </div>
         </div>

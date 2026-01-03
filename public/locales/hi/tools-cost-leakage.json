@@ -1,0 +1,28 @@
+{
+  "title": "लागत रिसाव अनुमानक",
+  "description": "परिचालन अक्षमता के कारण खोए हुए राजस्व की मात्रा निर्धारित करें",
+  "monthlyRevenue": "मासिक राजस्व (₹)",
+  "slaBreachRate": "SLA उल्लंघन दर (%)",
+  "manualReworkRate": "मैन्युअल पुन: कार्य दर (%)",
+  "processErrorRate": "प्रक्रिया त्रुटि दर (%)",
+  "averageErrorCost": "औसत त्रुटि लागत (₹)",
+  "calculate": "रिसाव की गणना करें",
+  "costLeakageAnalysis": "लागत रिसाव विश्लेषण",
+  "estimatedAnnualLeakage": "अनुमानित वार्षिक रिसाव",
+  "monthly": "मासिक:",
+  "severity": "गंभीरता:",
+  "slaBreaches": "SLA उल्लंघन",
+  "manualRework": "मैन्युअल पुन: कार्य",
+  "processErrors": "प्रक्रिया त्रुटियां",
+  "recommendations": "सिफारिशें",
+  "getDetailedReport": "अपनी विस्तृत रिपोर्ट प्राप्त करें",
+  "name": "नाम",
+  "email": "ईमेल",
+  "company": "कंपनी",
+  "getFullReport": "पूर्ण रिपोर्ट प्राप्त करें",
+  "calculateAgain": "फिर से गणना करें",
+  "submitting": "सबमिट हो रहा है...",
+  "resultsSaved": "परिणाम सहेजे गए! विस्तृत रिपोर्ट के लिए अपना ईमेल जांचें।",
+  "failedToSave": "परिणाम सहेजने में विफल। कृपया पुनः प्रयास करें।"
+}
+

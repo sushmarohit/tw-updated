@@ -1,0 +1,28 @@
+{
+  "title": "Cookie Policy",
+  "lastUpdated": "Last updated: December 2025",
+  "whatAreCookies": {
+    "title": "What Are Cookies?",
+    "description": "Cookies are small text files stored on your device when you visit our website. They help us provide a better experience and analyze site usage."
+  },
+  "typesOfCookies": {
+    "title": "Types of Cookies We Use",
+    "essential": {
+      "type": "Essential Cookies",
+      "desc": "Required for the website to function properly"
+    },
+    "analytics": {
+      "type": "Analytics Cookies",
+      "desc": "Help us understand how visitors use our site (Google Analytics)"
+    },
+    "functional": {
+      "type": "Functional Cookies",
+      "desc": "Remember your preferences and settings"
+    }
+  },
+  "managingCookies": {
+    "title": "Managing Cookies",
+    "description": "You can control cookies through your browser settings. However, disabling cookies may affect website functionality."
+  }
+}
+

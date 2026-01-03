@@ -1,7 +1,9 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { RefreshCw, Hexagon, Brain, Sparkles, Eye, Shield } from 'lucide-react';
-
+import { useTranslation } from 'react-i18next';
 const methodologies = [
   {
     icon: RefreshCw,
@@ -96,18 +98,21 @@ const indices = [
   },
 ];
 
+
+
 export default function G2POverviewPage() {
+  const { t } = useTranslation(['framework-g2p', 'framework', 'common']);
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <h1 className="heading-hero mb-6 text-white">The G2P Framework™</h1>
+            <h1 className="heading-hero mb-6 text-white">{t('framework-g2p:title')}</h1>
             <p className="body-large text-gray-100 mb-8">
-              PhD-backed, research-driven methodology for service companies delivering measurable operational maturity
+              {t('framework-g2p:subtitle')}
             </p>
             <Button variant="primary" size="lg" asChild>
-              <Link href="/consulting/booking">Book Discovery Call</Link>
+              <Link href="/consulting/booking">{t('common:bookDiscoveryCall')}</Link>
             </Button>
           </div>
         </div>
@@ -115,19 +120,19 @@ export default function G2POverviewPage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          <h2 className="heading-h2 mb-8">What Is G2P?</h2>
+          <h2 className="heading-h2 mb-8">{t('framework-g2p:whatIs')}</h2>
           <div className="card mb-12">
             <p className="body-large text-gray-700 mb-4">
-              G2P bridges strategy and execution by making governance measurable. Unlike manufacturing-focused methodologies (Lean, Six Sigma), G2P is built for service businesses where knowledge work, decision-making, and autonomy drive performance.
+              {t('framework-g2p:whatIsDescription')}
             </p>
             <div className="space-y-3">
-              <h3 className="heading-h4 mb-4">Core Tenets:</h3>
+              <h3 className="heading-h4 mb-4">{t('framework-g2p:coreTenets')}</h3>
               {[
-                'Governance is anticipation, not surveillance',
-                'Autonomy must be earned, not granted',
-                'Decisions improve when cognitive load is managed',
-                'Learning velocity determines competitive advantage',
-                'Resilience comes from automation + human oversight',
+                t('framework-g2p:tenet1'),
+                t('framework-g2p:tenet2'),
+                t('framework-g2p:tenet3'),
+                t('framework-g2p:tenet4'),
+                t('framework-g2p:tenet5'),
               ].map((tenet, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <span className="text-gold-300 font-bold mt-1">{i + 1}.</span>
@@ -137,7 +142,7 @@ export default function G2POverviewPage() {
             </div>
           </div>
 
-          <h2 className="heading-h2 mb-8">Six Adaptive Methodologies</h2>
+          <h2 className="heading-h2 mb-8">{t('framework-g2p:sixMethodologies')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {methodologies.map((method, index) => {
               const Icon = method.icon;
@@ -162,7 +167,7 @@ export default function G2POverviewPage() {
             })}
           </div>
 
-          <h2 className="heading-h2 mb-8">Five Quantified Indices</h2>
+          <h2 className="heading-h2 mb-8">{t('framework-g2p:fiveIndices')}</h2>
           <div className="space-y-6 mb-12">
             {indices.map((index, i) => (
               <div key={i} className="card">
@@ -191,14 +196,14 @@ export default function G2POverviewPage() {
           </div>
 
           <div className="card bg-navy-500 text-white mb-12">
-            <h2 className="heading-h2 mb-6">Implementation Stages</h2>
+            <h2 className="heading-h2 mb-6">{t('framework-g2p:implementationStages')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               {[
-                { step: '1', title: 'Diagnose', desc: 'Assess current maturity across all 5 indices' },
-                { step: '2', title: 'Design', desc: 'Select the right methodology' },
-                { step: '3', title: 'Execute', desc: 'Implement governance loops and dashboards' },
-                { step: '4', title: 'Measure', desc: 'Track indices on PraXio™ dashboards monthly' },
-                { step: '5', title: 'Evolve', desc: 'Continuous improvement cycles, scaling interventions' },
+                { step: '1', title: t('framework-g2p:stage1.title'), desc: t('framework-g2p:stage1.desc') },
+                { step: '2', title: t('framework-g2p:stage2.title'), desc: t('framework-g2p:stage2.desc') },
+                { step: '3', title: t('framework-g2p:stage3.title'), desc: t('framework-g2p:stage3.desc') },
+                { step: '4', title: t('framework-g2p:stage4.title'), desc: t('framework-g2p:stage4.desc') },
+                { step: '5', title: t('framework-g2p:stage5.title'), desc: t('framework-g2p:stage5.desc') },
               ].map((stage, i) => (
                 <div key={i} className="text-center">
                   <div className="w-12 h-12 bg-gold-300 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -215,9 +220,9 @@ export default function G2POverviewPage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">Ready to Implement G2P?</h2>
+          <h2 className="heading-h2 mb-4">{t('framework-g2p:readyTitle')}</h2>
           <p className="body-large text-gray-600 mb-8">
-            Start with a free Operational Health Diagnostic to see your G2P indices
+            {t('framework-g2p:readyDescription')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="primary" size="lg" asChild>

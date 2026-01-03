@@ -2,8 +2,11 @@
 
 import { useEffect } from 'react';
 import Script from 'next/script';
+import { useTranslation } from 'react-i18next';
 
 export default function BookingPage() {
+  const { t } = useTranslation('common');
+
   useEffect(() => {
     // Calendly will auto-initialize when script loads
   }, []);
@@ -12,9 +15,9 @@ export default function BookingPage() {
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-4xl">
         <div className="text-center mb-8">
-          <h1 className="heading-h2 mb-4">Book Your Discovery Call</h1>
+          <h1 className="heading-h2 mb-4">{t('bookYourDiscoveryCall')}</h1>
           <p className="body-large text-gray-600">
-            Schedule a 45-minute call to discuss your operational challenges and explore how TwelfthKey can help
+            {t('schedule45MinuteCall')}
           </p>
         </div>
 
@@ -28,7 +31,7 @@ export default function BookingPage() {
           ) : (
             <div className="text-center py-12">
               <p className="body-default text-gray-600 mb-4">
-                Calendly integration not configured. Please contact us directly.
+                {t('calendlyNotConfigured')}
               </p>
               <a href="mailto:contact@twelfthkey.com" className="text-teal-500 hover:underline">
                 contact@twelfthkey.com

@@ -1,19 +1,23 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CheckCircle, BarChart3, Brain, Eye } from 'lucide-react';
 
 export default function AnalyticsServicePage() {
+  const { t } = useTranslation(['services-analytics', 'common']);
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <h1 className="heading-hero mb-6 text-white">Analytics Visualization Suite</h1>
+            <h1 className="heading-hero mb-6 text-white">{t('services-analytics:title')}</h1>
             <p className="body-large text-gray-100 mb-8">
-              AI-driven dashboards, predictive KPIs, automated alerts—turn data into decisions
+              {t('services-analytics:subtitle')}
             </p>
             <Button variant="primary" size="lg" asChild>
-              <Link href="/consulting/booking">Visualize Your Data</Link>
+              <Link href="/consulting/booking">{t('services-analytics:visualizeYourData')}</Link>
             </Button>
           </div>
         </div>
@@ -21,15 +25,15 @@ export default function AnalyticsServicePage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          <h2 className="heading-h2 mb-8">What's Included</h2>
+          <h2 className="heading-h2 mb-8">{t('services-analytics:whatsIncluded')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {[
-              'Custom dashboard design (10–15 dashboards)',
-              'KPI definition and predictive analytics setup',
-              'Real-time data integration (CRM, ERP, HR systems)',
-              'AI anomaly detection and alerting',
-              'Team training and dashboard navigation',
-              'Monthly optimization and reporting',
+              t('services-analytics:item1'),
+              t('services-analytics:item2'),
+              t('services-analytics:item3'),
+              t('services-analytics:item4'),
+              t('services-analytics:item5'),
+              t('services-analytics:item6'),
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-teal-500 flex-shrink-0 mt-1" />
@@ -39,15 +43,15 @@ export default function AnalyticsServicePage() {
           </div>
 
           <div className="mb-12">
-            <h2 className="heading-h2 mb-8">Dashboard Types</h2>
+            <h2 className="heading-h2 mb-8">{t('services-analytics:dashboardTypes')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { icon: Eye, title: 'Executive Summary', desc: 'Business health at a glance' },
-                { icon: BarChart3, title: 'Operational Dashboard', desc: 'Real-time process and KPI tracking' },
-                { icon: Brain, title: 'Financial Dashboard', desc: 'Revenue, cost, profitability, burn analysis' },
-                { icon: BarChart3, title: 'Team & Talent', desc: 'Capacity, burnout risk, attrition trends' },
-                { icon: Eye, title: 'Customer Dashboard', desc: 'NPS, churn, CSAT, pipeline health' },
-                { icon: Brain, title: 'Predictive Dashboard', desc: 'Forecasted trends, anomalies, risks' },
+                { icon: Eye, title: t('services-analytics:executiveSummary.title'), desc: t('services-analytics:executiveSummary.desc') },
+                { icon: BarChart3, title: t('services-analytics:operationalDashboard.title'), desc: t('services-analytics:operationalDashboard.desc') },
+                { icon: Brain, title: t('services-analytics:financialDashboard.title'), desc: t('services-analytics:financialDashboard.desc') },
+                { icon: BarChart3, title: t('services-analytics:teamTalent.title'), desc: t('services-analytics:teamTalent.desc') },
+                { icon: Eye, title: t('services-analytics:customerDashboard.title'), desc: t('services-analytics:customerDashboard.desc') },
+                { icon: Brain, title: t('services-analytics:predictiveDashboard.title'), desc: t('services-analytics:predictiveDashboard.desc') },
               ].map((item, i) => {
                 const Icon = item.icon;
                 return (
@@ -62,24 +66,24 @@ export default function AnalyticsServicePage() {
           </div>
 
           <div className="mb-12">
-            <h2 className="heading-h2 mb-8">AI-Powered Insights</h2>
+            <h2 className="heading-h2 mb-8">{t('services-analytics:aiPoweredInsights')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 {
-                  title: 'Anomaly Detection',
-                  desc: 'Automatic alert when metrics deviate from normal patterns',
+                  title: t('services-analytics:anomalyDetection.title'),
+                  desc: t('services-analytics:anomalyDetection.desc'),
                 },
                 {
-                  title: 'Predictive Analysis',
-                  desc: 'Forecast trends 30–90 days ahead with confidence intervals',
+                  title: t('services-analytics:predictiveAnalysis.title'),
+                  desc: t('services-analytics:predictiveAnalysis.desc'),
                 },
                 {
-                  title: 'Root Cause Analysis',
-                  desc: 'AI identifies why metric X changed and suggests actions',
+                  title: t('services-analytics:rootCauseAnalysis.title'),
+                  desc: t('services-analytics:rootCauseAnalysis.desc'),
                 },
                 {
-                  title: 'Recommendations',
-                  desc: 'Automated suggestions for improvement based on data patterns',
+                  title: t('services-analytics:recommendations.title'),
+                  desc: t('services-analytics:recommendations.desc'),
                 },
               ].map((item, i) => (
                 <div key={i} className="card">
@@ -91,18 +95,18 @@ export default function AnalyticsServicePage() {
           </div>
 
           <div className="card bg-navy-500 text-white">
-            <h3 className="heading-h3 mb-4">Investment & ROI</h3>
+            <h3 className="heading-h3 mb-4">{t('services-analytics:investmentRoi')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <p className="body-small text-gray-300 mb-2">Investment</p>
+                <p className="body-small text-gray-300 mb-2">{t('services-analytics:investment')}</p>
                 <p className="heading-h3 text-gold-300">₹1,99,999</p>
-                <p className="body-small text-gray-300 mt-2">One-time, 45 days</p>
+                <p className="body-small text-gray-300 mt-2">{t('services-analytics:oneTime45Days')}</p>
               </div>
               <div>
-                <p className="body-small text-gray-300 mb-2">Typical ROI</p>
+                <p className="body-small text-gray-300 mb-2">{t('services-analytics:typicalRoi')}</p>
                 <p className="heading-h3 text-teal-400">₹15–30L</p>
-                <p className="body-small text-gray-300 mt-2">In better decision-making and risk prevention</p>
-                <p className="body-small text-gray-300">Speed improvement: 50% faster decision cycles</p>
+                <p className="body-small text-gray-300 mt-2">{t('services-analytics:inBetterDecisionMaking')}</p>
+                <p className="body-small text-gray-300">{t('services-analytics:speedImprovement')}</p>
               </div>
             </div>
           </div>
@@ -111,12 +115,12 @@ export default function AnalyticsServicePage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">Ready to Visualize Your Data?</h2>
+          <h2 className="heading-h2 mb-4">{t('services-analytics:readyTitle')}</h2>
           <p className="body-large text-gray-600 mb-8">
-            See your business in real-time with AI-powered insights
+            {t('services-analytics:readyDescription')}
           </p>
           <Button variant="primary" size="lg" asChild>
-            <Link href="/consulting/booking">Schedule Your Assessment</Link>
+            <Link href="/consulting/booking">{t('services-analytics:scheduleAssessment')}</Link>
           </Button>
         </div>
       </section>

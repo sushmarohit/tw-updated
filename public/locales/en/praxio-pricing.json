@@ -1,0 +1,54 @@
+{
+  "title": "PraXio™ Pricing – Transparent, Scalable, Fair",
+  "subtitle": "4 tiers to fit your governance maturity and team size",
+  "governance": {
+    "name": "Governance",
+    "users": "Up to 10",
+    "feature1": "3 basic dashboards",
+    "feature2": "Monthly, basic reporting",
+    "feature3": "No AI monitoring",
+    "feature4": "Basic integrations (2–3)",
+    "feature5": "Email support",
+    "feature6": "Month-to-month contract"
+  },
+  "reporting": {
+    "name": "Reporting",
+    "users": "Up to 10",
+    "feature1": "5 custom dashboards",
+    "feature2": "Weekly + monthly reporting",
+    "feature3": "No AI monitoring",
+    "feature4": "Extended integrations (5–7)",
+    "feature5": "Email + chat support",
+    "feature6": "Month-to-month contract"
+  },
+  "analytics": {
+    "name": "Analytics",
+    "users": "Up to 10",
+    "feature1": "13 real-time dashboards",
+    "feature2": "Daily + custom reporting",
+    "feature3": "Anomaly detection",
+    "feature4": "Full integrations (20+)",
+    "feature5": "Priority support",
+    "feature6": "6-month minimum contract"
+  },
+  "aiQuantum": {
+    "name": "AIQuantum",
+    "users": "Up to 50",
+    "feature1": "Unlimited dashboards",
+    "feature2": "Real-time + AI reporting",
+    "feature3": "Full AI suite",
+    "feature4": "White-label API",
+    "feature5": "Dedicated CSM",
+    "feature6": "12-month minimum contract"
+  },
+  "mostPopular": "Most Popular",
+  "usersIncluded": "users included",
+  "getStarted": "Get Started",
+  "billingDiscounts": "Billing & Discounts",
+  "annualPrepay": "Annual Prepay",
+  "multiYear": "Multi-year (3-year)",
+  "freeTrial": "Free Trial",
+  "notSureTitle": "Not Sure Which Tier?",
+  "notSureDescription": "Start with a free trial and upgrade as you grow"
+}
+

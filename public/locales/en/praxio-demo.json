@@ -1,0 +1,36 @@
+{
+  "title": "See PraXio™ in Action",
+  "subtitle": "Book a 30-minute demo with our product specialist, or start a free 14-day trial",
+  "requestLiveDemo": "Request Live Demo",
+  "startFreeTrial": "Start Free Trial",
+  "calendlyNotConfigured": "Calendly integration not configured. Please use the form below.",
+  "name": "Name",
+  "email": "Email",
+  "company": "Company",
+  "teamSize": "Team Size",
+  "selectTeamSize": "Select team size",
+  "primaryUseCase": "Primary Use Case",
+  "selectUseCase": "Select use case",
+  "finance": "Finance",
+  "operations": "Operations",
+  "hr": "HR",
+  "sales": "Sales",
+  "custom": "Custom",
+  "requestSubmitted": "Request submitted! We'll contact you shortly.",
+  "failedToSubmit": "Failed to submit. Please try again.",
+  "submitting": "Submitting...",
+  "demoAgenda": "Demo Agenda",
+  "agenda1": {
+    "time": "5 min",
+    "title": "Your challenges & goals"
+  },
+  "agenda2": {
+    "time": "15 min",
+    "title": "PraXio™ platform walkthrough (Dashboard builder, Real-time KPIs, Automated reporting, AI anomaly detection)"
+  },
+  "agenda3": {
+    "time": "10 min",
+    "title": "Q&A and next steps"
+  }
+}
+

@@ -1,19 +1,23 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Sparkles, TrendingUp, Target } from 'lucide-react';
 
 export default function MorphMethodologyPage() {
+  const { t } = useTranslation(['framework-morph', 'common']);
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <h1 className="heading-hero mb-6 text-white">MORPH – Institutionalized Innovation</h1>
+            <h1 className="heading-hero mb-6 text-white">{t('framework-morph:title')}</h1>
             <p className="body-large text-gray-100 mb-8">
-              Institutionalized innovation and reinvention—accelerate idea-to-execution
+              {t('framework-morph:subtitle')}
             </p>
             <Button variant="primary" size="lg" asChild>
-              <Link href="/consulting/booking">Apply MORPH to Your Business</Link>
+              <Link href="/consulting/booking">{t('framework-morph:applyButton')}</Link>
             </Button>
           </div>
         </div>
@@ -21,13 +25,13 @@ export default function MorphMethodologyPage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          <h2 className="heading-h2 mb-8">When to Use MORPH</h2>
+          <h2 className="heading-h2 mb-8">{t('framework-morph:whenToUse')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {[
-              'Product launches and scaling',
-              'Innovation pipeline acceleration',
-              'Rapid experimentation needed',
-              'Organizational reinvention',
+              t('framework-morph:useCase1'),
+              t('framework-morph:useCase2'),
+              t('framework-morph:useCase3'),
+              t('framework-morph:useCase4'),
             ].map((item, i) => (
               <div key={i} className="card">
                 <p className="body-default text-gray-700">{item}</p>
@@ -36,16 +40,16 @@ export default function MorphMethodologyPage() {
           </div>
 
           <div className="mb-12">
-            <h2 className="heading-h2 mb-8">Key Focus: Learning Velocity (LV)</h2>
+            <h2 className="heading-h2 mb-8">{t('framework-morph:keyFocus')}</h2>
             <div className="card bg-gold-50 border-2 border-gold-300">
               <p className="body-large text-gray-700 mb-4">
-                MORPH accelerates learning velocity by institutionalizing innovation processes, rapid prototyping, and continuous feedback loops.
+                {t('framework-morph:keyFocusDescription')}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {[
-                  'Rapid prototyping',
-                  'Continuous feedback loops',
-                  'Institutionalized innovation',
+                  t('framework-morph:feature1'),
+                  t('framework-morph:feature2'),
+                  t('framework-morph:feature3'),
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <TrendingUp className="w-5 h-5 text-gold-300" />
@@ -57,13 +61,13 @@ export default function MorphMethodologyPage() {
           </div>
 
           <div className="card bg-navy-500 text-white mb-12">
-            <h2 className="heading-h2 mb-6">Expected Outcomes</h2>
+            <h2 className="heading-h2 mb-6">{t('framework-morph:expectedOutcomes')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                'Learning Velocity (LV) improved 30+ points',
-                'Idea throughput improved 40–50%',
-                'Time-to-market reduced 25–35%',
-                'Innovation success rate increased',
+                t('framework-morph:outcome1'),
+                t('framework-morph:outcome2'),
+                t('framework-morph:outcome3'),
+                t('framework-morph:outcome4'),
               ].map((outcome, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <Target className="w-6 h-6 text-gold-300 flex-shrink-0 mt-1" />
@@ -77,12 +81,12 @@ export default function MorphMethodologyPage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">Ready to Accelerate Innovation?</h2>
+          <h2 className="heading-h2 mb-4">{t('framework-morph:readyTitle')}</h2>
           <p className="body-large text-gray-600 mb-8">
-            Institutionalize innovation and scale faster
+            {t('framework-morph:readyDescription')}
           </p>
           <Button variant="primary" size="lg" asChild>
-            <Link href="/consulting/booking">Book Discovery Call</Link>
+            <Link href="/consulting/booking">{t('common:bookDiscoveryCall')}</Link>
           </Button>
         </div>
       </section>
