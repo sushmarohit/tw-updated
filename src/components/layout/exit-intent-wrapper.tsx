@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { ExitIntentModal, useExitIntent } from '@/components/ui/exit-intent-modal';
 
 export function ExitIntentWrapper({ children }: { children: ReactNode }) {
@@ -9,7 +10,9 @@ export function ExitIntentWrapper({ children }: { children: ReactNode }) {
   return (
     <>
       {children}
-      {showModal && <ExitIntentModal onClose={() => setShowModal(false)} />}
+      <AnimatePresence>
+        {showModal && <ExitIntentModal key="exit-intent-modal" onClose={() => setShowModal(false)} />}
+      </AnimatePresence>
     </>
   );
 }
