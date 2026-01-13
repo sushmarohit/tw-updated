@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { FileSearch, Building2, Brain, BarChart3, Command, Briefcase } from 'lucide-react';
+import { PageSchema } from '@/components/seo/page-schema';
 
 export default function ServicesPage() {
   const { t } = useTranslation(['services', 'common']);
@@ -53,7 +54,9 @@ export default function ServicesPage() {
     },
   ];
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <PageSchema breadcrumbNameMap={{ consulting: 'Consulting', services: 'Services' }} />
+      <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
@@ -104,6 +107,7 @@ export default function ServicesPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }
 

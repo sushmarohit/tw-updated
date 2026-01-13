@@ -4,11 +4,34 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CheckCircle, Clock, TrendingUp, FileText } from 'lucide-react';
+import { PageSchema } from '@/components/seo/page-schema';
+import { ServiceSchema } from '@/components/seo/service-schema';
+
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
 export default function FoundationServicePage() {
-  const { t } = useTranslation(['services-foundation', 'common']);
+  const { t } = useTranslation(['services-foundation', 'services', 'common']);
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <PageSchema breadcrumbNameMap={{ consulting: 'Consulting', services: 'Services', foundation: 'Operational Excellence Foundation' }} />
+      <ServiceSchema
+        service={{
+          name: t('services-foundation:title'),
+          description: t('services-foundation:subtitle'),
+          provider: {
+            name: 'TwelfthKey™ Consulting',
+            url: BASE_URL,
+          },
+          areaServed: 'IN',
+          serviceType: 'Business Consulting',
+          offers: {
+            price: '299999',
+            priceCurrency: 'INR',
+          },
+          url: '/consulting/services/foundation',
+        }}
+      />
+      <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
@@ -111,5 +134,6 @@ export default function FoundationServicePage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

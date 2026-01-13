@@ -4,11 +4,34 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CheckCircle, Building2, Users, Shield } from 'lucide-react';
+import { PageSchema } from '@/components/seo/page-schema';
+import { ServiceSchema } from '@/components/seo/service-schema';
+
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
 export default function EnterpriseServicePage() {
-  const { t } = useTranslation(['services-enterprise', 'common']);
+  const { t } = useTranslation(['services-enterprise', 'services', 'common']);
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <PageSchema breadcrumbNameMap={{ consulting: 'Consulting', services: 'Services', enterprise: 'Enterprise Ops Command Center' }} />
+      <ServiceSchema
+        service={{
+          name: t('services-enterprise:title'),
+          description: t('services-enterprise:subtitle'),
+          provider: {
+            name: 'TwelfthKey™ Consulting',
+            url: BASE_URL,
+          },
+          areaServed: 'IN',
+          serviceType: 'Business Consulting',
+          offers: {
+            price: '799999',
+            priceCurrency: 'INR',
+          },
+          url: '/consulting/services/enterprise',
+        }}
+      />
+      <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
@@ -134,5 +157,6 @@ export default function EnterpriseServicePage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

@@ -4,11 +4,34 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CheckCircle, Clock, TrendingUp } from 'lucide-react';
+import { PageSchema } from '@/components/seo/page-schema';
+import { ServiceSchema } from '@/components/seo/service-schema';
+
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
 export default function AssessmentServicePage() {
-  const { t } = useTranslation(['services-assessment', 'common']);
+  const { t } = useTranslation(['services-assessment', 'services', 'common']);
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <PageSchema breadcrumbNameMap={{ consulting: 'Consulting', services: 'Services', assessment: 'Business Operational Assessment' }} />
+      <ServiceSchema
+        service={{
+          name: t('services-assessment:title'),
+          description: t('services-assessment:subtitle'),
+          provider: {
+            name: 'TwelfthKey™ Consulting',
+            url: BASE_URL,
+          },
+          areaServed: 'IN',
+          serviceType: 'Business Consulting',
+          offers: {
+            price: '149999',
+            priceCurrency: 'INR',
+          },
+          url: '/consulting/services/assessment',
+        }}
+      />
+      <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
@@ -90,6 +113,7 @@ export default function AssessmentServicePage() {
         </div>
       </section>
     </div>
+    </>
   );
 }
 

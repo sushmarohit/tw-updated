@@ -4,11 +4,34 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CheckCircle, TrendingDown, Users, Clock } from 'lucide-react';
+import { PageSchema } from '@/components/seo/page-schema';
+import { ServiceSchema } from '@/components/seo/service-schema';
+
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
 export default function FractionalCBOPage() {
-  const { t } = useTranslation(['services-fractional-cbo', 'common']);
+  const { t } = useTranslation(['services-fractional-cbo', 'services', 'common']);
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <PageSchema breadcrumbNameMap={{ consulting: 'Consulting', services: 'Services', 'fractional-cbo': 'Fractional CBO/COO Services' }} />
+      <ServiceSchema
+        service={{
+          name: t('services-fractional-cbo:title'),
+          description: t('services-fractional-cbo:subtitle'),
+          provider: {
+            name: 'TwelfthKey™ Consulting',
+            url: BASE_URL,
+          },
+          areaServed: 'IN',
+          serviceType: 'Business Consulting',
+          offers: {
+            price: '199999',
+            priceCurrency: 'INR',
+          },
+          url: '/consulting/services/fractional-cbo',
+        }}
+      />
+      <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl">
@@ -130,5 +153,6 @@ export default function FractionalCBOPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }
