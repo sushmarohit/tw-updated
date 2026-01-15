@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { FileText, Download, CheckCircle } from 'lucide-react';
+import { FileText, Download } from 'lucide-react';
 
 export default function PlaybooksPage() {
   const { t } = useTranslation(['playbooks', 'common']);

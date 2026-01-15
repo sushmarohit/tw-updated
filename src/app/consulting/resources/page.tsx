@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { BookOpen, FileText, Video, TrendingUp, Book } from 'lucide-react';
+import { BookOpen, FileText, Video, TrendingUp } from 'lucide-react';
 
 export default function ResourcesPage() {
   const { t } = useTranslation(['resources', 'common']);

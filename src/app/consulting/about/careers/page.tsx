@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Briefcase, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { MapPin, Clock, ArrowRight } from 'lucide-react';
 
 export default function CareersPage() {
   const { t } = useTranslation(['about-careers', 'common']);
