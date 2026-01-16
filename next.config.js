@@ -69,6 +69,15 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-dialog'],
   },
 
+  // Webpack configuration for path aliases
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': require('path').resolve(__dirname, 'src'),
+    };
+    return config;
+  },
+
   // Output configuration for Docker
   output: process.env.DOCKER_BUILD === 'true' ? 'standalone' : undefined,
 };
