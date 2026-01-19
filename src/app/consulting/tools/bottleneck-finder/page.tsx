@@ -33,6 +33,8 @@ export default function BottleneckFinderPage() {
   };
 
   const handleSubmit = async () => {
+    if (!result) return;
+    
     setIsSubmitting(true);
     trackCalculatorComplete('bottleneck_finder', result.bottleneckIndex);
 

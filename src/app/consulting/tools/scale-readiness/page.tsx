@@ -33,6 +33,8 @@ export default function ScaleReadinessPage() {
   };
 
   const handleSubmit = async () => {
+    if (!result) return;
+    
     setIsSubmitting(true);
     trackCalculatorComplete('scale_readiness', result.overallScore);
 

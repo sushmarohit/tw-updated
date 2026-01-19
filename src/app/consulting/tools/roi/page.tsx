@@ -32,6 +32,8 @@ export default function ROIPage() {
   };
 
   const handleSubmit = async () => {
+    if (!result) return;
+    
     setIsSubmitting(true);
     trackCalculatorComplete('roi', result.roi);
 

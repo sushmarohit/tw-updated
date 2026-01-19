@@ -33,6 +33,8 @@ export default function BreakEvenPage() {
   };
 
   const handleSubmit = async () => {
+    if (!result) return;
+    
     setIsSubmitting(true);
     trackCalculatorComplete('breakeven', result.roi);
 

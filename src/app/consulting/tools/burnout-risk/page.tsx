@@ -33,6 +33,8 @@ export default function BurnoutRiskPage() {
   };
 
   const handleSubmit = async () => {
+    if (!result) return;
+    
     setIsSubmitting(true);
     trackCalculatorComplete('burnout_risk', result.riskScore);
 

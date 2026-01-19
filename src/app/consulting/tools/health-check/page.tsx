@@ -37,6 +37,8 @@ export default function OperationalHealthCheckPage() {
   };
 
   const handleSubmit = async () => {
+    if (!result) return;
+    
     setIsSubmitting(true);
     trackCalculatorComplete('operational_health', result.overallScore);
 

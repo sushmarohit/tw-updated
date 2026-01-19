@@ -34,6 +34,8 @@ export default function CostLeakagePage() {
   };
 
   const handleSubmit = async () => {
+    if (!result) return;
+    
     setIsSubmitting(true);
     trackCalculatorComplete('cost_leakage', result.annualLeakage);
 

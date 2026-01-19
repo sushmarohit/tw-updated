@@ -33,6 +33,8 @@ export default function GovernanceMaturityPage() {
   };
 
   const handleSubmit = async () => {
+    if (!result) return;
+    
     setIsSubmitting(true);
     trackCalculatorComplete('governance_maturity', result.overallMaturity);
 
