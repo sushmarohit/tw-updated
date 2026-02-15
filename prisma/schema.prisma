@@ -178,5 +178,7 @@ model Contact {
   company   String?  @map("company")
   service   String?  @map("service") // selected service from dropdown
   message   String   @map("message")
-  createdAt DateTime @default(now()) @map("created_at")  @@map("contacts")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("contacts")
 }
