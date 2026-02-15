@@ -1,8 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import Backend from 'i18next-http-backend';
-import path from 'path';
-import fs from 'fs';
 
 // Default (en) namespaces bundled so client has them before first paint (no "namespace not loaded" / hydration mismatch)
 import enBundled from '@/locales/en-bundled.json';
@@ -68,6 +66,11 @@ const initI18n = () => {
       });
   } else {
     // Server-side: create i18n instance with same translations as client to avoid hydration mismatch
+    // eslint-disable-next-line @typescript-eslint/no-var-requires -- Node-only; not bundled for client
+    const path = require('path');
+    // eslint-disable-next-line @typescript-eslint/no-var-requires -- Node-only; not bundled for client
+    const fs = require('fs');
+
     i18n.use(initReactI18next).init({
       fallbackLng: 'en',
       lng: 'en',

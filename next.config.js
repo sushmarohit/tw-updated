@@ -69,12 +69,20 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-dialog'],
   },
 
-  // Webpack configuration for path aliases
-  webpack: (config) => {
+  // Webpack configuration for path aliases and client bundle
+  webpack: (config, { isServer }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': require('path').resolve(__dirname, 'src'),
     };
+    // Stub Node built-ins in client bundle (e.g. i18n config uses fs/path only on server)
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+      };
+    }
     return config;
   },
 
