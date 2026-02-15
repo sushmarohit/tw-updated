@@ -1,7 +1,9 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
+
+// Default (en) namespaces bundled so client has them before first paint (no "namespace not loaded" / hydration mismatch)
+import enBundled from '@/locales/en-bundled.json';
 
 // Track initialization state to prevent re-initialization
 let isInitializing = false;
@@ -19,44 +21,40 @@ const initI18n = () => {
   // Only initialize if we're on the client side
   if (typeof window !== 'undefined') {
     i18n
-      // Load translation using http -> see /public/locales/<lang_code>/translation.json
       .use(Backend)
-      // Detect user language
-      .use(LanguageDetector)
-      // Pass the i18n instance to react-i18next
       .use(initReactI18next)
-      // Initialize i18next
+      // No LanguageDetector here: we use lng: 'en' for first paint so server and client match (no hydration).
+      // ClientLangWrapper applies detected language after mount.
       .init({
         fallbackLng: 'en',
+        lng: 'en',
+        supportedLngs: ['en', 'hi'],
         debug: process.env.NODE_ENV === 'development',
-        
+        resources: { en: enBundled as Record<string, object> },
+        // Required so i18next loads other languages (e.g. hi) from backend when switching
+        partialBundledLanguages: true,
         interpolation: {
-          escapeValue: false, // React already escapes values
+          escapeValue: false,
         },
-
-        // Language detection options
-        detection: {
-          // Order and from where user language should be detected
-          order: ['localStorage', 'navigator', 'htmlTag'],
-          
-          // Keys or params to lookup language from
-          lookupLocalStorage: 'i18nextLng',
-          
-          // Cache user language on
-          caches: ['localStorage'],
-        },
-
-        // Backend options
         backend: {
           loadPath: '/locales/{{lng}}/{{ns}}.json',
         },
-
-        // Namespace configuration
         defaultNS: 'common',
-        ns: ['common', 'hero', 'footer', 'trustBadges', 'exitIntent', 'calculators', 'navigation', 'resources', 'blog', 'playbooks', 'templates', 'webinars', 'roi-guide', 'about', 'about-team', 'about-values', 'about-careers', 'praxio-integrations'],
-        
+        // Must include every namespace under public/locales/en so changeLanguage loads them for hi (and other non-bundled languages)
+        ns: [
+          'common', 'hero', 'home', 'footer', 'trustBadges', 'exitIntent', 'calculators', 'navigation', 'resources', 'blog', 'playbooks', 'templates', 'webinars', 'roi-guide',
+          'about', 'about-team', 'about-values', 'about-careers',
+          'case-studies-hub', 'case-studies-banking', 'case-studies-ecommerce', 'case-studies-fintech', 'case-studies-msme', 'case-studies-telecom',
+          'framework', 'framework-arc', 'framework-cycle', 'framework-g2p', 'framework-morph', 'framework-parse', 'framework-prism', 'framework-sage',
+          'how-we-help', 'process', 'praxio', 'praxio-demo', 'praxio-features', 'praxio-integrations', 'praxio-pricing',
+          'services', 'services-analytics', 'services-assessment', 'services-enterprise', 'services-foundation', 'services-fractional-cbo', 'services-governance',
+          'tools', 'tools-bottleneck-finder', 'tools-breakeven', 'tools-burnout-risk', 'tools-cost-leakage', 'tools-governance-maturity', 'tools-health-check', 'tools-roi', 'tools-scale-readiness',
+          'legal-accessibility', 'legal-compliance', 'legal-cookies', 'legal-disputes', 'legal-dpa', 'legal-privacy', 'legal-refund', 'legal-terms',
+          'faq',
+        ],
         react: {
           useSuspense: false, // Disable suspense for SSR compatibility
+          bindI18nStore: 'added', // Re-render when backend adds new language resources
         },
       })
       .then(() => {
@@ -67,7 +65,10 @@ const initI18n = () => {
         isInitializing = false;
       });
   } else {
-    // Server-side: create a minimal i18n instance
+    // Server-side: create i18n instance with same translations as client to avoid hydration mismatch
+    const path = require('path');
+    const fs = require('fs');
+
     i18n.use(initReactI18next).init({
       fallbackLng: 'en',
       lng: 'en',
@@ -78,6 +79,25 @@ const initI18n = () => {
         useSuspense: false,
       },
     });
+
+    // Load locale files from public/locales so server-rendered HTML matches client
+    try {
+      const localesDir = path.join(process.cwd(), 'public', 'locales', 'en');
+      if (fs.existsSync(localesDir)) {
+        const files = fs.readdirSync(localesDir);
+        for (const file of files) {
+          if (file.endsWith('.json')) {
+            const ns = file.replace(/\.json$/, '');
+            const filePath = path.join(localesDir, file);
+            const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+            i18n.addResourceBundle('en', ns, data);
+          }
+        }
+      }
+    } catch (_) {
+      // Ignore if locales not available (e.g. during build in some environments)
+    }
+
     hasInitialized = true;
     isInitializing = false;
   }

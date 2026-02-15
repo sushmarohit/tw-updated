@@ -6,6 +6,11 @@ import { Button } from '@/components/ui/button';
 import { OPERATIONAL_HEALTH_QUESTIONS, calculateHealthScore, type UserAnswer } from '@/lib/calculators/operational-health';
 import { trackCalculatorComplete } from '@/lib/analytics/events';
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function isValidEmail(email: string): boolean {
+  return EMAIL_REGEX.test(email.trim());
+}
+
 export default function OperationalHealthCheckPage() {
   const { t } = useTranslation(['tools-health-check', 'common']);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -125,7 +130,7 @@ export default function OperationalHealthCheckPage() {
                   <input
                     type="email"
                     placeholder={t('tools-health-check:email')}
-                    className="input"
+                    className={`input ${userInfo.email && !isValidEmail(userInfo.email) ? 'input-error' : ''}`}
                     value={userInfo.email}
                     onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
                   />
@@ -141,7 +146,17 @@ export default function OperationalHealthCheckPage() {
             )}
 
             <div className="flex gap-4">
-              <Button variant="primary" onClick={handleSubmit} disabled={isSubmitting}>
+              <Button
+                variant="primary"
+                onClick={handleSubmit}
+                disabled={
+                  isSubmitting ||
+                  !userInfo.name.trim() ||
+                  !userInfo.email.trim() ||
+                  !isValidEmail(userInfo.email) ||
+                  !userInfo.companyName.trim()
+                }
+              >
                 {isSubmitting ? t('tools-health-check:submitting') : t('tools-health-check:getFullReport')}
               </Button>
               <Button variant="secondary" onClick={() => window.location.reload()}>

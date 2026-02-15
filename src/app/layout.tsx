@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     default: 'Operational Excellence Consulting | TwelfthKey™ Consulting',
     template: '%s | TwelfthKey™ Consulting',
   },
+  icons: {
+    icon: '/tw_logo.webp',
+  },
   description: 'Transform ops chaos into discipline. G2P Framework™ + PraXio™ SaaS. Improve governance 35-59% in 90 days. Fractional CBO at 65-80% savings.',
   keywords: ['operational excellence', 'process improvement', 'governance', 'fractional COO', 'startup consulting', 'MSME solutions'],
   authors: [{ name: 'TwelfthKey Consulting' }],
@@ -110,7 +113,7 @@ export default function RootLayout({
               <SkipToContent />
               <NetworkBanner />
               <Header />
-              <main id="main-content" className="pt-16 md:pt-20 overflow-x-hidden">{children}</main>
+              <main id="main-content" className="relative pt-16 md:pt-20 overflow-x-hidden">{children}</main>
               <Footer />
               <MobileStickyCTA />
             </ExitIntentWrapper>

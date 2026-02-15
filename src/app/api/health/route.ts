@@ -9,7 +9,13 @@ export async function GET() {
     const envStatus = {
       supabase: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
       hubspot: !!process.env.HUBSPOT_API_KEY,
-      sendgrid: !!process.env.SENDGRID_API_KEY,
+      nodemailer:
+        !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASSWORD) ||
+        !!(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD) ||
+        !!(process.env.GMAIL_USER &&
+          process.env.GMAIL_CLIENT_ID &&
+          process.env.GMAIL_CLIENT_SECRET &&
+          process.env.GMAIL_REFRESH_TOKEN),
       ga4: !!process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID,
     };
 

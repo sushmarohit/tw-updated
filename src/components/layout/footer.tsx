@@ -7,10 +7,11 @@ import { Linkedin, Twitter, Youtube, MessageCircle } from 'lucide-react';
 const quickLinks = [
   { key: 'home', href: '/' },
   { key: 'services', href: '/consulting/services' },
-  { key: 'framework', href: '/consulting/framework' },
-  { key: 'praxio', href: '/consulting/praxio' },
+  // { key: 'framework', href: '/consulting/framework' },
+  // { key: 'praxio', href: '/consulting/praxio' },
   { key: 'caseStudies', href: '/consulting/case-studies' },
   { key: 'tools', href: '/consulting/tools' },
+  { key: 'faq', href: '/consulting/faq' },
   { key: 'about', href: '/consulting/about' },
   { key: 'contact', href: '/consulting/contact' },
 ];
@@ -82,7 +83,7 @@ export function Footer() {
               <span className="font-serif font-bold text-xl">TwelfthKey</span>
             </div>
             <p className="text-body-small text-gray-300 italic mb-4">
-              "{t('footer:tagline')}"™
+              "{t('footer:tagline')}"
             </p>
             <p className="text-body-small text-gray-400">
               {t('footer:proprietary')}
@@ -98,8 +99,9 @@ export function Footer() {
                   <Link
                     href={link.href}
                     className="text-body-small text-gray-300 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1"
+                    suppressHydrationWarning
                   >
-                    {t(`navigation:${link.key}`)}
+                    {t('navigation:' + link.key)}
                   </Link>
                 </li>
               ))}
@@ -148,7 +150,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-body-small text-gray-400 text-center md:text-left">
               <p>{t('footer:copyright')}</p>
-              <p className="mt-1">{t('footer:poweredBy')}</p>
+              {/* <p className="mt-1">{t('footer:poweredBy')}</p> */}
             </div>
             <div className="flex items-center space-x-4">
               {socialLinks.map((social) => {

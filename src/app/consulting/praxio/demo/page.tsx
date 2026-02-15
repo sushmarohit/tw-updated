@@ -8,6 +8,7 @@ import { trackFormSubmit } from '@/lib/analytics/events';
 
 export default function PraxioDemoPage() {
   const { t } = useTranslation(['praxio-demo', 'common']);
+  const bookingUrl = process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_BOOKING_URL;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -50,15 +51,16 @@ export default function PraxioDemoPage() {
           <div className="card">
             <Video className="w-12 h-12 text-teal-500 mx-auto mb-4" />
             <h2 className="heading-h4 mb-4 text-center">{t('praxio-demo:requestLiveDemo')}</h2>
-            {process.env.NEXT_PUBLIC_CALENDLY_URL ? (
-              <div
-                className="calendly-inline-widget"
-                data-url={process.env.NEXT_PUBLIC_CALENDLY_URL}
-                style={{ minHeight: '500px', width: '100%' }}
+            {bookingUrl ? (
+              <iframe
+                src={bookingUrl}
+                title={t('praxio-demo:requestLiveDemo')}
+                className="w-full border-0 rounded-lg"
+                style={{ minHeight: '500px' }}
               />
             ) : (
               <p className="body-default text-gray-600 text-center">
-                {t('praxio-demo:calendlyNotConfigured')}
+                {t('praxio-demo:bookingNotConfigured')}
               </p>
             )}
           </div>

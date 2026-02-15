@@ -12,12 +12,12 @@
     "member2": {
       "name": "Expert Consultant",
       "role": "Senior Operations Consultant",
-      "bio": "Specializes in G2P Framework implementation and process excellence for MSMEs."
+      "bio": "Specializes in SaaS platform implementation and process excellence for MSMEs."
     },
     "member3": {
       "name": "Platform Lead",
-      "role": "PraXio™ Platform Architect",
-      "bio": "Leads the development and architecture of the PraXio™ governance platform."
+      "role": "SaaS Platform Architect",
+      "bio": "Leads the development and architecture of the SaaS platform."
     }
   },
   "joinTitle": "Join Our Team",

@@ -1,0 +1,96 @@
+{
+  "slider": {
+    "slide1": "Eliminate operational chaos and gain clarity.",
+    "slide2": "Measure what matters—get real-time governance scores.",
+    "slide3": "Unlock 35–59% efficiency improvements in 90 days.",
+    "slide4": "Automate your business health check—instant, actionable insights.",
+    "slide5": "Scale with predictive analytics. No guesswork, just results.",
+    "prevAria": "Previous slide",
+    "nextAria": "Next slide",
+    "goToAria": "Go to slide"
+  },
+  "problemStatement": {
+    "title": "Is Your Business Struggling With...",
+    "p1": "Inconsistent execution despite brilliant ideas?",
+    "p2": "Operational inefficiencies causing revenue leakage?",
+    "p3": "Lack of real-time governance visibility and accountability?",
+    "p4": "Costly full-time leadership hires beyond your budget?",
+    "p5": "Difficulty scaling processes and teams?",
+    "p6": "Frequent firefighting without root cause resolution?"
+  },
+  "coreOfferings": {
+    "title": "TwelfthKey Delivers Operational Excellence",
+    "subtitle": "Three integrated layers for measurable transformation",
+    "fractionalCbo": {
+      "title": "Fractional CBO Services",
+      "description": "Expert governance execution without full-time overhead—save 65–80%.",
+      "cta": "Learn More"
+    }
+  },
+  "toolsPreview": {
+    "title": "Which Assessment Is Right For You?",
+    "subtitle": "Free tools to clarify your operational health in minutes",
+    "time": "Time",
+    "tryAll": "Try All 8 Tools → Tools Page",
+    "operationalHealth": "Operational Health Check",
+    "costLeakage": "Cost Leakage Estimator",
+    "breakeven": "Break-Even Calculator",
+    "scaleReadiness": "Scale Readiness Analyzer",
+    "startDiagnostic": "Start Diagnostic",
+    "findLeakage": "Find Leakage",
+    "calculateBEP": "Calculate BEP",
+    "checkReadiness": "Check Readiness"
+  },
+  "proof": {
+    "title": "Proven Results, Quantified Outcomes",
+    "subtitle": "Real businesses, real transformations",
+    "stat1": "Operational Improvements",
+    "stat2": "Annual Cost Savings",
+    "stat3": "Successful Case Studies",
+    "stat4": "vs Full-Time CXO Cost",
+    "testimonial": "TwelfthKey's SaaS platform helped us improve prediction accuracy by 35% and save ₹45L annually. Execution changed from chaotic to governed in 90 days.",
+    "testimonialAuthor": "— Chief Business Officer, Leading Bank (anonymized)"
+  },
+  "praxioPreview": {
+    "title": "Experience PraXio™—Your Governance Command Center",
+    "subtitle": "Real-time dashboards, automated reporting, AI-driven insights",
+    "f1Title": "Real-time Visibility",
+    "f1Desc": "Every task, update, KPI visible and governable in seconds.",
+    "f2Title": "Automated Reporting",
+    "f2Desc": "Eliminate manual updates—PraXio™ auto-generates governance reports.",
+    "f3Title": "AI Anomaly Detection",
+    "f3Desc": "Predictive alerts spot issues before they spiral into crises.",
+    "requestDemo": "Request PraXio™ Demo",
+    "startTrial": "Start Free Trial"
+  },
+  "caseStudyPreview": {
+    "title": "Success Stories From Your Industry",
+    "subtitle": "Discover how we transformed operations across banking, FinTech, and beyond",
+    "challenge": "Challenge:",
+    "result": "Result:",
+    "readFullStory": "Read Full Story",
+    "banking": {
+      "title": "Banking Operations",
+      "challenge": "Process errors slowing transactions, compliance gaps",
+      "result": "68% error reduction, audit findings → near zero"
+    },
+    "fintech": {
+      "title": "FinTech Scale-Up",
+      "challenge": "Cost leakage + weak governance oversight",
+      "result": "₹44L cost recovery in 3 months, governance score 62 → 92"
+    },
+    "telecom": {
+      "title": "Telecom Transformation",
+      "challenge": "Customer onboarding bottlenecks limiting growth",
+      "result": "3x capacity increase, customer churn ↓ 21%"
+    }
+  },
+  "finalCta": {
+    "title": "Ready to Transform Your Operations?",
+    "subtitle": "Get started with a free, no-obligation discovery call",
+    "bookCall": "Book Your Discovery Call",
+    "tryDiagnostic": "Try Free Diagnostic",
+    "exploreServices": "Explore Services",
+    "disclaimer": "No credit card required. No sales pressure. Just clarity."
+  }
+}

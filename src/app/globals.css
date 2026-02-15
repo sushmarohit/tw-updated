@@ -73,7 +73,7 @@
   }
 
   .input-error {
-    @apply border-error-500 focus:ring-error-500 focus:border-error-500 animate-shake;
+    @apply border-error focus:ring-error focus:border-error animate-shake;
   }
 
   /* Typography */

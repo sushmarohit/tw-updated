@@ -3,21 +3,17 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
-const slides = [
-  'Eliminate operational chaos and gain clarity.',
-  'Measure what matters—get real-time governance scores.',
-  'Unlock 35–59% efficiency improvements in 90 days.',
-  'Automate your business health check—instant, actionable insights.',
-  'Scale with predictive analytics. No guesswork, just results.',
-];
+const slideKeys = ['slide1', 'slide2', 'slide3', 'slide4', 'slide5'] as const;
 
 export function SliderSection() {
+  const { t } = useTranslation('home');
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % slides.length);
+      setCurrentIndex((prev) => (prev + 1) % slideKeys.length);
     }, 5000);
 
     return () => clearInterval(interval);
@@ -28,11 +24,11 @@ export function SliderSection() {
   };
 
   const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
+    setCurrentIndex((prev) => (prev - 1 + slideKeys.length) % slideKeys.length);
   };
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % slides.length);
+    setCurrentIndex((prev) => (prev + 1) % slideKeys.length);
   };
 
   return (
@@ -49,22 +45,23 @@ export function SliderSection() {
                 transition={{ duration: 0.5 }}
                 className="text-center w-full"
               >
-                <h1 className="text-balance text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight animate-fade-in">{slides[currentIndex]}</h1>
+                <h1 className="text-balance text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight animate-fade-in">
+                  {t(`slider.${slideKeys[currentIndex]}`)}
+                </h1>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Navigation */}
           <div className="flex items-center justify-center gap-4 mt-4">
             <button
               onClick={goToPrevious}
               className="p-2 hover:bg-navy-400 rounded-lg transition-colors focus-visible-ring"
-              aria-label="Previous slide"
+              aria-label={t('slider.prevAria')}
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <div className="flex gap-2">
-              {slides.map((_, index) => (
+              {slideKeys.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
@@ -73,14 +70,14 @@ export function SliderSection() {
                       ? 'w-8 bg-gold-300'
                       : 'w-2 bg-gray-400 hover:bg-gray-300'
                   }`}
-                  aria-label={`Go to slide ${index + 1}`}
+                  aria-label={`${t('slider.goToAria')} ${index + 1}`}
                 />
               ))}
             </div>
             <button
               onClick={goToNext}
               className="p-2 hover:bg-navy-400 rounded-lg transition-colors focus-visible-ring"
-              aria-label="Next slide"
+              aria-label={t('slider.nextAria')}
             >
               <ChevronRight className="w-5 h-5" />
             </button>

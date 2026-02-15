@@ -4,6 +4,7 @@
   "requestLiveDemo": "Request Live Demo",
   "startFreeTrial": "Start Free Trial",
   "calendlyNotConfigured": "Calendly integration not configured. Please use the form below.",
+  "bookingNotConfigured": "Google Calendar booking is not configured. Please use the form below.",
   "name": "Name",
   "email": "Email",
   "company": "Company",

@@ -40,7 +40,9 @@ describe('/api/health', () => {
   it('should include environment variable status', async () => {
     process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://test.supabase.co';
     process.env.HUBSPOT_API_KEY = 'test-key';
-    process.env.SENDGRID_API_KEY = 'test-key';
+    process.env.SMTP_HOST = 'smtp.test.com';
+    process.env.SMTP_USER = 'user';
+    process.env.SMTP_PASSWORD = 'pass';
     process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID = 'G-TEST';
 
     (prisma.$queryRaw as jest.Mock).mockResolvedValueOnce([{ '?column?': 1 }]);
@@ -50,7 +52,7 @@ describe('/api/health', () => {
 
     expect(data.environment).toHaveProperty('supabase', true);
     expect(data.environment).toHaveProperty('hubspot', true);
-    expect(data.environment).toHaveProperty('sendgrid', true);
+    expect(data.environment).toHaveProperty('nodemailer', true);
     expect(data.environment).toHaveProperty('ga4', true);
   });
 

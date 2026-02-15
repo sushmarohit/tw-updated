@@ -108,24 +108,26 @@ export async function POST(request: NextRequest) {
         console.error('HubSpot sync error:', error);
       });
     }
-/////////////////////////
-    // Send email with report and PDF attachment (async, don't wait)
-    if (userInfo?.email && sessionId) {
-      const reportUrl = `${process.env.NEXT_PUBLIC_APP_URL}/consulting/tools/health-check/report/${sessionId}`;
-      
-      // Generate PDF and send via email
+
+    // Send PDF report to user's email when they click "Get Full Report" (async, don't wait)
+    if (userInfo?.email) {
+      const baseUrl = process.env.NEXT_PUBLIC_APP_URL || '';
+      const reportUrl = sessionId
+        ? `${baseUrl}/consulting/tools/health-check/report/${sessionId}`
+        : `${baseUrl}/consulting/tools/health-check`;
+
       generateCalculatorPDFBuffer('Operational Health Diagnostic', result, userInfo)
-        .then((pdfBuffer) => {
-          return sendCalculatorReportEmail(
+        .then((pdfBuffer) =>
+          sendCalculatorReportEmail(
             userInfo.email!,
             'Operational Health Diagnostic',
             reportUrl,
             userInfo.name,
             pdfBuffer
-          );
-        })
+          )
+        )
         .catch((error) => {
-          console.error('Email send error:', error);
+          console.error('Operational health report email error:', error);
         });
     }
 

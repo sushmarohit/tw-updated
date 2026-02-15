@@ -207,7 +207,7 @@ export async function sendCalculatorReportEmail(
             </p>
             <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
             <p style="color: #6B7280; font-size: 12px; text-align: center;">
-              © 2025 TwelfthKey Consulting. All rights reserved.
+              © 2026 TwelfthKey Consulting. All rights reserved.
             </p>
           </div>
         </div>
@@ -270,7 +270,7 @@ export async function sendDiscoveryCallConfirmation(
             </p>
             <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
             <p style="color: #6B7280; font-size: 12px; text-align: center;">
-              © 2025 TwelfthKey Consulting. All rights reserved.
+              © 2026 TwelfthKey Consulting. All rights reserved.
             </p>
           </div>
         </div>
@@ -306,4 +306,106 @@ export async function sendEmailWithAttachment(
     attachments: [attachment],
     fromName,
   });
+}
+
+export interface ContactFormPayload {
+  name: string;
+  email: string;
+  phone?: string;
+  company?: string;
+  service?: string;
+  message: string;
+}
+
+/**
+ * Send contact form submission to admin (and optional confirmation to user)
+ */
+export async function sendContactFormEmail(
+  payload: ContactFormPayload,
+  options: {
+    adminEmail: string;
+    sendConfirmationToUser?: boolean;
+  }
+): Promise<boolean> {
+  const { adminEmail, sendConfirmationToUser = true } = options;
+
+  const adminHtml = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+          <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+            <h1 style="margin: 0;">New Contact Form Submission</h1>
+          </div>
+          <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
+            <p><strong>Name:</strong> ${escapeHtml(payload.name)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
+            ${payload.phone ? `<p><strong>Phone:</strong> ${escapeHtml(payload.phone)}</p>` : ''}
+            ${payload.company ? `<p><strong>Company:</strong> ${escapeHtml(payload.company)}</p>` : ''}
+            ${payload.service ? `<p><strong>Service:</strong> ${escapeHtml(payload.service)}</p>` : ''}
+            <p><strong>Message:</strong></p>
+            <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #C7A566; white-space: pre-wrap;">${escapeHtml(payload.message)}</div>
+            <p style="color: #6B7280; font-size: 12px; margin-top: 20px;">Submitted at ${new Date().toISOString()}</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+
+  const adminSent = await sendEmail({
+    to: adminEmail,
+    subject: `Contact form: ${payload.name} - ${payload.service || 'General enquiry'}`,
+    html: adminHtml,
+  });
+
+  if (!adminSent) return false;
+
+  if (sendConfirmationToUser) {
+    const userHtml = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
+          <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+            <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+              <h1 style="margin: 0;">TwelfthKey Consulting</h1>
+            </div>
+            <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
+              <h2 style="color: #1E3A5F;">We received your message</h2>
+              <p>Hi ${escapeHtml(payload.name)},</p>
+              <p>Thank you for getting in touch. We have received your message and will get back to you as soon as possible.</p>
+              <p style="color: #6B7280; font-size: 14px;">If you have any urgent questions, please reply to this email.</p>
+              <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
+              <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey Consulting. All rights reserved.</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+    await sendEmail({
+      to: payload.email,
+      subject: 'We received your message - TwelfthKey Consulting',
+      html: userHtml,
+    });
+  }
+
+  return true;
+}
+
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
+  return text.replace(/[&<>"']/g, (c) => map[c] ?? c);
 }

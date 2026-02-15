@@ -9,7 +9,12 @@ const languages = [
   { code: 'hi', name: 'Hindi', nativeName: 'हिंदी' },
 ];
 
-export function LanguageSwitcher() {
+export interface LanguageSwitcherProps {
+  /** Use 'dark' when placed on a dark background (e.g. mobile menu panel) */
+  variant?: 'default' | 'dark';
+}
+
+export function LanguageSwitcher({ variant = 'default' }: LanguageSwitcherProps) {
   const { i18n, ready } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -23,21 +28,29 @@ export function LanguageSwitcher() {
     ? languages.find((lang) => lang.code === i18n.language) || languages[0]
     : languages[0];
 
-  const changeLanguage = (langCode: string) => {
-    i18n.changeLanguage(langCode);
+  const changeLanguage = async (langCode: string) => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('i18nextLng', langCode);
+    }
     setIsOpen(false);
-    // Update HTML lang attribute
+    await i18n.changeLanguage(langCode);
     if (typeof document !== 'undefined') {
-      document.documentElement.lang = langCode;
+      document.documentElement.lang = i18n.language;
     }
   };
+
+  const isDark = variant === 'dark';
 
   return (
     <div className="relative">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-center w-10 h-10 text-navy-500 hover:text-gold-300 hover:bg-gray-100 transition-colors focus-visible-ring rounded-lg font-semibold text-sm"
+        className={`flex items-center justify-center w-10 h-10 font-semibold text-sm transition-colors focus-visible-ring rounded-lg ${
+          isDark
+            ? 'text-white hover:text-gold-300 hover:bg-white/10'
+            : 'text-navy-500 hover:text-gold-300 hover:bg-gray-100'
+        }`}
         aria-label="Select language"
         aria-expanded={isOpen}
       >

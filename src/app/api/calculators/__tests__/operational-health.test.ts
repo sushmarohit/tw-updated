@@ -4,7 +4,7 @@
 import { POST } from '../operational-health/route';
 import { prisma } from '@/lib/db';
 import { upsertHubSpotContact } from '@/lib/integrations/hubspot';
-import { sendCalculatorReportEmail } from '@/lib/integrations/sendgrid';
+import { sendCalculatorReportEmail } from '@/lib/integrations/nodemailer';
 
 // Mock dependencies
 jest.mock('@/lib/db', () => ({
@@ -25,7 +25,7 @@ jest.mock('@/lib/db', () => ({
 }));
 
 jest.mock('@/lib/integrations/hubspot');
-jest.mock('@/lib/integrations/sendgrid');
+jest.mock('@/lib/integrations/nodemailer');
 
 const mockPrisma = prisma as jest.Mocked<typeof prisma>;
 const mockUpsertHubSpotContact = upsertHubSpotContact as jest.MockedFunction<typeof upsertHubSpotContact>;

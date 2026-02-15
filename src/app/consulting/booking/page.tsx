@@ -1,15 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
-import Script from 'next/script';
 import { useTranslation } from 'react-i18next';
 
 export default function BookingPage() {
   const { t } = useTranslation('common');
-
-  useEffect(() => {
-    // Calendly will auto-initialize when script loads
-  }, []);
+  const bookingUrl = process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_BOOKING_URL;
 
   return (
     <div className="min-h-screen bg-gray-50 section-padding">
@@ -22,16 +17,17 @@ export default function BookingPage() {
         </div>
 
         <div className="card">
-          {process.env.NEXT_PUBLIC_CALENDLY_URL ? (
-            <div
-              className="calendly-inline-widget"
-              data-url={process.env.NEXT_PUBLIC_CALENDLY_URL}
-              style={{ minHeight: '700px', width: '100%' }}
+          {bookingUrl ? (
+            <iframe
+              src={bookingUrl}
+              title={t('bookYourDiscoveryCall')}
+              className="w-full border-0 rounded-lg"
+              style={{ minHeight: '700px' }}
             />
           ) : (
             <div className="text-center py-8">
               <p className="body-default text-gray-600 mb-4">
-                {t('calendlyNotConfigured')}
+                {t('bookingNotConfigured')}
               </p>
               <a href="mailto:contact@twelfthkey.com" className="text-teal-500 hover:underline">
                 contact@twelfthkey.com
@@ -39,13 +35,7 @@ export default function BookingPage() {
             </div>
           )}
         </div>
-
-        <Script
-          src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="lazyOnload"
-        />
       </div>
     </div>
   );
 }
-

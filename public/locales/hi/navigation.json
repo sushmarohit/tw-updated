@@ -1,12 +1,14 @@
 {
   "home": "होम",
   "services": "सेवाएं",
+  "selectService": "सेवा चुनें",
   "framework": "फ्रेमवर्क",
   "praxio": "PraXio™",
   "caseStudies": "केस स्टडीज",
   "tools": "टूल्स",
   "resources": "संसाधन",
   "about": "हमारे बारे में",
+  "faq": "FAQ",
   "contact": "संपर्क करें",
   "businessOperationalAssessment": "व्यावसायिक परिचालन मूल्यांकन",
   "operationalExcellenceFoundation": "परिचालन उत्कृष्टता नींव",
@@ -23,4 +25,3 @@
   "dataProcessingAgreement": "डेटा प्रसंस्करण समझौता",
   "disputeResolution": "विवाद समाधान"
 }
-

@@ -19,7 +19,7 @@ export function HeroSection() {
           </p>
           <p className="body-default mb-8 text-gold-300 italic">
             <span className="block">"{t('hero:quote').split('. ')[0]}"</span>
-            <span className="block">{t('hero:quote').split('. ').slice(1).join('. ')}"™</span>
+            {/* <span className="block">{t('hero:quote').split('. ').slice(1).join('. ')}"</span> */}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="primary" asChild size="lg">

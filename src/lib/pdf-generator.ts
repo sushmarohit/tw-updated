@@ -117,7 +117,7 @@ export async function generatePDFReport(options: PDFReportOptions): Promise<Blob
     doc.setFontSize(8);
     doc.setTextColor(150, 150, 150);
     doc.text(
-      options.footerText || '© 2025 TwelfthKey Consulting. All rights reserved.',
+      options.footerText || '© 2026 TwelfthKey Consulting. All rights reserved.',
       pageWidth / 2,
       pageHeight - 10,
       { align: 'center' }
@@ -290,7 +290,7 @@ export async function generatePDFReportBuffer(options: PDFReportOptions): Promis
     doc.setFontSize(8);
     doc.setTextColor(150, 150, 150);
     doc.text(
-      options.footerText || '© 2025 TwelfthKey Consulting. All rights reserved.',
+      options.footerText || '© 2026 TwelfthKey Consulting. All rights reserved.',
       pageWidth / 2,
       pageHeight - 10,
       { align: 'center' }

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "postinstall": "prisma generate",
-    "build": "next build",
+    "build": "node scripts/bundle-en-locales.cjs && next build",
+    "locales:bundle": "node scripts/bundle-en-locales.cjs",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",

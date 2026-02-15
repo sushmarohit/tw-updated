@@ -9,15 +9,17 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from '@/components/ui/language-switcher';
 import { cn } from '@/lib/utils';
+import { serviceCategories } from '@/lib/services-catalog';
+import { caseStudyTabs, type CaseStudyTabKey } from '@/lib/case-studies-catalog';
 
 const navigationKeys = [
   // { key: 'home', href: '/' },
   { key: 'services', href: '/consulting/services' },
-  { key: 'framework', href: '/consulting/framework' },
-  { key: 'praxio', href: '/consulting/praxio' },
+  // { key: 'framework', href: '/consulting/framework' },
+  // { key: 'praxio', href: '/consulting/praxio' },
   { key: 'caseStudies', href: '/consulting/case-studies/hub' },
   { key: 'tools', href: '/consulting/tools/hub' },
-  { key: 'resources', href: '/consulting/resources' },
+  { key: 'resources', href: '/consulting/resource' },
   { key: 'about', href: '/consulting/about' },
   { key: 'contact', href: '/consulting/contact' },
 ];
@@ -26,6 +28,10 @@ export function Header() {
   const { t } = useTranslation(['navigation', 'common']);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false);
+  const [activeServicesCategory, setActiveServicesCategory] = useState(serviceCategories[0]?.slug ?? '');
+  const [isCaseStudiesMenuOpen, setIsCaseStudiesMenuOpen] = useState(false);
+  const [activeCaseStudiesTab, setActiveCaseStudiesTab] = useState<CaseStudyTabKey>('process-excellence-solutions');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -71,28 +77,210 @@ export function Header() {
           aria-label="TwelfthKey Consulting Home"
         >
           <div className="w-16 h-10 sm:w-20 lg:w-20 xl:w-24 lg:h-10  rounded-lg flex flex-col items-center justify-center ">
-            <img src='/tw_logo.jpeg' alt='logo' className=' rounded-3xl'/>
+            <img src='/tw_logo_no_bg.webp' alt='logo' className=' rounded-3xl'/>
           </div>
-            <div className="hidden xl:flex flex-col  ">
-              <span className="text-navy-500 font-bold text-sm lg:text-xl ">TwelfthKey</span>
-          <span className="font-serif font-bold text-xl text-navy-500 hidden lg:block">
-            Win the Operations Game
-          </span>
+            <div className="flex flex-col">
+              <span className="text-navy-500 font-bold text-sm lg:text-xl">TwelfthKey</span>
+              <span className="font-serif font-bold text-xl text-navy-500 hidden lg:block">
+                Win the Operations Game
+              </span>
             </div>
         </Link>
 
         {/* Desktop & Tablet Navigation - Compact on tablet, full on desktop */}
-        <div className="hidden md:flex items-center space-x-0.5 md:space-x-1 lg:space-x-1.5 xl:space-x-2 flex-shrink-0 overflow-x-auto scrollbar-hide max-w-[calc(100vw-200px)] lg:max-w-[calc(100vw-240px)] xl:max-w-none">
-          {navigationKeys.map((item) => (
-            <Link
-              key={item.key}
-              href={item.href}
-              className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-body-default text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap flex-shrink-0"
-              suppressHydrationWarning
-            >
-              {t(`navigation:${item.key}`)}
-            </Link>
-          ))}
+        <div className="hidden md:flex items-center space-x-0.5 md:space-x-1 lg:space-x-1.5 xl:space-x-2 flex-shrink-0">
+          {navigationKeys.map((item) => {
+            if (item.key === 'services') {
+              if (!serviceCategories.length) {
+                return null;
+              }
+
+              const activeCategory =
+                serviceCategories.find((category) => category.slug === activeServicesCategory) ?? serviceCategories[0];
+
+              return (
+                <div
+                  key={item.key}
+                  className="relative flex-shrink-0"
+                  onMouseEnter={() => {
+                    setIsServicesMenuOpen(true);
+                    if (!activeServicesCategory && serviceCategories[0]) {
+                      setActiveServicesCategory(serviceCategories[0].slug);
+                    }
+                  }}
+                  onMouseLeave={() => setIsServicesMenuOpen(false)}
+                >
+                  <Link
+                    href={item.href}
+                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-body-default text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap block"
+                    suppressHydrationWarning
+                  >
+                    {t(`navigation:${item.key}`)}
+                  </Link>
+
+                  <AnimatePresence>
+                    {isServicesMenuOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.16 }}
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[min(94vw,980px)] rounded-2xl bg-white border border-gray-200 shadow-2xl p-5 z-[120]"
+                      >
+                        <div className="grid grid-cols-12 gap-5">
+                          <div className="col-span-5 space-y-3 border-r border-gray-100 pr-4">
+                            {serviceCategories.map((category) => (
+                              <div
+                                key={category.slug}
+                                onMouseEnter={() => setActiveServicesCategory(category.slug)}
+                                className={cn(
+                                  'rounded-xl border p-3 transition-colors',
+                                  activeCategory.slug === category.slug
+                                    ? 'border-teal-200 bg-teal-50'
+                                    : 'border-gray-100 bg-white hover:bg-gray-50'
+                                )}
+                              >
+                                <Link
+                                  href={`/consulting/services/${category.slug}`}
+                                  className="block focus-visible-ring rounded"
+                                >
+                                  <p className="text-sm font-semibold text-navy-500">{category.title}</p>
+                                  <p className="text-xs text-gray-600 mt-1 leading-relaxed">{category.description}</p>
+                                </Link>
+                                <div className="mt-3 flex flex-wrap gap-2">
+                                  <Link
+                                    href={category.primaryCta.href}
+                                    className="text-[11px] px-2 py-1 rounded-md bg-gold-300 text-white hover:bg-gold-400 transition-colors"
+                                  >
+                                    {category.primaryCta.title}
+                                  </Link>
+                                  <Link
+                                    href={category.secondaryCta.href}
+                                    className="text-[11px] px-2 py-1 rounded-md border border-teal-500 text-teal-600 hover:bg-teal-50 transition-colors"
+                                  >
+                                    {category.secondaryCta.title}
+                                  </Link>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+
+                          <div className="col-span-7">
+                            <p className="text-xs uppercase tracking-wide text-gray-500 mb-3">Sub-services</p>
+                            <div className="grid grid-cols-1 gap-2">
+                              {activeCategory.items.map((subItem) => (
+                                <Link
+                                  key={subItem.href}
+                                  href={subItem.href}
+                                  className="rounded-lg border border-gray-100 p-3 text-sm text-navy-500 hover:bg-gray-50 hover:border-teal-200 transition-colors"
+                                >
+                                  {subItem.title}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
+            if (item.key === 'caseStudies') {
+              const activeTab = caseStudyTabs.find((tab) => tab.key === activeCaseStudiesTab) ?? caseStudyTabs[0];
+              const topCards = activeTab.cards.slice(0, 3);
+
+              return (
+                <div
+                  key={item.key}
+                  className="relative flex-shrink-0"
+                  onMouseEnter={() => setIsCaseStudiesMenuOpen(true)}
+                  onMouseLeave={() => setIsCaseStudiesMenuOpen(false)}
+                >
+                  <Link
+                    href={item.href}
+                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-body-default text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap block"
+                    suppressHydrationWarning
+                  >
+                    {t(`navigation:${item.key}`)}
+                  </Link>
+
+                  <AnimatePresence>
+                    {isCaseStudiesMenuOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.16 }}
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[min(94vw,960px)] max-h-[min(85vh,520px)] flex flex-col rounded-2xl bg-white border border-gray-200 shadow-2xl z-[120] overflow-hidden"
+                      >
+                        <div className="flex flex-wrap gap-2 p-5 pb-3 flex-shrink-0">
+                          {caseStudyTabs.map((tab) => (
+                            <button
+                              key={tab.key}
+                              type="button"
+                              onMouseEnter={() => setActiveCaseStudiesTab(tab.key)}
+                              className={cn(
+                                'px-3 py-1.5 rounded-full border text-xs font-semibold transition-colors',
+                                tab.key === activeTab.key
+                                  ? 'bg-teal-500 text-white border-teal-500'
+                                  : 'bg-white text-navy-500 border-gray-200 hover:border-teal-300'
+                              )}
+                            >
+                              {tab.label}
+                            </button>
+                          ))}
+                        </div>
+
+                        <div className="px-5 pb-5 pt-1 overflow-y-auto flex-1 min-h-0">
+                        {topCards.length > 0 ? (
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pr-20 pb-1 items-stretch">
+                            {topCards.map((card) => (
+                              <Link
+                                key={card.slug}
+                                href={`/consulting/case-studies/${card.slug}`}
+                                className="rounded-xl border border-gray-100 p-3.5 hover:bg-gray-50 hover:border-teal-200 transition-colors min-h-[10rem] flex flex-col"
+                              >
+                                <p className="text-xs text-teal-700 font-semibold mb-1.5">{card.industryTag}</p>
+                                <p className="text-sm text-navy-500 font-semibold mb-1.5 line-clamp-2 leading-snug">{card.title}</p>
+                                <p className="text-xs text-gray-600 leading-relaxed mt-auto">{card.outcome}</p>
+                              </Link>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-600">
+                            Case studies for this tab are being added.
+                          </div>
+                        )}
+
+                        <div className="mt-4 flex-shrink-0">
+                          <Link
+                            href={`/consulting/case-studies/hub?tab=${activeTab.key}`}
+                            className="text-sm font-semibold text-teal-600 hover:text-teal-700"
+                          >
+                            View all
+                          </Link>
+                        </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={item.key}
+                href={item.href}
+                className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-body-default text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap flex-shrink-0"
+                suppressHydrationWarning
+              >
+                {t(`navigation:${item.key}`)}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Desktop & Tablet CTAs */}
@@ -117,20 +305,23 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          type="button"
-          className="md:hidden p-2 text-navy-500 focus-visible-ring rounded-lg"
-          aria-label="Toggle menu"
-          aria-expanded={isMobileMenuOpen}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? (
-            <X className="w-6 h-6" aria-hidden="true" />
-          ) : (
-            <Menu className="w-6 h-6" aria-hidden="true" />
-          )}
-        </button>
+        {/* Mobile: Language switcher + Menu button */}
+        <div className="flex md:hidden items-center gap-0.5">
+          <LanguageSwitcher />
+          <button
+            type="button"
+            className="p-2 text-navy-500 focus-visible-ring rounded-lg"
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" aria-hidden="true" />
+            ) : (
+              <Menu className="w-6 h-6" aria-hidden="true" />
+            )}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu Overlay - Rendered via Portal */}
@@ -188,7 +379,7 @@ export function Header() {
 
                   <div className="mt-8 space-y-4">
                     <div className="px-2">
-                      <LanguageSwitcher />
+                      <LanguageSwitcher variant="dark" />
                     </div>
                     <Button
                       variant="secondary"

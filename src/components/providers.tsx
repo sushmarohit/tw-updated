@@ -6,20 +6,23 @@ import i18n from '@/i18n/config';
 import { AnalyticsProvider } from './analytics/analytics-provider';
 import { ErrorBoundary } from './error-handling/error-boundary';
 import { ChatProvider } from './chat/chat-provider';
+import { RouteChangeProvider } from './layout/route-change-provider';
+import { SplashScreen } from './layout/splash-screen';
 
 interface ProvidersProps {
   children: ReactNode;
 }
 
 export function Providers({ children }: ProvidersProps) {
-  // Ensure i18n is initialized (it's already initialized in config.ts)
-  // The I18nextProvider will handle hydration properly
   return (
     <I18nextProvider i18n={i18n}>
       <ErrorBoundary>
         <AnalyticsProvider>
           <ChatProvider>
-            {children}
+            <RouteChangeProvider>
+              <SplashScreen />
+              {children}
+            </RouteChangeProvider>
           </ChatProvider>
         </AnalyticsProvider>
       </ErrorBoundary>
