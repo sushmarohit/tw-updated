@@ -13,7 +13,7 @@ export default function GovernanceServicePage() {
   const { t } = useTranslation(['services-governance', 'services', 'common']);
   return (
     <>
-      <PageSchema breadcrumbNameMap={{ consulting: 'Consulting', services: 'Services', governance: 'Governance Intelligence Program' }} />
+      <PageSchema breadcrumbNameMap={{ consulting: t('common:consulting'), services: t('services:title'), governance: t('services-governance:title') }} />
       <ServiceSchema
         service={{
           name: t('services-governance:title'),

@@ -1,6 +1,8 @@
 {
   "title": "Our Services",
   "subtitle": "Choose the engagement model that fits your needs",
+  "servicesInThisTrack": "Services in this track",
+  "viewDetails": "View details",
   "businessOperationalAssessment": {
     "name": "Business Operational Assessment",
     "description": "Root cause analysis and prioritized roadmap"

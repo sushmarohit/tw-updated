@@ -46,7 +46,7 @@ export default function HomePage() {
       <CoreOfferingsSection />
       <ToolsPreviewSection />
       <ProofSection />
-      <PraxioPreviewSection />
+      {/* <PraxioPreviewSection /> */}
       <CaseStudyPreviewSection />
       <FinalCTASection />
     </>

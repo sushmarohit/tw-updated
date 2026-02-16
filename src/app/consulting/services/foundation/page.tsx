@@ -13,7 +13,7 @@ export default function FoundationServicePage() {
   const { t } = useTranslation(['services-foundation', 'services', 'common']);
   return (
     <>
-      <PageSchema breadcrumbNameMap={{ consulting: 'Consulting', services: 'Services', foundation: 'Operational Excellence Foundation' }} />
+      <PageSchema breadcrumbNameMap={{ consulting: t('common:consulting'), services: t('services:title'), foundation: t('services-foundation:title') }} />
       <ServiceSchema
         service={{
           name: t('services-foundation:title'),

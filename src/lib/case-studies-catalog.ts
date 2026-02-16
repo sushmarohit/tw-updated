@@ -3,6 +3,13 @@ export type CaseStudyTabKey =
   | 'fundraise-execution'
   | 'franchise-scale-expansion';
 
+/** Map tab key to case-studies-catalog translation key */
+export const caseStudyTabKeyToCatalogKey: Record<CaseStudyTabKey, string> = {
+  'process-excellence-solutions': 'processExcellence',
+  'fundraise-execution': 'fundraise',
+  'franchise-scale-expansion': 'franchise',
+};
+
 export interface CaseStudyCard {
   slug: string;
   title: string;

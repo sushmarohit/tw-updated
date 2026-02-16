@@ -13,7 +13,7 @@ export default function FractionalCBOPage() {
   const { t } = useTranslation(['services-fractional-cbo', 'services', 'common']);
   return (
     <>
-      <PageSchema breadcrumbNameMap={{ consulting: 'Consulting', services: 'Services', 'fractional-cbo': 'Fractional CBO Services' }} />
+      <PageSchema breadcrumbNameMap={{ consulting: t('common:consulting'), services: t('services:title'), 'fractional-cbo': t('services-fractional-cbo:title') }} />
       <ServiceSchema
         service={{
           name: t('services-fractional-cbo:title'),

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
@@ -9,23 +9,21 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from '@/components/ui/language-switcher';
 import { cn } from '@/lib/utils';
-import { serviceCategories } from '@/lib/services-catalog';
-import { caseStudyTabs, type CaseStudyTabKey } from '@/lib/case-studies-catalog';
+import { serviceCategories, serviceCategorySlugToKey } from '@/lib/services-catalog';
+import { caseStudyTabs, caseStudyTabKeyToCatalogKey, type CaseStudyTabKey } from '@/lib/case-studies-catalog';
 
 const navigationKeys = [
-  // { key: 'home', href: '/' },
   { key: 'services', href: '/consulting/services' },
-  // { key: 'framework', href: '/consulting/framework' },
-  // { key: 'praxio', href: '/consulting/praxio' },
   { key: 'caseStudies', href: '/consulting/case-studies/hub' },
   { key: 'tools', href: '/consulting/tools/hub' },
-  { key: 'resources', href: '/consulting/resource' },
+  { key: 'resources', href: '/consulting/resources' },
+  { key: 'faq', href: '/consulting/faq' },
   { key: 'about', href: '/consulting/about' },
   { key: 'contact', href: '/consulting/contact' },
 ];
 
 export function Header() {
-  const { t } = useTranslation(['navigation', 'common']);
+  const { t } = useTranslation(['navigation', 'common', 'services-catalog', 'case-studies-catalog']);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false);
@@ -33,6 +31,26 @@ export function Header() {
   const [isCaseStudiesMenuOpen, setIsCaseStudiesMenuOpen] = useState(false);
   const [activeCaseStudiesTab, setActiveCaseStudiesTab] = useState<CaseStudyTabKey>('process-excellence-solutions');
   const [mounted, setMounted] = useState(false);
+
+  const translatedServiceCategories = useMemo(
+    () =>
+      serviceCategories.map((cat) => {
+        const key = serviceCategorySlugToKey[cat.slug];
+        if (!key) return cat;
+        return {
+          ...cat,
+          title: t('services-catalog:' + key + '.title'),
+          description: t('services-catalog:' + key + '.description'),
+          primaryCta: { ...cat.primaryCta, title: t('services-catalog:' + key + '.primaryCta') },
+          secondaryCta: { ...cat.secondaryCta, title: t('services-catalog:' + key + '.secondaryCta') },
+          items: cat.items.map((item, i) => ({
+            ...item,
+            title: t('services-catalog:' + key + '.item' + (i + 1)),
+          })),
+        };
+      }),
+    [t]
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -96,7 +114,7 @@ export function Header() {
               }
 
               const activeCategory =
-                serviceCategories.find((category) => category.slug === activeServicesCategory) ?? serviceCategories[0];
+                translatedServiceCategories.find((category) => category.slug === activeServicesCategory) ?? translatedServiceCategories[0];
 
               return (
                 <div
@@ -129,7 +147,7 @@ export function Header() {
                       >
                         <div className="grid grid-cols-12 gap-5">
                           <div className="col-span-5 space-y-3 border-r border-gray-100 pr-4">
-                            {serviceCategories.map((category) => (
+                            {translatedServiceCategories.map((category) => (
                               <div
                                 key={category.slug}
                                 onMouseEnter={() => setActiveServicesCategory(category.slug)}
@@ -166,7 +184,7 @@ export function Header() {
                           </div>
 
                           <div className="col-span-7">
-                            <p className="text-xs uppercase tracking-wide text-gray-500 mb-3">Sub-services</p>
+                            <p className="text-xs uppercase tracking-wide text-gray-500 mb-3" suppressHydrationWarning>{t('services-catalog:subServices')}</p>
                             <div className="grid grid-cols-1 gap-2">
                               {activeCategory.items.map((subItem) => (
                                 <Link
@@ -216,21 +234,25 @@ export function Header() {
                         className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[min(94vw,960px)] max-h-[min(85vh,520px)] flex flex-col rounded-2xl bg-white border border-gray-200 shadow-2xl z-[120] overflow-hidden"
                       >
                         <div className="flex flex-wrap gap-2 p-5 pb-3 flex-shrink-0">
-                          {caseStudyTabs.map((tab) => (
-                            <button
-                              key={tab.key}
-                              type="button"
-                              onMouseEnter={() => setActiveCaseStudiesTab(tab.key)}
-                              className={cn(
-                                'px-3 py-1.5 rounded-full border text-xs font-semibold transition-colors',
-                                tab.key === activeTab.key
-                                  ? 'bg-teal-500 text-white border-teal-500'
-                                  : 'bg-white text-navy-500 border-gray-200 hover:border-teal-300'
-                              )}
-                            >
-                              {tab.label}
-                            </button>
-                          ))}
+                          {caseStudyTabs.map((tab) => {
+                            const catalogKey = caseStudyTabKeyToCatalogKey[tab.key];
+                            return (
+                              <button
+                                key={tab.key}
+                                type="button"
+                                onMouseEnter={() => setActiveCaseStudiesTab(tab.key)}
+                                className={cn(
+                                  'px-3 py-1.5 rounded-full border text-xs font-semibold transition-colors',
+                                  tab.key === activeTab.key
+                                    ? 'bg-teal-500 text-white border-teal-500'
+                                    : 'bg-white text-navy-500 border-gray-200 hover:border-teal-300'
+                                )}
+                                suppressHydrationWarning
+                              >
+                                {t('case-studies-catalog:' + catalogKey + '.label')}
+                              </button>
+                            );
+                          })}
                         </div>
 
                         <div className="px-5 pb-5 pt-1 overflow-y-auto flex-1 min-h-0">
@@ -242,15 +264,15 @@ export function Header() {
                                 href={`/consulting/case-studies/${card.slug}`}
                                 className="rounded-xl border border-gray-100 p-3.5 hover:bg-gray-50 hover:border-teal-200 transition-colors min-h-[10rem] flex flex-col"
                               >
-                                <p className="text-xs text-teal-700 font-semibold mb-1.5">{card.industryTag}</p>
-                                <p className="text-sm text-navy-500 font-semibold mb-1.5 line-clamp-2 leading-snug">{card.title}</p>
-                                <p className="text-xs text-gray-600 leading-relaxed mt-auto">{card.outcome}</p>
+                                <p className="text-xs text-teal-700 font-semibold mb-1.5" suppressHydrationWarning>{t('case-studies-catalog:cards.' + card.slug + '.industryTag')}</p>
+                                <p className="text-sm text-navy-500 font-semibold mb-1.5 line-clamp-2 leading-snug" suppressHydrationWarning>{t('case-studies-catalog:cards.' + card.slug + '.title')}</p>
+                                <p className="text-xs text-gray-600 leading-relaxed mt-auto" suppressHydrationWarning>{t('case-studies-catalog:cards.' + card.slug + '.outcome')}</p>
                               </Link>
                             ))}
                           </div>
                         ) : (
-                          <div className="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-600">
-                            Case studies for this tab are being added.
+                          <div className="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-600" suppressHydrationWarning>
+                            {t('case-studies-catalog:franchise.comingSoon')}
                           </div>
                         )}
 
@@ -258,8 +280,9 @@ export function Header() {
                           <Link
                             href={`/consulting/case-studies/hub?tab=${activeTab.key}`}
                             className="text-sm font-semibold text-teal-600 hover:text-teal-700"
+                            suppressHydrationWarning
                           >
-                            View all
+                            {t('case-studies-catalog:viewAll')}
                           </Link>
                         </div>
                         </div>

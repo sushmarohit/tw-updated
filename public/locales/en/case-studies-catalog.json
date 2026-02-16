@@ -1,0 +1,55 @@
+{
+  "processExcellence": {
+    "label": "Process Excellence Solutions"
+  },
+  "fundraise": {
+    "label": "Fundraise Execution"
+  },
+  "franchise": {
+    "label": "Franchise Scale/Expansion",
+    "comingSoon": "Case studies for this tab are being added."
+  },
+  "viewAll": "View all",
+  "cards": {
+    "pe-serviced-apartments-goa-ops": {
+      "title": "Guest experience was strong-but operations were leaking money.",
+      "industryTag": "Serviced apartments",
+      "outcome": "SOPs + daily closing discipline + complaint SLAs created predictable delivery."
+    },
+    "pe-morjim-restaurant-footfall": {
+      "title": "Footfall dropped after launch-and marketing was 'half-hearted'.",
+      "industryTag": "Restaurant & bar",
+      "outcome": "Marketing execution got governed like operations: KPIs, attribution, cadence, accountability."
+    },
+    "pe-boutique-resort-meta-governance": {
+      "title": "Agency spend was happening, but bookings weren't predictable.",
+      "industryTag": "Boutique resort",
+      "outcome": "Weekly performance governance + data readiness + clear KPIs turned marketing into an operating system."
+    },
+    "pe-real-estate-data-hygiene": {
+      "title": "The project may be real-but the data was not investor-ready.",
+      "industryTag": "Real estate development",
+      "outcome": "Standardized project data pack + tracking discipline so decisions stop depending on guesswork."
+    },
+    "fe-commercial-project-40cr": {
+      "title": "Asset exists, location is strong-but fundraise needed 'DPR-grade' clarity.",
+      "industryTag": "Commercial real estate project",
+      "outcome": "Rebuilt fundraise as milestone-based tranches + risk controls + sharper revenue logic."
+    },
+    "fe-insurance-broker-20cr": {
+      "title": "Strong scale-but the wrong capital story for the wrong mandate.",
+      "industryTag": "Insurance brokerage",
+      "outcome": "Repositioned the raise: ticket sizing, structure, milestones, and investor-fit."
+    },
+    "fe-travel-tech-seed-model": {
+      "title": "Deck existed, but problem statement + burn math didn't.",
+      "industryTag": "Travel + travel-tech",
+      "outcome": "Tightened model sequencing (revenue-first), realistic burn, and milestone-linked ask."
+    },
+    "fe-logistics-app-idea-stage": {
+      "title": "Idea was promising-but not fundable yet.",
+      "industryTag": "Logistics tech",
+      "outcome": "Built a 'make-it-fundable' plan: MVP, revenue proof, partners, and a clean ask."
+    }
+  }
+}

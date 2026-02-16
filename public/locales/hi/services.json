@@ -1,6 +1,8 @@
 {
   "title": "हमारी सेवाएं",
   "subtitle": "अपनी आवश्यकताओं के अनुकूल सगाई मॉडल चुनें",
+  "servicesInThisTrack": "इस ट्रैक में सेवाएं",
+  "viewDetails": "विवरण देखें",
   "businessOperationalAssessment": {
     "name": "व्यापार परिचालन मूल्यांकन",
     "description": "मूल कारण विश्लेषण और प्राथमिकता वाली रोडमैप"

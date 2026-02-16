@@ -1,0 +1,37 @@
+{
+  "processExcellence": {
+    "title": "Process Excellence Solutions",
+    "description": "Fix leakage, speed up execution, and make daily operations predictable—with SOPs, dashboards, and governance routines.",
+    "primaryCta": "Start Free Diagnostic",
+    "secondaryCta": "Book Discovery Call",
+    "item1": "Operational Health Index Report",
+    "item2": "Governance Reporting Setup",
+    "item3": "OpEx Structuring",
+    "item4": "Analytics Visualization Suite",
+    "item5": "Fractional CBO Services"
+  },
+  "fundraise": {
+    "title": "Fundraise Support & Strategy",
+    "description": "Investor-ready documents and fundraising support—clear story, clean numbers, strong readiness.",
+    "primaryCta": "Talk to an Expert",
+    "secondaryCta": "Get TwelfthKey Certified™ Review",
+    "item1": "TwelfthKey Certified™ Verification & Consultation",
+    "item2": "Detailed Project Report (DPR) Development",
+    "item3": "Investor Pitch Deck Development",
+    "item4": "Support & Strategy (Advisory-Only)",
+    "item5": "Fundraise Execution (Full-Service)"
+  },
+  "franchise": {
+    "title": "Franchise Scale/Expansion Strategy & Consultation",
+    "description": "Build a franchise-ready model that's repeatable, legally sound, and easy for franchisees to execute.",
+    "primaryCta": "Check Franchise Readiness",
+    "secondaryCta": "Book Discovery Call",
+    "item1": "Franchise Feasibility & Business Model Design",
+    "item2": "Franchise Operations Manual (FOM) Development",
+    "item3": "Franchise Legal & Compliance Setup",
+    "item4": "Franchisee Recruitment & Onboarding Support",
+    "item5": "Franchise Growth & Performance Management",
+    "item6": "Franchise Expansion Strategy & Master Franchising"
+  },
+  "subServices": "Sub-services"
+}

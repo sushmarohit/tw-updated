@@ -13,7 +13,7 @@ export default function AnalyticsServicePage() {
   const { t } = useTranslation(['services-analytics', 'services', 'common']);
   return (
     <>
-      <PageSchema breadcrumbNameMap={{ consulting: 'Consulting', services: 'Services', analytics: 'Analytics Visualization Suite' }} />
+      <PageSchema breadcrumbNameMap={{ consulting: t('common:consulting'), services: t('services:title'), analytics: t('services-analytics:title') }} />
       <ServiceSchema
         service={{
           name: t('services-analytics:title'),

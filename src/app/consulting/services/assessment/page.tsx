@@ -13,7 +13,7 @@ export default function AssessmentServicePage() {
   const { t } = useTranslation(['services-assessment', 'services', 'common']);
   return (
     <>
-      <PageSchema breadcrumbNameMap={{ consulting: 'Consulting', services: 'Services', assessment: 'Business Operational Assessment' }} />
+      <PageSchema breadcrumbNameMap={{ consulting: t('common:consulting'), services: t('services:title'), assessment: t('services-assessment:title') }} />
       <ServiceSchema
         service={{
           name: t('services-assessment:title'),

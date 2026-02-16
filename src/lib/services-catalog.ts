@@ -28,6 +28,13 @@ export interface ServiceDetailPage {
 
 const ROOT = '/consulting/services';
 
+/** Map category slug to services-catalog translation key */
+export const serviceCategorySlugToKey: Record<string, string> = {
+  'process-excellence-solutions': 'processExcellence',
+  'fundraise-support-strategy': 'fundraise',
+  'franchise-scale-expansion': 'franchise',
+};
+
 export const serviceCategories: ServiceCategory[] = [
   {
     slug: 'process-excellence-solutions',
@@ -508,6 +515,26 @@ export const serviceDetails: ServiceDetailPage[] = [
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
 ];
+
+/** Map service detail slug to services-detail translation key */
+export const serviceDetailSlugToKey: Record<string, string> = {
+  'process-excellence/operational-health-index-report': 'operationalHealthIndexReport',
+  'process-excellence/governance-reporting-setup': 'governanceReportingSetup',
+  'process-excellence/opex-structuring': 'opexStructuring',
+  'process-excellence/analytics-visualization-suite': 'analyticsVisualizationSuite',
+  'process-excellence/fractional-cbo-services': 'fractionalCboServices',
+  'fundraise/twelfthkey-certified-verification-consultation': 'twelfthkeyCertifiedVerificationConsultation',
+  'fundraise/dpr-development': 'dprDevelopment',
+  'fundraise/investor-pitch-deck-development': 'investorPitchDeckDevelopment',
+  'fundraise/support-strategy-advisory': 'supportStrategyAdvisory',
+  'fundraise/fundraise-execution-full-service': 'fundraiseExecutionFullService',
+  'franchise/franchise-feasibility-business-model-design': 'franchiseFeasibilityBusinessModelDesign',
+  'franchise/franchise-operations-manual-development': 'franchiseOperationsManualDevelopment',
+  'franchise/franchise-legal-compliance-setup': 'franchiseLegalComplianceSetup',
+  'franchise/franchisee-recruitment-onboarding-support': 'franchiseeRecruitmentOnboardingSupport',
+  'franchise/franchise-growth-performance-management': 'franchiseGrowthPerformanceManagement',
+  'franchise/franchise-expansion-strategy-master-franchising': 'franchiseExpansionStrategyMasterFranchising',
+};
 
 export function getServiceCategoryBySlug(slug: string) {
   return serviceCategories.find((category) => category.slug === slug);
