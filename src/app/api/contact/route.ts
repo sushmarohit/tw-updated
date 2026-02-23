@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
         phone: phone ?? null,
         company: company ?? null,
         service: service ?? null,
-        interestedIn: interested_in.length > 0 ? interested_in : null,
+        interestedIn: interested_in.length > 0 ? interested_in : undefined,
         heardAboutUs: heard_about_us ?? null,
         message,
       },
