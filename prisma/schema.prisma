@@ -171,14 +171,61 @@ model PDFReport {
 }
 
 model Contact {
-  id        String   @id @default(uuid())
-  name      String   @map("name")
-  email     String   @map("email")
-  phone     String?  @map("phone")
-  company   String?  @map("company")
-  service   String?  @map("service") // selected service from dropdown
-  message   String   @map("message")
-  createdAt DateTime @default(now()) @map("created_at")
+  id            String   @id @default(uuid())
+  name          String   @map("name")
+  email         String   @map("email")
+  phone         String?  @map("phone")
+  company       String?  @map("company")
+  service       String?  @map("service") // primary service from dropdown
+  interestedIn  Json?    @map("interested_in") // array of interest keys, e.g. ["process-excellence", "fundraise"]
+  heardAboutUs  String?  @map("heard_about_us") // referral source
+  message       String   @map("message")
+  createdAt     DateTime @default(now()) @map("created_at")
 
   @@map("contacts")
+}
+
+model BookingRequest {
+  id                String   @id @default(uuid())
+  name              String   @map("name")
+  email             String   @map("email")
+  phone             String?  @map("phone")
+  company           String?  @map("company")
+  preferredDate     String?  @map("preferred_date")   // e.g. "2026-02-25" or free text
+  preferredTimeSlot String?  @map("preferred_time_slot") // e.g. "Morning" or "10:00-11:00"
+  message           String?  @map("message")
+  status            String   @default("requested") @map("status") // requested, confirmed, cancelled
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  @@map("booking_requests")
+}
+
+model NewsletterSubscription {
+  id               String    @id @default(uuid())
+  email            String    @unique @map("email")
+  status           String    @default("pending") @map("status") // pending, confirmed, unsubscribed
+  confirmToken     String?   @map("confirm_token") // for double opt-in; cleared after confirm
+  unsubscribeToken String?   @map("unsubscribe_token") // for one-click unsubscribe in emails
+  consentedAt      DateTime  @map("consented_at") // GDPR/DPDP: when user gave consent
+  source           String?   @map("source") // e.g. "footer", "blog"
+  confirmedAt      DateTime? @map("confirmed_at")
+  createdAt        DateTime  @default(now()) @map("created_at")
+
+  @@map("newsletter_subscriptions")
+}
+
+// Fundraise & Franchise tool submissions (spec Section 6)
+model ToolSubmission {
+  id          String   @id @default(uuid())
+  toolSlug    String   @map("tool_slug")   // e.g. fundraise/runway-check, franchise/readiness
+  input       Json     @map("input")       // calculator inputs
+  result      Json     @map("result")      // calculator outputs
+  email       String?  @map("email")
+  name        String?  @map("name")
+  companyName String?  @map("company_name")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([toolSlug])
+  @@index([createdAt])
+  @@map("tool_submissions")
 }

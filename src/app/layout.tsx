@@ -113,7 +113,7 @@ export default function RootLayout({
               <SkipToContent />
               <NetworkBanner />
               <Header />
-              <main id="main-content" className="relative pt-16 md:pt-20 overflow-x-hidden">{children}</main>
+              <main id="main-content" tabIndex={-1} className="relative pt-16 md:pt-20 overflow-x-hidden" role="main">{children}</main>
               <Footer />
               <MobileStickyCTA />
             </ExitIntentWrapper>

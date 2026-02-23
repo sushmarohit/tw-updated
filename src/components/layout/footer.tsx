@@ -2,7 +2,7 @@
 
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
-import { Linkedin, Twitter, Youtube, MessageCircle } from 'lucide-react';
+import { Linkedin, Facebook, Instagram, MessageCircle } from 'lucide-react';
 
 const quickLinks = [
   { key: 'home', href: '/' },
@@ -37,10 +37,10 @@ const legal = [
 ];
 
 const socialLinks = [
-  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/twelfthkey-consulting' },
-  { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/TwelfthKeyOps' },
-  { name: 'YouTube', icon: Youtube, href: 'https://youtube.com/@twelfthkey' },
-  { name: 'WhatsApp', icon: MessageCircle, href: 'https://wa.me/91XXXXXXXXXX' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/112149124/admin/dashboard/' },
+  { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/twelfthkey/' },
+  { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/twelfthkey' },
+  { name: 'WhatsApp', icon: MessageCircle, href: 'https://wa.me/8424885575' },
 ];
 
 const trustBadgeKeys = [

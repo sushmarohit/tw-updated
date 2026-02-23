@@ -285,6 +285,170 @@ export async function sendDiscoveryCallConfirmation(
   });
 }
 
+export interface BookingRequestPayload {
+  name: string;
+  email: string;
+  phone?: string;
+  company?: string;
+  preferredDate?: string;
+  preferredTimeSlot?: string;
+  message?: string;
+}
+
+/**
+ * Notify admin of a new discovery call / booking request (from POST /api/booking)
+ */
+export async function sendBookingRequestNotification(
+  payload: BookingRequestPayload,
+  adminEmail: string
+): Promise<boolean> {
+  const html = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+          <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+            <h1 style="margin: 0;">New Discovery Call Request</h1>
+          </div>
+          <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
+            <p><strong>Name:</strong> ${escapeHtml(payload.name)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
+            ${payload.phone ? `<p><strong>Phone:</strong> ${escapeHtml(payload.phone)}</p>` : ''}
+            ${payload.company ? `<p><strong>Company:</strong> ${escapeHtml(payload.company)}</p>` : ''}
+            ${payload.preferredDate ? `<p><strong>Preferred date:</strong> ${escapeHtml(payload.preferredDate)}</p>` : ''}
+            ${payload.preferredTimeSlot ? `<p><strong>Preferred time:</strong> ${escapeHtml(payload.preferredTimeSlot)}</p>` : ''}
+            ${payload.message ? `<p><strong>Message:</strong></p><div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #C7A566; white-space: pre-wrap;">${escapeHtml(payload.message)}</div>` : ''}
+            <p style="color: #6B7280; font-size: 12px; margin-top: 20px;">Submitted at ${new Date().toISOString()}</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+  return sendEmail({
+    to: adminEmail,
+    subject: `Discovery call request: ${payload.name}`,
+    html,
+  });
+}
+
+/**
+ * Send confirmation to user that we received their booking request (no calendar event yet)
+ */
+export async function sendBookingRequestReceivedConfirmation(
+  to: string,
+  userName: string,
+  calendarLink?: string
+): Promise<boolean> {
+  const html = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+          <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+            <h1 style="margin: 0;">TwelfthKey Consulting</h1>
+          </div>
+          <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
+            <h2 style="color: #1E3A5F;">We received your discovery call request</h2>
+            <p>Hi ${escapeHtml(userName)},</p>
+            <p>Thank you for requesting a discovery call. We'll get back to you shortly to confirm a time.</p>
+            ${calendarLink ? `<p>You can also pick a time directly here: <a href="${escapeHtml(calendarLink)}">Schedule your call</a>.</p>` : ''}
+            <p style="color: #6B7280; font-size: 14px;">If you have any questions, just reply to this email.</p>
+            <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
+            <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey Consulting. All rights reserved.</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+  return sendEmail({
+    to,
+    subject: 'Discovery call request received - TwelfthKey Consulting',
+    html,
+  });
+}
+
+/**
+ * Send newsletter double opt-in confirmation email (click link to confirm subscription)
+ */
+export async function sendNewsletterConfirmEmail(to: string, confirmUrl: string): Promise<boolean> {
+  const html = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+          <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+            <h1 style="margin: 0;">TwelfthKey Consulting</h1>
+          </div>
+          <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
+            <h2 style="color: #1E3A5F;">Confirm your subscription</h2>
+            <p>Thanks for subscribing to our newsletter. Please confirm your email address by clicking the button below.</p>
+            <p style="margin: 24px 0;">
+              <a href="${escapeHtml(confirmUrl)}" style="display: inline-block; background: #1E3A5F; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px;">Confirm subscription</a>
+            </p>
+            <p style="color: #6B7280; font-size: 14px;">If you didn't request this, you can ignore this email.</p>
+            <p style="color: #6B7280; font-size: 12px; margin-top: 24px;">This link expires in 7 days.</p>
+            <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
+            <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey Consulting. All rights reserved.</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+  return sendEmail({
+    to,
+    subject: 'Confirm your newsletter subscription - TwelfthKey Consulting',
+    html,
+  });
+}
+
+/**
+ * Send welcome email after newsletter subscription is confirmed.
+ * @param unsubscribeUrl - One-click unsubscribe link (include in email for GDPR/DPDP).
+ */
+export async function sendNewsletterWelcomeEmail(to: string, unsubscribeUrl?: string): Promise<boolean> {
+  const html = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+          <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+            <h1 style="margin: 0;">TwelfthKey Consulting</h1>
+          </div>
+          <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
+            <h2 style="color: #1E3A5F;">You're subscribed</h2>
+            <p>Thanks for confirming. You'll receive our latest insights on operational excellence, governance, and practical tips for scaling your operations.</p>
+            <p>We typically send one newsletter per month. You can unsubscribe at any time from the link in each email.</p>
+            ${unsubscribeUrl ? `<p style="margin-top: 24px;"><a href="${escapeHtml(unsubscribeUrl)}" style="color: #6B7280; font-size: 14px;">Unsubscribe</a></p>` : ''}
+            <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
+            <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey Consulting. All rights reserved.</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+  return sendEmail({
+    to,
+    subject: 'Welcome to TwelfthKey Newsletter',
+    html,
+  });
+}
+
 /**
  * Send email with file attachment
  */
@@ -314,6 +478,8 @@ export interface ContactFormPayload {
   phone?: string;
   company?: string;
   service?: string;
+  interestedIn?: string[];
+  heardAboutUs?: string;
   message: string;
 }
 
@@ -347,6 +513,8 @@ export async function sendContactFormEmail(
             ${payload.phone ? `<p><strong>Phone:</strong> ${escapeHtml(payload.phone)}</p>` : ''}
             ${payload.company ? `<p><strong>Company:</strong> ${escapeHtml(payload.company)}</p>` : ''}
             ${payload.service ? `<p><strong>Service:</strong> ${escapeHtml(payload.service)}</p>` : ''}
+            ${payload.interestedIn?.length ? `<p><strong>Interested in:</strong> ${escapeHtml(payload.interestedIn.join(', '))}</p>` : ''}
+            ${payload.heardAboutUs ? `<p><strong>How they heard about us:</strong> ${escapeHtml(payload.heardAboutUs)}</p>` : ''}
             <p><strong>Message:</strong></p>
             <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #C7A566; white-space: pre-wrap;">${escapeHtml(payload.message)}</div>
             <p style="color: #6B7280; font-size: 12px; margin-top: 20px;">Submitted at ${new Date().toISOString()}</p>
@@ -358,7 +526,7 @@ export async function sendContactFormEmail(
 
   const adminSent = await sendEmail({
     to: adminEmail,
-    subject: `Contact form: ${payload.name} - ${payload.service || 'General enquiry'}`,
+    subject: `Contact form: ${payload.name}${payload.service ? ` - ${payload.service}` : ''}`,
     html: adminHtml,
   });
 

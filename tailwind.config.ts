@@ -9,34 +9,50 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Primary Colors (60% usage)
-        navy: {
-          DEFAULT: '#1E3A5F',
-          50: '#E8EDF3',
-          100: '#D1DBE7',
-          200: '#A3B7CF',
-          300: '#7593B7',
-          400: '#476F9F',
-          500: '#1E3A5F',
-          600: '#182E4C',
-          700: '#122239',
-          800: '#0C1626',
-          900: '#060B13',
-        },
-        // Secondary Colors (30% usage)
+        // V5.1 Primary brand colors
+        // Primary Gold #c49a3c (60% usage - CTAs, highlights)
         gold: {
-          DEFAULT: '#C7A566',
-          50: '#F5F0E6',
-          100: '#EBE1CD',
-          200: '#D7C39B',
-          300: '#C7A566',
-          400: '#B89450',
-          500: '#A6833A',
-          600: '#8F6F2F',
-          700: '#785B24',
-          800: '#614719',
-          900: '#4A330E',
+          DEFAULT: '#c49a3c',
+          50: '#F8F3E6',
+          100: '#F0E6CC',
+          200: '#E1CC99',
+          300: '#c49a3c',
+          400: '#B08935',
+          500: '#9A732E',
+          600: '#7D5D26',
+          700: '#60471E',
+          800: '#433116',
+          900: '#261B0E',
         },
+        // Secondary Blue #1a4d7c (headers, body, footer)
+        navy: {
+          DEFAULT: '#1a4d7c',
+          50: '#E8EEF4',
+          100: '#D1DDE9',
+          200: '#A3BBD3',
+          300: '#7599BD',
+          400: '#4777A7',
+          500: '#1a4d7c',
+          600: '#153E63',
+          700: '#102E4A',
+          800: '#0B1F32',
+          900: '#060F19',
+        },
+        // Tertiary Purple #4c3575 (accent, links, icons)
+        purple: {
+          DEFAULT: '#4c3575',
+          50: '#EDEAF2',
+          100: '#DBD5E5',
+          200: '#B7ABCB',
+          300: '#9381B1',
+          400: '#6F5797',
+          500: '#4c3575',
+          600: '#3D2A5E',
+          700: '#2E2046',
+          800: '#1F152F',
+          900: '#0F0B17',
+        },
+        // Legacy teal (kept for backward compatibility; use purple for new accent)
         teal: {
           DEFAULT: '#1BB6B6',
           50: '#E6F7F7',

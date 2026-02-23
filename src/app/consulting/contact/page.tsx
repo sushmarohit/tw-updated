@@ -15,6 +15,23 @@ const SERVICE_OPTIONS = [
   'fractionalCBO',
 ] as const;
 
+const INTERESTED_IN_OPTIONS = [
+  { value: 'process-excellence', labelKey: 'interestedInProcessExcellence' },
+  { value: 'fundraise', labelKey: 'interestedInFundraise' },
+  { value: 'franchise', labelKey: 'interestedInFranchise' },
+  { value: 'tools', labelKey: 'interestedInTools' },
+  { value: 'general-inquiry', labelKey: 'interestedInGeneralInquiry' },
+] as const;
+
+const HEARD_ABOUT_OPTIONS = [
+  { value: '', labelKey: '' },
+  { value: 'search', labelKey: 'heardAboutUsSearch' },
+  { value: 'referral', labelKey: 'heardAboutUsReferral' },
+  { value: 'linkedin', labelKey: 'heardAboutUsLinkedin' },
+  { value: 'advertisement', labelKey: 'heardAboutUsAdvertisement' },
+  { value: 'other', labelKey: 'heardAboutUsOther' },
+] as const;
+
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 function isValidEmail(value: string): boolean {
   return value.length > 0 && EMAIL_REGEX.test(value.trim());
@@ -29,6 +46,8 @@ export default function ContactPage() {
     phone: '',
     company: '',
     service: '',
+    interested_in: [] as string[],
+    heard_about_us: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,9 +60,6 @@ export default function ContactPage() {
   const allFieldsFilled =
     formData.name.trim() !== '' &&
     formData.email.trim() !== '' &&
-    formData.phone.trim() !== '' &&
-    formData.company.trim() !== '' &&
-    formData.service !== '' &&
     formData.message.trim() !== '';
 
   const canSubmit = allFieldsFilled && emailValid && !isSubmitting;
@@ -67,7 +83,7 @@ export default function ContactPage() {
         return;
       }
 
-      trackFormSubmit('contact', true);
+      trackFormSubmit('contact', true, { email: formData.email, name: formData.name });
       setSubmitStatus('success');
       setFormData({
         name: '',
@@ -75,6 +91,8 @@ export default function ContactPage() {
         phone: '',
         company: '',
         service: '',
+        interested_in: [],
+        heard_about_us: '',
         message: '',
       });
     } catch (error) {
@@ -172,6 +190,45 @@ export default function ContactPage() {
                 {SERVICE_OPTIONS.map((key) => (
                   <option key={key} value={key}>
                     {tNav(key)}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <span className="block font-semibold mb-2">{t('interestedIn')}</span>
+              <div className="flex flex-wrap gap-3" role="group" aria-labelledby="interested-in-label">
+                <span id="interested-in-label" className="sr-only">{t('interestedIn')}</span>
+                {INTERESTED_IN_OPTIONS.map((opt) => (
+                  <label key={opt.value} className="inline-flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={formData.interested_in.includes(opt.value)}
+                      onChange={(e) => {
+                        const next = e.target.checked
+                          ? [...formData.interested_in, opt.value]
+                          : formData.interested_in.filter((x) => x !== opt.value);
+                        setFormData({ ...formData, interested_in: next });
+                      }}
+                      className="rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+                    />
+                    <span className="body-default text-gray-700">{t(opt.labelKey)}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div>
+              <label htmlFor="heard_about_us" className="block font-semibold mb-2">
+                {t('heardAboutUs')}
+              </label>
+              <select
+                id="heard_about_us"
+                className="input"
+                value={formData.heard_about_us}
+                onChange={(e) => setFormData({ ...formData, heard_about_us: e.target.value })}
+              >
+                {HEARD_ABOUT_OPTIONS.map((opt) => (
+                  <option key={opt.value || 'none'} value={opt.value}>
+                    {opt.labelKey ? t(opt.labelKey) : '—'}
                   </option>
                 ))}
               </select>

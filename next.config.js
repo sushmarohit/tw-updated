@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    return [
+      { source: '/consulting/resources/roi-guide', destination: '/consulting/resources/business-case-kit', permanent: true },
+    ];
+  },
   swcMinify: true,
   poweredByHeader: false,
   compress: true,
@@ -53,6 +58,21 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()'
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: blob: https:",
+              "font-src 'self' data:",
+              "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com",
+              "frame-src 'self' https://calendar.google.com https://calendar.app.google",
+              "frame-ancestors 'self'",
+              "base-uri 'self'",
+              "form-action 'self'"
+            ].join('; ')
           }
         ],
       },

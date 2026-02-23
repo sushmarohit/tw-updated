@@ -131,3 +131,28 @@ export function generateServiceSchema(input: ServiceSchemaInput) {
 
   return schema;
 }
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+/**
+ * Generates FAQPage schema for FAQ pages
+ * @param items Array of { question, answer }
+ * @returns FAQPage schema object
+ */
+export function generateFaqPageSchema(items: FaqItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+}

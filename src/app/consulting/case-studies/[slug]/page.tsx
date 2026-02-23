@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CheckCircle } from 'lucide-react';
@@ -5,8 +6,28 @@ import { Button } from '@/components/ui/button';
 import { PageSchema } from '@/components/seo/page-schema';
 import { getCaseStudyBySlug } from '@/lib/case-studies-catalog';
 
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://twelfthkey.com';
+
 interface CaseStudyDetailPageProps {
   params: { slug: string };
+}
+
+export async function generateMetadata({ params }: CaseStudyDetailPageProps): Promise<Metadata> {
+  const detail = getCaseStudyBySlug(params.slug);
+  if (!detail) return { title: 'Case Study | TwelfthKey Consulting' };
+  const title = detail.heroTitle;
+  const description = [detail.industry, detail.ownerSituation].join(' — ').slice(0, 160);
+  const canonical = `${BASE_URL}/consulting/case-studies/${params.slug}`;
+  return {
+    title: `${title} | TwelfthKey Consulting`,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title: `${title} | TwelfthKey Consulting`,
+      description,
+      url: canonical,
+    },
+  };
 }
 
 export default function CaseStudyDetailPage({ params }: CaseStudyDetailPageProps) {

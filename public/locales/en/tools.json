@@ -42,6 +42,26 @@
     "description": "Full governance health across 5 dimensions",
     "time": "5 min"
   },
+  "tabs": {
+    "processExcellence": "Process Excellence",
+    "fundraise": "Fundraise",
+    "franchise": "Franchise"
+  },
+  "fundraise": {
+    "runwayCheck": { "name": "Runway Check", "description": "Estimate how many months of runway you have", "time": "3 min" },
+    "raiseAmount": { "name": "Raise Amount Calculator", "description": "Size your round from milestones and dilution", "time": "4 min" },
+    "dilution": { "name": "Dilution Calculator", "description": "Model equity dilution across rounds", "time": "3 min" },
+    "readiness": { "name": "Fundraise Readiness", "description": "Assess investor readiness", "time": "5 min" },
+    "instrumentFit": { "name": "Instrument Fit", "description": "Debt vs equity fit for your stage", "time": "3 min" }
+  },
+  "franchise": {
+    "readiness": { "name": "Franchise Readiness", "description": "Is your business franchise-ready?", "time": "5 min" },
+    "checklist": { "name": "Franchise Checklist", "description": "Pre-launch franchise checklist", "time": "4 min" },
+    "modelFit": { "name": "Model Fit", "description": "Unit economics and model fit", "time": "4 min" },
+    "unitEconomics": { "name": "Unit Economics", "description": "Franchise unit economics calculator", "time": "4 min" },
+    "capacity": { "name": "Capacity Planner", "description": "Plan capacity for franchise rollout", "time": "3 min" }
+  },
+  "comingSoon": "Coming soon",
   "tryNow": "Try Now",
   "time": "Time",
   "howToolsWork": "How Tools Work",

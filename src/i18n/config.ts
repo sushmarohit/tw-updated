@@ -42,7 +42,7 @@ const initI18n = () => {
         defaultNS: 'common',
         // Must include every namespace under public/locales/en so changeLanguage loads them for hi (and other non-bundled languages)
         ns: [
-          'common', 'hero', 'home', 'footer', 'trustBadges', 'exitIntent', 'calculators', 'navigation', 'resources', 'blog', 'playbooks', 'templates', 'webinars', 'roi-guide',
+          'common', 'hero', 'home', 'footer', 'trustBadges', 'exitIntent', 'calculators', 'navigation', 'resources', 'blog', 'playbooks', 'templates', 'webinars', 'roi-guide', 'business-case-kit',
           'about', 'about-team', 'about-values', 'about-careers',
           'case-studies-hub', 'case-studies-catalog', 'case-studies-banking', 'case-studies-ecommerce', 'case-studies-fintech', 'case-studies-msme', 'case-studies-telecom',
           'framework', 'framework-arc', 'framework-cycle', 'framework-g2p', 'framework-morph', 'framework-parse', 'framework-prism', 'framework-sage',
@@ -54,7 +54,8 @@ const initI18n = () => {
         ],
         react: {
           useSuspense: false, // Disable suspense for SSR compatibility
-          bindI18nStore: 'added', // Re-render when backend adds new language resources
+          bindI18n: 'languageChanged', // Re-render when user toggles language
+          bindI18nStore: 'added loaded', // Re-render when backend adds/loads language resources
         },
       })
       .then(() => {

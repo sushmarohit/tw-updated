@@ -163,7 +163,7 @@ export default function BankingCaseStudyPage() {
             Start with a free Operational Health Diagnostic
           </p>
           <Button variant="primary" size="lg" asChild>
-            <Link href="/consulting/booking">Book Discovery Call</Link>
+            <Link href="/consulting/booking">{t('common:bookDiscoveryCall')}</Link>
           </Button>
         </div>
       </section>

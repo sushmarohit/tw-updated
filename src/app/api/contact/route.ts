@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { sendContactFormEmail } from '@/lib/integrations/nodemailer';
+import { rateLimitContact } from '@/lib/api/rate-limit';
 
 const CONTACT_SERVICE_KEYS = [
   'businessOperationalAssessment',
@@ -11,43 +13,62 @@ const CONTACT_SERVICE_KEYS = [
   'fractionalCBO',
 ] as const;
 
+const INTERESTED_IN_KEYS = [
+  'process-excellence',
+  'fundraise',
+  'franchise',
+  'tools',
+  'general-inquiry',
+] as const;
+
+const HEARD_ABOUT_KEYS = [
+  'search',
+  'referral',
+  'linkedin',
+  'advertisement',
+  'other',
+] as const;
+
+const contactBodySchema = z.object({
+  name: z.string().min(1, 'Name is required').max(200).transform((s) => s.trim()),
+  email: z.string().min(1, 'Email is required').email('Invalid email').max(320).transform((s) => s.trim().toLowerCase()),
+  phone: z.string().max(50).optional().nullable().transform((v) => (v == null || v === '' ? undefined : String(v).trim())),
+  company: z.string().max(200).optional().nullable().transform((v) => (v == null || v === '' ? undefined : String(v).trim())),
+  service: z.enum(CONTACT_SERVICE_KEYS).optional().nullable(),
+  interested_in: z.array(z.enum(INTERESTED_IN_KEYS)).optional().default([]),
+  heard_about_us: z.enum(HEARD_ABOUT_KEYS).optional().nullable(),
+  message: z.string().min(1, 'Message is required').max(10000).transform((s) => s.trim()),
+});
+
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { name, email, phone, company, service, message } = body;
-
-    if (!name || typeof name !== 'string' || !name.trim()) {
+    const limit = rateLimitContact(request);
+    if (!limit.ok) {
+      const retryAfter = Math.ceil((limit.resetAt - Date.now()) / 1000);
       return NextResponse.json(
-        { error: 'Name is required' },
-        { status: 400 }
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429, headers: { 'Retry-After': String(retryAfter) } }
       );
     }
-    if (!email || typeof email !== 'string' || !email.trim()) {
-      return NextResponse.json(
-        { error: 'Email is required' },
-        { status: 400 }
-      );
+    const raw = await request.json();
+    const parseResult = contactBodySchema.safeParse(raw);
+    if (!parseResult.success) {
+      const first = parseResult.error.flatten().fieldErrors;
+      const message = first.name?.[0] ?? first.email?.[0] ?? first.message?.[0] ?? 'Validation failed';
+      return NextResponse.json({ error: message }, { status: 400 });
     }
-    if (!message || typeof message !== 'string' || !message.trim()) {
-      return NextResponse.json(
-        { error: 'Message is required' },
-        { status: 400 }
-      );
-    }
-
-    const serviceValue =
-      service && CONTACT_SERVICE_KEYS.includes(service as (typeof CONTACT_SERVICE_KEYS)[number])
-        ? (service as string)
-        : null;
+    const { name, email, phone, company, service, interested_in, heard_about_us, message } = parseResult.data;
 
     const contact = await prisma.contact.create({
       data: {
-        name: name.trim(),
-        email: email.trim().toLowerCase(),
-        phone: phone != null ? String(phone).trim() || null : null,
-        company: company != null ? String(company).trim() || null : null,
-        service: serviceValue,
-        message: message.trim(),
+        name,
+        email,
+        phone: phone ?? null,
+        company: company ?? null,
+        service: service ?? null,
+        interestedIn: interested_in.length > 0 ? interested_in : null,
+        heardAboutUs: heard_about_us ?? null,
+        message,
       },
     });
 
@@ -63,6 +84,8 @@ export async function POST(request: NextRequest) {
           phone: contact.phone ?? undefined,
           company: contact.company ?? undefined,
           service: contact.service ?? undefined,
+          interestedIn: (contact.interestedIn as string[] | null) ?? undefined,
+          heardAboutUs: contact.heardAboutUs ?? undefined,
           message: contact.message,
         },
         { adminEmail, sendConfirmationToUser: true }

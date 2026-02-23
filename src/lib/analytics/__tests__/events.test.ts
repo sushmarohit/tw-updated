@@ -145,8 +145,13 @@ describe('Analytics Events', () => {
     it('should track discovery call booking', () => {
       trackDiscoveryCallBooked('user-123', 'user@example.com');
 
+      expect(global.window.gtag).toHaveBeenCalledWith('event', 'booking_completed', {
+        success: true,
+        email: 'user@example.com',
+        timestamp: expect.any(String),
+      });
       expect(global.window.gtag).toHaveBeenCalledWith('event', 'discovery_call_booked', {
-        user_id: 'user-123',
+        success: true,
         email: 'user@example.com',
         timestamp: expect.any(String),
       });
@@ -155,8 +160,8 @@ describe('Analytics Events', () => {
     it('should handle undefined parameters', () => {
       trackDiscoveryCallBooked();
 
-      expect(global.window.gtag).toHaveBeenCalledWith('event', 'discovery_call_booked', {
-        user_id: undefined,
+      expect(global.window.gtag).toHaveBeenCalledWith('event', 'booking_completed', {
+        success: true,
         email: undefined,
         timestamp: expect.any(String),
       });

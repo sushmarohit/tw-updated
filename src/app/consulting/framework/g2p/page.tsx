@@ -226,10 +226,10 @@ export default function G2POverviewPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="primary" size="lg" asChild>
-              <Link href="/consulting/tools/health-check">Start Free Diagnostic</Link>
+              <Link href="/consulting/tools/health-check">{t('common:startFreeDiagnostic')}</Link>
             </Button>
             <Button variant="secondary" size="lg" asChild>
-              <Link href="/consulting/booking">Book Discovery Call</Link>
+              <Link href="/consulting/booking">{t('common:bookDiscoveryCall')}</Link>
             </Button>
           </div>
         </div>

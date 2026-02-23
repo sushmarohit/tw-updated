@@ -1,9 +1,12 @@
 'use client';
 
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
+import { SchemaMarkup } from '@/components/seo/schema-markup';
+import { generateFaqPageSchema } from '@/lib/seo/schema-generators';
 
 type FAQItem = { category: string; question: string; answer: string };
 
@@ -11,6 +14,14 @@ export default function FAQPage() {
   const { t } = useTranslation(['faq', 'common']);
 
   const items = t('faq:items', { returnObjects: true }) as FAQItem[];
+  const faqSchema = useMemo(
+    () =>
+      generateFaqPageSchema(
+        Array.isArray(items) ? items.map((i) => ({ question: i.question, answer: i.answer })) : []
+      ),
+    [items]
+  );
+
   const categoryKeys = [
     'process',
     'tools',
@@ -32,6 +43,7 @@ export default function FAQPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SchemaMarkup schema={faqSchema} id="faq-schema" />
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">

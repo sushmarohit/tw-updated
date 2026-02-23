@@ -56,3 +56,6 @@ logs
 # Bundle analyzer
 .next/analyze/
 
+# Lighthouse reports
+.lighthouse/
+

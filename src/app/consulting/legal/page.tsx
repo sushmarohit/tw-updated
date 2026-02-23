@@ -1,7 +1,13 @@
 import Link from 'next/link';
-import { FileText, Shield, Lock, Cookie, Eye, CheckCircle, FileCheck, Scale } from 'lucide-react';
+import { FileText, Shield, Lock, Cookie, Eye, CheckCircle, FileCheck, Scale, AlertTriangle } from 'lucide-react';
 
 const legalPages = [
+  {
+    icon: AlertTriangle,
+    name: 'Legal Disclaimer',
+    desc: 'General disclaimer for information and tools on this site',
+    href: '/consulting/legal/disclaimer',
+  },
   {
     icon: Lock,
     name: 'Privacy Policy',

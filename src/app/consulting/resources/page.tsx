@@ -1,5 +1,6 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -7,6 +8,8 @@ import { BookOpen, FileText, Video, TrendingUp } from 'lucide-react';
 
 export default function ResourcesPage() {
   const { t } = useTranslation(['resources', 'common']);
+  const searchParams = useSearchParams();
+  const newsletterParam = searchParams.get('newsletter');
 
   const resources = [
     {
@@ -39,15 +42,36 @@ export default function ResourcesPage() {
     },
     {
       icon: TrendingUp,
-      title: t('resources:roiGuide.title'),
-      description: t('resources:roiGuide.description'),
-      href: '/consulting/resources/roi-guide',
+      title: t('resources:businessCaseKit.title'),
+      description: t('resources:businessCaseKit.description'),
+      href: '/consulting/resources/business-case-kit',
       color: 'teal',
     },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {newsletterParam === 'confirmed' && (
+        <div className="container-custom py-3">
+          <p className="text-center p-3 bg-green-100 text-green-800 rounded-lg" role="status">
+            {t('common:newsletterConfirmed')}
+          </p>
+        </div>
+      )}
+      {(newsletterParam === 'invalid' || newsletterParam === 'already_confirmed_or_invalid') && (
+        <div className="container-custom py-3">
+          <p className="text-center p-3 bg-amber-100 text-amber-800 rounded-lg" role="alert">
+            {t('common:newsletterInvalid')}
+          </p>
+        </div>
+      )}
+      {(newsletterParam === 'unsubscribed' || newsletterParam === 'unsubscribed_already') && (
+        <div className="container-custom py-3">
+          <p className="text-center p-3 bg-gray-100 text-gray-800 rounded-lg" role="status">
+            {t('common:newsletterUnsubscribed')}
+          </p>
+        </div>
+      )}
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">

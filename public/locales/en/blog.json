@@ -21,7 +21,12 @@
   "readMore": "Read More",
   "stayUpdatedTitle": "Stay Updated",
   "stayUpdatedDescription": "Subscribe to our newsletter for the latest insights on operational excellence.",
-  "subscribe": "Subscribe"
+  "subscribe": "Subscribe",
+  "newsletterEmailPlaceholder": "Your email",
+  "newsletterConsent": "I agree to receive the newsletter (we'll send a confirmation link).",
+  "newsletterSubmit": "Subscribe",
+  "newsletterSuccess": "Please check your email to confirm your subscription.",
+  "newsletterError": "Something went wrong. Please try again."
 }
 
 

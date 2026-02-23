@@ -1,12 +1,18 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { trackFormSubmit } from '@/lib/analytics/events';
 
 export default function BlogPage() {
   const { t } = useTranslation(['blog', 'common']);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterConsent, setNewsletterConsent] = useState(false);
+  const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
 
   // Placeholder blog posts - in production, these would come from a CMS
   const blogPosts = [
@@ -81,14 +87,87 @@ export default function BlogPage() {
       </section>
 
       <section className="section-padding bg-white">
-        <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">{t('blog:stayUpdatedTitle')}</h2>
-          <p className="body-large text-gray-600 mb-8">
+        <div className="container-custom max-w-xl mx-auto">
+          <h2 className="heading-h2 mb-4 text-center">{t('blog:stayUpdatedTitle')}</h2>
+          <p className="body-large text-gray-600 mb-6 text-center">
             {t('blog:stayUpdatedDescription')}
           </p>
-          <Button variant="primary" size="lg" asChild>
-            <Link href="/consulting/contact">{t('blog:subscribe')}</Link>
-          </Button>
+          <form
+            className="space-y-4"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              if (!newsletterEmail.trim() || !newsletterConsent) return;
+              setNewsletterSubmitting(true);
+              setNewsletterStatus('idle');
+              try {
+                const res = await fetch('/api/newsletter', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    email: newsletterEmail.trim(),
+                    consent: true,
+                    source: 'blog',
+                  }),
+                });
+                const data = await res.json().catch(() => ({}));
+                if (res.ok) {
+                  setNewsletterStatus('success');
+                  setNewsletterEmail('');
+                  setNewsletterConsent(false);
+                  trackFormSubmit('newsletter', true, { email: newsletterEmail.trim() });
+                } else {
+                  setNewsletterStatus('error');
+                  trackFormSubmit('newsletter', false);
+                }
+              } catch {
+                setNewsletterStatus('error');
+                trackFormSubmit('newsletter', false);
+              } finally {
+                setNewsletterSubmitting(false);
+              }
+            }}
+          >
+            <input
+              type="email"
+              required
+              value={newsletterEmail}
+              onChange={(e) => setNewsletterEmail(e.target.value)}
+              placeholder={t('blog:newsletterEmailPlaceholder')}
+              className="input w-full"
+              aria-label="Email for newsletter"
+            />
+            <label className="flex items-start gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={newsletterConsent}
+                onChange={(e) => setNewsletterConsent(e.target.checked)}
+                className="mt-1 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+                aria-describedby="newsletter-consent-desc"
+              />
+              <span id="newsletter-consent-desc" className="body-small text-gray-600">
+                {t('blog:newsletterConsent')}
+              </span>
+            </label>
+            {newsletterStatus === 'success' && (
+              <p className="text-sm text-green-600" role="status">
+                {t('blog:newsletterSuccess')}
+              </p>
+            )}
+            {newsletterStatus === 'error' && (
+              <p className="text-sm text-red-600" role="alert">
+                {t('blog:newsletterError')}
+              </p>
+            )}
+            <Button
+              type="submit"
+              variant="primary"
+              size="lg"
+              disabled={newsletterSubmitting || !newsletterEmail.trim() || !newsletterConsent}
+              className="w-full"
+            >
+              {newsletterSubmitting ? t('common:submitting') : t('blog:newsletterSubmit')}
+            </Button>
+          </form>
         </div>
       </section>
     </div>

@@ -9,16 +9,18 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from '@/components/ui/language-switcher';
 import { cn } from '@/lib/utils';
+import { trackNavigationClick } from '@/lib/analytics/events';
 import { serviceCategories, serviceCategorySlugToKey } from '@/lib/services-catalog';
 import { caseStudyTabs, caseStudyTabKeyToCatalogKey, type CaseStudyTabKey } from '@/lib/case-studies-catalog';
 
 const navigationKeys = [
   { key: 'services', href: '/consulting/services' },
+  { key: 'process', href: '/consulting/process' },
   { key: 'caseStudies', href: '/consulting/case-studies/hub' },
   { key: 'tools', href: '/consulting/tools/hub' },
   { key: 'resources', href: '/consulting/resources' },
-  { key: 'faq', href: '/consulting/faq' },
   { key: 'about', href: '/consulting/about' },
+  { key: 'faq', href: '/consulting/faq' },
   { key: 'contact', href: '/consulting/contact' },
 ];
 
@@ -132,6 +134,7 @@ export function Header() {
                     href={item.href}
                     className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-body-default text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap block"
                     suppressHydrationWarning
+                    onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
                   >
                     {t(`navigation:${item.key}`)}
                   </Link>
@@ -220,6 +223,7 @@ export function Header() {
                     href={item.href}
                     className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-body-default text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap block"
                     suppressHydrationWarning
+                    onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
                   >
                     {t(`navigation:${item.key}`)}
                   </Link>
@@ -299,6 +303,7 @@ export function Header() {
                 href={item.href}
                 className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-body-default text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap flex-shrink-0"
                 suppressHydrationWarning
+                onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
               >
                 {t(`navigation:${item.key}`)}
               </Link>

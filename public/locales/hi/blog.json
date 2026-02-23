@@ -21,7 +21,12 @@
   "readMore": "और पढ़ें",
   "stayUpdatedTitle": "अपडेट रहें",
   "stayUpdatedDescription": "परिचालन उत्कृष्टता पर नवीनतम अंतर्दृष्टि के लिए हमारे न्यूज़लेटर की सदस्यता लें।",
-  "subscribe": "सदस्यता लें"
+  "subscribe": "सदस्यता लें",
+  "newsletterEmailPlaceholder": "आपका ईमेल",
+  "newsletterConsent": "मैं न्यूज़लेटर प्राप्त करने के लिए सहमत हूं (हम पुष्टिकरण लिंक भेजेंगे)।",
+  "newsletterSubmit": "सदस्यता लें",
+  "newsletterSuccess": "कृपया अपनी सदस्यता की पुष्टि के लिए अपना ईमेल जांचें।",
+  "newsletterError": "कुछ गलत हुआ। कृपया पुनः प्रयास करें।"
 }
 
 
