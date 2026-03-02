@@ -7,7 +7,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://twelfthkey.com';
 type RouteEntry = { path: string; priority: number; changeFrequency?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' };
 
 /**
- * Static routes for the TwelfthKey Consulting site.
+ * Static routes for the TwelfthKey site.
  * Dynamic service and case-study URLs are added from catalogs.
  */
 const STATIC_ROUTES: RouteEntry[] = [

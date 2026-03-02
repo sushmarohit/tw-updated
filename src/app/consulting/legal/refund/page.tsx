@@ -14,16 +14,18 @@ export default function RefundPolicyPage() {
           <div className="space-y-6">
             <section>
               <h2 className="heading-h4 mb-3">{t('legal-refund:section1.title')}</h2>
-              <p className="body-default text-gray-700">
-                {t('legal-refund:section1.description')}
-              </p>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li className="body-default text-gray-700">{t('legal-refund:section1.item1')}</li>
+                <li className="body-default text-gray-700">{t('legal-refund:section1.item2')}</li>
+              </ul>
             </section>
 
             <section>
               <h2 className="heading-h4 mb-3">{t('legal-refund:section2.title')}</h2>
-              <p className="body-default text-gray-700">
-                {t('legal-refund:section2.description')}
-              </p>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li className="body-default text-gray-700">{t('legal-refund:section2.item1')}</li>
+                <li className="body-default text-gray-700">{t('legal-refund:section2.item2')}</li>
+              </ul>
             </section>
 
             <section>
@@ -37,8 +39,8 @@ export default function RefundPolicyPage() {
               <h2 className="heading-h4 mb-3">{t('legal-refund:section4.title')}</h2>
               <p className="body-default text-gray-700">
                 {t('legal-refund:section4.description')}{' '}
-                <a href="mailto:support@twelfthkey.com" className="text-teal-500 hover:underline">
-                  support@twelfthkey.com
+                <a href="mailto:operations@twelfthkey.com" className="text-teal-500 hover:underline">
+                  operations@twelfthkey.com
                 </a>
               </p>
             </section>

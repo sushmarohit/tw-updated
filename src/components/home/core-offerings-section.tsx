@@ -17,14 +17,14 @@ export function CoreOfferingsSection() {
             {t('coreOfferings.subtitle')}
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="card text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          <div className="card text-center flex flex-col h-full">
             <div className="w-16 h-16 bg-gold-100 rounded-lg flex items-center justify-center mx-auto mb-4">
               <Briefcase className="w-8 h-8 text-gold-300" aria-hidden="true" />
             </div>
             <h3 className="heading-h4 mb-3">{t('coreOfferings.fractionalCbo.title')}</h3>
             <p className="body-default text-gray-600 mb-6">{t('coreOfferings.fractionalCbo.description')}</p>
-            <Button variant="outline" asChild>
+            <Button variant="outline" asChild className="mt-auto">
               <Link href="/consulting/services/fractional-cbo">{t('coreOfferings.fractionalCbo.cta')}</Link>
             </Button>
           </div>

@@ -24,17 +24,17 @@ export function ToolsPreviewSection() {
             {t('toolsPreview.subtitle')}
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 items-stretch">
           {toolConfig.map((tool, index) => {
             const Icon = tool.icon;
             return (
-              <div key={index} className="card text-center">
+              <div key={index} className="card text-center flex flex-col h-full">
                 <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <Icon className="w-6 h-6 text-teal-500" aria-hidden="true" />
                 </div>
                 <h3 className="heading-h4 mb-2">{t(`toolsPreview.${tool.nameKey}`)}</h3>
                 <p className="body-small text-gray-500 mb-4">{t('toolsPreview.time')}: {tool.time}</p>
-                <Button variant="primary" asChild className="w-full">
+                <Button variant="primary" asChild className="w-full mt-auto">
                   <Link href={tool.href}>{t(`toolsPreview.${tool.ctaKey}`)}</Link>
                 </Button>
               </div>

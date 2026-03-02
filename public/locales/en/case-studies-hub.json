@@ -1,6 +1,13 @@
 {
   "title": "Real Results From Real Clients",
   "subtitle": "See how TwelfthKey transformed operations across banking, FinTech, SaaS, and beyond",
+  "tabs": {
+    "caseStudies": "Case Studies",
+    "successStories": "Success Stories",
+    "testimonials": "Testimonials",
+    "clientele": "Clientele"
+  },
+  "startTransformation": "Start Your Transformation",
   "banking": {
     "title": "Banking Operations",
     "industry": "Banking",

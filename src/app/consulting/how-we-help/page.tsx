@@ -26,8 +26,8 @@ export default function HowWeHelpPage() {
       <section className="section-padding">
         <div className="container-custom">
           <h2 className="heading-h2 text-center mb-8">{t('how-we-help:methodTitle')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="card text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            <div className="card text-center flex flex-col h-full">
               <div className="w-16 h-16 bg-teal-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <Search className="w-8 h-8 text-teal-500" />
               </div>
@@ -35,11 +35,11 @@ export default function HowWeHelpPage() {
               <p className="body-default text-gray-600 mb-4">
                 {t('how-we-help:strategicAssessment.description')}
               </p>
-              <Button variant="outline" asChild>
+              <Button variant="outline" asChild className="mt-auto">
                 <Link href="/consulting/services/assessment">{t('how-we-help:strategicAssessment.button')}</Link>
               </Button>
             </div>
-            <div className="card text-center">
+            <div className="card text-center flex flex-col h-full">
               <div className="w-16 h-16 bg-gold-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <Map className="w-8 h-8 text-gold-300" />
               </div>
@@ -47,11 +47,11 @@ export default function HowWeHelpPage() {
               <p className="body-default text-gray-600 mb-4">
                 {t('how-we-help:tailoredSolutions.description')}
               </p>
-              <Button variant="outline" asChild>
+              <Button variant="outline" asChild className="mt-auto">
                 <Link href="/consulting/framework">{t('how-we-help:tailoredSolutions.button')}</Link>
               </Button>
             </div>
-            <div className="card text-center">
+            <div className="card text-center flex flex-col h-full">
               <div className="w-16 h-16 bg-teal-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <Monitor className="w-8 h-8 text-teal-500" />
               </div>
@@ -59,7 +59,7 @@ export default function HowWeHelpPage() {
               <p className="body-default text-gray-600 mb-4">
                 {t('how-we-help:measurableGovernance.description')}
               </p>
-              <Button variant="outline" asChild>
+              <Button variant="outline" asChild className="mt-auto">
                 <Link href="/consulting/praxio">{t('how-we-help:measurableGovernance.button')}</Link>
               </Button>
             </div>

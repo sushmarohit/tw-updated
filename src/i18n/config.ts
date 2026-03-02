@@ -43,7 +43,7 @@ const initI18n = () => {
         // Must include every namespace under public/locales/en so changeLanguage loads them for hi (and other non-bundled languages)
         ns: [
           'common', 'hero', 'home', 'footer', 'trustBadges', 'exitIntent', 'calculators', 'navigation', 'resources', 'blog', 'playbooks', 'templates', 'webinars', 'roi-guide', 'business-case-kit',
-          'about', 'about-team', 'about-values', 'about-careers',
+          'about', 'about-team', 'about-values', 'about-careers', 'about-clientele',
           'case-studies-hub', 'case-studies-catalog', 'case-studies-banking', 'case-studies-ecommerce', 'case-studies-fintech', 'case-studies-msme', 'case-studies-telecom',
           'framework', 'framework-arc', 'framework-cycle', 'framework-g2p', 'framework-morph', 'framework-parse', 'framework-prism', 'framework-sage',
           'how-we-help', 'process', 'praxio', 'praxio-demo', 'praxio-features', 'praxio-integrations', 'praxio-pricing',

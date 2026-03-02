@@ -128,8 +128,8 @@ export async function sendEmail(options: EmailOptions): Promise<boolean> {
       throw new Error(`Email server connection failed: ${verifyError instanceof Error ? verifyError.message : 'Unknown error'}`);
     }
 
-    const fromEmail = options.from || process.env.EMAIL_FROM || process.env.SMTP_USER || 'noreply@twelfthkey.com';
-    const fromName = options.fromName || process.env.EMAIL_FROM_NAME || 'TwelfthKey Consulting';
+    const fromEmail = options.from || process.env.EMAIL_FROM || process.env.SMTP_USER || 'operations@twelfthkey.com';
+    const fromName = options.fromName || process.env.EMAIL_FROM_NAME || 'TwelfthKey';
 
     const mailOptions = {
       from: options.fromName ? `"${fromName}" <${fromEmail}>` : fromEmail,
@@ -190,7 +190,7 @@ export async function sendCalculatorReportEmail(
       <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
         <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-            <h1 style="margin: 0;">TwelfthKey Consulting</h1>
+            <h1 style="margin: 0;">TwelfthKey</h1>
           </div>
           <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
             <h2 style="color: #1E3A5F;">Your ${calculatorType} Report is Ready</h2>
@@ -207,7 +207,7 @@ export async function sendCalculatorReportEmail(
             </p>
             <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
             <p style="color: #6B7280; font-size: 12px; text-align: center;">
-              © 2026 TwelfthKey Consulting. All rights reserved.
+              © 2026 TwelfthKey. All rights reserved.
             </p>
           </div>
         </div>
@@ -227,7 +227,7 @@ export async function sendCalculatorReportEmail(
 
   return sendEmail({
     to,
-    subject: `Your ${calculatorType} Report - TwelfthKey Consulting`,
+    subject: `Your ${calculatorType} Report - TwelfthKey`,
     html,
     attachments,
   });
@@ -253,7 +253,7 @@ export async function sendDiscoveryCallConfirmation(
       <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
         <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-            <h1 style="margin: 0;">TwelfthKey Consulting</h1>
+            <h1 style="margin: 0;">TwelfthKey</h1>
           </div>
           <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
             <h2 style="color: #1E3A5F;">Discovery Call Confirmed</h2>
@@ -270,7 +270,7 @@ export async function sendDiscoveryCallConfirmation(
             </p>
             <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
             <p style="color: #6B7280; font-size: 12px; text-align: center;">
-              © 2026 TwelfthKey Consulting. All rights reserved.
+              © 2026 TwelfthKey. All rights reserved.
             </p>
           </div>
         </div>
@@ -280,7 +280,7 @@ export async function sendDiscoveryCallConfirmation(
 
   return sendEmail({
     to,
-    subject: 'Discovery Call Confirmed - TwelfthKey Consulting',
+    subject: 'Discovery Call Confirmed - TwelfthKey',
     html,
   });
 }
@@ -353,7 +353,7 @@ export async function sendBookingRequestReceivedConfirmation(
       <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
         <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-            <h1 style="margin: 0;">TwelfthKey Consulting</h1>
+            <h1 style="margin: 0;">TwelfthKey</h1>
           </div>
           <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
             <h2 style="color: #1E3A5F;">We received your discovery call request</h2>
@@ -362,7 +362,7 @@ export async function sendBookingRequestReceivedConfirmation(
             ${calendarLink ? `<p>You can also pick a time directly here: <a href="${escapeHtml(calendarLink)}">Schedule your call</a>.</p>` : ''}
             <p style="color: #6B7280; font-size: 14px;">If you have any questions, just reply to this email.</p>
             <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
-            <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey Consulting. All rights reserved.</p>
+            <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -370,7 +370,7 @@ export async function sendBookingRequestReceivedConfirmation(
   `;
   return sendEmail({
     to,
-    subject: 'Discovery call request received - TwelfthKey Consulting',
+    subject: 'Discovery call request received - TwelfthKey',
     html,
   });
 }
@@ -389,7 +389,7 @@ export async function sendNewsletterConfirmEmail(to: string, confirmUrl: string)
       <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
         <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-            <h1 style="margin: 0;">TwelfthKey Consulting</h1>
+            <h1 style="margin: 0;">TwelfthKey</h1>
           </div>
           <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
             <h2 style="color: #1E3A5F;">Confirm your subscription</h2>
@@ -400,7 +400,7 @@ export async function sendNewsletterConfirmEmail(to: string, confirmUrl: string)
             <p style="color: #6B7280; font-size: 14px;">If you didn't request this, you can ignore this email.</p>
             <p style="color: #6B7280; font-size: 12px; margin-top: 24px;">This link expires in 7 days.</p>
             <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
-            <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey Consulting. All rights reserved.</p>
+            <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -408,7 +408,7 @@ export async function sendNewsletterConfirmEmail(to: string, confirmUrl: string)
   `;
   return sendEmail({
     to,
-    subject: 'Confirm your newsletter subscription - TwelfthKey Consulting',
+    subject: 'Confirm your newsletter subscription - TwelfthKey',
     html,
   });
 }
@@ -428,7 +428,7 @@ export async function sendNewsletterWelcomeEmail(to: string, unsubscribeUrl?: st
       <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
         <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-            <h1 style="margin: 0;">TwelfthKey Consulting</h1>
+            <h1 style="margin: 0;">TwelfthKey</h1>
           </div>
           <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
             <h2 style="color: #1E3A5F;">You're subscribed</h2>
@@ -436,7 +436,7 @@ export async function sendNewsletterWelcomeEmail(to: string, unsubscribeUrl?: st
             <p>We typically send one newsletter per month. You can unsubscribe at any time from the link in each email.</p>
             ${unsubscribeUrl ? `<p style="margin-top: 24px;"><a href="${escapeHtml(unsubscribeUrl)}" style="color: #6B7280; font-size: 14px;">Unsubscribe</a></p>` : ''}
             <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
-            <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey Consulting. All rights reserved.</p>
+            <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -478,6 +478,7 @@ export interface ContactFormPayload {
   phone?: string;
   company?: string;
   service?: string;
+  subService?: string;
   interestedIn?: string[];
   heardAboutUs?: string;
   message: string;
@@ -513,6 +514,7 @@ export async function sendContactFormEmail(
             ${payload.phone ? `<p><strong>Phone:</strong> ${escapeHtml(payload.phone)}</p>` : ''}
             ${payload.company ? `<p><strong>Company:</strong> ${escapeHtml(payload.company)}</p>` : ''}
             ${payload.service ? `<p><strong>Service:</strong> ${escapeHtml(payload.service)}</p>` : ''}
+            ${payload.subService ? `<p><strong>Sub-service:</strong> ${escapeHtml(payload.subService)}</p>` : ''}
             ${payload.interestedIn?.length ? `<p><strong>Interested in:</strong> ${escapeHtml(payload.interestedIn.join(', '))}</p>` : ''}
             ${payload.heardAboutUs ? `<p><strong>How they heard about us:</strong> ${escapeHtml(payload.heardAboutUs)}</p>` : ''}
             <p><strong>Message:</strong></p>
@@ -543,7 +545,7 @@ export async function sendContactFormEmail(
         <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
           <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
             <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-              <h1 style="margin: 0;">TwelfthKey Consulting</h1>
+              <h1 style="margin: 0;">TwelfthKey</h1>
             </div>
             <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
               <h2 style="color: #1E3A5F;">We received your message</h2>
@@ -551,7 +553,7 @@ export async function sendContactFormEmail(
               <p>Thank you for getting in touch. We have received your message and will get back to you as soon as possible.</p>
               <p style="color: #6B7280; font-size: 14px;">If you have any urgent questions, please reply to this email.</p>
               <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
-              <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey Consulting. All rights reserved.</p>
+              <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -559,7 +561,7 @@ export async function sendContactFormEmail(
     `;
     await sendEmail({
       to: payload.email,
-      subject: 'We received your message - TwelfthKey Consulting',
+      subject: 'We received your message - TwelfthKey',
       html: userHtml,
     });
   }

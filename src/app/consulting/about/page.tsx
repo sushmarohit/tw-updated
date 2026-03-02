@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Users, Heart, Briefcase } from 'lucide-react';
+import { Users, Heart, Briefcase, Award } from 'lucide-react';
 
 export default function AboutPage() {
   const { t } = useTranslation(['about', 'common']);
@@ -15,6 +15,13 @@ export default function AboutPage() {
       description: t('about:team.description'),
       href: '/consulting/about/team',
       color: 'teal',
+    },
+    {
+      icon: Award,
+      title: t('about:clientele.title'),
+      description: t('about:clientele.description'),
+      href: '/consulting/about/clientele',
+      color: 'gold',
     },
     {
       icon: Heart,

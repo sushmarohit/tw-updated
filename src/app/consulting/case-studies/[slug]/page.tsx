@@ -14,16 +14,16 @@ interface CaseStudyDetailPageProps {
 
 export async function generateMetadata({ params }: CaseStudyDetailPageProps): Promise<Metadata> {
   const detail = getCaseStudyBySlug(params.slug);
-  if (!detail) return { title: 'Case Study | TwelfthKey Consulting' };
+  if (!detail) return { title: 'Case Study | TwelfthKey' };
   const title = detail.heroTitle;
   const description = [detail.industry, detail.ownerSituation].join(' — ').slice(0, 160);
   const canonical = `${BASE_URL}/consulting/case-studies/${params.slug}`;
   return {
-    title: `${title} | TwelfthKey Consulting`,
+    title: `${title} | TwelfthKey`,
     description,
     alternates: { canonical },
     openGraph: {
-      title: `${title} | TwelfthKey Consulting`,
+      title: `${title} | TwelfthKey`,
       description,
       url: canonical,
     },

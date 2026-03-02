@@ -81,7 +81,7 @@ export function SplashScreen() {
             >
               <Image
                 src="/tw_logo.webp"
-                alt="TwelfthKey Consulting"
+                alt="TwelfthKey"
                 width={160}
                 height={100}
                 className="h-20 w-auto sm:h-24 md:h-28 object-contain drop-shadow-lg"

@@ -30,7 +30,7 @@ export async function generatePDFReport(options: PDFReportOptions): Promise<Blob
   // Header
   doc.setFontSize(20);
   doc.setTextColor(30, 58, 95); // Navy color
-  doc.text('TwelfthKey Consulting', pageWidth / 2, yPosition, { align: 'center' });
+  doc.text('TwelfthKey', pageWidth / 2, yPosition, { align: 'center' });
   yPosition += 10;
 
   doc.setFontSize(16);
@@ -117,7 +117,7 @@ export async function generatePDFReport(options: PDFReportOptions): Promise<Blob
     doc.setFontSize(8);
     doc.setTextColor(150, 150, 150);
     doc.text(
-      options.footerText || '© 2026 TwelfthKey Consulting. All rights reserved.',
+      options.footerText || '© 2026 TwelfthKey. All rights reserved.',
       pageWidth / 2,
       pageHeight - 10,
       { align: 'center' }
@@ -203,7 +203,7 @@ export async function generatePDFReportBuffer(options: PDFReportOptions): Promis
   // Header
   doc.setFontSize(20);
   doc.setTextColor(30, 58, 95); // Navy color
-  doc.text('TwelfthKey Consulting', pageWidth / 2, yPosition, { align: 'center' });
+  doc.text('TwelfthKey', pageWidth / 2, yPosition, { align: 'center' });
   yPosition += 10;
 
   doc.setFontSize(16);
@@ -290,7 +290,7 @@ export async function generatePDFReportBuffer(options: PDFReportOptions): Promis
     doc.setFontSize(8);
     doc.setTextColor(150, 150, 150);
     doc.text(
-      options.footerText || '© 2026 TwelfthKey Consulting. All rights reserved.',
+      options.footerText || '© 2026 TwelfthKey. All rights reserved.',
       pageWidth / 2,
       pageHeight - 10,
       { align: 'center' }

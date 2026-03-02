@@ -33,11 +33,11 @@ export default function ToolsHubPage() {
     { icon: Calculator, name: t('tools:operationalHealthDiagnostic.name'), description: t('tools:operationalHealthDiagnostic.description'), time: t('tools:operationalHealthDiagnostic.time'), href: '/consulting/tools/health-check', color: 'teal' as const },
     { icon: TrendingUp, name: t('tools:costLeakageEstimator.name'), description: t('tools:costLeakageEstimator.description'), time: t('tools:costLeakageEstimator.time'), href: '/consulting/tools/cost-leakage', color: 'gold' as const },
     { icon: Target, name: t('tools:breakEvenPointCalculator.name'), description: t('tools:breakEvenPointCalculator.description'), time: t('tools:breakEvenPointCalculator.time'), href: '/consulting/tools/breakeven', color: 'teal' as const },
-    { icon: BarChart3, name: t('tools:scaleReadinessAnalyzer.name'), description: t('tools:scaleReadinessAnalyzer.description'), time: t('tools:scaleReadinessAnalyzer.time'), href: '/consulting/tools/scale-readiness', color: 'gold' as const },
-    { icon: AlertTriangle, name: t('tools:teamBurnoutRiskFinder.name'), description: t('tools:teamBurnoutRiskFinder.description'), time: t('tools:teamBurnoutRiskFinder.time'), href: '/consulting/tools/burnout-risk', color: 'error' as const },
-    { icon: GitBranch, name: t('tools:decisionBottleneckFinder.name'), description: t('tools:decisionBottleneckFinder.description'), time: t('tools:decisionBottleneckFinder.time'), href: '/consulting/tools/bottleneck-finder', color: 'teal' as const },
+    // { icon: BarChart3, name: t('tools:scaleReadinessAnalyzer.name'), description: t('tools:scaleReadinessAnalyzer.description'), time: t('tools:scaleReadinessAnalyzer.time'), href: '/consulting/tools/scale-readiness', color: 'gold' as const },
+    // { icon: AlertTriangle, name: t('tools:teamBurnoutRiskFinder.name'), description: t('tools:teamBurnoutRiskFinder.description'), time: t('tools:teamBurnoutRiskFinder.time'), href: '/consulting/tools/burnout-risk', color: 'error' as const },
+    // { icon: GitBranch, name: t('tools:decisionBottleneckFinder.name'), description: t('tools:decisionBottleneckFinder.description'), time: t('tools:decisionBottleneckFinder.time'), href: '/consulting/tools/bottleneck-finder', color: 'teal' as const },
     { icon: DollarSign, name: t('tools:roiCalculator.name'), description: t('tools:roiCalculator.description'), time: t('tools:roiCalculator.time'), href: '/consulting/tools/roi', color: 'gold' as const },
-    { icon: Shield, name: t('tools:governanceMaturityCalculator.name'), description: t('tools:governanceMaturityCalculator.description'), time: t('tools:governanceMaturityCalculator.time'), href: '/consulting/tools/governance-maturity', color: 'teal' as const },
+    // { icon: Shield, name: t('tools:governanceMaturityCalculator.name'), description: t('tools:governanceMaturityCalculator.description'), time: t('tools:governanceMaturityCalculator.time'), href: '/consulting/tools/governance-maturity', color: 'teal' as const },
   ];
 
   const fundraiseTools = [
@@ -103,19 +103,19 @@ export default function ToolsHubPage() {
               </button>
             ))}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" role="tabpanel">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch" role="tabpanel">
             {currentTools.map((tool, index) => {
               const Icon = tool.icon;
               const colors = COLOR_CLASSES[tool.color];
               return (
-                <div key={index} className="card text-center">
+                <div key={index} className="card text-center flex flex-col h-full">
                   <div className={`w-16 h-16 ${colors.bg} rounded-lg flex items-center justify-center mx-auto mb-4`}>
                     <Icon className={`w-8 h-8 ${colors.icon}`} aria-hidden="true" />
                   </div>
                   <h3 className="heading-h4 mb-2">{tool.name}</h3>
                   <p className="body-small text-gray-600 mb-3">{tool.description}</p>
                   <p className="body-small text-gray-500 mb-4">{t('tools:time')}: {tool.time}</p>
-                  <Button variant="primary" asChild className="w-full">
+                  <Button variant="primary" asChild className="w-full mt-auto">
                     <Link href={tool.href}>{t('tools:tryNow')}</Link>
                   </Button>
                 </div>

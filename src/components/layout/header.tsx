@@ -18,7 +18,7 @@ const navigationKeys = [
   { key: 'process', href: '/consulting/process' },
   { key: 'caseStudies', href: '/consulting/case-studies/hub' },
   { key: 'tools', href: '/consulting/tools/hub' },
-  { key: 'resources', href: '/consulting/resources' },
+  { key: 'resources', href: '/consulting/resource' },
   { key: 'about', href: '/consulting/about' },
   { key: 'faq', href: '/consulting/faq' },
   { key: 'contact', href: '/consulting/contact' },
@@ -94,7 +94,7 @@ export function Header() {
         <Link
           href="/"
           className="flex gap-4 items-center space-x-2 focus-visible-ring rounded-lg p-2"
-          aria-label="TwelfthKey Consulting Home"
+          aria-label="TwelfthKey Home"
         >
           <div className="w-16 h-10 sm:w-20 lg:w-20 xl:w-24 lg:h-10  rounded-lg flex flex-col items-center justify-center ">
             <img src='/tw_logo_no_bg.webp' alt='logo' className=' rounded-3xl'/>
@@ -282,7 +282,7 @@ export function Header() {
 
                         <div className="mt-4 flex-shrink-0">
                           <Link
-                            href={`/consulting/case-studies/hub?tab=${activeTab.key}`}
+                            href={`/consulting/case-studies/hub?tab=case-studies&track=${activeTab.key}`}
                             className="text-sm font-semibold text-teal-600 hover:text-teal-700"
                             suppressHydrationWarning
                           >
@@ -313,7 +313,7 @@ export function Header() {
 
         {/* Desktop & Tablet CTAs */}
         <div className="hidden md:flex items-center space-x-1.5 md:space-x-2 lg:space-x-2 xl:space-x-3 flex-shrink-0">
-          <LanguageSwitcher />
+          {/* <LanguageSwitcher /> */}
           {/* Buttons Container - Stack vertically until xl breakpoint, horizontal on xl+ */}
           <div className="flex flex-col md:flex-col xl:flex-row items-stretch xl:items-center space-y-0.5 md:space-y-0.5 xl:space-y-0 xl:space-x-2">
             <Button
@@ -335,7 +335,7 @@ export function Header() {
 
         {/* Mobile: Language switcher + Menu button */}
         <div className="flex md:hidden items-center gap-0.5">
-          <LanguageSwitcher />
+          {/* <LanguageSwitcher /> */}
           <button
             type="button"
             className="p-2 text-navy-500 focus-visible-ring rounded-lg"
@@ -406,9 +406,9 @@ export function Header() {
                   </nav>
 
                   <div className="mt-8 space-y-4">
-                    <div className="px-2">
+                    {/* <div className="px-2">
                       <LanguageSwitcher variant="dark" />
-                    </div>
+                    </div> */}
                     <Button
                       variant="secondary"
                       asChild

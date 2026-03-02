@@ -27,8 +27,13 @@ const PraxioPreviewSection = dynamic(
   { loading: () => <SectionSkeleton />, ssr: true }
 );
 
-const CaseStudyPreviewSection = dynamic(
-  () => import('@/components/home/case-study-preview-section').then((m) => ({ default: m.CaseStudyPreviewSection })),
+const ClienteleStripSection = dynamic(
+  () => import('@/components/home/clientele-strip-section').then((m) => ({ default: m.ClienteleStripSection })),
+  { loading: () => <SectionSkeleton className="h-24" />, ssr: true }
+);
+
+const SuccessStoriesPreviewSection = dynamic(
+  () => import('@/components/home/success-stories-preview-section').then((m) => ({ default: m.SuccessStoriesPreviewSection })),
   { loading: () => <SectionSkeleton />, ssr: true }
 );
 
@@ -42,12 +47,13 @@ export default function HomePage() {
     <>
       <SliderSection />
       <HeroSection />
+      <ClienteleStripSection />
       <ProblemStatementSection />
-      <CoreOfferingsSection />
+      {/* <CoreOfferingsSection /> */}
       <ToolsPreviewSection />
       <ProofSection />
       {/* <PraxioPreviewSection /> */}
-      <CaseStudyPreviewSection />
+      <SuccessStoriesPreviewSection />
       <FinalCTASection />
     </>
   );

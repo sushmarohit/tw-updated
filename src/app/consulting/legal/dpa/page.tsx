@@ -37,8 +37,8 @@ export default function DPAPage() {
               <h2 className="heading-h4 mb-3">{t('legal-dpa:section4.title')}</h2>
               <p className="body-default text-gray-700">
                 {t('legal-dpa:section4.description')}{' '}
-                <a href="mailto:compliance@twelfthkey.com" className="text-teal-500 hover:underline">
-                  compliance@twelfthkey.com
+                <a href="mailto:operations@twelfthkey.com" className="text-teal-500 hover:underline">
+                  operations@twelfthkey.com
                 </a>
               </p>
             </section>

@@ -17,12 +17,10 @@ const quickLinks = [
 ];
 
 const services = [
-  { key: 'businessOperationalAssessment', href: '/consulting/services/assessment' },
-  { key: 'operationalExcellenceFoundation', href: '/consulting/services/foundation' },
-  { key: 'governanceIntelligenceProgram', href: '/consulting/services/governance' },
-  { key: 'analyticsVisualizationSuite', href: '/consulting/services/analytics' },
-  { key: 'enterpriseOpsCommandCenter', href: '/consulting/services/enterprise' },
-  { key: 'fractionalCBO', href: '/consulting/services/fractional-cbo' },
+  { key: 'processExcellenceAssessment', href: '/consulting/services/process-excellence-solutions' },
+  { key: 'fundraiseSupportStrategy', href: '/consulting/services/fundraise-support-strategy' },
+  { key: 'franchiseScaleExpansionStrategy', href: '/consulting/services/franchise-scale-expansion' },
+  { key: 'govtProjectLiaison', href: '/consulting/services/govt-project-liaison' },
 ];
 
 const legal = [
@@ -78,7 +76,7 @@ export function Footer() {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-12 h-12 bg-gold-300 rounded-lg flex items-center justify-center">
-                <span className="text-navy-500 font-bold text-xl">TK</span>
+              <img src='/tw_logo_no_bg.webp' alt='logo' className=' w-12 h-12 rounded-3xl'/>
               </div>
               <span className="font-serif font-bold text-xl">TwelfthKey</span>
             </div>

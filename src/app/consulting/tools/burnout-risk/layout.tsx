@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 const BASE = process.env.NEXT_PUBLIC_APP_URL || 'https://twelfthkey.com';
 
 export const metadata: Metadata = {
-  title: 'Burnout Risk Assessment | TwelfthKey Consulting',
+  title: 'Burnout Risk Assessment | TwelfthKey',
   description: 'Assess burnout risk from overtime, deadlines, engagement, absenteeism, and workload.',
   alternates: { canonical: `${BASE}/consulting/tools/burnout-risk` },
 };

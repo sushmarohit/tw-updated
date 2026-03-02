@@ -13,15 +13,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const detail = slugPath ? getServiceDetailBySlug(slugPath) : null;
 
   const title = detail?.title ?? category?.title ?? 'Services';
-  const description = detail?.heroSubheadline ?? category?.description ?? 'TwelfthKey Consulting services for process excellence, fundraise, and franchise.';
+  const description = detail?.heroSubheadline ?? category?.description ?? 'TwelfthKey services for process excellence, fundraise, and franchise.';
 
   const canonical = `${BASE_URL}/consulting/services/${slugPath}`;
   return {
-    title: `${title} | TwelfthKey Consulting`,
+    title: `${title} | TwelfthKey`,
     description: description.slice(0, 160),
     alternates: { canonical },
     openGraph: {
-      title: `${title} | TwelfthKey Consulting`,
+      title: `${title} | TwelfthKey`,
       description: description.slice(0, 160),
       url: canonical,
     },

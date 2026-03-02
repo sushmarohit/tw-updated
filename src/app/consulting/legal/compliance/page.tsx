@@ -55,8 +55,8 @@ export default function CompliancePage() {
                   <h2 className="heading-h4 mb-2">{t('legal-compliance:dpa.title')}</h2>
                   <p className="body-default text-gray-700">
                     {t('legal-compliance:dpa.description')}{' '}
-                    <a href="mailto:compliance@twelfthkey.com" className="text-teal-500 hover:underline">
-                      compliance@twelfthkey.com
+                    <a href="mailto:operations@twelfthkey.com" className="text-teal-500 hover:underline">
+                      operations@twelfthkey.com
                     </a>
                   </p>
                 </div>

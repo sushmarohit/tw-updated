@@ -1,0 +1,73 @@
+{
+  "title": "Clientele & Testimonials",
+  "subtitle": "Organisations we've helped across process excellence, fundraise, and government liaison.",
+  "clienteleTitle": "Clientele",
+  "testimonialsTitle": "Testimonials",
+  "successStoriesTitle": "Success Stories",
+  "categories": {
+    "processExcellence": "Process Excellence Solutions",
+    "fundraise": "Fundraise Support & Strategy",
+    "govtLiaison": "Govt. Project Liaison"
+  },
+  "clientele": {
+    "processExcellence": ["Solaraa", "Anexx", "Asta by Avim", "Universal Education", "Augrev"],
+    "fundraise": ["Vasundhara Nirmiti Properties"],
+    "govtLiaison": ["CAV Projects"]
+  },
+  "testimonials": [
+    {
+      "quote": "We were running operations on WhatsApp and memory. TwelfthKey helped us document workflows, set weekly review rhythm, and define who owns what. Within weeks, daily follow-ups reduced and delivery became predictable.",
+      "author": "Founder, Augrev, Hospitality Consultancy and a Tech Provider",
+      "category": "processExcellence"
+    },
+    {
+      "quote": "Our biggest issue wasn't effort—it was rework. We fixed handoffs, approvals, and reporting so decisions weren't stuck. The team finally had one version of truth and fewer last-minute escalations.",
+      "author": "Founder, Universal Education, Study Abroad Business",
+      "category": "processExcellence"
+    },
+    {
+      "quote": "Government liaison work can get stuck because nobody knows what's pending, with whom, and what the next step is. TwelfthKey brought a clear tracker and a follow-up cadence, so the project moved forward without daily firefighting.",
+      "author": "Founder, CAV Projects, EPC / Infrastructure Projects",
+      "category": "govtLiaison"
+    }
+  ],
+  "successStories": [
+    {
+      "client": "Solaraa",
+      "headline": "From firefighting to weekly control",
+      "category": "processExcellence",
+      "problem": "Delivery commitments slipped, ad-hoc follow-ups were high, and the founder became the bottleneck for decisions.",
+      "whatWeDid": "Mapped the end-to-end workflow, defined clear ownership, set a weekly governance rhythm, and introduced simple KPI reporting.",
+      "result": "Predictable execution, fewer escalations, and clearer accountability across teams."
+    },
+    {
+      "client": "Anexx",
+      "headline": "Reduced rework by fixing handoffs",
+      "category": "processExcellence",
+      "problem": "Work kept looping back due to unclear inputs, ownership, and approvals between teams.",
+      "whatWeDid": "Standardised inputs/outputs per step, set approval checkpoints, and implemented a single tracker for handoffs and status.",
+      "result": "Less rework, faster closures, and fewer last-minute escalations."
+    },
+    {
+      "client": "Asta by Avim",
+      "headline": "Reduced founder dependency with clear ownership",
+      "category": "processExcellence",
+      "problem": "Execution relied heavily on the founder; priorities changed mid-week and decisions waited for follow-ups.",
+      "whatWeDid": "Defined role-wise ownership, introduced weekly planning + review, and created a simple priority board to keep the team aligned.",
+      "result": "Faster decision-making, smoother execution, and reduced day-to-day dependency on the founder."
+    },
+    {
+      "client": "Vasundhara Nirmiti Properties",
+      "headline": "Runway clarity and a fundraise-ready narrative",
+      "category": "fundraise",
+      "problem": "Unclear fundraise timing and amount, and investor conversations were starting without a tight story and numbers.",
+      "whatWeDid": "Clarified runway assumptions, structured the raise thesis (why now, why this amount), and tightened the narrative and financials for investor readiness.",
+      "result": "Clearer decision-making on timing, better-prepared investor conversations, and a more confident fundraise plan."
+    }
+  ],
+  "labels": {
+    "problem": "Problem",
+    "whatWeDid": "What we did",
+    "result": "Result"
+  }
+}

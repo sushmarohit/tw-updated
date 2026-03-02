@@ -65,17 +65,17 @@ export default function FrameworkPage() {
       <section className="section-padding">
         <div className="container-custom">
           <h2 className="heading-h2 text-center mb-8">{t('framework:sixMethodologies')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {methodologies.map((method, index) => {
               const Icon = method.icon;
               return (
-                <div key={index} className="card text-center">
+                <div key={index} className="card text-center flex flex-col h-full">
                   <div className="w-16 h-16 bg-teal-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-teal-500" aria-hidden="true" />
                   </div>
                   <h3 className="heading-h4 mb-2">{method.name}</h3>
                   <p className="body-default text-gray-600 mb-6">{method.description}</p>
-                  <Button variant="outline" asChild>
+                  <Button variant="outline" asChild className="mt-auto">
                     <Link href={method.href}>{t('framework:explore')} {method.name}</Link>
                   </Button>
                 </div>

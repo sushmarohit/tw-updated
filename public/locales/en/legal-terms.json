@@ -3,7 +3,7 @@
   "lastUpdated": "Last updated: December 2025",
   "section1": {
     "title": "1. Service Description",
-    "description": "TwelfthKey Consulting provides operational excellence consulting services, including assessments, process improvement, governance implementation, and fractional CBO services."
+    "description": "TwelfthKey provides operational excellence consulting services, including assessments, process improvement, governance implementation, and fractional CBO services."
   },
   "section2": {
     "title": "2. Engagement Terms",
@@ -15,10 +15,19 @@
   },
   "section3": {
     "title": "3. Limitations of Liability",
-    "description": "TwelfthKey Consulting's liability is limited to the fees paid for the specific engagement. We are not liable for indirect, consequential, or incidental damages."
+    "description": "TwelfthKey's liability is limited to the fees paid for the specific engagement. We are not liable for indirect, consequential, or incidental damages."
   },
   "section4": {
-    "title": "4. Dispute Resolution",
+    "title": "4. Force Majeure",
+    "description": "TwelfthKey will not be responsible for any delay, interruption, or failure to perform any obligation under these Terms to the extent such delay or failure is caused by events beyond the reasonable control of the affected party (“Force Majeure”).",
+    "eventsIntro": "Force Majeure events include, without limitation:",
+    "events": "natural calamities (including floods, earthquakes, fires), epidemic/pandemic, war, terrorism, civil unrest, strikes or labour disruptions, acts or restrictions of government authorities (including lockdowns), and widespread power, internet, telecom, or hosting/service-provider outages that materially prevent performance.",
+    "notify": "The affected party will notify the other party as soon as reasonably practicable, describing the Force Majeure event, how it impacts performance, and an estimated timeline for resumption.",
+    "during": "During the Force Majeure event, the affected obligations will be suspended or timelines will be extended only to the extent impacted, and the affected party will use reasonable efforts to mitigate the impact and resume performance as soon as practicable.",
+    "termination": "If a Force Majeure event continues for more than 60 days, either party may terminate the affected engagement by written notice; in such case, TwelfthKey will be entitled to payment for services already performed up to the termination effective date, and any remaining prepaid fees for work not yet performed will be handled in accordance with the applicable engagement terms and the Refund Policy."
+  },
+  "section5": {
+    "title": "5. Dispute Resolution",
     "description": "Any disputes shall be resolved through arbitration in Mumbai, India, in accordance with the Arbitration and Conciliation Act, 2015."
   }
 }

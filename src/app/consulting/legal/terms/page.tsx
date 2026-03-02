@@ -41,8 +41,30 @@ export default function TermsOfServicePage() {
 
             <section>
               <h2 className="heading-h4 mb-3">{t('legal-terms:section4.title')}</h2>
-              <p className="body-default text-gray-700">
+              <p className="body-default text-gray-700 mb-3">
                 {t('legal-terms:section4.description')}
+              </p>
+              <p className="body-default text-gray-700 mb-1">
+                {t('legal-terms:section4.eventsIntro')}
+              </p>
+              <p className="body-default text-gray-700 mb-3">
+                {t('legal-terms:section4.events')}
+              </p>
+              <p className="body-default text-gray-700 mb-3">
+                {t('legal-terms:section4.notify')}
+              </p>
+              <p className="body-default text-gray-700 mb-3">
+                {t('legal-terms:section4.during')}
+              </p>
+              <p className="body-default text-gray-700">
+                {t('legal-terms:section4.termination')}
+              </p>
+            </section>
+
+            <section>
+              <h2 className="heading-h4 mb-3">{t('legal-terms:section5.title')}</h2>
+              <p className="body-default text-gray-700">
+                {t('legal-terms:section5.description')}
               </p>
             </section>
           </div>

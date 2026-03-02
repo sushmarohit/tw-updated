@@ -177,6 +177,7 @@ model Contact {
   phone         String?  @map("phone")
   company       String?  @map("company")
   service       String?  @map("service") // primary service from dropdown
+  subService    String?  @map("sub_service") // selected sub-service, if any
   interestedIn  Json?    @map("interested_in") // array of interest keys, e.g. ["process-excellence", "fundraise"]
   heardAboutUs  String?  @map("heard_about_us") // referral source
   message       String   @map("message")

@@ -20,8 +20,6 @@ export interface ServiceDetailPage {
   outcomes: string[];
   timelineLabel: string;
   timeline: string;
-  pricingLabel: string;
-  pricing: string;
   primaryCta: ServiceLinkItem;
   secondaryCta: ServiceLinkItem;
 }
@@ -33,6 +31,7 @@ export const serviceCategorySlugToKey: Record<string, string> = {
   'process-excellence-solutions': 'processExcellence',
   'fundraise-support-strategy': 'fundraise',
   'franchise-scale-expansion': 'franchise',
+  'govt-project-liaison': 'govtLiaison',
 };
 
 export const serviceCategories: ServiceCategory[] = [
@@ -82,8 +81,8 @@ export const serviceCategories: ServiceCategory[] = [
       href: '/consulting/contact',
     },
     secondaryCta: {
-      title: 'Get TwelfthKey Certified\u2122 Review',
-      href: `${ROOT}/fundraise/twelfthkey-certified-verification-consultation`,
+      title: 'Book Discovery Call',
+      href: '/consulting/booking',
     },
     items: [
       {
@@ -148,6 +147,26 @@ export const serviceCategories: ServiceCategory[] = [
       },
     ],
   },
+  {
+    slug: 'govt-project-liaison',
+    title: 'Govt. Project Liaison',
+    description:
+      'Clear trackers, follow-up cadence, and accountability so government liaison work moves forward without daily firefighting.',
+    primaryCta: {
+      title: 'Discuss Your Project',
+      href: '/consulting/contact',
+    },
+    secondaryCta: {
+      title: 'Book Discovery Call',
+      href: '/consulting/booking',
+    },
+    items: [
+      {
+        title: 'Govt. Liaison Support',
+        href: '/consulting/contact?subject=Govt%20Project%20Liaison',
+      },
+    ],
+  },
 ];
 
 export const serviceDetails: ServiceDetailPage[] = [
@@ -167,8 +186,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '15 days, one-time.',
-    pricingLabel: 'Pricing',
-    pricing: '₹24,999 (website price).',
     primaryCta: { title: 'Start Health Index', href: '/consulting/tools/health-check' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
@@ -189,8 +206,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '30 days, one-time.',
-    pricingLabel: 'Pricing',
-    pricing: '₹49,999 (website price).',
     primaryCta: { title: 'Set Up Reporting', href: '/consulting/contact' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
@@ -211,8 +226,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '45 days, one-time.',
-    pricingLabel: 'Pricing',
-    pricing: '₹99,999 (website price).',
     primaryCta: { title: 'Structure My Operations', href: '/consulting/contact' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
@@ -234,8 +247,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '60 days, one-time.',
-    pricingLabel: 'Pricing',
-    pricing: '₹1,99,999 (website price).',
     primaryCta: { title: 'Build My Dashboards', href: '/consulting/contact' },
     secondaryCta: { title: 'Request Demo', href: '/consulting/praxio/demo' },
   },
@@ -254,8 +265,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: 'Ongoing, retainer engagement.',
-    pricingLabel: 'Pricing',
-    pricing: '₹49,999 (website price).',
     primaryCta: { title: 'Discuss Retainer Fit', href: '/consulting/contact' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
@@ -275,8 +284,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '7–10 days, one-time.',
-    pricingLabel: 'Pricing',
-    pricing: '₹24,999 (website price).',
     primaryCta: {
       title: 'Get Certified Review',
       href: '/consulting/contact',
@@ -302,8 +309,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '20–25 days, one-time.',
-    pricingLabel: 'Pricing',
-    pricing: '₹49,999 (website price).',
     primaryCta: { title: 'Build My DPR', href: '/consulting/contact' },
     secondaryCta: { title: 'Talk to an Expert', href: '/consulting/contact' },
   },
@@ -326,8 +331,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '10–15 days, one-time.',
-    pricingLabel: 'Pricing',
-    pricing: '₹74,999 (website price).',
     primaryCta: { title: 'Build My Pitch Deck', href: '/consulting/contact' },
     secondaryCta: {
       title: 'Get Certified Review',
@@ -350,8 +353,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '30–60 days, retainer.',
-    pricingLabel: 'Pricing',
-    pricing: '₹99,999 (website price).',
     primaryCta: { title: 'Explore Advisory', href: '/consulting/contact' },
     secondaryCta: { title: 'Book Strategy Call', href: '/consulting/booking' },
   },
@@ -372,8 +373,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '60–90 days, success-based.',
-    pricingLabel: 'Commercial',
-    pricing: 'Success fee range shown as 5% / 3% / 2% / 1% (per pricing sheet).',
     primaryCta: { title: 'Discuss Fundraise Fit', href: '/consulting/contact' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
@@ -395,8 +394,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '30 days, one-time.',
-    pricingLabel: 'Pricing',
-    pricing: '₹99,999 (website price).',
     primaryCta: { title: 'Check Franchise Feasibility', href: '/consulting/contact' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
@@ -421,8 +418,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '45–60 days, one-time.',
-    pricingLabel: 'Pricing',
-    pricing: '₹1,49,999 (website price).',
     primaryCta: { title: 'Build My FOM', href: '/consulting/contact' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
@@ -442,8 +437,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '20–30 days, one-time.',
-    pricingLabel: 'Pricing',
-    pricing: '₹1,99,999 (website price).',
     primaryCta: { title: 'Set Up Compliance', href: '/consulting/contact' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
@@ -465,8 +458,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '30 days, one-time.',
-    pricingLabel: 'Pricing',
-    pricing: '₹74,999 (website price).',
     primaryCta: { title: 'Build Recruitment System', href: '/consulting/contact' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
@@ -487,8 +478,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: 'Ongoing, retainer.',
-    pricingLabel: 'Pricing',
-    pricing: '₹49,999 (website price).',
     primaryCta: { title: 'Discuss Retainer', href: '/consulting/contact' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
@@ -509,8 +498,6 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '45 days, one-time.',
-    pricingLabel: 'Pricing',
-    pricing: '₹2,49,999 (website price).',
     primaryCta: { title: 'Build Expansion Roadmap', href: '/consulting/contact' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },

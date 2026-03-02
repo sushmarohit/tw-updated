@@ -3,15 +3,7 @@ import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { sendContactFormEmail } from '@/lib/integrations/nodemailer';
 import { rateLimitContact } from '@/lib/api/rate-limit';
-
-const CONTACT_SERVICE_KEYS = [
-  'businessOperationalAssessment',
-  'operationalExcellenceFoundation',
-  'governanceIntelligenceProgram',
-  'analyticsVisualizationSuite',
-  'enterpriseOpsCommandCenter',
-  'fractionalCBO',
-] as const;
+import { serviceCategories } from '@/lib/services-catalog';
 
 const INTERESTED_IN_KEYS = [
   'process-excellence',
@@ -34,7 +26,18 @@ const contactBodySchema = z.object({
   email: z.string().min(1, 'Email is required').email('Invalid email').max(320).transform((s) => s.trim().toLowerCase()),
   phone: z.string().max(50).optional().nullable().transform((v) => (v == null || v === '' ? undefined : String(v).trim())),
   company: z.string().max(200).optional().nullable().transform((v) => (v == null || v === '' ? undefined : String(v).trim())),
-  service: z.enum(CONTACT_SERVICE_KEYS).optional().nullable(),
+  service: z
+    .string()
+    .max(200)
+    .optional()
+    .nullable()
+    .transform((v) => (v == null || v === '' ? undefined : String(v).trim())),
+  sub_service: z
+    .string()
+    .max(300)
+    .optional()
+    .nullable()
+    .transform((v) => (v == null || v === '' ? undefined : String(v).trim())),
   interested_in: z.array(z.enum(INTERESTED_IN_KEYS)).optional().default([]),
   heard_about_us: z.enum(HEARD_ABOUT_KEYS).optional().nullable(),
   message: z.string().min(1, 'Message is required').max(10000).transform((s) => s.trim()),
@@ -57,7 +60,20 @@ export async function POST(request: NextRequest) {
       const message = first.name?.[0] ?? first.email?.[0] ?? first.message?.[0] ?? 'Validation failed';
       return NextResponse.json({ error: message }, { status: 400 });
     }
-    const { name, email, phone, company, service, interested_in, heard_about_us, message } = parseResult.data;
+    const { name, email, phone, company, service, sub_service, interested_in, heard_about_us, message } = parseResult.data;
+
+    // Map service slug and sub-service href to human-readable titles
+    const selectedCategory = service
+      ? serviceCategories.find((category) => category.slug === service)
+      : undefined;
+    const serviceLabel = selectedCategory?.title ?? service ?? undefined;
+
+    let subServiceLabel: string | undefined;
+    if (sub_service) {
+      const allItems = serviceCategories.flatMap((category) => category.items);
+      const matchedItem = allItems.find((item) => item.href === sub_service);
+      subServiceLabel = matchedItem?.title ?? sub_service;
+    }
 
     const contact = await prisma.contact.create({
       data: {
@@ -65,7 +81,8 @@ export async function POST(request: NextRequest) {
         email,
         phone: phone ?? null,
         company: company ?? null,
-        service: service ?? null,
+        service: serviceLabel ?? null,
+        subService: subServiceLabel ?? null,
         interestedIn: interested_in.length > 0 ? interested_in : undefined,
         heardAboutUs: heard_about_us ?? null,
         message,
@@ -84,6 +101,7 @@ export async function POST(request: NextRequest) {
           phone: contact.phone ?? undefined,
           company: contact.company ?? undefined,
           service: contact.service ?? undefined,
+          subService: contact.subService ?? undefined,
           interestedIn: (contact.interestedIn as string[] | null) ?? undefined,
           heardAboutUs: contact.heardAboutUs ?? undefined,
           message: contact.message,

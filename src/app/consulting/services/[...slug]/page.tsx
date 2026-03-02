@@ -14,6 +14,11 @@ import {
   serviceCategorySlugToKey,
   serviceDetailSlugToKey,
 } from '@/lib/services-catalog';
+import { ClienteleChipsStrip } from '@/components/shared/clientele-chips';
+import { TestimonialsBlock } from '@/components/shared/testimonials-block';
+import { SuccessStoriesPreview } from '@/components/shared/success-stories-preview';
+
+const HUB_SUCCESS_STORIES = '/consulting/case-studies/hub?tab=success-stories';
 
 export default function ServiceSlugPage() {
   const params = useParams();
@@ -24,7 +29,7 @@ export default function ServiceSlugPage() {
   const category = rest.length === 0 && first ? getServiceCategoryBySlug(first) : null;
   const detail = slugPath ? getServiceDetailBySlug(slugPath) : null;
 
-  const { t } = useTranslation(['services', 'services-catalog', 'services-detail', 'common']);
+  const { t } = useTranslation(['services', 'services-catalog', 'services-detail', 'about-clientele', 'about', 'common']);
 
   const translatedCategory = useMemo(() => {
     if (!category) return null;
@@ -56,8 +61,6 @@ export default function ServiceSlugPage() {
       outcomes: Array.isArray(outcomes) ? outcomes : detail.outcomes,
       timelineLabel: t('services-detail:' + key + '.timelineLabel'),
       timeline: t('services-detail:' + key + '.timeline'),
-      pricingLabel: t('services-detail:' + key + '.pricingLabel'),
-      pricing: t('services-detail:' + key + '.pricing'),
       primaryCta: { ...detail.primaryCta, title: t('services-detail:' + key + '.primaryCta') },
       secondaryCta: { ...detail.secondaryCta, title: t('services-detail:' + key + '.secondaryCta') },
     };
@@ -109,6 +112,75 @@ export default function ServiceSlugPage() {
                   </Link>
                 ))}
               </div>
+
+              {translatedCategory.slug === 'process-excellence-solutions' && (() => {
+                const clientele = t('about-clientele:clientele', { returnObjects: true }) as Record<string, string[]>;
+                const names = clientele?.processExcellence;
+                return names?.length ? (
+                  <>
+                    <h2 className="heading-h2 mt-12 mb-4" suppressHydrationWarning>{t('services:clienteleTitle')}</h2>
+                    <ClienteleChipsStrip names={names} className="mb-10" />
+                    <h2 className="heading-h2 mb-4" suppressHydrationWarning>{t('services:testimonialsTitle')}</h2>
+                    <TestimonialsBlock indices={[0, 1]} variant="cards" className="mb-10 grid-cols-1 md:grid-cols-2" />
+                    <h2 className="heading-h2 mb-6" suppressHydrationWarning>{t('services:successStoriesTitle')}</h2>
+                    <SuccessStoriesPreview
+                      clients={['Solaraa', 'Anexx', 'Asta by Avim']}
+                      variant="mini"
+                      viewAllHref={HUB_SUCCESS_STORIES}
+                      viewAllLabel={t('services:viewAllSuccessStories')}
+                    />
+                  </>
+                ) : null;
+              })()}
+
+              {translatedCategory.slug === 'fundraise-support-strategy' && (() => {
+                const clientele = t('about-clientele:clientele', { returnObjects: true }) as Record<string, string[]>;
+                const names = clientele?.fundraise;
+                return (
+                  <>
+                    {names?.length ? (
+                      <>
+                        <h2 className="heading-h2 mt-12 mb-4" suppressHydrationWarning>{t('services:clienteleTitle')}</h2>
+                        <ClienteleChipsStrip names={names} className="mb-10" />
+                      </>
+                    ) : null}
+                    <h2 className="heading-h2 mb-6" suppressHydrationWarning>{t('services:successStoriesTitle')}</h2>
+                    <SuccessStoriesPreview
+                      clients={['Vasundhara Nirmiti Properties']}
+                      variant="mini"
+                      viewAllHref={HUB_SUCCESS_STORIES}
+                      viewAllLabel={t('services:viewAllSuccessStories')}
+                    />
+                  </>
+                );
+              })()}
+
+              {translatedCategory.slug === 'govt-project-liaison' && (() => {
+                const clientele = t('about-clientele:clientele', { returnObjects: true }) as Record<string, string[]>;
+                const names = clientele?.govtLiaison;
+                return names?.length ? (
+                  <>
+                    <h2 className="heading-h2 mt-12 mb-4" suppressHydrationWarning>{t('services:clienteleTitle')}</h2>
+                    <ClienteleChipsStrip names={names} className="mb-6" />
+                    <h2 className="heading-h2 mb-4" suppressHydrationWarning>{t('services:testimonialsTitle')}</h2>
+                    <TestimonialsBlock indices={[2]} variant="cards" className="grid-cols-1" />
+                  </>
+                ) : null;
+              })()}
+            </div>
+          </section>
+
+          <section className="section-padding bg-navy-500 text-white">
+            <div className="container-custom text-center">
+              <h2 className="heading-h2 mb-4 text-white">{t('about:readyTitle')}</h2>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button variant="primary" size="lg" asChild className="bg-gold-300 text-navy-500 hover:bg-gold-400">
+                  <Link href={translatedCategory.primaryCta.href}>{translatedCategory.primaryCta.title}</Link>
+                </Button>
+                <Button variant="outline" size="lg" asChild className="border-white text-white hover:bg-white/10">
+                  <Link href={translatedCategory.secondaryCta.href}>{translatedCategory.secondaryCta.title}</Link>
+                </Button>
+              </div>
             </div>
           </section>
         </div>
@@ -159,15 +231,9 @@ export default function ServiceSlugPage() {
             </div>
 
             <div className="card bg-navy-500 text-white">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <p className="body-small text-gray-300 mb-2" suppressHydrationWarning>{translatedDetail.timelineLabel}</p>
-                  <p className="heading-h4 text-gold-300" suppressHydrationWarning>{translatedDetail.timeline}</p>
-                </div>
-                <div>
-                  <p className="body-small text-gray-300 mb-2" suppressHydrationWarning>{translatedDetail.pricingLabel}</p>
-                  <p className="heading-h4 text-teal-400" suppressHydrationWarning>{translatedDetail.pricing}</p>
-                </div>
+              <div>
+                <p className="body-small text-gray-300 mb-2" suppressHydrationWarning>{translatedDetail.timelineLabel}</p>
+                <p className="heading-h4 text-gold-300" suppressHydrationWarning>{translatedDetail.timeline}</p>
               </div>
             </div>
           </div>

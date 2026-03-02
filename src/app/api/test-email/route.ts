@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     // Send test email
     const emailSent = await sendEmail({
       to,
-      subject: 'Test Email from TwelfthKey Consulting',
+      subject: 'Test Email from TwelfthKey',
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px;">
           <h2 style="color: #1E3A5F;">Email Test Successful!</h2>
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
             <li>Gmail User: ${gmailUser || 'Not set'}</li>
           </ul>
           <p style="color: #6B7280; font-size: 12px; margin-top: 20px;">
-            This is a test email sent from your TwelfthKey Consulting application.
+            This is a test email sent from your TwelfthKey application.
           </p>
         </div>
       `,

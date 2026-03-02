@@ -21,6 +21,13 @@
     "item4": "Support & Strategy (Advisory-Only)",
     "item5": "Fundraise Execution (Full-Service)"
   },
+  "govtLiaison": {
+    "title": "Govt. Project Liaison",
+    "description": "Clear trackers, follow-up cadence, and accountability so government liaison work moves forward without daily firefighting.",
+    "primaryCta": "Discuss Your Project",
+    "secondaryCta": "Book Discovery Call",
+    "item1": "Govt. Liaison Support"
+  },
   "franchise": {
     "title": "Franchise Scale/Expansion Strategy & Consultation",
     "description": "Build a franchise-ready model that's repeatable, legally sound, and easy for franchisees to execute.",

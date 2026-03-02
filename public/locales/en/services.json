@@ -3,6 +3,10 @@
   "subtitle": "Choose the engagement model that fits your needs",
   "servicesInThisTrack": "Services in this track",
   "viewDetails": "View details",
+  "viewAllSuccessStories": "View all Success Stories",
+  "clienteleTitle": "Clientele",
+  "testimonialsTitle": "Testimonials",
+  "successStoriesTitle": "Success Stories",
   "businessOperationalAssessment": {
     "name": "Business Operational Assessment",
     "description": "Root cause analysis and prioritized roadmap"

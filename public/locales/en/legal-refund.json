@@ -3,15 +3,17 @@
   "lastUpdated": "Last updated: December 2025",
   "section1": {
     "title": "One-Time Services",
-    "description": "100% refund within 30 days if engagement has not been initiated. No refunds after commitment begins, except in cases of natural calamity or medical emergency (evaluated case-by-case)."
+    "item1": "If engagement has not started: 100% refund if requested within 30 days of payment.",
+    "item2": "If work has commenced: no refunds for services already delivered."
   },
   "section2": {
-    "title": "Ongoing Services",
-    "description": "For monthly retainer services (e.g., Fractional CBO), cancellation requires 30 days written notice. No refunds for services already rendered."
+    "title": "Ongoing Services (Monthly Retainers)",
+    "item1": "Cancellation requires 30 days' written notice.",
+    "item2": "Fees for the current billing period are non-refundable, and no refunds are provided for services already rendered."
   },
   "section3": {
-    "title": "PraXio™ Platform",
-    "description": "PraXio™ subscriptions can be cancelled at any time. No refunds for the current billing period, but service will not renew."
+    "title": "Exception (applies to all above services): Force Majeure / Medical Emergency",
+    "description": "No refunds after work has commenced, except where performance is prevented due to a Force Majeure event (as defined in the Terms of Service) or a verified medical emergency, evaluated case-by-case; where applicable, refunds (if any) will be limited to prepaid amounts for work not yet performed."
   },
   "section4": {
     "title": "Contact",

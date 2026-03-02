@@ -81,8 +81,8 @@ export default function BookingPage() {
               <p className="body-default text-gray-600 mb-4">
                 {t('bookingNotConfigured')}
               </p>
-              <a href="mailto:contact@twelfthkey.com" className="text-teal-500 hover:underline">
-                contact@twelfthkey.com
+              <a href="mailto:operations@twelfthkey.com" className="text-teal-500 hover:underline">
+                operations@twelfthkey.com
               </a>
             </div>
           )}

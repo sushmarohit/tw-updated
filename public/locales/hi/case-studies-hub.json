@@ -1,6 +1,13 @@
 {
   "title": "वास्तविक ग्राहकों से वास्तविक परिणाम",
   "subtitle": "देखें कि TwelfthKey ने बैंकिंग, FinTech, SaaS और उससे आगे के परिचालन को कैसे बदला",
+  "tabs": {
+    "caseStudies": "केस स्टडीज",
+    "successStories": "सफलता की कहानियाँ",
+    "testimonials": "प्रशंसापत्र",
+    "clientele": "क्लाइंटेल"
+  },
+  "startTransformation": "अपना परिवर्तन शुरू करें",
   "banking": {
     "title": "बैंकिंग परिचालन",
     "industry": "बैंकिंग",

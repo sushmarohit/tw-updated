@@ -37,8 +37,8 @@ export default function AccessibilityStatementPage() {
               <h2 className="heading-h4 mb-3">{t('legal-accessibility:feedback')}</h2>
               <p className="body-default text-gray-700">
                 {t('legal-accessibility:feedbackText')}{' '}
-                <a href="mailto:accessibility@twelfthkey.com" className="text-teal-500 hover:underline">
-                  accessibility@twelfthkey.com
+                <a href="mailto:operations@twelfthkey.com" className="text-teal-500 hover:underline">
+                  operations@twelfthkey.com
                 </a>
               </p>
             </section>

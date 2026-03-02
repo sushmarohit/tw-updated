@@ -1,18 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Send } from 'lucide-react';
 import { trackFormSubmit } from '@/lib/analytics/events';
 import { useTranslation } from 'react-i18next';
+import { serviceCategories } from '@/lib/services-catalog';
 
-const SERVICE_OPTIONS = [
-  'businessOperationalAssessment',
-  'operationalExcellenceFoundation',
-  'governanceIntelligenceProgram',
-  'analyticsVisualizationSuite',
-  'enterpriseOpsCommandCenter',
-  'fractionalCBO',
+const CONTACT_SERVICE_SLUGS = [
+  'process-excellence-solutions',
+  'fundraise-support-strategy',
+  'franchise-scale-expansion',
 ] as const;
 
 const INTERESTED_IN_OPTIONS = [
@@ -40,12 +38,20 @@ function isValidEmail(value: string): boolean {
 export default function ContactPage() {
   const { t } = useTranslation('common');
   const { t: tNav } = useTranslation('navigation');
+  const contactServiceCategories = useMemo(
+    () =>
+      serviceCategories.filter((category) =>
+        (CONTACT_SERVICE_SLUGS as readonly string[]).includes(category.slug)
+      ),
+    []
+  );
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     company: '',
     service: '',
+    sub_service: '',
     interested_in: [] as string[],
     heard_about_us: '',
     message: '',
@@ -91,6 +97,7 @@ export default function ContactPage() {
         phone: '',
         company: '',
         service: '',
+        sub_service: '',
         interested_in: [],
         heard_about_us: '',
         message: '',
@@ -184,14 +191,44 @@ export default function ContactPage() {
                 id="service"
                 className="input"
                 value={formData.service}
-                onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    service: e.target.value,
+                    sub_service: '',
+                  })
+                }
               >
                 <option value="">{t('selectService')}</option>
-                {SERVICE_OPTIONS.map((key) => (
-                  <option key={key} value={key}>
-                    {tNav(key)}
+                {contactServiceCategories.map((category) => (
+                  <option key={category.slug} value={category.slug}>
+                    {category.title}
                   </option>
                 ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="sub_service" className="block font-semibold mb-2">
+                Sub-service (optional)
+              </label>
+              <select
+                id="sub_service"
+                className="input"
+                value={formData.sub_service}
+                onChange={(e) => setFormData({ ...formData, sub_service: e.target.value })}
+                disabled={!formData.service}
+              >
+                <option value="">
+                  {formData.service ? 'Select sub-service' : 'Select a service first'}
+                </option>
+                {formData.service &&
+                  contactServiceCategories
+                    .find((category) => category.slug === formData.service)
+                    ?.items.map((item) => (
+                      <option key={item.href} value={item.href}>
+                        {item.title}
+                      </option>
+                    ))}
               </select>
             </div>
             <div>

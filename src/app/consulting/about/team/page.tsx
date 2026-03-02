@@ -15,21 +15,21 @@ export default function TeamPage() {
       role: t('about-team:members.member1.role'),
       bio: t('about-team:members.member1.bio'),
       linkedin: 'https://linkedin.com/in/adityamayekar',
-      email: 'aditya@twelfthkey.com',
+      email: 'operations@twelfthkey.com',
     },
     {
       name: t('about-team:members.member2.name'),
       role: t('about-team:members.member2.role'),
       bio: t('about-team:members.member2.bio'),
       linkedin: '#',
-      email: 'consultant@twelfthkey.com',
+      email: 'operations@twelfthkey.com',
     },
     {
       name: t('about-team:members.member3.name'),
       role: t('about-team:members.member3.role'),
       bio: t('about-team:members.member3.bio'),
       linkedin: '#',
-      email: 'platform@twelfthkey.com',
+      email: 'operations@twelfthkey.com',
     },
   ];
 

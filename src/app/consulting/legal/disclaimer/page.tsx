@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Legal Disclaimer | TwelfthKey Consulting',
-  description: 'General disclaimer for information, tools, and services on the TwelfthKey Consulting website.',
+  title: 'Legal Disclaimer | TwelfthKey',
+  description: 'General disclaimer for information, tools, and services on the TwelfthKey website.',
 };
 
 export default function LegalDisclaimerPage() {
@@ -28,7 +28,7 @@ export default function LegalDisclaimerPage() {
               <h2 className="heading-h4 mb-3">No client relationship</h2>
               <p className="body-default text-gray-700">
                 Use of this website or any tools or content on it does not create a consulting, advisory, or
-                client relationship with TwelfthKey Consulting or any of its affiliates. Outcomes described in case
+                client relationship with TwelfthKey or any of its affiliates. Outcomes described in case
                 studies or examples are illustrative and do not guarantee similar results for your business.
               </p>
             </section>
