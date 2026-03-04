@@ -11,6 +11,7 @@ export default function BookingPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    company: "",
     phone: "",
     preferred_date: "",
     preferred_time_slot: "",
@@ -42,6 +43,7 @@ export default function BookingPage() {
       setFormData({
         name: "",
         email: "",
+        company: "",
         phone: "",
         preferred_date: "",
         preferred_time_slot: "",
@@ -140,6 +142,23 @@ export default function BookingPage() {
                     />
                   </div>
                 </div>
+                <div>
+                  <label
+                    htmlFor="booking-company"
+                    className="block font-semibold mb-1"
+                  >
+                    {t("company")}
+                  </label>
+                  <input
+                    id="booking-company"
+                    type="text"
+                    className="input"
+                    value={formData.company}
+                    onChange={(e) =>
+                      setFormData({ ...formData, company: e.target.value })
+                    }
+                  />
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label
@@ -167,8 +186,7 @@ export default function BookingPage() {
                     </label>
                     <input
                       id="booking-date"
-                      type="text"
-                      placeholder={t("placeholderPreferredDate")}
+                      type="date"
                       className="input"
                       value={formData.preferred_date}
                       onChange={(e) =>
@@ -189,8 +207,7 @@ export default function BookingPage() {
                   </label>
                   <input
                     id="booking-time"
-                    type="text"
-                    placeholder={t("placeholderPreferredTime")}
+                    type="time"
                     className="input"
                     value={formData.preferred_time_slot}
                     onChange={(e) =>

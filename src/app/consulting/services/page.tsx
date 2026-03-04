@@ -47,7 +47,7 @@ export default function ServicesPage() {
           <div className="container-custom">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {translatedCategories.map((category) => (
-                <div key={category.slug} className="card">
+                <div key={category.slug} className="card flex flex-col">
                   <h2 className="heading-h4 mb-3">{category.title}</h2>
                   <p className="body-default text-gray-600 mb-5">{category.description}</p>
                   <ul className="space-y-2 mb-6">
@@ -59,7 +59,7 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-3 mt-auto">
                     <Button variant="primary" asChild>
                       <Link href={category.primaryCta.href}>{category.primaryCta.title}</Link>
                     </Button>
