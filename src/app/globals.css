@@ -80,24 +80,24 @@
     @apply border-error focus:ring-error focus:border-error animate-shake;
   }
 
-  /* Typography */
+  /* Typography – mobile-first (smaller default, scale up from md) */
   .heading-hero {
-    @apply font-serif font-bold text-hero-desktop md:text-hero-mobile;
+    @apply font-serif font-bold text-hero-mobile md:text-hero-desktop;
     @apply text-navy-500 leading-tight;
   }
 
   .heading-h2 {
-    @apply font-serif font-bold text-h2-desktop md:text-h2-mobile;
+    @apply font-serif font-bold text-h2-mobile md:text-h2-desktop;
     @apply text-navy-500 leading-tight;
   }
 
   .heading-h3 {
-    @apply font-serif font-semibold text-h3-desktop md:text-h3-mobile;
+    @apply font-serif font-semibold text-h3-mobile md:text-h3-desktop;
     @apply text-navy-500;
   }
 
   .heading-h4 {
-    @apply font-serif font-semibold text-h4-desktop md:text-h4-mobile;
+    @apply font-serif font-semibold text-h4-mobile md:text-h4-desktop;
     @apply text-navy-500;
   }
 

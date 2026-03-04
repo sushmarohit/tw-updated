@@ -11,7 +11,7 @@ export function HeroSection() {
     <section className="section-padding bg-gradient-to-br from-navy-500 via-navy-600 to-teal-600 text-white">
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="heading-hero mb-6 text-white">
+          <h1 className="font-serif font-bold leading-tight text-white mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-hero-desktop">
             {t('hero:title')}
           </h1>
           <p className="body-large mb-8 text-gray-100">

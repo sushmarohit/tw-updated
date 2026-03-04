@@ -231,7 +231,7 @@ export default function ContactPage() {
                     ))}
               </select>
             </div>
-            <div>
+            {/* <div>
               <span className="block font-semibold mb-2">{t('interestedIn')}</span>
               <div className="flex flex-wrap gap-3" role="group" aria-labelledby="interested-in-label">
                 <span id="interested-in-label" className="sr-only">{t('interestedIn')}</span>
@@ -252,7 +252,7 @@ export default function ContactPage() {
                   </label>
                 ))}
               </div>
-            </div>
+            </div> */}
             <div>
               <label htmlFor="heard_about_us" className="block font-semibold mb-2">
                 {t('heardAboutUs')}
