@@ -35,7 +35,7 @@ const legal = [
 ];
 
 const socialLinks = [
-  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/112149124/admin/dashboard/' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/twelfthkey/' },
   { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/twelfthkey/' },
   { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/twelfthkey' },
   { name: 'WhatsApp', icon: MessageCircle, href: 'https://wa.me/9967193526' },
