@@ -117,9 +117,9 @@ export default function OperationalHealthCheckPage() {
             </div>
 
             {showUserInfoForm && (
-              <div className="border-t pt-6">
+              <div className="border-t pt-6 mt-6">
                 <h3 className="heading-h4 mb-4">{t('tools-health-check:getDetailedReport')}</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mb-4">
                   <input
                     type="text"
                     placeholder={t('tools-health-check:name')}
@@ -145,7 +145,7 @@ export default function OperationalHealthCheckPage() {
               </div>
             )}
 
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
               <Button
                 variant="primary"
                 onClick={handleSubmit}
@@ -156,10 +156,15 @@ export default function OperationalHealthCheckPage() {
                   !isValidEmail(userInfo.email) ||
                   !userInfo.companyName.trim()
                 }
+                className="w-full sm:w-auto min-h-11 sm:min-h-0 shrink-0"
               >
                 {isSubmitting ? t('tools-health-check:submitting') : t('tools-health-check:getFullReport')}
               </Button>
-              <Button variant="secondary" onClick={() => window.location.reload()}>
+              <Button
+                variant="secondary"
+                onClick={() => window.location.reload()}
+                className="w-full sm:w-auto min-h-11 sm:min-h-0 shrink-0"
+              >
                 {t('tools-health-check:startOver')}
               </Button>
             </div>
