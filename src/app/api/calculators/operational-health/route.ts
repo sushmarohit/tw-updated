@@ -117,26 +117,24 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // Send PDF report to user's email when they click "Get Full Report" (async, don't wait)
+    // Send PDF report to user's email — await so serverless function doesn't exit before send completes
     if (userInfo?.email) {
       const baseUrl = process.env.NEXT_PUBLIC_APP_URL || '';
       const reportUrl = sessionId
         ? `${baseUrl}/consulting/tools/health-check/report/${sessionId}`
         : `${baseUrl}/consulting/tools/health-check`;
-
-      generateCalculatorPDFBuffer('Operational Health Diagnostic', result, userInfo)
-        .then((pdfBuffer) =>
-          sendCalculatorReportEmail(
-            userInfo.email!,
-            'Operational Health Diagnostic',
-            reportUrl,
-            userInfo.name,
-            pdfBuffer
-          )
-        )
-        .catch((error) => {
-          console.error('Operational health report email error:', error);
-        });
+      try {
+        const pdfBuffer = await generateCalculatorPDFBuffer('Operational Health Diagnostic', result, userInfo);
+        await sendCalculatorReportEmail(
+          userInfo.email,
+          'Operational Health Diagnostic',
+          reportUrl,
+          userInfo.name,
+          pdfBuffer
+        );
+      } catch (error) {
+        console.error('Operational health report email error:', error);
+      }
     }
 
     return NextResponse.json({

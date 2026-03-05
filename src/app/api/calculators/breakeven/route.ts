@@ -46,31 +46,26 @@ export async function POST(request: NextRequest) {
 
       const sessionId = session.id;
 
-      // Send email with report and PDF attachment (async, don't wait)
+      // Send email with report and PDF attachment — await so serverless doesn't exit before send
       if (userInfo?.email && sessionId) {
         const reportUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/consulting/tools/breakeven`;
-        
-        // Generate PDF and send via email
-        generateCalculatorPDFBuffer('Break-Even Point Calculator', result, userInfo)
-          .then((pdfBuffer) => {
-            return sendCalculatorReportEmail(
-              userInfo.email!,
-              'Break-Even Point Calculator',
-              reportUrl,
-              userInfo.name,
-              pdfBuffer
-            );
-          })
-          .then((emailSent) => {
-            if (emailSent) {
-              console.log('[Breakeven] Email sent successfully to:', userInfo.email);
-            } else {
-              console.error('[Breakeven] Failed to send email to:', userInfo.email);
-            }
-          })
-          .catch((error) => {
-            console.error('[Breakeven] Email send error:', error);
-          });
+        try {
+          const pdfBuffer = await generateCalculatorPDFBuffer('Break-Even Point Calculator', result, userInfo);
+          const emailSent = await sendCalculatorReportEmail(
+            userInfo.email,
+            'Break-Even Point Calculator',
+            reportUrl,
+            userInfo.name,
+            pdfBuffer
+          );
+          if (emailSent) {
+            console.log('[Breakeven] Email sent successfully to:', userInfo.email);
+          } else {
+            console.error('[Breakeven] Failed to send email to:', userInfo.email);
+          }
+        } catch (error) {
+          console.error('[Breakeven] Email send error:', error);
+        }
       }
 
       return NextResponse.json({ success: true, result, sessionId });

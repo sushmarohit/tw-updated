@@ -66,18 +66,22 @@ export async function POST(request: NextRequest) {
       process.env.SMTP_USER;
 
     if (adminEmail) {
-      await sendBookingRequestNotification(
-        {
-          name: booking.name,
-          email: booking.email,
-          phone: booking.phone ?? undefined,
-          company: booking.company ?? undefined,
-          preferredDate: booking.preferredDate ?? undefined,
-          preferredTimeSlot: booking.preferredTimeSlot ?? undefined,
-          message: booking.message ?? undefined,
-        },
-        adminEmail
-      );
+      try {
+        await sendBookingRequestNotification(
+          {
+            name: booking.name,
+            email: booking.email,
+            phone: booking.phone ?? undefined,
+            company: booking.company ?? undefined,
+            preferredDate: booking.preferredDate ?? undefined,
+            preferredTimeSlot: booking.preferredTimeSlot ?? undefined,
+            message: booking.message ?? undefined,
+          },
+          adminEmail
+        );
+      } catch (err) {
+        console.error('[Booking API] Admin notification email error:', err);
+      }
     }
 
     const sendConfirmationToUser = !!(
@@ -87,9 +91,11 @@ export async function POST(request: NextRequest) {
     );
     if (sendConfirmationToUser) {
       const calendarLink = process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_BOOKING_URL;
-      sendBookingRequestReceivedConfirmation(email, name, calendarLink).catch((err) =>
-        console.error('[Booking API] User confirmation email error:', err)
-      );
+      try {
+        await sendBookingRequestReceivedConfirmation(email, name, calendarLink);
+      } catch (err) {
+        console.error('[Booking API] User confirmation email error:', err);
+      }
     }
 
     return NextResponse.json({

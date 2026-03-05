@@ -39,9 +39,11 @@ export async function GET(request: NextRequest) {
 
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://twelfthkey.com';
     const unsubscribeUrl = `${baseUrl}/api/newsletter/unsubscribe?token=${unsubscribeToken}`;
-    sendNewsletterWelcomeEmail(subscription.email, unsubscribeUrl).catch((err) =>
-      console.error('[Newsletter confirm] Welcome email error:', err)
-    );
+    try {
+      await sendNewsletterWelcomeEmail(subscription.email, unsubscribeUrl);
+    } catch (err) {
+      console.error('[Newsletter confirm] Welcome email error:', err);
+    }
 
     return NextResponse.redirect(
       new URL('/consulting/resources?newsletter=confirmed', request.nextUrl.origin)
