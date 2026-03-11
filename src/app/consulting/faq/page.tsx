@@ -26,7 +26,7 @@ export default function FAQPage() {
     'process',
     'tools',
     'services',
-    // 'praxio',
+    'praxio',
     'pricing',
     'fractional',
     'security',

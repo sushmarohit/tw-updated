@@ -10,13 +10,13 @@ export default function HowWeHelpPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
-        <div className="container-custom">
-          <div className="max-w-3xl">
-            <h1 className="heading-hero mb-6 text-white">{t('how-we-help:title')}</h1>
-            <p className="body-large text-gray-100 mb-8">
+        <div className="container-custom mx-auto flex flex-col items-center justify-center text-center">
+          <div className="max-w-3xl w-full px-2 sm:px-4">
+            <h1 className="heading-hero mb-4 sm:mb-6 text-white break-words">{t('how-we-help:title')}</h1>
+            <p className="body-large text-gray-100 mb-6 sm:mb-8 max-w-2xl mx-auto">
               {t('how-we-help:subtitle')}
             </p>
-            <Button variant="primary" size="lg" asChild>
+            <Button variant="primary" size="lg" asChild className="w-full sm:w-auto">
               <Link href="/consulting/booking">{t('how-we-help:bookDiscoveryCall')}</Link>
             </Button>
           </div>
@@ -48,7 +48,7 @@ export default function HowWeHelpPage() {
                 {t('how-we-help:tailoredSolutions.description')}
               </p>
               <Button variant="outline" asChild className="mt-auto">
-                <Link href="/consulting/framework">{t('how-we-help:tailoredSolutions.button')}</Link>
+                <Link href="/consulting/process">{t('how-we-help:tailoredSolutions.button')}</Link>
               </Button>
             </div>
             <div className="card text-center flex flex-col h-full">
@@ -60,7 +60,7 @@ export default function HowWeHelpPage() {
                 {t('how-we-help:measurableGovernance.description')}
               </p>
               <Button variant="outline" asChild className="mt-auto">
-                <Link href="/consulting/praxio">{t('how-we-help:measurableGovernance.button')}</Link>
+                <Link href="/consulting/tools/hub">{t('how-we-help:measurableGovernance.button')}</Link>
               </Button>
             </div>
           </div>

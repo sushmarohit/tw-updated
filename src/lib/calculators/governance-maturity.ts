@@ -112,7 +112,7 @@ export function calculateGovernanceMaturity(
     recommendations.push('Implement quarterly governance reviews and retrospectives');
   }
   if (automation < 60) {
-    recommendations.push('Deploy PraXio™ platform for automated governance and reporting');
+    recommendations.push('Deploy WFM Governance App for automated governance and reporting');
   }
   if (riskManagement < 60) {
     recommendations.push('Establish risk assessment and monitoring processes');

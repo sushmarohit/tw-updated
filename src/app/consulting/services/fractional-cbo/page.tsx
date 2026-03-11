@@ -24,10 +24,7 @@ export default function FractionalCBOPage() {
           },
           areaServed: 'IN',
           serviceType: 'Business Consulting',
-          offers: {
-            price: '199999',
-            priceCurrency: 'INR',
-          },
+          offers: {},
           url: '/consulting/services/fractional-cbo',
         }}
       />
@@ -120,23 +117,7 @@ export default function FractionalCBOPage() {
 
           <div className="card bg-navy-500 text-white">
             <h3 className="heading-h3 mb-4">{t('services-fractional-cbo:investment')}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <p className="body-small text-gray-300 mb-2">{t('services-fractional-cbo:monthlyInvestment')}</p>
-                <p className="heading-h3 text-gold-300">₹1,99,999</p>
-                <p className="body-small text-gray-300 mt-2">{t('services-fractional-cbo:minimum6MonthRetainer')}</p>
-              </div>
-              <div>
-                <p className="body-small text-gray-300 mb-2">{t('services-fractional-cbo:capacity')}</p>
-                <p className="heading-h3 text-teal-400">{t('services-fractional-cbo:capacityValue')}</p>
-                <p className="body-small text-gray-300 mt-2">{t('services-fractional-cbo:scalableTo20PlusHours')}</p>
-              </div>
-              <div>
-                <p className="body-small text-gray-300 mb-2">{t('services-fractional-cbo:meetings')}</p>
-                <p className="heading-h3 text-teal-400">{t('services-fractional-cbo:weekly')}</p>
-                <p className="body-small text-gray-300 mt-2">{t('services-fractional-cbo:governanceReviewAdhoc')}</p>
-              </div>
-            </div>
+            <p className="body-large text-gray-200">{t('common:pricingNote')}</p>
           </div>
         </div>
       </section>

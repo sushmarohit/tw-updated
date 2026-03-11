@@ -4,7 +4,7 @@
   "tagline": "Make better decisions in minutes, not months. Try our expert-built calculators.",
   "operationalHealthDiagnostic": {
     "name": "Operational Health Diagnostic",
-    "description": "Assess governance maturity across 5 G2P indices in 5 minutes",
+    "description": "Assess governance maturity across 5 governance indices in 5 minutes",
     "time": "5 min"
   },
   "costLeakageEstimator": {

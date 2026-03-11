@@ -75,7 +75,7 @@ export default function FinTechCaseStudyPage() {
                 { metric: t('case-studies-fintech:governanceScore'), before: '62/100', after: '92/100', improvement: '+30 points' },
                 { metric: t('case-studies-fintech:costRecovery'), before: 'N/A', after: '₹44L', improvement: 'In 3 months' },
                 { metric: t('case-studies-fintech:parImprovement'), before: 'Baseline', after: '+40%', improvement: 'Prediction accuracy' },
-                { metric: t('case-studies-fintech:operationalVisibility'), before: 'Manual reports', after: 'Real-time dashboards', improvement: 'PraXio™ platform' },
+                { metric: t('case-studies-fintech:operationalVisibility'), before: 'Manual reports', after: 'Real-time dashboards', improvement: t('case-studies-fintech:improvementVisibility') },
               ].map((result, i) => (
                 <div key={i} className="border border-navy-400 rounded-lg p-4">
                   <p className="body-small text-gray-300 mb-2">{result.metric}</p>

@@ -1,6 +1,8 @@
 {
   "title": "Careers",
   "subtitle": "Join our mission to transform operational chaos into measurable performance.",
+  "introCopy": "We are building a consulting-and-execution firm focused on operational excellence for growing businesses. We look for people who are structured, responsive, practical, and comfortable taking ownership.",
+  "whoFitsTitle": "Who fits here",
   "whyTitle": "Why Work at TwelfthKey?",
   "benefits": {
     "benefit1": {
@@ -16,33 +18,42 @@
       "description": "Remote-first culture with flexible working arrangements."
     }
   },
-  "openPositionsTitle": "Open Positions",
+  "howToApplyTitle": "How to apply",
+  "applicationNote": "Share your profile, role interest, and a short note on why you fit the role. We value clarity, ownership, and execution mindset over polished jargon.",
+  "openPositionsTitle": "Open Roles",
   "jobs": {
     "job1": {
-      "title": "Senior Operations Consultant",
+      "title": "Business Development Manager",
       "location": "Remote / Mumbai",
       "type": "Full-time",
-      "department": "Consulting",
-      "description": "Lead client engagements, implement G2P Framework, and deliver measurable operational improvements."
+      "department": "Sales",
+      "description": "Own outbound pipeline, discovery scheduling, follow-ups, and opportunity conversion."
     },
     "job2": {
-      "title": "PraXio™ Platform Developer",
-      "location": "Remote / Bangalore",
+      "title": "Senior Operations Manager",
+      "location": "Remote / Mumbai",
       "type": "Full-time",
-      "department": "Engineering",
-      "description": "Build and enhance the PraXio™ governance platform using modern web technologies."
+      "department": "Operations",
+      "description": "Lead client execution, review rhythms, process documentation, and delivery control."
     },
     "job3": {
-      "title": "Business Development Manager",
-      "location": "Mumbai",
+      "title": "Platform Developer",
+      "location": "Remote",
       "type": "Full-time",
-      "department": "Sales",
-      "description": "Build relationships with startups and MSMEs, identify opportunities, and drive growth."
+      "department": "Engineering",
+      "description": "Build and maintain the WFM Governance App, dashboards, and internal workflow tools."
+    },
+    "job4": {
+      "title": "Business Analyst",
+      "location": "Remote",
+      "type": "Full-time",
+      "department": "Consulting",
+      "description": "Support diagnostics, reporting, research, and implementation documentation."
     }
   },
   "applyNow": "Apply Now",
+  "writeToUs": "Write to Us",
   "noMatchTitle": "Don't See a Match?",
   "noMatchDescription": "We're always interested in connecting with talented individuals. Send us your resume and we'll keep you in mind for future opportunities.",
   "submitResume": "Submit Your Resume"
 }
-

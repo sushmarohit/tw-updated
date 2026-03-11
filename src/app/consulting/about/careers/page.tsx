@@ -8,29 +8,12 @@ import { MapPin, Clock, ArrowRight } from 'lucide-react';
 export default function CareersPage() {
   const { t } = useTranslation(['about-careers', 'common']);
 
-  // Placeholder job openings - in production, these would come from a CMS or ATS
+  // V5.2: 4 roles — BDM, Senior Ops Manager, Platform Developer, Business Analyst
   const jobOpenings = [
-    {
-      title: t('about-careers:jobs.job1.title'),
-      location: t('about-careers:jobs.job1.location'),
-      type: t('about-careers:jobs.job1.type'),
-      department: t('about-careers:jobs.job1.department'),
-      description: t('about-careers:jobs.job1.description'),
-    },
-    {
-      title: t('about-careers:jobs.job2.title'),
-      location: t('about-careers:jobs.job2.location'),
-      type: t('about-careers:jobs.job2.type'),
-      department: t('about-careers:jobs.job2.department'),
-      description: t('about-careers:jobs.job2.description'),
-    },
-    {
-      title: t('about-careers:jobs.job3.title'),
-      location: t('about-careers:jobs.job3.location'),
-      type: t('about-careers:jobs.job3.type'),
-      department: t('about-careers:jobs.job3.department'),
-      description: t('about-careers:jobs.job3.description'),
-    },
+    { title: t('about-careers:jobs.job1.title'), location: t('about-careers:jobs.job1.location'), type: t('about-careers:jobs.job1.type'), department: t('about-careers:jobs.job1.department'), description: t('about-careers:jobs.job1.description') },
+    { title: t('about-careers:jobs.job2.title'), location: t('about-careers:jobs.job2.location'), type: t('about-careers:jobs.job2.type'), department: t('about-careers:jobs.job2.department'), description: t('about-careers:jobs.job2.description') },
+    { title: t('about-careers:jobs.job3.title'), location: t('about-careers:jobs.job3.location'), type: t('about-careers:jobs.job3.type'), department: t('about-careers:jobs.job3.department'), description: t('about-careers:jobs.job3.description') },
+    { title: t('about-careers:jobs.job4.title'), location: t('about-careers:jobs.job4.location'), type: t('about-careers:jobs.job4.type'), department: t('about-careers:jobs.job4.department'), description: t('about-careers:jobs.job4.description') },
   ];
 
   return (
@@ -49,7 +32,7 @@ export default function CareersPage() {
       <section className="section-padding">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto mb-8">
-            <h2 className="heading-h2 mb-6 text-center">{t('about-careers:whyTitle')}</h2>
+            <h2 className="heading-h2 mb-6 text-center">{t('about-careers:whoFitsTitle')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 {
@@ -73,7 +56,9 @@ export default function CareersPage() {
             </div>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto mt-12">
+            <h2 className="heading-h2 mb-4 text-center">{t('about-careers:howToApplyTitle')}</h2>
+            <p className="body-large text-gray-600 text-center mb-8">{t('about-careers:applicationNote')}</p>
             <h2 className="heading-h2 mb-8 text-center">{t('about-careers:openPositionsTitle')}</h2>
             <div className="space-y-6">
               {jobOpenings.map((job, index) => (
@@ -98,7 +83,7 @@ export default function CareersPage() {
                   </div>
                   <p className="body-default text-gray-600 mb-6">{job.description}</p>
                   <Button variant="outline" asChild>
-                    <Link href="#">
+                    <Link href="/consulting/contact?subject=Careers">
                       {t('about-careers:applyNow')}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>

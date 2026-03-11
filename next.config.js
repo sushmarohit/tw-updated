@@ -4,6 +4,14 @@ const nextConfig = {
   async redirects() {
     return [
       { source: '/consulting/resources/roi-guide', destination: '/consulting/resources/business-case-kit', permanent: true },
+      { source: '/consulting/framework', destination: '/consulting/process', permanent: true },
+      { source: '/consulting/framework/g2p', destination: '/consulting/process', permanent: true },
+      { source: '/consulting/framework/cycle', destination: '/consulting/process', permanent: true },
+      { source: '/consulting/framework/parse', destination: '/consulting/process', permanent: true },
+      { source: '/consulting/framework/sage', destination: '/consulting/process', permanent: true },
+      { source: '/consulting/framework/morph', destination: '/consulting/process', permanent: true },
+      { source: '/consulting/framework/prism', destination: '/consulting/process', permanent: true },
+      { source: '/consulting/framework/arc', destination: '/consulting/process', permanent: true },
     ];
   },
   swcMinify: true,

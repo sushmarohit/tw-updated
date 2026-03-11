@@ -8,29 +8,13 @@ import { Users, Linkedin, Mail } from 'lucide-react';
 export default function TeamPage() {
   const { t } = useTranslation(['about-team', 'common']);
 
-  // Placeholder team members - in production, these would come from a CMS
+  // V5.2: Real profile cards — Aditya, Mrunal, Ashwini, Priyanka, Amisha (Technology & Development Partner)
   const teamMembers = [
-    {
-      name: t('about-team:members.member1.name'),
-      role: t('about-team:members.member1.role'),
-      bio: t('about-team:members.member1.bio'),
-      linkedin: 'https://linkedin.com/in/adityamayekar',
-      email: 'operations@twelfthkey.com',
-    },
-    {
-      name: t('about-team:members.member2.name'),
-      role: t('about-team:members.member2.role'),
-      bio: t('about-team:members.member2.bio'),
-      linkedin: '#',
-      email: 'operations@twelfthkey.com',
-    },
-    {
-      name: t('about-team:members.member3.name'),
-      role: t('about-team:members.member3.role'),
-      bio: t('about-team:members.member3.bio'),
-      linkedin: '#',
-      email: 'operations@twelfthkey.com',
-    },
+    { name: t('about-team:members.member1.name'), role: t('about-team:members.member1.role'), bio: t('about-team:members.member1.bio'), linkedin: 'https://linkedin.com/in/adityamayekar', email: 'support@twelfthkey.com' },
+    { name: t('about-team:members.member2.name'), role: t('about-team:members.member2.role'), bio: t('about-team:members.member2.bio'), linkedin: '#', email: 'support@twelfthkey.com' },
+    { name: t('about-team:members.member3.name'), role: t('about-team:members.member3.role'), bio: t('about-team:members.member3.bio'), linkedin: '#', email: 'support@twelfthkey.com' },
+    { name: t('about-team:members.member4.name'), role: t('about-team:members.member4.role'), bio: t('about-team:members.member4.bio'), linkedin: '#', email: 'support@twelfthkey.com' },
+    { name: t('about-team:members.member5.name'), role: t('about-team:members.member5.role'), bio: t('about-team:members.member5.bio'), linkedin: '#', email: 'support@twelfthkey.com' },
   ];
 
   return (
@@ -48,12 +32,11 @@ export default function TeamPage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto mb-8">
+          {/* V5.2: "Why Our Team" section removed per doc; content retained in locale for reference */}
+          {/* <div className="max-w-3xl mx-auto mb-8">
             <h2 className="heading-h2 mb-6 text-center">{t('about-team:whyTitle')}</h2>
-            <p className="body-large text-gray-700 mb-4">
-              {t('about-team:whyDescription')}
-            </p>
-          </div>
+            <p className="body-large text-gray-700 mb-4">{t('about-team:whyDescription')}</p>
+          </div> */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (

@@ -24,10 +24,7 @@ export default function EnterpriseServicePage() {
           },
           areaServed: 'IN',
           serviceType: 'Business Consulting',
-          offers: {
-            price: '799999',
-            priceCurrency: 'INR',
-          },
+          offers: {},
           url: '/consulting/services/enterprise',
         }}
       />
@@ -128,19 +125,7 @@ export default function EnterpriseServicePage() {
 
           <div className="card bg-navy-500 text-white">
             <h3 className="heading-h3 mb-4">{t('services-enterprise:investmentRoi')}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <p className="body-small text-gray-300 mb-2">{t('services-enterprise:investment')}</p>
-                <p className="heading-h3 text-gold-300">₹7,99,999</p>
-                <p className="body-small text-gray-300 mt-2">{t('services-enterprise:investmentValue')}</p>
-              </div>
-              <div>
-                <p className="body-small text-gray-300 mb-2">{t('services-enterprise:typicalRoi')}</p>
-                <p className="heading-h3 text-teal-400">₹100–150L</p>
-                <p className="body-small text-gray-300 mt-2">{t('services-enterprise:roiValue')}</p>
-                <p className="body-small text-gray-300">{t('services-enterprise:governanceStandardization')}</p>
-              </div>
-            </div>
+            <p className="body-large text-gray-200">{t('common:pricingNote')}</p>
           </div>
         </div>
       </section>

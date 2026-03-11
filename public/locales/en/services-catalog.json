@@ -15,7 +15,7 @@
     "description": "Investor-ready documents and fundraising support—clear story, clean numbers, strong readiness.",
     "primaryCta": "Talk to an Expert",
     "secondaryCta": "Book Discovery Call",
-    "item1": "TwelfthKey Certified™ Verification & Consultation",
+    "item1": "Investor Readiness Review & Consultation",
     "item2": "Detailed Project Report (DPR) Development",
     "item3": "Investor Pitch Deck Development",
     "item4": "Support & Strategy (Advisory-Only)",
@@ -23,10 +23,12 @@
   },
   "govtLiaison": {
     "title": "Govt. Project Liaison",
-    "description": "Clear trackers, follow-up cadence, and accountability so government liaison work moves forward without daily firefighting.",
-    "primaryCta": "Discuss Your Project",
+    "description": "Clear documentation, structured follow-ups, and end-to-end coordination so approvals, registrations, and bidding work move forward without daily firefighting.",
+    "primaryCta": "Discuss Your Requirement",
     "secondaryCta": "Book Discovery Call",
-    "item1": "Govt. Liaison Support"
+    "item1": "Licence Acquisition & Certification",
+    "item2": "Contractor Registration & Empanelment",
+    "item3": "Project Bidding & Liaison (End-to-End)"
   },
   "franchise": {
     "title": "Franchise Scale/Expansion Strategy & Consultation",

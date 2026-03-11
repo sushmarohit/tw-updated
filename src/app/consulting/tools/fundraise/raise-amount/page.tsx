@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { CalculatorExplainer } from '@/components/shared/calculator-explainer';
 import { calculateRaiseAmount, type RaiseAmountInput, type RaiseAmountResult } from '@/lib/calculators/fundraise/raise-amount';
 import { trackCalculatorStart, trackCalculatorComplete, trackToolCompletedWithEmail } from '@/lib/analytics/events';
 import { formatCurrency } from '@/lib/utils';
@@ -97,6 +98,7 @@ export default function RaiseAmountPage() {
         <Link href="/consulting/tools/hub" className="inline-flex items-center gap-2 text-gray-600 hover:text-teal-600 mb-6">
           <ArrowLeft className="w-4 h-4" /> {t('common:backToTools')}
         </Link>
+        <CalculatorExplainer />
         <div className="card">
           <h1 className="heading-h2 mb-2">{t('tools:fundraise.raiseAmount.name')}</h1>
           <p className="body-default text-gray-600 mb-6">{t('tools:fundraise.raiseAmount.description')}</p>

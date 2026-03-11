@@ -24,10 +24,7 @@ export default function AnalyticsServicePage() {
           },
           areaServed: 'IN',
           serviceType: 'Business Consulting',
-          offers: {
-            price: '199999',
-            priceCurrency: 'INR',
-          },
+          offers: {},
           url: '/consulting/services/analytics',
         }}
       />
@@ -119,19 +116,7 @@ export default function AnalyticsServicePage() {
 
           <div className="card bg-navy-500 text-white">
             <h3 className="heading-h3 mb-4">{t('services-analytics:investmentRoi')}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <p className="body-small text-gray-300 mb-2">{t('services-analytics:investment')}</p>
-                <p className="heading-h3 text-gold-300">₹1,99,999</p>
-                <p className="body-small text-gray-300 mt-2">{t('services-analytics:oneTime45Days')}</p>
-              </div>
-              <div>
-                <p className="body-small text-gray-300 mb-2">{t('services-analytics:typicalRoi')}</p>
-                <p className="heading-h3 text-teal-400">₹15–30L</p>
-                <p className="body-small text-gray-300 mt-2">{t('services-analytics:inBetterDecisionMaking')}</p>
-                <p className="body-small text-gray-300">{t('services-analytics:speedImprovement')}</p>
-              </div>
-            </div>
+            <p className="body-large text-gray-200">{t('common:pricingNote')}</p>
           </div>
         </div>
       </section>

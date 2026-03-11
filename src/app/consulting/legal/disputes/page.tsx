@@ -16,8 +16,8 @@ export default function DisputeResolutionPage() {
               <h2 className="heading-h4 mb-3">{t('legal-disputes:section1.title')}</h2>
               <p className="body-default text-gray-700">
                 {t('legal-disputes:section1.description')}{' '}
-                <a href="mailto:operations@twelfthkey.com" className="text-teal-500 hover:underline">
-                  operations@twelfthkey.com
+                <a href="mailto:legal@twelfthkey.com" className="text-teal-500 hover:underline">
+                  legal@twelfthkey.com
                 </a>
                 {' '}to discuss any concerns.
               </p>

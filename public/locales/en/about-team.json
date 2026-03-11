@@ -1,27 +1,37 @@
 {
   "title": "Our Team",
   "subtitle": "Meet the experts behind TwelfthKey—experienced consultants, researchers, and operational excellence practitioners.",
+  "_comment_whySection": "V5.2: Why Our Team section removed per doc; copy kept for reference",
   "whyTitle": "Why Our Team",
   "whyDescription": "Our team combines deep academic research with real-world operational experience. We've helped dozens of companies transform their operations using proven methodologies and intelligent platforms.",
   "members": {
     "member1": {
       "name": "Aditya Mayekar",
       "role": "Founder & CEO",
-      "bio": "PhD in Operations Research with 15+ years of experience in operational excellence and governance."
+      "bio": "Leads strategy, client engagements, and overall business direction."
     },
     "member2": {
-      "name": "Expert Consultant",
-      "role": "Senior Operations Consultant",
-      "bio": "Specializes in SaaS platform implementation and process excellence for MSMEs."
+      "name": "Mrunal Mayekar",
+      "role": "Operations & Delivery Partner",
+      "bio": "Leads execution planning, project delivery, and implementation follow-through."
     },
     "member3": {
-      "name": "Platform Lead",
-      "role": "SaaS Platform Architect",
-      "bio": "Leads the development and architecture of the SaaS platform."
+      "name": "Ashwini Ingole",
+      "role": "Sales & Revenue Partner",
+      "bio": "Leads sales conversations, pipeline building, and revenue growth."
+    },
+    "member4": {
+      "name": "Priyanka Sipani",
+      "role": "Growth & Outreach Partner",
+      "bio": "Leads outreach, partnerships, and market visibility initiatives."
+    },
+    "member5": {
+      "name": "Amisha",
+      "role": "Technology & Development Partner",
+      "bio": "Leads platform development, technical execution, and product improvements."
     }
   },
   "joinTitle": "Join Our Team",
   "joinDescription": "We're always looking for talented individuals passionate about operational excellence.",
   "viewPositions": "View Open Positions"
 }
-

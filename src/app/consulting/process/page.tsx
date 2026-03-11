@@ -43,7 +43,7 @@ export default function ProcessPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
-        <div className="container-custom text-center md:text-left mx-auto">
+        <div className="container-custom mx-auto flex justify-center text-center">
           <div className="max-w-3xl">
             <h1 className="heading-hero mb-6 text-white">{t('process:title')}</h1>
             <p className="body-large text-gray-100 mb-8">

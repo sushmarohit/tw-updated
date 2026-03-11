@@ -5,7 +5,7 @@
     "process": "Our Process & Engagement",
     "tools": "Tools & Calculators",
     "services": "Services & Engagement",
-    "praxio": "PraXio™ Platform",
+    "praxio": "WFM Governance App",
     "pricing": "Pricing & Investment",
     "fractional": "Fractional CBO",
     "security": "Security & Compliance",
@@ -13,14 +13,39 @@
   },
   "items": [
     {
+      "category": "gettingStarted",
+      "question": "What does TwelfthKey help with?",
+      "answer": "We help with three areas: (1) Process Excellence—SOPs, governance workflows, dashboards, and cost control; (2) Fundraise—investor readiness, deck, and due-diligence prep; (3) Government Project Liaison—licence acquisition, contractor registration, and project bidding support. All are backed by our PhD-backed proprietary framework and workflow-based governance."
+    },
+    {
+      "category": "gettingStarted",
+      "question": "Who is the right fit?",
+      "answer": "Teams that want structure without bureaucracy: typically 5–100 Cr revenue, 3+ years operating history, and readiness to implement. We work with startups scaling up and MSMEs improving operations, fundraise, or government liaison."
+    },
+    {
+      "category": "gettingStarted",
+      "question": "Do you only work with Indian businesses?",
+      "answer": "Yes. We focus on Indian businesses and Indian regulatory and market context—including government liaison, fundraise, and process excellence for the Indian market."
+    },
+    {
       "category": "process",
       "question": "How do I know this will work for my business?",
-      "answer": "Every engagement starts with diagnostics using our G2P framework and cost leakage tools. You'll see the specific gaps and opportunities before committing to anything beyond the assessment."
+      "answer": "Every engagement starts with diagnostics using our PhD-backed proprietary framework and cost leakage tools. You'll see the specific gaps and opportunities before committing to anything beyond the assessment."
     },
     {
       "category": "process",
       "question": "Can you help pinpoint my exact challenges before we start?",
       "answer": "Yes! Book a discovery call. We'll ask targeted questions and give you initial insights. No paywall to clarity."
+    },
+    {
+      "category": "process",
+      "question": "What happens in the discovery call?",
+      "answer": "A 45-minute call to understand your context, pain points, and goals. We'll give initial insights and recommend next steps—assessment, implementation, or tools—with no obligation. No credit card required."
+    },
+    {
+      "category": "process",
+      "question": "Do you use your own tools and platform?",
+      "answer": "Yes. We use our WFM Governance App for dashboards, reporting, and governance where it fits the engagement. We also integrate with your existing tools (HRMS, CRM, ERP) so you're not locked into a single stack."
     },
     {
       "category": "process",
@@ -35,7 +60,7 @@
     {
       "category": "process",
       "question": "What's your success rate?",
-      "answer": "12+ case studies show 35–59% governance improvements and ₹45–90L annual cost savings. Your specific outcome depends on your starting point and commitment to implementation."
+      "answer": "12+ case studies show measurable governance improvements. Your specific outcome depends on your starting point and commitment to implementation."
     },
     {
       "category": "tools",
@@ -55,7 +80,12 @@
     {
       "category": "tools",
       "question": "How accurate are the calculator results?",
-      "answer": "Built on TwelfthKey's industry benchmarks and G2P framework. Your report includes context and next-step recommendations."
+      "answer": "Built on TwelfthKey's industry benchmarks and our PhD-backed proprietary framework. Your report includes context and next-step recommendations."
+    },
+    {
+      "category": "tools",
+      "question": "Are calculator results exact or directional?",
+      "answer": "Directional. Our calculators use industry benchmarks and our framework to give you a clear snapshot and next-step recommendations. For precise planning, we recommend a discovery call and, where relevant, an assessment."
     },
     {
       "category": "tools",
@@ -75,7 +105,27 @@
     {
       "category": "services",
       "question": "What industries do you serve?",
-      "answer": "Banking, FinTech, SaaS, IT Services, Telecom, Healthcare, E-commerce, and Professional Services. Our G2P framework adapts to service-based operations across sectors."
+      "answer": "Banking, FinTech, SaaS, IT Services, Telecom, Healthcare, E-commerce, and Professional Services. Our approach adapts to service-based operations across sectors."
+    },
+    {
+      "category": "services",
+      "question": "What's the difference between Process Excellence, Fundraise, and Govt. Liaison?",
+      "answer": "Process Excellence is about operations, SOPs, governance, and cost control. Fundraise is investor readiness, deck, and due-diligence support. Govt. Liaison covers licence acquisition, contractor registration & empanelment, and project bidding and liaison. All use the same governance rigour; the deliverables and scope differ."
+    },
+    {
+      "category": "services",
+      "question": "What does Government Project Liaison cover?",
+      "answer": "Three sub-areas: (1) Licence Acquisition & Certification—support to obtain licences and certifications; (2) Contractor Registration & Empanelment—registration and empanelment with government bodies; (3) Project Bidding & Liaison (End-to-End)—ongoing support for bidding and liaison. Scope and commercials are defined after a discovery call."
+    },
+    {
+      "category": "services",
+      "question": "How do I choose which service?",
+      "answer": "Book a discovery call. We'll ask about your priorities—operations, fundraise, or government liaison—and recommend the right service or combination. You can also run the free Operational Health Diagnostic to see where you stand."
+    },
+    {
+      "category": "services",
+      "question": "Is the engagement one-time or ongoing?",
+      "answer": "It depends on the service. Assessment and Foundation are typically one-time or phased. Governance Intelligence and Fractional CBO are ongoing. Govt. Liaison can be one-time (e.g. licence acquisition) or ongoing (e.g. project bidding). We'll propose the right structure after the discovery call."
     },
     {
       "category": "services",
@@ -89,33 +139,43 @@
     },
     {
       "category": "praxio",
-      "question": "What is PraXio™?",
-      "answer": "PraXio™ is TwelfthKey's governance and operations platform: real-time dashboards, automated reporting, and AI anomaly detection—all in one app for our clients."
+      "question": "What is the WFM Governance App?",
+      "answer": "The WFM Governance App is TwelfthKey's governance and operations platform: real-time dashboards, automated reporting, and AI anomaly detection—all in one app for our clients."
     },
     {
       "category": "praxio",
-      "question": "Do I need PraXio™ to work with TwelfthKey?",
-      "answer": "It depends on the engagement. Assessment and some Foundation work can be done without it; Governance Intelligence and ongoing fractional CBO typically use PraXio™ for dashboards and reporting."
+      "question": "Do I need the WFM Governance App to work with TwelfthKey?",
+      "answer": "It depends on the engagement. Assessment and some Foundation work can be done without it; Governance Intelligence and ongoing fractional CBO typically use the WFM Governance App for dashboards and reporting."
     },
     {
       "category": "praxio",
-      "question": "Can PraXio™ connect to our existing tools?",
-      "answer": "Yes. PraXio™ integrates with HRMS, CRM, ERP, and common productivity tools. We'll map your stack during onboarding."
+      "question": "Can the WFM Governance App connect to our existing tools?",
+      "answer": "Yes. The WFM Governance App integrates with HRMS, CRM, ERP, and common productivity tools. We'll map your stack during onboarding."
     },
     {
       "category": "praxio",
       "question": "Is there a free trial?",
-      "answer": "Yes. We offer a 14-day free trial with full access. Request a demo or start a trial from the PraXio™ demo page."
+      "answer": "Yes. We offer a 14-day free trial with full access. Request a demo or start a trial from the WFM Governance App demo page."
+    },
+    {
+      "category": "pricing",
+      "question": "Are your commercials fixed or case based?",
+      "answer": "Our commercials depend on scope, complexity, and delivery ownership. After a discovery call, we recommend the right structure and share commercials accordingly."
+    },
+    {
+      "category": "pricing",
+      "question": "Do you guarantee outcomes?",
+      "answer": "We do not promise guaranteed business outcomes. We commit to structured execution, clear deliverables, and transparent working rhythms."
     },
     {
       "category": "pricing",
       "question": "Why don't you publish timeline and budget on the website?",
-      "answer": "Every engagement is scoped after a diagnostic. We provide a clear proposal with deliverables and investment after understanding your context—no one-size-fits-all pricing."
+      "answer": "Commercials depend on scope, complexity, and implementation depth. Pricing is shared after the discovery call and scope review."
     },
     {
       "category": "pricing",
       "question": "What does the Assessment cost?",
-      "answer": "The Business Operational Assessment is ₹1,49,999 (one-time, 5–7 days). Typical ROI identified is ₹40–60L in recoverable leakage."
+      "answer": "Commercials depend on scope, complexity, and implementation depth. Pricing is shared after the discovery call and scope review."
     },
     {
       "category": "pricing",
@@ -125,7 +185,7 @@
     {
       "category": "pricing",
       "question": "Is there a money-back guarantee?",
-      "answer": "For one-time services, we offer a 100% refund within 30 days if the engagement has not been initiated. See our Refund Policy for full terms."
+      "answer": "See our Refund Policy for terms. We do not promise guaranteed business outcomes; we commit to structured execution, clear deliverables, and transparent working rhythms."
     },
     {
       "category": "fractional",
@@ -135,7 +195,7 @@
     {
       "category": "fractional",
       "question": "What's the typical commitment for Fractional CBO?",
-      "answer": "Minimum 6-month retainer. Investment is ₹1,99,999/month for 8–12 hours/week, scalable for execution phases."
+      "answer": "Every engagement is structured case by case, based on business need and delivery scope. For ongoing support, commercials depend on expected involvement, review cadence, and delivery ownership."
     },
     {
       "category": "fractional",
@@ -154,13 +214,18 @@
     },
     {
       "category": "security",
+      "question": "Do you sign NDAs?",
+      "answer": "Yes. We sign NDAs when required. Confidentiality is standard for all engagements; we can provide mutual NDAs on request."
+    },
+    {
+      "category": "security",
       "question": "Are you PCI-DSS compliant?",
       "answer": "We are PCI-DSS ready for payment processing. For card data we use compliant gateways; we do not store card details on our systems."
     },
     {
       "category": "security",
       "question": "Do you support audit and compliance evidence?",
-      "answer": "Yes. PraXio™ and our processes support audit trails and evidence collection for governance and compliance reviews."
+      "answer": "Yes. The WFM Governance App and our processes support audit trails and evidence collection for governance and compliance reviews."
     },
     {
       "category": "gettingStarted",
@@ -181,6 +246,11 @@
       "category": "gettingStarted",
       "question": "Can I talk to someone before booking?",
       "answer": "Yes. Use the contact form, live chat (when available), or email. We respond within 1–2 business days."
+    },
+    {
+      "category": "gettingStarted",
+      "question": "How quickly do you respond?",
+      "answer": "We aim to respond within 1–2 business days to contact form submissions and emails. For urgent enquiries, use the contact form and we'll prioritise accordingly."
     }
   ],
   "stillHaveQuestions": "Still have questions?",

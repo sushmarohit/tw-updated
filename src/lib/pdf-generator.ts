@@ -162,7 +162,7 @@ export async function generateCalculatorPDF(
     });
 
     options.content.push({
-      section: 'G2P Index Scores',
+      section: 'Governance Index Scores',
       data: result.indexScores.map((idx: any) => ({
         label: `${idx.index} (${idx.classification})`,
         value: `${idx.score}/100`,
@@ -335,7 +335,7 @@ export async function generateCalculatorPDFBuffer(
     });
 
     options.content.push({
-      section: 'G2P Index Scores',
+      section: 'Governance Index Scores',
       data: result.indexScores.map((idx: any) => ({
         label: `${idx.index} (${idx.classification})`,
         value: `${idx.score}/100`,

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
+import { CalculatorExplainer } from '@/components/shared/calculator-explainer';
 import { calculateBreakEven, type BreakEvenInput, type BreakEvenResult } from '@/lib/calculators/breakeven';
 import { trackCalculatorStart, trackCalculatorComplete } from '@/lib/analytics/events';
 import { formatCurrency } from '@/lib/utils';
@@ -163,6 +164,7 @@ export default function BreakEvenPage() {
   return (
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-3xl">
+        <CalculatorExplainer />
         <div className="card">
           <h1 className="heading-h2 mb-6">{t('tools-breakeven:title')}</h1>
           <p className="body-default text-gray-600 mb-8">

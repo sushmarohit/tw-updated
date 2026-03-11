@@ -86,7 +86,7 @@ export const serviceCategories: ServiceCategory[] = [
     },
     items: [
       {
-        title: 'TwelfthKey Certified\u2122 Verification & Consultation',
+        title: 'Investor Readiness Review & Consultation',
         href: `${ROOT}/fundraise/twelfthkey-certified-verification-consultation`,
       },
       {
@@ -151,9 +151,9 @@ export const serviceCategories: ServiceCategory[] = [
     slug: 'govt-project-liaison',
     title: 'Govt. Project Liaison',
     description:
-      'Clear trackers, follow-up cadence, and accountability so government liaison work moves forward without daily firefighting.',
+      'Clear documentation, structured follow-ups, and end-to-end coordination so approvals, registrations, and bidding work move forward without daily firefighting.',
     primaryCta: {
-      title: 'Discuss Your Project',
+      title: 'Discuss Your Requirement',
       href: '/consulting/contact',
     },
     secondaryCta: {
@@ -162,10 +162,19 @@ export const serviceCategories: ServiceCategory[] = [
     },
     items: [
       {
-        title: 'Govt. Liaison Support',
-        href: '/consulting/contact?subject=Govt%20Project%20Liaison',
+        title: 'Licence Acquisition & Certification',
+        href: `${ROOT}/govt-project-liaison/licence-acquisition-certification`,
+      },
+      {
+        title: 'Contractor Registration & Empanelment',
+        href: `${ROOT}/govt-project-liaison/contractor-registration-empanelment`,
+      },
+      {
+        title: 'Project Bidding & Liaison (End-to-End)',
+        href: `${ROOT}/govt-project-liaison/project-bidding-liaison`,
       },
     ],
+    // Legacy single item (commented for reference): { title: 'Govt. Liaison Support', href: '/consulting/contact?subject=Govt%20Project%20Liaison' },
   },
 ];
 
@@ -270,13 +279,13 @@ export const serviceDetails: ServiceDetailPage[] = [
   },
   {
     slug: 'fundraise/twelfthkey-certified-verification-consultation',
-    title: 'TwelfthKey Certified\u2122 Verification & Consultation',
+    title: 'Investor Readiness Review & Consultation',
     heroSubheadline:
-      'Get your DPR/Pitch Deck reviewed and strengthened—then show a TwelfthKey Certified\u2122 stamp of credibility.',
+      'Get your DPR/Pitch Deck reviewed and strengthened for investor readiness.',
     outcomesLabel: 'What you get',
     outcomes: [
       'Comprehensive vetting report',
-      'TwelfthKey Certified\u2122 digital badge',
+      'Investor Readiness Review',
       'Certificate of validation',
       'Feedback report (10–15 pages)',
       'Investor-readiness score',
@@ -285,7 +294,7 @@ export const serviceDetails: ServiceDetailPage[] = [
     timelineLabel: 'Timeline / Engagement',
     timeline: '7–10 days, one-time.',
     primaryCta: {
-      title: 'Get Certified Review',
+      title: 'Get Readiness Review',
       href: '/consulting/contact',
     },
     secondaryCta: { title: 'Book Consultation', href: '/consulting/booking' },
@@ -333,7 +342,7 @@ export const serviceDetails: ServiceDetailPage[] = [
     timeline: '10–15 days, one-time.',
     primaryCta: { title: 'Build My Pitch Deck', href: '/consulting/contact' },
     secondaryCta: {
-      title: 'Get Certified Review',
+      title: 'Get Readiness Review',
       href: `${ROOT}/fundraise/twelfthkey-certified-verification-consultation`,
     },
   },
@@ -501,6 +510,61 @@ export const serviceDetails: ServiceDetailPage[] = [
     primaryCta: { title: 'Build Expansion Roadmap', href: '/consulting/contact' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
+  // V5.2: Govt. Project Liaison sub-services
+  {
+    slug: 'govt-project-liaison/licence-acquisition-certification',
+    title: 'Licence Acquisition & Certification',
+    heroSubheadline:
+      'Get the right licences without getting stuck in paperwork, follow-ups, and missed renewals.',
+    outcomesLabel: 'What you get',
+    outcomes: [
+      'Documentation checklist',
+      'Filing support',
+      'Authority coordination',
+      'Handover documentation',
+      'Renewal tracker',
+      'Compliance checklist',
+    ],
+    timelineLabel: 'Timeline / Engagement',
+    timeline: 'One-time, scope-based.',
+    primaryCta: { title: 'Discuss Your Requirement', href: '/consulting/contact' },
+    secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
+  },
+  {
+    slug: 'govt-project-liaison/contractor-registration-empanelment',
+    title: 'Contractor Registration & Empanelment',
+    heroSubheadline:
+      'Get empanelled with the right departments, classes, and categories so you can bid with confidence.',
+    outcomesLabel: 'What you get',
+    outcomes: [
+      'Prerequisite checks',
+      'Application filing support',
+      'Class/category confirmation',
+      'Validity calendar',
+      'Upgrade roadmap',
+    ],
+    timelineLabel: 'Timeline / Engagement',
+    timeline: 'One-time, scope-based.',
+    primaryCta: { title: 'Discuss Your Requirement', href: '/consulting/contact' },
+    secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
+  },
+  {
+    slug: 'govt-project-liaison/project-bidding-liaison',
+    title: 'Project Bidding & Liaison (End-to-End)',
+    heroSubheadline:
+      'From tender discovery to bid submission to post-work-order coordination, handled as one execution stream.',
+    outcomesLabel: 'What you get',
+    outcomes: [
+      'Tender discovery and tracking',
+      'Bid preparation support',
+      'Submission coordination',
+      'Post-work-order follow-through',
+    ],
+    timelineLabel: 'Timeline / Engagement',
+    timeline: 'Ongoing support.',
+    primaryCta: { title: 'Discuss Your Requirement', href: '/consulting/contact' },
+    secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
+  },
 ];
 
 /** Map service detail slug to services-detail translation key */
@@ -521,6 +585,9 @@ export const serviceDetailSlugToKey: Record<string, string> = {
   'franchise/franchisee-recruitment-onboarding-support': 'franchiseeRecruitmentOnboardingSupport',
   'franchise/franchise-growth-performance-management': 'franchiseGrowthPerformanceManagement',
   'franchise/franchise-expansion-strategy-master-franchising': 'franchiseExpansionStrategyMasterFranchising',
+  'govt-project-liaison/licence-acquisition-certification': 'govtLicenceAcquisitionCertification',
+  'govt-project-liaison/contractor-registration-empanelment': 'govtContractorRegistrationEmpanelment',
+  'govt-project-liaison/project-bidding-liaison': 'govtProjectBiddingLiaison',
 };
 
 export function getServiceCategoryBySlug(slug: string) {

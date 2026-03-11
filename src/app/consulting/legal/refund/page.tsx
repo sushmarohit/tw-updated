@@ -39,8 +39,8 @@ export default function RefundPolicyPage() {
               <h2 className="heading-h4 mb-3">{t('legal-refund:section4.title')}</h2>
               <p className="body-default text-gray-700">
                 {t('legal-refund:section4.description')}{' '}
-                <a href="mailto:operations@twelfthkey.com" className="text-teal-500 hover:underline">
-                  operations@twelfthkey.com
+                <a href="mailto:refunds@twelfthkey.com" className="text-teal-500 hover:underline">
+                  refunds@twelfthkey.com
                 </a>
               </p>
             </section>

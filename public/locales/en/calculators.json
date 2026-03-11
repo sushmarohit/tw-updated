@@ -1,7 +1,7 @@
 {
   "operationalHealth": {
     "title": "Operational Health Diagnostic",
-    "description": "Assess your operational maturity across 5 G2P indices"
+    "description": "Assess your operational maturity across 5 governance indices"
   },
   "costLeakage": {
     "title": "Cost Leakage Estimator",

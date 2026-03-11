@@ -60,15 +60,15 @@
     "secondaryCta": "Book Discovery Call"
   },
   "twelfthkeyCertifiedVerificationConsultation": {
-    "title": "TwelfthKey Certified™ Verification & Consultation",
-    "heroSubheadline": "Get your DPR/Pitch Deck reviewed and strengthened—then show a TwelfthKey Certified™ stamp of credibility.",
+    "title": "Investor Readiness Review & Consultation",
+    "heroSubheadline": "Get your DPR/Pitch Deck reviewed and strengthened for investor readiness.",
     "outcomesLabel": "What you get",
-    "outcomes": ["Comprehensive vetting report", "TwelfthKey Certified™ digital badge", "Certificate of validation", "Feedback report (10–15 pages)", "Investor-readiness score", "90-minute consultation session"],
+    "outcomes": ["Comprehensive vetting report", "Investor Readiness Review", "Certificate of validation", "Feedback report (10–15 pages)", "Investor-readiness score", "90-minute consultation session"],
     "timelineLabel": "Timeline / Engagement",
     "timeline": "7–10 days, one-time.",
     "pricingLabel": "Pricing",
     "pricing": "",
-    "primaryCta": "Get Certified Review",
+    "primaryCta": "Get Readiness Review",
     "secondaryCta": "Book Consultation"
   },
   "dprDevelopment": {
@@ -93,7 +93,7 @@
     "pricingLabel": "Pricing",
     "pricing": "",
     "primaryCta": "Build My Pitch Deck",
-    "secondaryCta": "Get Certified Review"
+    "secondaryCta": "Get Readiness Review"
   },
   "supportStrategyAdvisory": {
     "title": "Support & Strategy (Advisory-Only)",
@@ -189,6 +189,42 @@
     "pricingLabel": "Pricing",
     "pricing": "",
     "primaryCta": "Build Expansion Roadmap",
+    "secondaryCta": "Book Discovery Call"
+  },
+  "govtLicenceAcquisitionCertification": {
+    "title": "Licence Acquisition & Certification",
+    "heroSubheadline": "Get the right licences without getting stuck in paperwork, follow-ups, and missed renewals.",
+    "outcomesLabel": "What you get",
+    "outcomes": ["Documentation checklist", "Filing support", "Authority coordination", "Handover documentation", "Renewal tracker", "Compliance checklist"],
+    "timelineLabel": "Timeline / Engagement",
+    "timeline": "One-time, scope-based.",
+    "pricingLabel": "Pricing",
+    "pricing": "",
+    "primaryCta": "Discuss Your Requirement",
+    "secondaryCta": "Book Discovery Call"
+  },
+  "govtContractorRegistrationEmpanelment": {
+    "title": "Contractor Registration & Empanelment",
+    "heroSubheadline": "Get empanelled with the right departments, classes, and categories so you can bid with confidence.",
+    "outcomesLabel": "What you get",
+    "outcomes": ["Prerequisite checks", "Application filing support", "Class/category confirmation", "Validity calendar", "Upgrade roadmap"],
+    "timelineLabel": "Timeline / Engagement",
+    "timeline": "One-time, scope-based.",
+    "pricingLabel": "Pricing",
+    "pricing": "",
+    "primaryCta": "Discuss Your Requirement",
+    "secondaryCta": "Book Discovery Call"
+  },
+  "govtProjectBiddingLiaison": {
+    "title": "Project Bidding & Liaison (End-to-End)",
+    "heroSubheadline": "From tender discovery to bid submission to post-work-order coordination, handled as one execution stream.",
+    "outcomesLabel": "What you get",
+    "outcomes": ["Tender discovery and tracking", "Bid preparation support", "Submission coordination", "Post-work-order follow-through"],
+    "timelineLabel": "Timeline / Engagement",
+    "timeline": "Ongoing support.",
+    "pricingLabel": "Pricing",
+    "pricing": "",
+    "primaryCta": "Discuss Your Requirement",
     "secondaryCta": "Book Discovery Call"
   }
 }

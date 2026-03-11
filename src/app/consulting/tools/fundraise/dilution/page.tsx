@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { CalculatorExplainer } from '@/components/shared/calculator-explainer';
 import { calculateDilution, type DilutionInput, type DilutionResult } from '@/lib/calculators/fundraise/dilution';
 import { trackCalculatorStart, trackCalculatorComplete, trackToolCompletedWithEmail } from '@/lib/analytics/events';
 import { formatCurrency } from '@/lib/utils';
@@ -89,6 +90,7 @@ export default function DilutionPage() {
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-2xl">
         <Link href="/consulting/tools/hub" className="inline-flex items-center gap-2 text-gray-600 hover:text-teal-600 mb-6"><ArrowLeft className="w-4 h-4" /> {t('common:backToTools')}</Link>
+        <CalculatorExplainer />
         <div className="card">
           <h1 className="heading-h2 mb-2">{t('tools:fundraise.dilution.name')}</h1>
           <p className="body-default text-gray-600 mb-6">{t('tools:fundraise.dilution.description')}</p>

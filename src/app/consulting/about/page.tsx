@@ -8,6 +8,7 @@ import { Users, Heart, Briefcase, Award } from 'lucide-react';
 export default function AboutPage() {
   const { t } = useTranslation(['about', 'common']);
 
+  // V5.2: Only 3 main cards — Team, Clientele & Testimonials, Values. Careers moved to full-width banner below.
   const sections = [
     {
       icon: Users,
@@ -30,13 +31,8 @@ export default function AboutPage() {
       href: '/consulting/about/values',
       color: 'gold',
     },
-    {
-      icon: Briefcase,
-      title: t('about:careers.title'),
-      description: t('about:careers.description'),
-      href: '/consulting/about/careers',
-      color: 'teal',
-    },
+    // Careers: moved to full-width hiring banner below (V5.2)
+    // { icon: Briefcase, title: t('about:careers.title'), description: t('about:careers.description'), href: '/consulting/about/careers', color: 'teal' },
   ];
 
   return (
@@ -80,6 +76,15 @@ export default function AboutPage() {
                 </div>
               );
             })}
+          </div>
+
+          {/* V5.2: Full-width hiring banner — Careers */}
+          <div className="mt-12 w-full rounded-2xl bg-navy-500 text-white p-8 md:p-10 text-center">
+            <h2 className="heading-h2 mb-3 text-white">{t('about:careers.title')}</h2>
+            <p className="body-large text-gray-200 mb-6 max-w-2xl mx-auto">{t('about:careers.description')}</p>
+            <Button variant="secondary" size="lg" asChild className="bg-gold-300 text-navy-500 hover:bg-gold-400 border-0">
+              <Link href="/consulting/about/careers">{t('about:careersBannerCta', 'View Open Roles')}</Link>
+            </Button>
           </div>
         </div>
       </section>

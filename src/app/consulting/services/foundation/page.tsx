@@ -24,10 +24,7 @@ export default function FoundationServicePage() {
           },
           areaServed: 'IN',
           serviceType: 'Business Consulting',
-          offers: {
-            price: '299999',
-            priceCurrency: 'INR',
-          },
+          offers: {},
           url: '/consulting/services/foundation',
         }}
       />
@@ -105,19 +102,7 @@ export default function FoundationServicePage() {
 
           <div className="card bg-navy-500 text-white">
             <h3 className="heading-h3 mb-4">{t('services-foundation:investmentRoi')}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <p className="body-small text-gray-300 mb-2">{t('services-foundation:investment')}</p>
-                <p className="heading-h3 text-gold-300">₹2,99,999</p>
-                <p className="body-small text-gray-300 mt-2">{t('services-foundation:oneTime60Days')}</p>
-              </div>
-              <div>
-                <p className="body-small text-gray-300 mb-2">{t('services-foundation:typicalRoi')}</p>
-                <p className="heading-h3 text-teal-400">₹20–40L</p>
-                <p className="body-small text-gray-300 mt-2">{t('services-foundation:inAnnualCostSavings')}</p>
-                <p className="body-small text-gray-300">{t('services-foundation:paybackPeriod')}</p>
-              </div>
-            </div>
+            <p className="body-large text-gray-200">{t('common:pricingNote')}</p>
           </div>
         </div>
       </section>

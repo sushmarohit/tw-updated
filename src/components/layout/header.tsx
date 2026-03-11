@@ -14,11 +14,13 @@ import { serviceCategories, serviceCategorySlugToKey } from '@/lib/services-cata
 import { caseStudyTabs, caseStudyTabKeyToCatalogKey, type CaseStudyTabKey } from '@/lib/case-studies-catalog';
 
 const navigationKeys = [
-  { key: 'services', href: '/consulting/services' },
+  // { key: 'home', href: '/' },
+  { key: 'howWeHelp', href: '/consulting/how-we-help' },
   { key: 'process', href: '/consulting/process' },
+  { key: 'services', href: '/consulting/services' },
   { key: 'caseStudies', href: '/consulting/case-studies/hub' },
   { key: 'tools', href: '/consulting/tools/hub' },
-  { key: 'resources', href: '/consulting/resource' },
+  { key: 'resources', href: '/consulting/resources' },
   { key: 'about', href: '/consulting/about' },
   { key: 'faq', href: '/consulting/faq' },
   { key: 'contact', href: '/consulting/contact' },
@@ -89,26 +91,27 @@ export function Header() {
           : ' bg-white'
       )}
     >
-      <nav className="w-full h-full flex items-center justify-between px-2 md:px-3 lg:px-6 xl:px-8 max-w-full gap-1 md:gap-2" aria-label="Main navigation">
-        {/* Logo */}
+      <nav className="w-full h-full flex items-center justify-between px-2 sm:px-3 md:px-4 lg:px-6 xl:px-8 max-w-full gap-2 md:gap-3 min-w-0" aria-label="Main navigation">
+        {/* Logo - visible size across breakpoints; tagline unchanged */}
         <Link
           href="/"
-          className="flex gap-4 items-center space-x-2 focus-visible-ring rounded-lg p-2"
+          className="flex gap-2 sm:gap-3 md:gap-2 items-center space-x-2 focus-visible-ring rounded-lg p-1.5 sm:p-2 flex-shrink-0 min-w-0"
           aria-label="TwelfthKey Home"
         >
-          <div className="w-16 h-10 sm:w-20 lg:w-20 xl:w-24 lg:h-10  rounded-lg flex flex-col items-center justify-center ">
-            <img src='/tw_logo_no_bg.webp' alt='logo' className=' rounded-3xl'/>
+          <div className="w-20 h-12 sm:w-24 sm:h-12 md:w-28 md:h-14 lg:w-32 lg:h-16 xl:w-32 xl:h-16 rounded-lg flex items-center justify-center flex-shrink-0">
+            <img src='/tw_logo_no_bg.webp' alt='TwelfthKey logo' className='rounded-3xl w-full h-full object-contain'/>
           </div>
-            <div className="flex flex-col">
-              <span className="text-navy-500 font-bold text-sm lg:text-xl">TwelfthKey</span>
-              <span className="font-serif font-bold text-xl text-navy-500 hidden lg:block">
+            <div className="flex flex-col min-w-0">
+              <span className="text-navy-500 font-bold text-sm sm:text-base md:text-lg lg:text-xl truncate">TwelfthKey</span>
+              <span className="font-serif font-bold text-navy-500 hidden sm:block text-xs md:text-sm lg:text-base xl:text-xl whitespace-nowrap truncate max-w-[100px] sm:max-w-[140px] md:max-w-none">
                 Win the Operations Game
               </span>
             </div>
         </Link>
 
-        {/* Desktop & Tablet Navigation - Compact on tablet, full on desktop */}
-        <div className="hidden md:flex items-center space-x-0.5 md:space-x-1 lg:space-x-1.5 xl:space-x-2 flex-shrink-0">
+        {/* Desktop & Tablet Navigation - compact so all links fit without scroll */}
+        <div className="hidden md:flex items-center flex-1 min-w-0">
+          <div className="flex items-center gap-0.5 md:gap-1 lg:gap-1 xl:gap-1.5 flex-shrink-0">
           {navigationKeys.map((item) => {
             if (item.key === 'services') {
               if (!serviceCategories.length) {
@@ -132,7 +135,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-body-default text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap block"
+                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-sm text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap min-h-[2rem] inline-flex items-center flex-shrink-0"
                     suppressHydrationWarning
                     onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
                   >
@@ -210,7 +213,7 @@ export function Header() {
 
             if (item.key === 'caseStudies') {
               const activeTab = caseStudyTabs.find((tab) => tab.key === activeCaseStudiesTab) ?? caseStudyTabs[0];
-              const topCards = activeTab.cards.slice(0, 3);
+              const cards = activeTab.cards;
 
               return (
                 <div
@@ -221,7 +224,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-body-default text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap block"
+                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-sm text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap min-h-[2rem] inline-flex items-center flex-shrink-0"
                     suppressHydrationWarning
                     onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
                   >
@@ -235,9 +238,9 @@ export function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.16 }}
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[min(94vw,960px)] max-h-[min(85vh,520px)] flex flex-col rounded-2xl bg-white border border-gray-200 shadow-2xl z-[120] overflow-hidden"
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[min(94vw,640px)] max-w-[calc(100vw-1.5rem)] max-h-[min(85vh,560px)] flex flex-col rounded-2xl bg-white border border-gray-200 shadow-2xl z-[120] overflow-hidden"
                       >
-                        <div className="flex flex-wrap gap-2 p-5 pb-3 flex-shrink-0">
+                        <div className="flex flex-wrap gap-2 p-3 sm:p-5 pb-3 flex-shrink-0 border-b border-gray-100">
                           {caseStudyTabs.map((tab) => {
                             const catalogKey = caseStudyTabKeyToCatalogKey[tab.key];
                             return (
@@ -246,7 +249,7 @@ export function Header() {
                                 type="button"
                                 onMouseEnter={() => setActiveCaseStudiesTab(tab.key)}
                                 className={cn(
-                                  'px-3 py-1.5 rounded-full border text-xs font-semibold transition-colors',
+                                  'px-3 py-1.5 rounded-full border text-xs font-semibold transition-colors whitespace-nowrap',
                                   tab.key === activeTab.key
                                     ? 'bg-teal-500 text-white border-teal-500'
                                     : 'bg-white text-navy-500 border-gray-200 hover:border-teal-300'
@@ -259,18 +262,18 @@ export function Header() {
                           })}
                         </div>
 
-                        <div className="px-5 pb-5 pt-1 overflow-y-auto flex-1 min-h-0">
-                        {topCards.length > 0 ? (
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pr-20 pb-1 items-stretch">
-                            {topCards.map((card) => (
+                        <div className="overflow-y-auto flex-1 min-h-0 px-3 sm:px-5 pt-3 pb-2">
+                        {cards.length > 0 ? (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pr-2 pb-1 items-stretch">
+                            {cards.map((card) => (
                               <Link
                                 key={card.slug}
                                 href={`/consulting/case-studies/${card.slug}`}
-                                className="rounded-xl border border-gray-100 p-3.5 hover:bg-gray-50 hover:border-teal-200 transition-colors min-h-[10rem] flex flex-col"
+                                className="rounded-xl border border-gray-100 p-3 sm:p-3.5 hover:bg-gray-50 hover:border-teal-200 transition-colors min-h-[9rem] sm:min-h-[10rem] flex flex-col break-words min-w-0 max-w-full"
                               >
                                 <p className="text-xs text-teal-700 font-semibold mb-1.5" suppressHydrationWarning>{t('case-studies-catalog:cards.' + card.slug + '.industryTag')}</p>
                                 <p className="text-sm text-navy-500 font-semibold mb-1.5 line-clamp-2 leading-snug" suppressHydrationWarning>{t('case-studies-catalog:cards.' + card.slug + '.title')}</p>
-                                <p className="text-xs text-gray-600 leading-relaxed mt-auto" suppressHydrationWarning>{t('case-studies-catalog:cards.' + card.slug + '.outcome')}</p>
+                                <p className="text-xs text-gray-600 leading-relaxed mt-auto line-clamp-2" suppressHydrationWarning>{t('case-studies-catalog:cards.' + card.slug + '.outcome')}</p>
                               </Link>
                             ))}
                           </div>
@@ -279,16 +282,16 @@ export function Header() {
                             {t('case-studies-catalog:franchise.comingSoon')}
                           </div>
                         )}
+                        </div>
 
-                        <div className="mt-4 flex-shrink-0">
+                        <div className="flex-shrink-0 border-t border-gray-100 px-3 sm:px-5 py-3 bg-gray-50/50">
                           <Link
                             href={`/consulting/case-studies/hub?tab=case-studies&track=${activeTab.key}`}
-                            className="text-sm font-semibold text-teal-600 hover:text-teal-700"
+                            className="text-sm font-semibold text-teal-600 hover:text-teal-700 inline-block"
                             suppressHydrationWarning
                           >
                             {t('case-studies-catalog:viewAll')}
                           </Link>
-                        </div>
                         </div>
                       </motion.div>
                     )}
@@ -301,7 +304,7 @@ export function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-body-default text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap flex-shrink-0"
+                className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-sm text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap flex-shrink-0 min-h-[2rem] inline-flex items-center"
                 suppressHydrationWarning
                 onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
               >
@@ -309,6 +312,7 @@ export function Header() {
               </Link>
             );
           })}
+          </div>
         </div>
 
         {/* Desktop & Tablet CTAs */}

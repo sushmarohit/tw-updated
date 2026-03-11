@@ -23,35 +23,35 @@ export default function BankingCaseStudyPage() {
       <section className="section-padding">
         <div className="container-custom max-w-4xl">
           <div className="card mb-8">
-            <h2 className="heading-h3 mb-4">Company Profile</h2>
+            <h2 className="heading-h3 mb-4">{t('case-studies-banking:companyProfile')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <p className="body-small text-gray-600 mb-1">Industry</p>
+                <p className="body-small text-gray-600 mb-1">{t('case-studies-banking:industry')}</p>
                 <p className="body-default font-semibold">Banking</p>
               </div>
               <div>
-                <p className="body-small text-gray-600 mb-1">Revenue</p>
+                <p className="body-small text-gray-600 mb-1">{t('case-studies-banking:revenue')}</p>
                 <p className="body-default font-semibold">45 Cr</p>
               </div>
               <div>
-                <p className="body-small text-gray-600 mb-1">Employees</p>
+                <p className="body-small text-gray-600 mb-1">{t('case-studies-banking:employees')}</p>
                 <p className="body-default font-semibold">200+</p>
               </div>
             </div>
           </div>
 
           <div className="card mb-8">
-            <h2 className="heading-h3 mb-4">Challenge</h2>
+            <h2 className="heading-h3 mb-4">{t('case-studies-banking:challenge')}</h2>
             <p className="body-large text-gray-700 mb-4">
-              Process Chaos Impacting Customer Satisfaction & Compliance
+              {t('case-studies-banking:challengeTitle')}
             </p>
             <ul className="space-y-2">
               {[
-                'High transaction error rate (15–20% of all transactions)',
-                'Slow processing times (24–48 hours for standard transfers)',
-                'Frequent audit findings (compliance gaps)',
-                'Manual escalation bottlenecks',
-                'Low employee morale (firefighting culture)',
+                t('case-studies-banking:challenge1'),
+                t('case-studies-banking:challenge2'),
+                t('case-studies-banking:challenge3'),
+                t('case-studies-banking:challenge4'),
+                t('case-studies-banking:challenge5'),
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <TrendingDown className="w-5 h-5 text-error-500 flex-shrink-0 mt-1" />
@@ -62,18 +62,18 @@ export default function BankingCaseStudyPage() {
           </div>
 
           <div className="card mb-8">
-            <h2 className="heading-h3 mb-4">Approach: G2P CYCLE Methodology</h2>
+            <h2 className="heading-h3 mb-4">{t('case-studies-banking:approach')}</h2>
             <p className="body-default text-gray-700 mb-4">
-              Applied CYCLE framework over 90 days with focus on predictive operational consistency.
+              {t('case-studies-banking:approachDescription')}
             </p>
             <div className="space-y-3">
               {[
-                'Process mapping (value-stream analysis of transaction workflows)',
-                'Error root-cause analysis (pattern identification)',
-                'SOP design (standardized workflows with checkpoints)',
-                'Dashboard design (real-time error tracking, SLA monitoring)',
-                'Team training and pilot testing',
-                'Rollout and stabilization',
+                t('case-studies-banking:approach1'),
+                t('case-studies-banking:approach2'),
+                t('case-studies-banking:approach3'),
+                t('case-studies-banking:approach4'),
+                t('case-studies-banking:approach5'),
+                t('case-studies-banking:approach6'),
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0 mt-1" />
@@ -84,15 +84,15 @@ export default function BankingCaseStudyPage() {
           </div>
 
           <div className="card mb-8 bg-navy-500 text-white">
-            <h2 className="heading-h3 mb-6 text-white">Results</h2>
+            <h2 className="heading-h3 mb-6 text-white">{t('case-studies-banking:results')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { metric: 'Error Rate', before: '15%', after: '2%', improvement: '86% reduction' },
-                { metric: 'Processing Time', before: '24 hours', after: '4 hours', improvement: '83% faster' },
-                { metric: 'SLA Compliance', before: '85%', after: '99.8%', improvement: '+14.8 points' },
-                { metric: 'Audit Findings', before: '15 per audit', after: '0–1', improvement: '93% reduction' },
-                { metric: 'Employee Engagement', before: 'Baseline', after: '+40%', improvement: 'Measured via pulse survey' },
-                { metric: 'Cost Savings', before: 'N/A', after: '₹45L annually', improvement: 'Error rework reduction' },
+                { metric: t('case-studies-banking:errorRate'), before: '15%', after: '2%', improvement: '86% reduction' },
+                { metric: t('case-studies-banking:processingTime'), before: '24 hours', after: '4 hours', improvement: '83% faster' },
+                { metric: t('case-studies-banking:slaCompliance'), before: '85%', after: '99.8%', improvement: '+14.8 points' },
+                { metric: t('case-studies-banking:auditFindings'), before: '15 per audit', after: '0–1', improvement: '93% reduction' },
+                { metric: t('case-studies-banking:employeeEngagement'), before: 'Baseline', after: '+40%', improvement: 'Measured via pulse survey' },
+                { metric: t('case-studies-banking:costSavings'), before: 'N/A', after: t('case-studies-banking:costSavingsValue'), improvement: t('case-studies-banking:costSavingsImprovement') },
               ].map((result, i) => (
                 <div key={i} className="border border-navy-400 rounded-lg p-4">
                   <p className="body-small text-gray-300 mb-2">{result.metric}</p>
@@ -108,14 +108,14 @@ export default function BankingCaseStudyPage() {
           </div>
 
           <div className="card mb-8">
-            <h2 className="heading-h3 mb-4">Timeline</h2>
+            <h2 className="heading-h3 mb-4">{t('case-studies-banking:timeline')}</h2>
             <div className="space-y-3">
               {[
-                { phase: 'Week 0–2', desc: 'Assessment and SOP design' },
-                { phase: 'Week 2–4', desc: 'Dashboard setup and training' },
-                { phase: 'Week 4–6', desc: 'Pilot with high-volume transaction team' },
-                { phase: 'Week 6–8', desc: 'Refinement and full rollout' },
-                { phase: 'Week 8–12', desc: 'Stabilization and optimization' },
+                { phase: t('case-studies-banking:week0to2'), desc: t('case-studies-banking:timeline1') },
+                { phase: t('case-studies-banking:week2to4'), desc: t('case-studies-banking:timeline2') },
+                { phase: t('case-studies-banking:week4to6'), desc: t('case-studies-banking:timeline3') },
+                { phase: t('case-studies-banking:week6to8'), desc: t('case-studies-banking:timeline4') },
+                { phase: t('case-studies-banking:week8to12'), desc: t('case-studies-banking:timeline5') },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-6">
                   <div className="w-24 flex-shrink-0">
@@ -129,38 +129,25 @@ export default function BankingCaseStudyPage() {
 
           <div className="card bg-teal-50 border-2 border-teal-500 mb-8">
             <blockquote className="body-large italic text-gray-700 mb-4">
-              "TwelfthKey didn't just give us SOPs—they transformed our culture from firefighting to discipline. Our audit findings went to zero, and our team feels empowered for the first time."
+              {t('case-studies-banking:testimonial')}
             </blockquote>
             <p className="body-default text-gray-600">
-              — Head of Operations, Bank
+              {t('case-studies-banking:testimonialAuthor')}
             </p>
           </div>
 
           <div className="card bg-gold-50 border-2 border-gold-300 mb-8">
-            <h2 className="heading-h3 mb-4">ROI</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <p className="body-small text-gray-600 mb-1">Investment</p>
-                <p className="heading-h4 text-navy-500">₹2,99,999</p>
-              </div>
-              <div>
-                <p className="body-small text-gray-600 mb-1">Annual Savings</p>
-                <p className="heading-h4 text-teal-500">₹45L</p>
-              </div>
-              <div>
-                <p className="body-small text-gray-600 mb-1">Payback Period</p>
-                <p className="heading-h4 text-gold-300">2 months</p>
-              </div>
-            </div>
+            <h2 className="heading-h3 mb-4">{t('case-studies-banking:roi')}</h2>
+            <p className="body-large text-gray-700">{t('common:pricingNote')}</p>
           </div>
         </div>
       </section>
 
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">Apply This Approach to Your Business</h2>
+          <h2 className="heading-h2 mb-4">{t('case-studies-banking:readyTitle')}</h2>
           <p className="body-large text-gray-600 mb-8">
-            Start with a free Operational Health Diagnostic
+            {t('case-studies-banking:readyDescription')}
           </p>
           <Button variant="primary" size="lg" asChild>
             <Link href="/consulting/booking">{t('common:bookDiscoveryCall')}</Link>

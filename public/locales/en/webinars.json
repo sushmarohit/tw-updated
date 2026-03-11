@@ -3,8 +3,8 @@
   "subtitle": "Recorded sessions and live webinars on operational excellence topics.",
   "webinars": {
     "webinar1": {
-      "title": "Introduction to G2P Framework",
-      "description": "Learn the fundamentals of the Governance-to-Performance framework and how it can transform your operations.",
+      "title": "Introduction to Our Governance Framework",
+      "description": "Learn the fundamentals of our PhD-backed proprietary framework and how it can transform your operations.",
       "duration": "45 min",
       "type": "Upcoming"
     },
@@ -16,7 +16,7 @@
     },
     "webinar3": {
       "title": "Building Governance Maturity",
-      "description": "Deep dive into the 5 G2P indices and how to improve each one systematically.",
+      "description": "Deep dive into the 5 governance indices and how to improve each one systematically.",
       "duration": "50 min",
       "type": "Recorded"
     }

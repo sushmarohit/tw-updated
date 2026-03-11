@@ -67,6 +67,15 @@ export default function TermsOfServicePage() {
                 {t('legal-terms:section5.description')}
               </p>
             </section>
+
+            <section>
+              <p className="body-default text-gray-700">
+                {t('legal-terms:contactNote')}{' '}
+                <a href="mailto:support@twelfthkey.com" className="text-teal-500 hover:underline">
+                  support@twelfthkey.com
+                </a>
+              </p>
+            </section>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
   "consulting": "Consulting",
   "services": "Services",
   "framework": "Framework",
-  "praxio": "PraXio™",
+  "praxio": "WFM Governance App",
   "caseStudies": "Case Studies",
   "tools": "Tools",
   "backToTools": "Back to Tools",
@@ -76,6 +76,7 @@
   "newsletterUnsubscribed": "You have been unsubscribed.",
   "saveResults": "Save results",
   "placeholderPreferredDate": "e.g. Feb 25 or Next week",
-  "placeholderPreferredTime": "e.g. Morning or 10:00–11:00"
+  "placeholderPreferredTime": "e.g. Morning or 10:00–11:00",
+  "pricingNote": "Commercials depend on scope, complexity, and implementation depth. Pricing is shared after the discovery call and scope review."
 }
 

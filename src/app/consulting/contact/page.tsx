@@ -7,10 +7,12 @@ import { trackFormSubmit } from '@/lib/analytics/events';
 import { useTranslation } from 'react-i18next';
 import { serviceCategories } from '@/lib/services-catalog';
 
+// V5.2: Include Govt. Project Liaison so Sub-Service field shows when selected
 const CONTACT_SERVICE_SLUGS = [
   'process-excellence-solutions',
   'fundraise-support-strategy',
   'franchise-scale-expansion',
+  'govt-project-liaison',
 ] as const;
 
 const INTERESTED_IN_OPTIONS = [

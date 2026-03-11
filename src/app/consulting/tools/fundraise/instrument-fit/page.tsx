@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { CalculatorExplainer } from '@/components/shared/calculator-explainer';
 import { calculateInstrumentFit, type InstrumentFitInput, type InstrumentFitResult } from '@/lib/calculators/fundraise/instrument-fit';
 import { trackCalculatorStart, trackCalculatorComplete, trackToolCompletedWithEmail } from '@/lib/analytics/events';
 import { ArrowLeft } from 'lucide-react';
@@ -80,6 +81,7 @@ export default function InstrumentFitPage() {
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-2xl">
         <Link href="/consulting/tools/hub" className="inline-flex items-center gap-2 text-gray-600 hover:text-teal-600 mb-6"><ArrowLeft className="w-4 h-4" /> {t('common:backToTools')}</Link>
+        <CalculatorExplainer />
         <div className="card">
           <h1 className="heading-h2 mb-2">{t('tools:fundraise.instrumentFit.name')}</h1>
           <p className="body-default text-gray-600 mb-6">{t('tools:fundraise.instrumentFit.description')}</p>

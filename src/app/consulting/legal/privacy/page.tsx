@@ -63,8 +63,8 @@ export default function PrivacyPolicyPage() {
               <h2 className="heading-h4 mb-3">{t('legal-privacy:section5')}</h2>
               <p className="body-default text-gray-700">
                 {t('legal-privacy:section5Text')}{' '}
-                <a href="mailto:operations@twelfthkey.com" className="text-teal-500 hover:underline">
-                  operations@twelfthkey.com
+                <a href="mailto:support@twelfthkey.com" className="text-teal-500 hover:underline">
+                  support@twelfthkey.com
                 </a>
               </p>
             </section>

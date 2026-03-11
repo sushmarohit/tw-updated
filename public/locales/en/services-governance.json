@@ -1,6 +1,6 @@
 {
   "title": "Governance Intelligence Program",
-  "subtitle": "Full G2P framework, real-time dashboards, AI anomaly detection—60 days to autonomous governance",
+  "subtitle": "PhD-backed proprietary framework, real-time dashboards, AI anomaly detection—60 days to autonomous governance",
   "establishGovernance": "Establish Governance",
   "whatsIncluded": "What's Included",
   "item1": "SaaS platform implementation (6 methodologies, 5 indices)",
@@ -30,7 +30,7 @@
     "title": "Evolve",
     "desc": "Scale governance as business grows"
   },
-  "g2pIndicesTracked": "G2P Indices Tracked",
+  "g2pIndicesTracked": "Governance Indices Tracked",
   "par": {
     "name": "PAR",
     "desc": "Prediction Accuracy (forecast consistency)"

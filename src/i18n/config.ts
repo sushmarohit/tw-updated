@@ -48,7 +48,7 @@ const initI18n = () => {
           'framework', 'framework-arc', 'framework-cycle', 'framework-g2p', 'framework-morph', 'framework-parse', 'framework-prism', 'framework-sage',
           'how-we-help', 'process', 'praxio', 'praxio-demo', 'praxio-features', 'praxio-integrations', 'praxio-pricing',
           'services', 'services-catalog', 'services-detail', 'services-analytics', 'services-assessment', 'services-enterprise', 'services-foundation', 'services-fractional-cbo', 'services-governance',
-          'tools', 'tools-bottleneck-finder', 'tools-breakeven', 'tools-burnout-risk', 'tools-cost-leakage', 'tools-governance-maturity', 'tools-health-check', 'tools-roi', 'tools-scale-readiness',
+          'tools', 'tools-bottleneck-finder', 'tools-breakeven', 'tools-burnout-risk', 'tools-cost-leakage', 'tools-governance-maturity', 'tools-health-check', 'tools-roi', 'tools-scale-readiness', 'calculator-explainer',
           'legal-accessibility', 'legal-compliance', 'legal-cookies', 'legal-disputes', 'legal-dpa', 'legal-privacy', 'legal-refund', 'legal-terms',
           'faq',
         ],

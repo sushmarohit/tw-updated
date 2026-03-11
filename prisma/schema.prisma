@@ -1,29 +1,25 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-  provider = "prisma-client-js"
-binaryTargets = ["native", "linux-musl"]
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"]
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id           String   @id @default(uuid())
-  name         String
-  email        String   @unique
-  companyName  String?  @map("company_name")
-  role         String?
-  phone        String?
-  companySize  String?  @map("company_size")
-  industry     String?
-  createdAt    DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @updatedAt @map("updated_at")
-
+  id                 String              @id @default(uuid())
+  name               String
+  email              String              @unique
+  companyName        String?             @map("company_name")
+  role               String?
+  phone              String?
+  companySize        String?             @map("company_size")
+  industry           String?
+  createdAt          DateTime            @default(now()) @map("created_at")
+  updatedAt          DateTime            @updatedAt @map("updated_at")
   assessmentSessions AssessmentSession[]
   hubspotSyncs       HubSpotSync[]
 
@@ -31,23 +27,22 @@ model User {
 }
 
 model AssessmentSession {
-  id           String   @id @default(uuid())
-  userId       String?  @map("user_id")
-  calculatorType String @map("calculator_type") // operational_health, cost_leakage, etc.
-  startedAt    DateTime @default(now()) @map("started_at")
-  completedAt  DateTime? @map("completed_at")
-  status       String   @default("in_progress") // in_progress, completed, abandoned
-  overallScore Decimal? @map("overall_score") @db.Decimal(5, 2)
-  reportUrl    String?  @map("report_url")
-  sessionData  Json?    @map("session_data") // stores intermediate calculation state
-  createdAt    DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @updatedAt @map("updated_at")
-
-  user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userResponses UserResponse[]
-  indexScores  IndexScore[]
-  pdfReports   PDFReport[]
-  hubspotSyncs HubSpotSync[]
+  id             String         @id @default(uuid())
+  userId         String?        @map("user_id")
+  calculatorType String         @map("calculator_type")
+  startedAt      DateTime       @default(now()) @map("started_at")
+  completedAt    DateTime?      @map("completed_at")
+  status         String         @default("in_progress")
+  overallScore   Decimal?       @map("overall_score") @db.Decimal(5, 2)
+  reportUrl      String?        @map("report_url")
+  sessionData    Json?          @map("session_data")
+  createdAt      DateTime       @default(now()) @map("created_at")
+  updatedAt      DateTime       @updatedAt @map("updated_at")
+  user           User?          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  hubspotSyncs   HubSpotSync[]
+  indexScores    IndexScore[]
+  pdfReports     PDFReport[]
+  userResponses  UserResponse[]
 
   @@index([userId])
   @@index([status])
@@ -55,133 +50,127 @@ model AssessmentSession {
 }
 
 model Question {
-  id            String   @id @default(uuid())
-  calculatorType String @map("calculator_type")
-  text          String
-  g2pIndex      String? @map("g2p_index") // PAR, AQ, CLS, LV, MTTAR
-  sequenceOrder Int     @map("sequence_order")
-  questionType  String  @default("multiple_choice") @map("question_type")
-  createdAt     DateTime @default(now()) @map("created_at")
-
-  answerOptions AnswerOption[]
-  userResponses UserResponse[]
+  id             String         @id @default(uuid())
+  calculatorType String         @map("calculator_type")
+  text           String
+  g2pIndex       String?        @map("g2p_index")
+  sequenceOrder  Int            @map("sequence_order")
+  questionType   String         @default("multiple_choice") @map("question_type")
+  createdAt      DateTime       @default(now()) @map("created_at")
+  answerOptions  AnswerOption[]
+  userResponses  UserResponse[]
 
   @@map("questions")
 }
 
 model AnswerOption {
-  id         String   @id @default(uuid())
-  questionId String   @map("question_id")
-  text       String
-  scoreValue Int      @map("score_value")
-  weight     Decimal  @default(1.0) @db.Decimal(3, 2)
-  createdAt  DateTime @default(now()) @map("created_at")
-
-  question       Question        @relation(fields: [questionId], references: [id], onDelete: Cascade)
-  userResponses  UserResponse[]
+  id            String         @id @default(uuid())
+  questionId    String         @map("question_id")
+  text          String
+  scoreValue    Int            @map("score_value")
+  weight        Decimal        @default(1.0) @db.Decimal(3, 2)
+  createdAt     DateTime       @default(now()) @map("created_at")
+  question      Question       @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  userResponses UserResponse[]
 
   @@map("answer_options")
 }
 
 model UserResponse {
-  id        String   @id @default(uuid())
-  sessionId String   @map("session_id")
-  questionId String  @map("question_id")
-  answerId  String?  @map("answer_id")
-  score     Decimal  @map("score") @db.Decimal(5, 2)
-  createdAt DateTime @default(now()) @map("created_at")
-
-  session      AssessmentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
-  question     Question          @relation(fields: [questionId], references: [id])
+  id           String            @id @default(uuid())
+  sessionId    String            @map("session_id")
+  questionId   String            @map("question_id")
+  answerId     String?           @map("answer_id")
+  score        Decimal           @map("score") @db.Decimal(5, 2)
+  createdAt    DateTime          @default(now()) @map("created_at")
   answerOption AnswerOption?     @relation(fields: [answerId], references: [id])
+  question     Question          @relation(fields: [questionId], references: [id])
+  session      AssessmentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
 
   @@index([sessionId])
   @@map("user_responses")
 }
 
 model IndexScore {
-  id            String   @id @default(uuid())
-  sessionId     String   @map("session_id")
-  g2pIndex      String   @map("g2p_index") // PAR, AQ, CLS, LV, MTTAR
-  score         Decimal  @map("score") @db.Decimal(5, 2)
-  classification String? @map("classification") // Excellent, Good, Needs Improvement, Critical
-  createdAt     DateTime @default(now()) @map("created_at")
-
-  session       AssessmentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  id             String            @id @default(uuid())
+  sessionId      String            @map("session_id")
+  g2pIndex       String            @map("g2p_index")
+  score          Decimal           @map("score") @db.Decimal(5, 2)
+  classification String?           @map("classification")
+  createdAt      DateTime          @default(now()) @map("created_at")
+  session        AssessmentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
 
   @@index([sessionId])
   @@map("index_scores")
 }
 
 model Recommendation {
-  id            String   @id @default(uuid())
-  g2pIndex      String   @map("g2p_index")
-  classification String  @map("classification")
-  methodology   String?  @map("methodology")
-  text          String
-  priority      Int?
-  createdAt     DateTime @default(now()) @map("created_at")
+  id             String   @id @default(uuid())
+  g2pIndex       String   @map("g2p_index")
+  classification String   @map("classification")
+  methodology    String?  @map("methodology")
+  text           String
+  priority       Int?
+  createdAt      DateTime @default(now()) @map("created_at")
 
   @@map("recommendations")
 }
 
 model BenchmarkData {
-  id            String   @id @default(uuid())
-  g2pIndex      String   @map("g2p_index")
-  industrySector String? @map("industry_sector")
-  companySize   String?  @map("company_size")
-  averageScore  Decimal  @map("average_score") @db.Decimal(5, 2)
-  percentile25  Decimal? @map("percentile_25") @db.Decimal(5, 2)
-  percentile50  Decimal? @map("percentile_50") @db.Decimal(5, 2)
-  percentile75  Decimal? @map("percentile_75") @db.Decimal(5, 2)
-  createdAt     DateTime @default(now()) @map("created_at")
+  id             String   @id @default(uuid())
+  g2pIndex       String   @map("g2p_index")
+  industrySector String?  @map("industry_sector")
+  companySize    String?  @map("company_size")
+  averageScore   Decimal  @map("average_score") @db.Decimal(5, 2)
+  percentile25   Decimal? @map("percentile_25") @db.Decimal(5, 2)
+  percentile50   Decimal? @map("percentile_50") @db.Decimal(5, 2)
+  percentile75   Decimal? @map("percentile_75") @db.Decimal(5, 2)
+  createdAt      DateTime @default(now()) @map("created_at")
 
   @@map("benchmark_data")
 }
 
 model HubSpotSync {
-  id              String   @id @default(uuid())
-  userId          String?  @map("user_id")
-  sessionId       String?  @map("session_id")
-  hubspotContactId String? @map("hubspot_contact_id")
-  syncStatus      String   @default("pending") @map("sync_status") // pending, synced, failed
-  syncedAt        DateTime? @map("synced_at")
-  errorMessage    String?  @map("error_message")
-  createdAt       DateTime @default(now()) @map("created_at")
-
-  user            User?            @relation(fields: [userId], references: [id])
-  session        AssessmentSession? @relation(fields: [sessionId], references: [id])
+  id               String             @id @default(uuid())
+  userId           String?            @map("user_id")
+  sessionId        String?            @map("session_id")
+  hubspotContactId String?            @map("hubspot_contact_id")
+  syncStatus       String             @default("pending") @map("sync_status")
+  syncedAt         DateTime?          @map("synced_at")
+  errorMessage     String?            @map("error_message")
+  createdAt        DateTime           @default(now()) @map("created_at")
+  session          AssessmentSession? @relation(fields: [sessionId], references: [id])
+  user             User?              @relation(fields: [userId], references: [id])
 
   @@index([syncStatus])
   @@map("hubspot_syncs")
 }
 
 model PDFReport {
-  id          String   @id @default(uuid())
-  sessionId   String   @map("session_id")
-  reportType  String?  @map("report_type") // full_report, summary, recommendations
-  s3Url       String   @map("s3_url")
-  generatedAt DateTime @default(now()) @map("generated_at")
-  viewedAt    DateTime? @map("viewed_at")
-  createdAt   DateTime @default(now()) @map("created_at")
-
+  id          String            @id @default(uuid())
+  sessionId   String            @map("session_id")
+  reportType  String?           @map("report_type")
+  s3Url       String            @map("s3_url")
+  generatedAt DateTime          @default(now()) @map("generated_at")
+  viewedAt    DateTime?         @map("viewed_at")
+  createdAt   DateTime          @default(now()) @map("created_at")
   session     AssessmentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
 
   @@map("pdf_reports")
 }
 
 model Contact {
-  id            String   @id @default(uuid())
-  name          String   @map("name")
-  email         String   @map("email")
-  phone         String?  @map("phone")
-  company       String?  @map("company")
-  service       String?  @map("service") // primary service from dropdown
-  subService    String?  @map("sub_service") // selected sub-service, if any
-  interestedIn  Json?    @map("interested_in") // array of interest keys, e.g. ["process-excellence", "fundraise"]
-  heardAboutUs  String?  @map("heard_about_us") // referral source
-  message       String   @map("message")
-  createdAt     DateTime @default(now()) @map("created_at")
+  id           String   @id @default(uuid())
+  name         String   @map("name")
+  email        String   @map("email")
+  phone        String?  @map("phone")
+  company      String?  @map("company")
+  service      String?  @map("service")
+  subService   String?  @map("sub_service")
+  interestedIn Json?    @map("interested_in")
+  heardAboutUs String?  @map("heard_about_us")
+  message      String   @map("message")
+  createdAt    DateTime @default(now()) @map("created_at")
 
   @@map("contacts")
 }
@@ -192,10 +181,10 @@ model BookingRequest {
   email             String   @map("email")
   phone             String?  @map("phone")
   company           String?  @map("company")
-  preferredDate     String?  @map("preferred_date")   // e.g. "2026-02-25" or free text
-  preferredTimeSlot String?  @map("preferred_time_slot") // e.g. "Morning" or "10:00-11:00"
+  preferredDate     String?  @map("preferred_date")
+  preferredTimeSlot String?  @map("preferred_time_slot")
   message           String?  @map("message")
-  status            String   @default("requested") @map("status") // requested, confirmed, cancelled
+  status            String   @default("requested") @map("status")
   createdAt         DateTime @default(now()) @map("created_at")
 
   @@map("booking_requests")
@@ -204,23 +193,22 @@ model BookingRequest {
 model NewsletterSubscription {
   id               String    @id @default(uuid())
   email            String    @unique @map("email")
-  status           String    @default("pending") @map("status") // pending, confirmed, unsubscribed
-  confirmToken     String?   @map("confirm_token") // for double opt-in; cleared after confirm
-  unsubscribeToken String?   @map("unsubscribe_token") // for one-click unsubscribe in emails
-  consentedAt      DateTime  @map("consented_at") // GDPR/DPDP: when user gave consent
-  source           String?   @map("source") // e.g. "footer", "blog"
+  status           String    @default("pending") @map("status")
+  confirmToken     String?   @map("confirm_token")
+  unsubscribeToken String?   @map("unsubscribe_token")
+  consentedAt      DateTime  @map("consented_at")
+  source           String?   @map("source")
   confirmedAt      DateTime? @map("confirmed_at")
   createdAt        DateTime  @default(now()) @map("created_at")
 
   @@map("newsletter_subscriptions")
 }
 
-// Fundraise & Franchise tool submissions (spec Section 6)
 model ToolSubmission {
   id          String   @id @default(uuid())
-  toolSlug    String   @map("tool_slug")   // e.g. fundraise/runway-check, franchise/readiness
-  input       Json     @map("input")       // calculator inputs
-  result      Json     @map("result")      // calculator outputs
+  toolSlug    String   @map("tool_slug")
+  input       Json     @map("input")
+  result      Json     @map("result")
   email       String?  @map("email")
   name        String?  @map("name")
   companyName String?  @map("company_name")

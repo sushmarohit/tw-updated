@@ -24,10 +24,7 @@ export default function GovernanceServicePage() {
           },
           areaServed: 'IN',
           serviceType: 'Business Consulting',
-          offers: {
-            price: '499999',
-            priceCurrency: 'INR',
-          },
+          offers: {},
           url: '/consulting/services/governance',
         }}
       />
@@ -107,19 +104,7 @@ export default function GovernanceServicePage() {
 
           <div className="card bg-navy-500 text-white mb-8">
             <h3 className="heading-h3 mb-4">{t('services-governance:investmentRoi')}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <p className="body-small text-gray-300 mb-2">{t('services-governance:investment')}</p>
-                <p className="heading-h3 text-gold-300">₹4,99,999</p>
-                <p className="body-small text-gray-300 mt-2">{t('services-governance:investmentValue')}</p>
-              </div>
-              <div>
-                <p className="body-small text-gray-300 mb-2">{t('services-governance:typicalRoi')}</p>
-                <p className="heading-h3 text-teal-400">₹50–80L</p>
-                <p className="body-small text-gray-300 mt-2">{t('services-governance:roiValue')}</p>
-                <p className="body-small text-gray-300">{t('services-governance:governanceScoreImprovement')}</p>
-              </div>
-            </div>
+            <p className="body-large text-gray-200">{t('common:pricingNote')}</p>
           </div>
         </div>
       </section>

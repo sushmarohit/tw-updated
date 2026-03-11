@@ -41,16 +41,17 @@ const socialLinks = [
   { name: 'WhatsApp', icon: MessageCircle, href: 'https://wa.me/9967193526' },
 ];
 
+// V5.2: Replaced with safe trust badges (no unverified cert/guarantee claims)
 const trustBadgeKeys = [
   'phdBacked',
-  'caseStudies',
-  'costSavings',
-  'moneyBack',
-  'pciDss',
-  'gdpr',
-  'iso27001',
-  'ssl',
+  'founderLed',
+  'workflowGovernance',
+  'practicalTools',
+  'confidential',
+  'structuredReview',
+  'indiaFocused',
 ];
+// Legacy (commented for future reference): 'caseStudies','costSavings','moneyBack','pciDss','gdpr','iso27001','ssl'
 
 export function Footer() {
   const { t } = useTranslation(['footer', 'trustBadges', 'navigation']);

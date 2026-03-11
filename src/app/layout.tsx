@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   icons: {
     icon: '/tw_logo.webp',
   },
-  description: 'Transform ops chaos into discipline. G2P Framework™ + PraXio™ SaaS. Improve governance 35-59% in 90 days. Fractional CBO at 65-80% savings.',
+  description: 'Transform ops chaos into discipline. PhD-backed proprietary framework and workflow-based governance. Measurable improvements for startups and MSMEs.',
   keywords: ['operational excellence', 'process improvement', 'governance', 'fractional COO', 'startup consulting', 'MSME solutions'],
   authors: [{ name: 'TwelfthKey' }],
   creator: 'TwelfthKey',

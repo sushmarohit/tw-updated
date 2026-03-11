@@ -119,14 +119,9 @@ export function generateServiceSchema(input: ServiceSchemaInput) {
       '@type': 'Offer',
       url: `${BASE_URL}${input.url}`,
     };
-
-    if (input.offers.price) {
-      schema.offers.price = input.offers.price;
-    }
-
-    if (input.offers.priceCurrency) {
-      schema.offers.priceCurrency = input.offers.priceCurrency;
-    }
+    // V5.2: Do not expose price/priceCurrency in schema (no public pricing)
+    // if (input.offers.price) schema.offers.price = input.offers.price;
+    // if (input.offers.priceCurrency) schema.offers.priceCurrency = input.offers.priceCurrency;
   }
 
   return schema;
