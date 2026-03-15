@@ -21,10 +21,14 @@ const navigationKeys = [
   { key: 'caseStudies', href: '/consulting/case-studies/hub' },
   { key: 'tools', href: '/consulting/tools/hub' },
   { key: 'resources', href: '/consulting/resources' },
-  { key: 'about', href: '/consulting/about' },
-  { key: 'faq', href: '/consulting/faq' },
-  { key: 'contact', href: '/consulting/contact' },
+  { key: 'knowUs', href: '/consulting/about' },
 ];
+
+const knowUsDropdownItems = [
+  { key: 'faq', href: '/consulting/faq' },
+  { key: 'about', href: '/consulting/about' },
+  { key: 'contact', href: '/consulting/contact' },
+] as const;
 
 export function Header() {
   const { t } = useTranslation(['navigation', 'common', 'services-catalog', 'case-studies-catalog']);
@@ -34,6 +38,7 @@ export function Header() {
   const [activeServicesCategory, setActiveServicesCategory] = useState(serviceCategories[0]?.slug ?? '');
   const [isCaseStudiesMenuOpen, setIsCaseStudiesMenuOpen] = useState(false);
   const [activeCaseStudiesTab, setActiveCaseStudiesTab] = useState<CaseStudyTabKey>('process-excellence-solutions');
+  const [isKnowUsMenuOpen, setIsKnowUsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   const translatedServiceCategories = useMemo(
@@ -300,6 +305,50 @@ export function Header() {
               );
             }
 
+            if (item.key === 'knowUs') {
+              return (
+                <div
+                  key={item.key}
+                  className="relative flex-shrink-0"
+                  onMouseEnter={() => setIsKnowUsMenuOpen(true)}
+                  onMouseLeave={() => setIsKnowUsMenuOpen(false)}
+                >
+                  <Link
+                    href={item.href}
+                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-sm text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap min-h-[2rem] inline-flex items-center flex-shrink-0"
+                    suppressHydrationWarning
+                    onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
+                  >
+                    {t(`navigation:${item.key}`)}
+                  </Link>
+
+                  <AnimatePresence>
+                    {isKnowUsMenuOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.16 }}
+                        className="absolute left-0 top-full mt-3 min-w-[10rem] rounded-xl bg-white border border-gray-200 shadow-xl py-2 z-[120]"
+                      >
+                        {knowUsDropdownItems.map((subItem) => (
+                          <Link
+                            key={subItem.key}
+                            href={subItem.href}
+                            className="block px-4 py-2.5 text-sm text-navy-500 hover:bg-gray-50 hover:text-gold-300 transition-colors focus-visible-ring rounded-lg mx-1"
+                            suppressHydrationWarning
+                            onClick={() => trackNavigationClick(t(`navigation:${subItem.key}`), subItem.href)}
+                          >
+                            {t(`navigation:${subItem.key}`)}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={item.key}
@@ -396,17 +445,39 @@ export function Header() {
                   </div>
 
                   <nav className="space-y-4" aria-label="Mobile navigation">
-                    {navigationKeys.map((item) => (
-                      <Link
-                        key={item.key}
-                        href={item.href}
-                        className="block text-body-default text-white hover:text-gold-300 py-2 transition-colors focus-visible-ring rounded-lg px-2"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        suppressHydrationWarning
-                      >
-                        {t(`navigation:${item.key}`)}
-                      </Link>
-                    ))}
+                    {navigationKeys.map((item) => {
+                      if (item.key === 'knowUs') {
+                        return (
+                          <div key={item.key} className="space-y-1">
+                            <p className="text-body-default text-white/80 font-semibold py-2 px-2" suppressHydrationWarning>
+                              {t(`navigation:${item.key}`)}
+                            </p>
+                            {knowUsDropdownItems.map((subItem) => (
+                              <Link
+                                key={subItem.key}
+                                href={subItem.href}
+                                className="block text-body-default text-white hover:text-gold-300 py-2 pl-4 pr-2 transition-colors focus-visible-ring rounded-lg"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                suppressHydrationWarning
+                              >
+                                {t(`navigation:${subItem.key}`)}
+                              </Link>
+                            ))}
+                          </div>
+                        );
+                      }
+                      return (
+                        <Link
+                          key={item.key}
+                          href={item.href}
+                          className="block text-body-default text-white hover:text-gold-300 py-2 transition-colors focus-visible-ring rounded-lg px-2"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          suppressHydrationWarning
+                        >
+                          {t(`navigation:${item.key}`)}
+                        </Link>
+                      );
+                    })}
                   </nav>
 
                   <div className="mt-8 space-y-4">
