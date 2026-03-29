@@ -59,47 +59,59 @@
     "primaryCta": "Discuss Retainer Fit",
     "secondaryCta": "Book Discovery Call"
   },
-  "twelfthkeyCertifiedVerificationConsultation": {
-    "title": "Investor Readiness Review & Consultation",
-    "heroSubheadline": "Get your DPR/Pitch Deck reviewed and strengthened for investor readiness.",
+  "gtmStrategyStructuring": {
+    "title": "GTM Strategy & Structuring",
+    "heroSubheadline": "Build a go-to-market plan that defines your market, channels, and launch—ready to execute.",
     "outcomesLabel": "What you get",
-    "outcomes": ["Comprehensive vetting report", "Investor Readiness Review", "Certificate of validation", "Feedback report (10–15 pages)", "Investor-readiness score", "90-minute consultation session"],
+    "outcomes": ["Market segmentation & ICP definition", "Channel strategy & prioritisation", "GTM roadmap with milestones", "Pricing strategy framework", "Sales playbook", "Launch plan", "KPI framework for GTM execution"],
+    "timelineLabel": "Timeline / Engagement",
+    "timeline": "30–45 days, one-time.",
+    "pricingLabel": "Pricing",
+    "pricing": "",
+    "primaryCta": "Build My GTM Plan",
+    "secondaryCta": "Book Discovery Call"
+  },
+  "twelfthkeyCertifiedVerificationConsultation": {
+    "title": "TwelfthKey Fundraise Readiness Assessment™",
+    "heroSubheadline": "Know where you stand before you start raising—with a structured readiness report and expert advisory session.",
+    "outcomesLabel": "What you get",
+    "outcomes": ["Comprehensive readiness assessment report", "TwelfthKey Assessed™ Digital Badge", "Fundraise Readiness Report", "Fundraise Readiness Index (internal use)", "90-minute advisory consultation"],
     "timelineLabel": "Timeline / Engagement",
     "timeline": "7–10 days, one-time.",
     "pricingLabel": "Pricing",
     "pricing": "",
-    "primaryCta": "Get Readiness Review",
-    "secondaryCta": "Book Consultation"
+    "primaryCta": "Get Readiness Assessment",
+    "secondaryCta": "Book Discovery Call"
   },
   "dprDevelopment": {
-    "title": "DPR Development",
+    "title": "Detailed Project Report (DPR)",
     "heroSubheadline": "A bank/investor-ready DPR with clear assumptions, realistic numbers, and a defensible plan.",
     "outcomesLabel": "What you get",
-    "outcomes": ["50-80 page DPR", "Executive summary", "Market analysis", "Business model", "Revenue projections (3–5 years)", "Financial modeling", "Risk assessment", "Implementation timeline", "Capital utilization plan"],
+    "outcomes": ["50–80 page DPR", "Executive Summary", "Market Analysis", "Business Model", "Revenue Projections (3–5 years)", "Financial Model", "Risk Assessment", "Capital Utilisation Plan"],
     "timelineLabel": "Timeline / Engagement",
     "timeline": "20–25 days, one-time.",
     "pricingLabel": "Pricing",
     "pricing": "",
     "primaryCta": "Build My DPR",
-    "secondaryCta": "Talk to an Expert"
+    "secondaryCta": "Book Discovery Call"
   },
   "investorPitchDeckDevelopment": {
     "title": "Investor Pitch Deck Development",
     "heroSubheadline": "A pitch deck that's crisp, credible, and built to handle investor questions.",
     "outcomesLabel": "What you get",
-    "outcomes": ["12-15 slide pitch deck", "Problem-solution framework", "Market sizing (TAM/SAM/SOM)", "Business model", "Traction metrics", "Competitive analysis", "Financial projections", "Multiple design variants", "Pitch narrative script"],
+    "outcomes": ["12–15 slide pitch deck", "TAM/SAM/SOM", "Business Model", "Traction Metrics", "Competitive Analysis", "Financial Projections", "Multiple Design Variants", "Pitch Narrative Script"],
     "timelineLabel": "Timeline / Engagement",
     "timeline": "10–15 days, one-time.",
     "pricingLabel": "Pricing",
     "pricing": "",
     "primaryCta": "Build My Pitch Deck",
-    "secondaryCta": "Get Readiness Review"
+    "secondaryCta": "Get Readiness Assessment"
   },
   "supportStrategyAdvisory": {
-    "title": "Support & Strategy (Advisory-Only)",
-    "heroSubheadline": "You run the raise. We handle readiness, structure, and negotiation support.",
+    "title": "Fundraise Process Advisory (Advisory-Only)",
+    "heroSubheadline": "You run the raise. We handle readiness, structure, and process support.",
     "outcomesLabel": "What you get",
-    "outcomes": ["Strategic fundraising roadmap", "Investor presentation coaching (3–5 sessions)", "Financial model optimization", "Due diligence preparation", "Term sheet review", "Monthly strategy calls"],
+    "outcomes": ["Strategic fundraise process roadmap", "Investor presentation coaching (3–5 sessions)", "Financial model optimisation", "Due diligence documentation support", "Term sheet orientation and market benchmarking", "Monthly strategy calls"],
     "timelineLabel": "Timeline / Engagement",
     "timeline": "30–60 days, retainer.",
     "pricingLabel": "Pricing",
@@ -108,13 +120,13 @@
     "secondaryCta": "Book Strategy Call"
   },
   "fundraiseExecutionFullService": {
-    "title": "Fundraise Execution (Full-Service)",
-    "heroSubheadline": "End-to-end fundraising support—from strategy to DD—so you stay focused on running the business.",
+    "title": "Fundraise Process Advisory — Full Engagement",
+    "heroSubheadline": "End-to-end fundraising advisory and facilitation—so you stay focused on running the business.",
     "outcomesLabel": "What you get",
-    "outcomes": ["Complete fundraising strategy", "Investor targeting & outreach", "Pitch refinement", "Financial modeling iterations", "Pitch coaching", "Term sheet negotiation", "Due diligence management"],
+    "outcomes": ["Fundraise process strategy and advisory", "Investor network facilitation and introductions", "Pitch refinement and coaching", "Financial modelling iterations", "Term sheet orientation and comparative framework preparation", "Due diligence coordination and documentation support"],
     "timelineLabel": "Timeline / Engagement",
-    "timeline": "60–90 days, success-based.",
-    "pricingLabel": "Commercial",
+    "timeline": "60–90 days, outcome-based.",
+    "pricingLabel": "Pricing",
     "pricing": "",
     "primaryCta": "Discuss Fundraise Fit",
     "secondaryCta": "Book Discovery Call"

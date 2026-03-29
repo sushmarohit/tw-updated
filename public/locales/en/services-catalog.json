@@ -8,18 +8,19 @@
     "item2": "Governance Reporting Setup",
     "item3": "OpEx Structuring",
     "item4": "Analytics Visualization Suite",
-    "item5": "Fractional CBO Services"
+    "item5": "Fractional CBO Services",
+    "item6": "GTM Strategy & Structuring"
   },
   "fundraise": {
     "title": "Fundraise Support & Strategy",
     "description": "Investor-ready documents and fundraising support—clear story, clean numbers, strong readiness.",
     "primaryCta": "Talk to an Expert",
     "secondaryCta": "Book Discovery Call",
-    "item1": "Investor Readiness Review & Consultation",
-    "item2": "Detailed Project Report (DPR) Development",
+    "item1": "TwelfthKey Fundraise Readiness Assessment™",
+    "item2": "Detailed Project Report (DPR)",
     "item3": "Investor Pitch Deck Development",
-    "item4": "Support & Strategy (Advisory-Only)",
-    "item5": "Fundraise Execution (Full-Service)"
+    "item4": "Fundraise Process Advisory (Advisory-Only)",
+    "item5": "Fundraise Process Advisory — Full Engagement"
   },
   "govtLiaison": {
     "title": "Govt. Project Liaison",
