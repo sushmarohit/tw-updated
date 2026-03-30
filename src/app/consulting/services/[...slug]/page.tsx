@@ -99,7 +99,7 @@ export default function ServiceSlugPage() {
 
           <section className="section-padding bg-white">
             <div className="container-custom">
-              <h2 className="heading-h2 mb-8" suppressHydrationWarning>{t('services:servicesInThisTrack')}</h2>
+              {/* <h2 className="heading-h2 mb-8" suppressHydrationWarning>{t('services:servicesInThisTrack')}</h2> */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {translatedCategory.items.map((item) => (
                   <Link

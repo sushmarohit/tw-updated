@@ -119,10 +119,8 @@ export async function POST(request: NextRequest) {
 
     // Send PDF report to user's email — await so serverless function doesn't exit before send completes
     if (userInfo?.email) {
-      const baseUrl = process.env.NEXT_PUBLIC_APP_URL || '';
-      const reportUrl = sessionId
-        ? `${baseUrl}/consulting/tools/health-check/report/${sessionId}`
-        : `${baseUrl}/consulting/tools/health-check`;
+      const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+      const reportUrl = baseUrl;
       try {
         const pdfBuffer = await generateCalculatorPDFBuffer('Operational Health Diagnostic', result, userInfo);
         await sendCalculatorReportEmail(
