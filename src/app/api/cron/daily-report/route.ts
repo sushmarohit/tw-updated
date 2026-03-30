@@ -3,7 +3,8 @@ import * as XLSX from 'xlsx';
 import { prisma } from '@/lib/db';
 import { sendEmailWithAttachment } from '@/lib/integrations/nodemailer';
 
-const OPS_EMAIL = 'ops@twelfthkey.com';
+// const OPS_EMAIL = 'ops@twelfthkey.com';
+const OPS_EMAIL = 'thakurrohit210302@gmail.com';
 
 export async function GET(request: NextRequest) {
   // Validate cron secret to prevent unauthorized calls
