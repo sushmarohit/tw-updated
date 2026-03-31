@@ -3,8 +3,9 @@ import * as XLSX from 'xlsx';
 import { prisma } from '@/lib/db';
 import { sendEmailWithAttachment } from '@/lib/integrations/nodemailer';
 
-// const OPS_EMAIL = 'ops@twelfthkey.com';
-const OPS_EMAIL = 'thakurrohit210302@gmail.com';
+const REPORT_TO = 'ashwini.i@twelfthkey.com';
+const REPORT_CC = ['aditya.m@twelfthkey.com', 'mrunal.m@twelfthkey.com'];
+
 
 export async function GET(request: NextRequest) {
   // Validate cron secret to prevent unauthorized calls
@@ -173,11 +174,12 @@ export async function GET(request: NextRequest) {
     const filename = `twelfthkey-leads-${today}.xlsx`;
 
     const sent = await sendEmailWithAttachment(
-      OPS_EMAIL,
+      REPORT_TO,
       `Daily Leads Report — ${today} (${totalLeads} new ${totalLeads === 1 ? 'lead' : 'leads'})`,
       buildEmailHtml(today, bookingRequests.length, contacts.length, users.length),
       { filename, content: excelBuffer, contentType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' },
-      'TwelfthKey Reports'
+      'TwelfthKey Reports',
+      REPORT_CC
     );
 
     if (!sent) {
@@ -186,7 +188,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: `Report sent to ${OPS_EMAIL}`,
+      message: `Report sent to ${REPORT_TO} (CC: ${REPORT_CC.join(', ')})`,
       counts: {
         bookingRequests: bookingRequests.length,
         contacts: contacts.length,

@@ -7,6 +7,7 @@ import nodemailer from 'nodemailer';
 
 interface EmailOptions {
   to: string;
+  cc?: string | string[];
   subject: string;
   html: string;
   text?: string;
@@ -134,13 +135,14 @@ export async function sendEmail(options: EmailOptions): Promise<boolean> {
     const mailOptions = {
       from: options.fromName ? `"${fromName}" <${fromEmail}>` : fromEmail,
       to: options.to,
+      cc: options.cc,
       subject: options.subject,
       html: options.html,
       text: options.text || options.html.replace(/<[^>]*>/g, ''), // Strip HTML for text version
       attachments: options.attachments,
     };
 
-    console.log('[Nodemailer] Sending email to:', options.to);
+    // console.log('[Nodemailer] Sending email to:', options.to, options.cc ? `| CC: ${options.cc}` : '');
     const info = await transporter.sendMail(mailOptions);
 
     console.log('[Nodemailer] Email sent successfully:', info.messageId);
@@ -461,10 +463,12 @@ export async function sendEmailWithAttachment(
     content: Buffer | string;
     contentType?: string;
   },
-  fromName?: string
+  fromName?: string,
+  cc?: string | string[]
 ): Promise<boolean> {
   return sendEmail({
     to,
+    cc,
     subject,
     html,
     attachments: [attachment],
