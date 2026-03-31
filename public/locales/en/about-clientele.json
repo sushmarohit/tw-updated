@@ -10,8 +10,8 @@
     "govtLiaison": "Govt. Project Liaison"
   },
   "clientele": {
-    "processExcellence": ["Solaraa", "Anexx", "Asta by Avim", "Universal Education", "Augrev"],
-    "fundraise": ["Vasundhara Nirmiti Properties"],
+    "processExcellence": ["Solaraa", "Xnexx", "Asta by Avim", "Universal Education", "Augrev"],
+    "fundraise": ["Nirmiti Group"],
     "govtLiaison": ["CAV Projects"]
   },
   "testimonials": [
@@ -41,7 +41,7 @@
       "result": "Predictable execution, fewer escalations, and clearer accountability across teams."
     },
     {
-      "client": "Anexx",
+      "client": "Xnexx",
       "headline": "Reduced rework by fixing handoffs",
       "category": "processExcellence",
       "problem": "Work kept looping back due to unclear inputs, ownership, and approvals between teams.",
@@ -57,7 +57,7 @@
       "result": "Faster decision-making, smoother execution, and reduced day-to-day dependency on the founder."
     },
     {
-      "client": "Vasundhara Nirmiti Properties",
+      "client": "Nirmiti Group",
       "headline": "Runway clarity and a fundraise-ready narrative",
       "category": "fundraise",
       "problem": "Unclear fundraise timing and amount, and investor conversations were starting without a tight story and numbers.",

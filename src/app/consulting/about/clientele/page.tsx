@@ -4,7 +4,17 @@ import { useTranslation } from 'react-i18next';
 import { PageSchema } from '@/components/seo/page-schema';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Quote, Award, Building2 } from 'lucide-react';
+
+const LOGO_MAP: Record<string, string> = {
+  'Solaraa':      '/solaraa.jpeg',
+  'Xnexx':        '/xnexx.jpeg',
+  'Asta by Avim': '/asta.jpeg',
+  'Augrev':       '/augrev.jpeg',
+  'Nirmiti Group':'/nirmiti.jpeg',
+  'CAV Projects': '/CAV.jpeg',
+};
 
 const CATEGORY_KEYS = ['processExcellence', 'fundraise', 'govtLiaison'] as const;
 
@@ -63,15 +73,31 @@ export default function ClientelePage() {
                     <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">
                       {categoryLabel}
                     </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {names.map((name) => (
-                        <span
-                          key={name}
-                          className="inline-flex items-center rounded-full bg-teal-50 text-teal-800 px-4 py-2 text-sm font-medium border border-teal-100"
-                        >
-                          {name}
-                        </span>
-                      ))}
+                    <div className="flex flex-wrap gap-6">
+                      {names.map((name) => {
+                        const logo = LOGO_MAP[name];
+                        return logo ? (
+                          <div
+                            key={name}
+                            className="flex items-center justify-center bg-white rounded-xl border border-gray-200 shadow-sm p-4 w-36 h-36 hover:shadow-md transition-shadow"
+                          >
+                            <Image
+                              src={logo}
+                              alt={name}
+                              width={112}
+                              height={112}
+                              className="object-contain w-full h-full"
+                            />
+                          </div>
+                        ) : (
+                          <span
+                            key={name}
+                            className="inline-flex items-center rounded-full bg-teal-50 text-teal-800 px-4 py-2 text-sm font-medium border border-teal-100"
+                          >
+                            {name}
+                          </span>
+                        );
+                      })}
                     </div>
                   </div>
                 );
