@@ -3,12 +3,11 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Users, Heart, Briefcase, Award } from 'lucide-react';
+import { Users, Heart } from 'lucide-react';
 
 export default function AboutPage() {
   const { t } = useTranslation(['about', 'common']);
 
-  // V5.2: Only 3 main cards — Team, Clientele & Testimonials, Values. Careers moved to full-width banner below.
   const sections = [
     {
       icon: Users,
@@ -18,21 +17,12 @@ export default function AboutPage() {
       color: 'teal',
     },
     {
-      icon: Award,
-      title: t('about:clientele.title'),
-      description: t('about:clientele.description'),
-      href: '/consulting/about/clientele',
-      color: 'gold',
-    },
-    {
       icon: Heart,
       title: t('about:values.title'),
       description: t('about:values.description'),
       href: '/consulting/about/values',
       color: 'gold',
     },
-    // Careers: moved to full-width hiring banner below (V5.2)
-    // { icon: Briefcase, title: t('about:careers.title'), description: t('about:careers.description'), href: '/consulting/about/careers', color: 'teal' },
   ];
 
   return (

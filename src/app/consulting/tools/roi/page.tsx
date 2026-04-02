@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { CalculatorExplainer } from '@/components/shared/calculator-explainer';
+import { BackToTools } from '@/components/shared/back-to-tools';
 import { calculateROI, type ROIInput } from '@/lib/calculators/roi';
 import { trackCalculatorStart, trackCalculatorComplete } from '@/lib/analytics/events';
 import { formatCurrency } from '@/lib/utils';
@@ -30,6 +31,7 @@ export default function ROIPage() {
     const calculatedResult = calculateROI(formData);
     setResult(calculatedResult);
     setStep('result');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSubmit = async () => {
@@ -65,6 +67,7 @@ export default function ROIPage() {
     return (
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-4xl">
+          <BackToTools />
           <div className="card mb-8">
             <h1 className="heading-h2 mb-4">{t('tools-roi:roiAnalysis')}</h1>
             
@@ -164,6 +167,7 @@ export default function ROIPage() {
   return (
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-3xl">
+        <BackToTools />
         <CalculatorExplainer />
         <div className="card">
           <h1 className="heading-h2 mb-6">{t('tools-roi:title')}</h1>

@@ -90,7 +90,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full h-16 md:h-20',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full h-16 lg:h-20',
         isScrolled
           ? ' bg-white/95 backdrop-blur-md shadow-md'
           : ' bg-white'
@@ -114,8 +114,8 @@ export function Header() {
             </div>
         </Link>
 
-        {/* Desktop & Tablet Navigation - compact so all links fit without scroll */}
-        <div className="hidden md:flex items-center flex-1 min-w-0">
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center flex-1 min-w-0">
           <div className="flex items-center gap-0.5 md:gap-1 lg:gap-1 xl:gap-1.5 flex-shrink-0">
           {navigationKeys.map((item) => {
             if (item.key === 'services') {
@@ -364,30 +364,28 @@ export function Header() {
           </div>
         </div>
 
-        {/* Desktop & Tablet CTAs */}
-        <div className="hidden md:flex items-center space-x-1.5 md:space-x-2 lg:space-x-2 xl:space-x-3 flex-shrink-0">
-          {/* <LanguageSwitcher /> */}
-          {/* Buttons Container - Stack vertically until xl breakpoint, horizontal on xl+ */}
-          <div className="flex flex-col md:flex-col xl:flex-row items-stretch xl:items-center space-y-0.5 md:space-y-0.5 xl:space-y-0 xl:space-x-2">
+        {/* Desktop CTAs */}
+        <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 flex-shrink-0">
+          <div className="flex flex-col xl:flex-row items-stretch xl:items-center space-y-0.5 xl:space-y-0 xl:space-x-2">
             <Button
               variant="secondary"
               asChild
-              className="text-xs xl:text-sm px-2 md:px-2.5 xl:px-4 py-1 md:py-1 xl:py-2 whitespace-nowrap bg-teal-500 text-white hover:bg-teal-600 border-0 w-full md:w-auto xl:w-auto h-auto md:h-7 xl:h-auto"
+              className="text-xs xl:text-sm px-3 xl:px-4 py-1 xl:py-2 whitespace-nowrap bg-teal-500 text-white hover:bg-teal-600 border-0 h-auto"
             >
               <Link href="/consulting/booking" suppressHydrationWarning>{t('common:bookDiscoveryCall')}</Link>
             </Button>
             <Button
               variant="primary"
               asChild
-              className="text-xs xl:text-sm px-2 md:px-2.5 xl:px-4 py-1 md:py-1 xl:py-2 whitespace-nowrap w-full md:w-auto xl:w-auto h-auto md:h-7 xl:h-auto"
+              className="text-xs xl:text-sm px-3 xl:px-4 py-1 xl:py-2 whitespace-nowrap h-auto"
             >
               <Link href="/consulting/tools/health-check" suppressHydrationWarning>{t('common:startFreeDiagnostic')}</Link>
             </Button>
           </div>
         </div>
 
-        {/* Mobile: Language switcher + Menu button */}
-        <div className="flex md:hidden items-center gap-0.5">
+        {/* Mobile + Tablet: hamburger menu button */}
+        <div className="flex lg:hidden items-center gap-0.5">
           {/* <LanguageSwitcher /> */}
           <button
             type="button"
@@ -416,7 +414,7 @@ export function Header() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="fixed inset-0 bg-black/50 z-[100] md:hidden"
+                className="fixed inset-0 bg-black/50 z-[100] lg:hidden"
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-hidden="true"
               />
@@ -427,7 +425,7 @@ export function Header() {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'tween', duration: 0.3 }}
-                className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-navy-500 z-[101] md:hidden overflow-y-auto"
+                className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-navy-500 z-[101] lg:hidden overflow-y-auto"
               >
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-8">

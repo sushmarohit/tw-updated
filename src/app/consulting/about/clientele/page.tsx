@@ -16,6 +16,10 @@ const LOGO_MAP: Record<string, string> = {
   'CAV Projects': '/CAV.jpeg',
 };
 
+const LOGO_SCALE_MAP: Record<string, string> = {
+  'CAV Projects': 'scale-[2.2]',
+};
+
 const CATEGORY_KEYS = ['processExcellence', 'fundraise', 'govtLiaison'] as const;
 
 export default function ClientelePage() {
@@ -79,14 +83,14 @@ export default function ClientelePage() {
                         return logo ? (
                           <div
                             key={name}
-                            className="flex items-center justify-center bg-white rounded-xl border border-gray-200 shadow-sm p-4 w-36 h-36 hover:shadow-md transition-shadow"
+                            className="flex items-center justify-center bg-white rounded-xl border border-gray-200 shadow-sm p-4 w-36 h-36 hover:shadow-md transition-shadow overflow-hidden"
                           >
                             <Image
                               src={logo}
                               alt={name}
                               width={112}
                               height={112}
-                              className="object-contain w-full h-full"
+                              className={`object-contain w-full h-full ${LOGO_SCALE_MAP[name] ?? ''}`}
                             />
                           </div>
                         ) : (

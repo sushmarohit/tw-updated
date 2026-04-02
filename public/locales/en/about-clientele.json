@@ -10,7 +10,7 @@
     "govtLiaison": "Govt. Project Liaison"
   },
   "clientele": {
-    "processExcellence": ["Solaraa", "Xnexx", "Asta by Avim", "Universal Education", "Augrev"],
+    "processExcellence": ["Solaraa", "Xnexx", "Asta by Avim", "Augrev"],
     "fundraise": ["Nirmiti Group"],
     "govtLiaison": ["CAV Projects"]
   },
@@ -18,11 +18,6 @@
     {
       "quote": "We were running operations on WhatsApp and memory. TwelfthKey helped us document workflows, set weekly review rhythm, and define who owns what. Within weeks, daily follow-ups reduced and delivery became predictable.",
       "author": "Founder, Augrev, Hospitality Consultancy and a Tech Provider",
-      "category": "processExcellence"
-    },
-    {
-      "quote": "Our biggest issue wasn't effort—it was rework. We fixed handoffs, approvals, and reporting so decisions weren't stuck. The team finally had one version of truth and fewer last-minute escalations.",
-      "author": "Founder, Universal Education, Study Abroad Business",
       "category": "processExcellence"
     },
     {

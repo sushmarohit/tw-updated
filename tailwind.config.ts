@@ -147,6 +147,7 @@ const config: Config = {
         'shake': 'shake 0.5s',
         'fade-in': 'fadeIn 0.3s ease-in-out',
         'slide-up': 'slideUp 0.35s ease-out',
+        'marquee': 'marquee 18s linear infinite',
       },
       keyframes: {
         shimmer: {
@@ -169,6 +170,10 @@ const config: Config = {
         'shimmer-slide': {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(100%)' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       },
     },
