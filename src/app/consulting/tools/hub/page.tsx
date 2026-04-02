@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -27,33 +28,38 @@ const COLOR_CLASSES = {
 
 export default function ToolsHubPage() {
   const { t } = useTranslation(['tools', 'common']);
-  const [activeTab, setActiveTab] = useState<TabId>('processExcellence');
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get('tab') as TabId | null;
+  const validTabs: TabId[] = ['processExcellence', 'fundraise', 'franchise'];
+  const [activeTab, setActiveTab] = useState<TabId>(
+    tabParam && validTabs.includes(tabParam) ? tabParam : 'processExcellence'
+  );
 
   const processExcellenceTools = [
-    { icon: Calculator, name: t('tools:operationalHealthDiagnostic.name'), description: t('tools:operationalHealthDiagnostic.description'), time: t('tools:operationalHealthDiagnostic.time'), href: '/consulting/tools/health-check', color: 'teal' as const },
-    { icon: TrendingUp, name: t('tools:costLeakageEstimator.name'), description: t('tools:costLeakageEstimator.description'), time: t('tools:costLeakageEstimator.time'), href: '/consulting/tools/cost-leakage', color: 'gold' as const },
-    { icon: Target, name: t('tools:breakEvenPointCalculator.name'), description: t('tools:breakEvenPointCalculator.description'), time: t('tools:breakEvenPointCalculator.time'), href: '/consulting/tools/breakeven', color: 'teal' as const },
-    // { icon: BarChart3, name: t('tools:scaleReadinessAnalyzer.name'), description: t('tools:scaleReadinessAnalyzer.description'), time: t('tools:scaleReadinessAnalyzer.time'), href: '/consulting/tools/scale-readiness', color: 'gold' as const },
-    // { icon: AlertTriangle, name: t('tools:teamBurnoutRiskFinder.name'), description: t('tools:teamBurnoutRiskFinder.description'), time: t('tools:teamBurnoutRiskFinder.time'), href: '/consulting/tools/burnout-risk', color: 'error' as const },
-    // { icon: GitBranch, name: t('tools:decisionBottleneckFinder.name'), description: t('tools:decisionBottleneckFinder.description'), time: t('tools:decisionBottleneckFinder.time'), href: '/consulting/tools/bottleneck-finder', color: 'teal' as const },
-    { icon: DollarSign, name: t('tools:roiCalculator.name'), description: t('tools:roiCalculator.description'), time: t('tools:roiCalculator.time'), href: '/consulting/tools/roi', color: 'gold' as const },
-    // { icon: Shield, name: t('tools:governanceMaturityCalculator.name'), description: t('tools:governanceMaturityCalculator.description'), time: t('tools:governanceMaturityCalculator.time'), href: '/consulting/tools/governance-maturity', color: 'teal' as const },
+    { icon: Calculator, name: t('tools:operationalHealthDiagnostic.name'), description: t('tools:operationalHealthDiagnostic.description'), time: t('tools:operationalHealthDiagnostic.time'), href: '/consulting/tools/health-check?from=processExcellence', color: 'teal' as const },
+    { icon: TrendingUp, name: t('tools:costLeakageEstimator.name'), description: t('tools:costLeakageEstimator.description'), time: t('tools:costLeakageEstimator.time'), href: '/consulting/tools/cost-leakage?from=processExcellence', color: 'gold' as const },
+    { icon: Target, name: t('tools:breakEvenPointCalculator.name'), description: t('tools:breakEvenPointCalculator.description'), time: t('tools:breakEvenPointCalculator.time'), href: '/consulting/tools/breakeven?from=processExcellence', color: 'teal' as const },
+    // { icon: BarChart3, href: '/consulting/tools/scale-readiness?from=processExcellence', color: 'gold' as const },
+    // { icon: AlertTriangle, href: '/consulting/tools/burnout-risk?from=processExcellence', color: 'error' as const },
+    // { icon: GitBranch, href: '/consulting/tools/bottleneck-finder?from=processExcellence', color: 'teal' as const },
+    { icon: DollarSign, name: t('tools:roiCalculator.name'), description: t('tools:roiCalculator.description'), time: t('tools:roiCalculator.time'), href: '/consulting/tools/roi?from=processExcellence', color: 'gold' as const },
+    // { icon: Shield, href: '/consulting/tools/governance-maturity?from=processExcellence', color: 'teal' as const },
   ];
 
   const fundraiseTools = [
-    { icon: Wallet, name: t('tools:fundraise.runwayCheck.name'), description: t('tools:fundraise.runwayCheck.description'), time: t('tools:fundraise.runwayCheck.time'), href: '/consulting/tools/fundraise/runway-check', color: 'gold' as const },
-    { icon: DollarSign, name: t('tools:fundraise.raiseAmount.name'), description: t('tools:fundraise.raiseAmount.description'), time: t('tools:fundraise.raiseAmount.time'), href: '/consulting/tools/fundraise/raise-amount', color: 'teal' as const },
-    { icon: TrendingUp, name: t('tools:fundraise.dilution.name'), description: t('tools:fundraise.dilution.description'), time: t('tools:fundraise.dilution.time'), href: '/consulting/tools/fundraise/dilution', color: 'gold' as const },
-    { icon: Target, name: t('tools:fundraise.readiness.name'), description: t('tools:fundraise.readiness.description'), time: t('tools:fundraise.readiness.time'), href: '/consulting/tools/fundraise/readiness', color: 'teal' as const },
-    { icon: BarChart3, name: t('tools:fundraise.instrumentFit.name'), description: t('tools:fundraise.instrumentFit.description'), time: t('tools:fundraise.instrumentFit.time'), href: '/consulting/tools/fundraise/instrument-fit', color: 'gold' as const },
+    { icon: Wallet, name: t('tools:fundraise.runwayCheck.name'), description: t('tools:fundraise.runwayCheck.description'), time: t('tools:fundraise.runwayCheck.time'), href: '/consulting/tools/fundraise/runway-check?from=fundraise', color: 'gold' as const },
+    { icon: DollarSign, name: t('tools:fundraise.raiseAmount.name'), description: t('tools:fundraise.raiseAmount.description'), time: t('tools:fundraise.raiseAmount.time'), href: '/consulting/tools/fundraise/raise-amount?from=fundraise', color: 'teal' as const },
+    { icon: TrendingUp, name: t('tools:fundraise.dilution.name'), description: t('tools:fundraise.dilution.description'), time: t('tools:fundraise.dilution.time'), href: '/consulting/tools/fundraise/dilution?from=fundraise', color: 'gold' as const },
+    { icon: Target, name: t('tools:fundraise.readiness.name'), description: t('tools:fundraise.readiness.description'), time: t('tools:fundraise.readiness.time'), href: '/consulting/tools/fundraise/readiness?from=fundraise', color: 'teal' as const },
+    { icon: BarChart3, name: t('tools:fundraise.instrumentFit.name'), description: t('tools:fundraise.instrumentFit.description'), time: t('tools:fundraise.instrumentFit.time'), href: '/consulting/tools/fundraise/instrument-fit?from=fundraise', color: 'gold' as const },
   ];
 
   const franchiseTools = [
-    { icon: Store, name: t('tools:franchise.readiness.name'), description: t('tools:franchise.readiness.description'), time: t('tools:franchise.readiness.time'), href: '/consulting/tools/franchise/readiness', color: 'teal' as const },
-    { icon: GitBranch, name: t('tools:franchise.checklist.name'), description: t('tools:franchise.checklist.description'), time: t('tools:franchise.checklist.time'), href: '/consulting/tools/franchise/checklist', color: 'gold' as const },
-    { icon: Target, name: t('tools:franchise.modelFit.name'), description: t('tools:franchise.modelFit.description'), time: t('tools:franchise.modelFit.time'), href: '/consulting/tools/franchise/model-fit', color: 'teal' as const },
-    { icon: DollarSign, name: t('tools:franchise.unitEconomics.name'), description: t('tools:franchise.unitEconomics.description'), time: t('tools:franchise.unitEconomics.time'), href: '/consulting/tools/franchise/unit-economics', color: 'gold' as const },
-    { icon: BarChart3, name: t('tools:franchise.capacity.name'), description: t('tools:franchise.capacity.description'), time: t('tools:franchise.capacity.time'), href: '/consulting/tools/franchise/capacity', color: 'teal' as const },
+    { icon: Store, name: t('tools:franchise.readiness.name'), description: t('tools:franchise.readiness.description'), time: t('tools:franchise.readiness.time'), href: '/consulting/tools/franchise/readiness?from=franchise', color: 'teal' as const },
+    { icon: GitBranch, name: t('tools:franchise.checklist.name'), description: t('tools:franchise.checklist.description'), time: t('tools:franchise.checklist.time'), href: '/consulting/tools/franchise/checklist?from=franchise', color: 'gold' as const },
+    { icon: Target, name: t('tools:franchise.modelFit.name'), description: t('tools:franchise.modelFit.description'), time: t('tools:franchise.modelFit.time'), href: '/consulting/tools/franchise/model-fit?from=franchise', color: 'teal' as const },
+    { icon: DollarSign, name: t('tools:franchise.unitEconomics.name'), description: t('tools:franchise.unitEconomics.description'), time: t('tools:franchise.unitEconomics.time'), href: '/consulting/tools/franchise/unit-economics?from=franchise', color: 'gold' as const },
+    { icon: BarChart3, name: t('tools:franchise.capacity.name'), description: t('tools:franchise.capacity.description'), time: t('tools:franchise.capacity.time'), href: '/consulting/tools/franchise/capacity?from=franchise', color: 'teal' as const },
   ];
 
   const toolsByTab: Record<TabId, typeof processExcellenceTools> = {

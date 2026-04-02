@@ -10,19 +10,14 @@
     "govtLiaison": "Govt. Project Liaison"
   },
   "clientele": {
-    "processExcellence": ["Solaraa", "Anexx", "Asta by Avim", "Universal Education", "Augrev"],
-    "fundraise": ["Vasundhara Nirmiti Properties"],
+    "processExcellence": ["Solaraa", "Xnexx", "Asta by Avim", "Augrev"],
+    "fundraise": ["Nirmiti Group"],
     "govtLiaison": ["CAV Projects"]
   },
   "testimonials": [
     {
       "quote": "We were running operations on WhatsApp and memory. TwelfthKey helped us document workflows, set weekly review rhythm, and define who owns what. Within weeks, daily follow-ups reduced and delivery became predictable.",
       "author": "Founder, Augrev, Hospitality Consultancy and a Tech Provider",
-      "category": "processExcellence"
-    },
-    {
-      "quote": "Our biggest issue wasn't effort—it was rework. We fixed handoffs, approvals, and reporting so decisions weren't stuck. The team finally had one version of truth and fewer last-minute escalations.",
-      "author": "Founder, Universal Education, Study Abroad Business",
       "category": "processExcellence"
     },
     {
@@ -41,7 +36,7 @@
       "result": "Predictable execution, fewer escalations, and clearer accountability across teams."
     },
     {
-      "client": "Anexx",
+      "client": "Xnexx",
       "headline": "Reduced rework by fixing handoffs",
       "category": "processExcellence",
       "problem": "Work kept looping back due to unclear inputs, ownership, and approvals between teams.",
@@ -57,7 +52,7 @@
       "result": "Faster decision-making, smoother execution, and reduced day-to-day dependency on the founder."
     },
     {
-      "client": "Vasundhara Nirmiti Properties",
+      "client": "Nirmiti Group",
       "headline": "Runway clarity and a fundraise-ready narrative",
       "category": "fundraise",
       "problem": "Unclear fundraise timing and amount, and investor conversations were starting without a tight story and numbers.",

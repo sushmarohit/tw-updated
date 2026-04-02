@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 
 export interface TestimonialsBlockProps {
-  /** Indices into about-clientele testimonials array (0 = Augrev, 1 = Universal Education, 2 = CAV) */
+  /** Indices into about-clientele testimonials array (0 = Augrev, 1 = CAV) */
   indices: number[];
   /** Layout: grid of cards (default) or inline */
   variant?: 'cards' | 'inline';

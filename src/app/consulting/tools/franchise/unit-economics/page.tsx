@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { CalculatorExplainer } from '@/components/shared/calculator-explainer';
 import { calculateUnitEconomics, type UnitEconomicsInput, type UnitEconomicsResult } from '@/lib/calculators/franchise/unit-economics';
 import { trackCalculatorStart, trackCalculatorComplete, trackToolCompletedWithEmail } from '@/lib/analytics/events';
 import { formatCurrency } from '@/lib/utils';
 import { ArrowLeft } from 'lucide-react';
+import { BackToTools } from '@/components/shared/back-to-tools';
 
 const TOOL_SLUG = 'franchise/unit-economics';
 
@@ -27,6 +27,7 @@ export default function UnitEconomicsPage() {
     trackCalculatorStart('franchise-unit-economics');
     setResult(calculateUnitEconomics(formData));
     setStep('result');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSubmit = async () => {
@@ -49,7 +50,7 @@ export default function UnitEconomicsPage() {
     return (
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-2xl">
-          <Link href="/consulting/tools/hub" className="inline-flex items-center gap-2 text-gray-600 hover:text-teal-600 mb-6"><ArrowLeft className="w-4 h-4" /> {t('common:backToTools')}</Link>
+          <BackToTools />
           <div className="card">
             <h1 className="heading-h2 mb-4">{t('tools:franchise.unitEconomics.name')}</h1>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -86,7 +87,7 @@ export default function UnitEconomicsPage() {
   return (
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-2xl">
-        <Link href="/consulting/tools/hub" className="inline-flex items-center gap-2 text-gray-600 hover:text-teal-600 mb-6"><ArrowLeft className="w-4 h-4" /> {t('common:backToTools')}</Link>
+        <BackToTools />
         <CalculatorExplainer />
         <div className="card">
           <h1 className="heading-h2 mb-2">{t('tools:franchise.unitEconomics.name')}</h1>

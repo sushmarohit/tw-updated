@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { CalculatorExplainer } from '@/components/shared/calculator-explainer';
 import { calculateFranchiseReadiness, type FranchiseReadinessInput, type FranchiseReadinessResult } from '@/lib/calculators/franchise/readiness';
 import { trackCalculatorStart, trackCalculatorComplete, trackToolCompletedWithEmail } from '@/lib/analytics/events';
 import { ArrowLeft } from 'lucide-react';
+import { BackToTools } from '@/components/shared/back-to-tools';
 
 const TOOL_SLUG = 'franchise/readiness';
 const DIMS: (keyof FranchiseReadinessInput)[] = ['brandClarity', 'operationsDocumented', 'unitEconomicsProven', 'legalCompliance', 'supportCapacity'];
@@ -29,6 +29,7 @@ export default function FranchiseReadinessPage() {
     trackCalculatorStart('franchise-readiness');
     setResult(calculateFranchiseReadiness(formData));
     setStep('result');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSubmit = async () => {
@@ -51,7 +52,7 @@ export default function FranchiseReadinessPage() {
     return (
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-2xl">
-          <Link href="/consulting/tools/hub" className="inline-flex items-center gap-2 text-gray-600 hover:text-teal-600 mb-6"><ArrowLeft className="w-4 h-4" /> {t('common:backToTools')}</Link>
+          <BackToTools />
           <div className="card">
             <h1 className="heading-h2 mb-4">{t('tools:franchise.readiness.name')}</h1>
             <div className="p-6 bg-teal-50 rounded-lg mb-6">
@@ -78,7 +79,7 @@ export default function FranchiseReadinessPage() {
   return (
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-2xl">
-        <Link href="/consulting/tools/hub" className="inline-flex items-center gap-2 text-gray-600 hover:text-teal-600 mb-6"><ArrowLeft className="w-4 h-4" /> {t('common:backToTools')}</Link>
+        <BackToTools />
         <CalculatorExplainer />
         <div className="card">
           <h1 className="heading-h2 mb-2">{t('tools:franchise.readiness.name')}</h1>
