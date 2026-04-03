@@ -95,7 +95,7 @@ export default function ProcessPage() {
               <Link href="/consulting/booking">{t('process:bookYourDiscoveryCall')}</Link>
             </Button>
             <Button variant="secondary" size="lg" asChild>
-              <Link href="/consulting/tools/health-check">{t('process:tryFreeDiagnostic')}</Link>
+              <Link href="/#operational-diagnostic-cta">{t('process:tryFreeDiagnostic')}</Link>
             </Button>
           </div>
         </div>

@@ -122,7 +122,7 @@ export default function CycleMethodologyPage() {
             {t('framework-cycle:readyDescription')}
           </p>
           <Button variant="primary" size="lg" asChild>
-            <Link href="/consulting/tools/health-check">{t('common:startFreeDiagnostic')}</Link>
+            <Link href="/#operational-diagnostic-cta">{t('common:startFreeDiagnostic')}</Link>
           </Button>
         </div>
       </section>

@@ -2,14 +2,16 @@
 
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Calculator, TrendingUp, Target, BarChart3 } from 'lucide-react';
+import { TrendingUp, Target, LineChart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
+// Developer brief — Process Excellence trio only on homepage preview (diagnostic = hero CTA).
+// Uncomment to show non-brief tools again (routes still exist).
 const toolConfig = [
-  { icon: Calculator, nameKey: 'operationalHealth', time: '5 min', href: '/consulting/tools/health-check', ctaKey: 'startDiagnostic' },
   { icon: TrendingUp, nameKey: 'costLeakage', time: '3 min', href: '/consulting/tools/cost-leakage', ctaKey: 'findLeakage' },
   { icon: Target, nameKey: 'breakeven', time: '4 min', href: '/consulting/tools/breakeven', ctaKey: 'calculateBEP' },
-  { icon: BarChart3, nameKey: 'scaleReadiness', time: '3 min', href: '/consulting/tools/scale-readiness', ctaKey: 'checkReadiness' },
+  { icon: LineChart, nameKey: 'roiCalculator', time: '3 min', href: '/consulting/tools/roi', ctaKey: 'estimateRoi' },
+  // { icon: BarChart3, nameKey: 'scaleReadiness', time: '3 min', href: '/consulting/tools/scale-readiness', ctaKey: 'checkReadiness' },
 ];
 
 export function ToolsPreviewSection() {
@@ -24,7 +26,7 @@ export function ToolsPreviewSection() {
             {t('toolsPreview.subtitle')}
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 items-stretch max-w-5xl mx-auto">
           {toolConfig.map((tool, index) => {
             const Icon = tool.icon;
             return (
