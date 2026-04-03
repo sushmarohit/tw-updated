@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
 
       // Send email with report and PDF attachment — await so serverless doesn't exit before send
       if (userInfo?.email && sessionId) {
-        const reportUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/consulting/tools/breakeven`;
+        const reportUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}`;
         try {
           const pdfBuffer = await generateCalculatorPDFBuffer('Break-Even Point Calculator', result, userInfo);
           const emailSent = await sendCalculatorReportEmail(

@@ -116,7 +116,7 @@ export default function ResourcesPage() {
               <Link href="/consulting/booking">{t('common:bookDiscoveryCall')}</Link>
             </Button>
             <Button variant="secondary" size="lg" asChild>
-              <Link href="/consulting/tools/health-check">{t('common:startFreeDiagnostic')}</Link>
+              <Link href="/#operational-diagnostic-cta">{t('common:startFreeDiagnostic')}</Link>
             </Button>
           </div>
         </div>

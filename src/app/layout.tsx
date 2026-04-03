@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { Providers } from '@/components/providers';
@@ -75,6 +75,12 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#1a4d7c',
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -113,7 +119,7 @@ export default function RootLayout({
               <SkipToContent />
               <NetworkBanner />
               <Header />
-              <main id="main-content" tabIndex={-1} className="relative pt-16 md:pt-20 overflow-x-hidden" role="main">{children}</main>
+              <main id="main-content" tabIndex={-1} className="relative scroll-mt-16 md:scroll-mt-20 pt-16 md:pt-20 overflow-x-hidden">{children}</main>
               <Footer />
               <MobileStickyCTA />
             </ExitIntentWrapper>

@@ -1,0 +1,33 @@
+name: Daily Leads Report
+
+on:
+  schedule:
+    # 8:30 AM IST = 3:00 AM UTC  (IST is UTC+5:30)
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    # Allows manual trigger from GitHub Actions UI for testing
+
+jobs:
+  send-report:
+    name: Trigger daily leads report
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Call daily report API
+        run: |
+          HTTP_STATUS=$(curl --silent --output /tmp/response.json --write-out "%{http_code}" \
+            --max-time 60 \
+            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
+            "${{ secrets.SITE_URL }}/api/cron/daily-report")
+
+          BODY=$(cat /tmp/response.json)
+          echo "HTTP status: $HTTP_STATUS"
+          echo "Response: $BODY"
+
+          if [ "$HTTP_STATUS" -ne 200 ]; then
+            echo "ERROR: API returned HTTP $HTTP_STATUS"
+            exit 1
+          fi
+
+          echo "Report triggered successfully."

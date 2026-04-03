@@ -7,13 +7,12 @@ import { Button } from '@/components/ui/button';
 import { PageSchema } from '@/components/seo/page-schema';
 import { caseStudyTabs, caseStudyTabKeyToCatalogKey, type CaseStudyTabKey } from '@/lib/case-studies-catalog';
 import { cn } from '@/lib/utils';
-import { ClienteleChipsStrip } from '@/components/shared/clientele-chips';
 import { TestimonialsBlock } from '@/components/shared/testimonials-block';
 
 const TRACK_KEYS: CaseStudyTabKey[] = ['process-excellence-solutions', 'fundraise-execution', 'franchise-scale-expansion'];
 
-export type HubMainTab = 'case-studies' | 'success-stories' | 'testimonials' | 'clientele';
-const HUB_MAIN_TABS: HubMainTab[] = ['case-studies', 'success-stories', 'testimonials', 'clientele'];
+export type HubMainTab = 'case-studies' | 'success-stories' | 'testimonials';
+const HUB_MAIN_TABS: HubMainTab[] = ['case-studies', 'success-stories', 'testimonials'];
 
 function getMainTabFromSearchParams(searchParams: ReturnType<typeof useSearchParams>): HubMainTab {
   const tabParam = searchParams.get('tab');
@@ -38,8 +37,6 @@ const SUCCESS_STORY_ORDER: Array<'Solaraa' | 'Anexx' | 'Asta by Avim' | 'Vasundh
   'Vasundhara Nirmiti Properties',
 ];
 
-const CATEGORY_KEYS = ['processExcellence', 'fundraise', 'govtLiaison'] as const;
-
 export default function CaseStudiesHubPage() {
   const { t } = useTranslation(['case-studies-hub', 'case-studies-catalog', 'about-clientele', 'common']);
   const searchParams = useSearchParams();
@@ -50,8 +47,6 @@ export default function CaseStudiesHubPage() {
   const currentTrackTab = caseStudyTabs.find((tab) => tab.key === track)!;
   const isFranchiseTrack = track === 'franchise-scale-expansion';
 
-  const clientele = t('about-clientele:clientele', { returnObjects: true }) as Record<string, string[]>;
-  const categories = t('about-clientele:categories', { returnObjects: true }) as Record<string, string>;
   const successStories = t('about-clientele:successStories', { returnObjects: true }) as Array<{
     client: string;
     headline: string;
@@ -79,7 +74,7 @@ export default function CaseStudiesHubPage() {
               <p className="body-large text-gray-100 mb-8">{t('case-studies-hub:subtitle')}</p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Button variant="primary" size="lg" asChild>
-                  <Link href="/consulting/tools/health-check">{t('case-studies-hub:startTransformation', 'Start Your Transformation')}</Link>
+                  <Link href="/#operational-diagnostic-cta">{t('case-studies-hub:startTransformation', 'Start Your Transformation')}</Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="border-white text-white hover:bg-white/10">
                   <Link href="/consulting/booking">{t('common:bookDiscoveryCall')}</Link>
@@ -89,7 +84,7 @@ export default function CaseStudiesHubPage() {
           </div>
         </section>
 
-        {/* Main tab navigation: Case Studies | Success Stories | Testimonials | Clientele */}
+        {/* Main tab navigation: Case Studies | Success Stories | Testimonials */}
         <section className="border-b border-gray-200 bg-white sticky top-16 z-40">
           <div className="container-custom">
             <div className="flex gap-1 overflow-x-auto scrollbar-hide py-2">
@@ -210,21 +205,6 @@ export default function CaseStudiesHubPage() {
               </div>
             )}
 
-            {mainTab === 'clientele' && (
-              <div className="space-y-8 max-w-3xl">
-                {CATEGORY_KEYS.map((key) => {
-                  const names = clientele[key];
-                  if (!names || !Array.isArray(names) || names.length === 0) return null;
-                  return (
-                    <ClienteleChipsStrip
-                      key={key}
-                      categoryLabel={categories[key]}
-                      names={names}
-                    />
-                  );
-                })}
-              </div>
-            )}
           </div>
         </section>
 

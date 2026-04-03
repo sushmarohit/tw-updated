@@ -21,10 +21,14 @@ const navigationKeys = [
   { key: 'caseStudies', href: '/consulting/case-studies/hub' },
   { key: 'tools', href: '/consulting/tools/hub' },
   { key: 'resources', href: '/consulting/resources' },
-  { key: 'about', href: '/consulting/about' },
-  { key: 'faq', href: '/consulting/faq' },
-  { key: 'contact', href: '/consulting/contact' },
+  { key: 'knowUs', href: '/consulting/about' },
 ];
+
+const knowUsDropdownItems = [
+  { key: 'faq', href: '/consulting/faq' },
+  { key: 'about', href: '/consulting/about' },
+  { key: 'contact', href: '/consulting/contact' },
+] as const;
 
 export function Header() {
   const { t } = useTranslation(['navigation', 'common', 'services-catalog', 'case-studies-catalog']);
@@ -34,6 +38,7 @@ export function Header() {
   const [activeServicesCategory, setActiveServicesCategory] = useState(serviceCategories[0]?.slug ?? '');
   const [isCaseStudiesMenuOpen, setIsCaseStudiesMenuOpen] = useState(false);
   const [activeCaseStudiesTab, setActiveCaseStudiesTab] = useState<CaseStudyTabKey>('process-excellence-solutions');
+  const [isKnowUsMenuOpen, setIsKnowUsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   const translatedServiceCategories = useMemo(
@@ -85,7 +90,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full h-16 md:h-20',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full h-16 lg:h-20',
         isScrolled
           ? ' bg-white/95 backdrop-blur-md shadow-md'
           : ' bg-white'
@@ -109,8 +114,8 @@ export function Header() {
             </div>
         </Link>
 
-        {/* Desktop & Tablet Navigation - compact so all links fit without scroll */}
-        <div className="hidden md:flex items-center flex-1 min-w-0">
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center flex-1 min-w-0">
           <div className="flex items-center gap-0.5 md:gap-1 lg:gap-1 xl:gap-1.5 flex-shrink-0">
           {navigationKeys.map((item) => {
             if (item.key === 'services') {
@@ -300,6 +305,50 @@ export function Header() {
               );
             }
 
+            if (item.key === 'knowUs') {
+              return (
+                <div
+                  key={item.key}
+                  className="relative flex-shrink-0"
+                  onMouseEnter={() => setIsKnowUsMenuOpen(true)}
+                  onMouseLeave={() => setIsKnowUsMenuOpen(false)}
+                >
+                  <Link
+                    href={item.href}
+                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-sm text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap min-h-[2rem] inline-flex items-center flex-shrink-0"
+                    suppressHydrationWarning
+                    onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
+                  >
+                    {t(`navigation:${item.key}`)}
+                  </Link>
+
+                  <AnimatePresence>
+                    {isKnowUsMenuOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.16 }}
+                        className="absolute left-0 top-full mt-3 min-w-[10rem] rounded-xl bg-white border border-gray-200 shadow-xl py-2 z-[120]"
+                      >
+                        {knowUsDropdownItems.map((subItem) => (
+                          <Link
+                            key={subItem.key}
+                            href={subItem.href}
+                            className="block px-4 py-2.5 text-sm text-navy-500 hover:bg-gray-50 hover:text-gold-300 transition-colors focus-visible-ring rounded-lg mx-1"
+                            suppressHydrationWarning
+                            onClick={() => trackNavigationClick(t(`navigation:${subItem.key}`), subItem.href)}
+                          >
+                            {t(`navigation:${subItem.key}`)}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={item.key}
@@ -315,30 +364,28 @@ export function Header() {
           </div>
         </div>
 
-        {/* Desktop & Tablet CTAs */}
-        <div className="hidden md:flex items-center space-x-1.5 md:space-x-2 lg:space-x-2 xl:space-x-3 flex-shrink-0">
-          {/* <LanguageSwitcher /> */}
-          {/* Buttons Container - Stack vertically until xl breakpoint, horizontal on xl+ */}
-          <div className="flex flex-col md:flex-col xl:flex-row items-stretch xl:items-center space-y-0.5 md:space-y-0.5 xl:space-y-0 xl:space-x-2">
+        {/* Desktop CTAs */}
+        <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 flex-shrink-0">
+          <div className="flex flex-col xl:flex-row items-stretch xl:items-center space-y-0.5 xl:space-y-0 xl:space-x-2">
             <Button
               variant="secondary"
               asChild
-              className="text-xs xl:text-sm px-2 md:px-2.5 xl:px-4 py-1 md:py-1 xl:py-2 whitespace-nowrap bg-teal-500 text-white hover:bg-teal-600 border-0 w-full md:w-auto xl:w-auto h-auto md:h-7 xl:h-auto"
+              className="text-xs xl:text-sm px-3 xl:px-4 py-1 xl:py-2 whitespace-nowrap bg-teal-500 text-white hover:bg-teal-600 border-0 h-auto"
             >
               <Link href="/consulting/booking" suppressHydrationWarning>{t('common:bookDiscoveryCall')}</Link>
             </Button>
             <Button
               variant="primary"
               asChild
-              className="text-xs xl:text-sm px-2 md:px-2.5 xl:px-4 py-1 md:py-1 xl:py-2 whitespace-nowrap w-full md:w-auto xl:w-auto h-auto md:h-7 xl:h-auto"
+              className="text-xs xl:text-sm px-3 xl:px-4 py-1 xl:py-2 whitespace-nowrap h-auto"
             >
-              <Link href="/consulting/tools/health-check" suppressHydrationWarning>{t('common:startFreeDiagnostic')}</Link>
+              <Link href="/#operational-diagnostic-cta" suppressHydrationWarning>{t('common:startFreeDiagnostic')}</Link>
             </Button>
           </div>
         </div>
 
-        {/* Mobile: Language switcher + Menu button */}
-        <div className="flex md:hidden items-center gap-0.5">
+        {/* Mobile + Tablet: hamburger menu button */}
+        <div className="flex lg:hidden items-center gap-0.5">
           {/* <LanguageSwitcher /> */}
           <button
             type="button"
@@ -367,7 +414,7 @@ export function Header() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="fixed inset-0 bg-black/50 z-[100] md:hidden"
+                className="fixed inset-0 bg-black/50 z-[100] lg:hidden"
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-hidden="true"
               />
@@ -378,7 +425,7 @@ export function Header() {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'tween', duration: 0.3 }}
-                className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-navy-500 z-[101] md:hidden overflow-y-auto"
+                className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-navy-500 z-[101] lg:hidden overflow-y-auto"
               >
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-8">
@@ -396,17 +443,39 @@ export function Header() {
                   </div>
 
                   <nav className="space-y-4" aria-label="Mobile navigation">
-                    {navigationKeys.map((item) => (
-                      <Link
-                        key={item.key}
-                        href={item.href}
-                        className="block text-body-default text-white hover:text-gold-300 py-2 transition-colors focus-visible-ring rounded-lg px-2"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        suppressHydrationWarning
-                      >
-                        {t(`navigation:${item.key}`)}
-                      </Link>
-                    ))}
+                    {navigationKeys.map((item) => {
+                      if (item.key === 'knowUs') {
+                        return (
+                          <div key={item.key} className="space-y-1">
+                            <p className="text-body-default text-white/80 font-semibold py-2 px-2" suppressHydrationWarning>
+                              {t(`navigation:${item.key}`)}
+                            </p>
+                            {knowUsDropdownItems.map((subItem) => (
+                              <Link
+                                key={subItem.key}
+                                href={subItem.href}
+                                className="block text-body-default text-white hover:text-gold-300 py-2 pl-4 pr-2 transition-colors focus-visible-ring rounded-lg"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                suppressHydrationWarning
+                              >
+                                {t(`navigation:${subItem.key}`)}
+                              </Link>
+                            ))}
+                          </div>
+                        );
+                      }
+                      return (
+                        <Link
+                          key={item.key}
+                          href={item.href}
+                          className="block text-body-default text-white hover:text-gold-300 py-2 transition-colors focus-visible-ring rounded-lg px-2"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          suppressHydrationWarning
+                        >
+                          {t(`navigation:${item.key}`)}
+                        </Link>
+                      );
+                    })}
                   </nav>
 
                   <div className="mt-8 space-y-4">
@@ -425,7 +494,7 @@ export function Header() {
                       asChild
                       className="w-full"
                     >
-                      <Link href="/consulting/tools/health-check" suppressHydrationWarning>{t('common:startFreeDiagnostic')}</Link>
+                      <Link href="/#operational-diagnostic-cta" suppressHydrationWarning>{t('common:startFreeDiagnostic')}</Link>
                     </Button>
                   </div>
                 </div>

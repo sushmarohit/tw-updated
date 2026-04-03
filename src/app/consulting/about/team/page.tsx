@@ -11,10 +11,10 @@ export default function TeamPage() {
   // V5.2: Real profile cards — Aditya, Mrunal, Ashwini, Priyanka, Amisha (Technology & Development Partner)
   const teamMembers = [
     { name: t('about-team:members.member1.name'), role: t('about-team:members.member1.role'), bio: t('about-team:members.member1.bio'), linkedin: 'https://linkedin.com/in/adityamayekar', email: 'support@twelfthkey.com' },
-    { name: t('about-team:members.member2.name'), role: t('about-team:members.member2.role'), bio: t('about-team:members.member2.bio'), linkedin: '#', email: 'support@twelfthkey.com' },
-    { name: t('about-team:members.member3.name'), role: t('about-team:members.member3.role'), bio: t('about-team:members.member3.bio'), linkedin: '#', email: 'support@twelfthkey.com' },
+    { name: t('about-team:members.member2.name'), role: t('about-team:members.member2.role'), bio: t('about-team:members.member2.bio'), linkedin: '#', email: 'operations@twelfthkey.com' },
+    { name: t('about-team:members.member3.name'), role: t('about-team:members.member3.role'), bio: t('about-team:members.member3.bio'), linkedin: '#', email: 'ashwini.i@twelfthkey.com' },
     { name: t('about-team:members.member4.name'), role: t('about-team:members.member4.role'), bio: t('about-team:members.member4.bio'), linkedin: '#', email: 'support@twelfthkey.com' },
-    { name: t('about-team:members.member5.name'), role: t('about-team:members.member5.role'), bio: t('about-team:members.member5.bio'), linkedin: '#', email: 'support@twelfthkey.com' },
+    { name: t('about-team:members.member5.name'), role: t('about-team:members.member5.role'), bio: t('about-team:members.member5.bio'), linkedin: '#', email: 'technology@twelfthkey.com' },
   ];
 
   return (

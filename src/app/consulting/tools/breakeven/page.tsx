@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { CalculatorExplainer } from '@/components/shared/calculator-explainer';
+import { BackToTools } from '@/components/shared/back-to-tools';
 import { calculateBreakEven, type BreakEvenInput, type BreakEvenResult } from '@/lib/calculators/breakeven';
 import { trackCalculatorStart, trackCalculatorComplete } from '@/lib/analytics/events';
 import { formatCurrency } from '@/lib/utils';
@@ -31,6 +32,7 @@ export default function BreakEvenPage() {
     const calculatedResult = calculateBreakEven(formData);
     setResult(calculatedResult);
     setStep('result');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSubmit = async () => {
@@ -66,6 +68,7 @@ export default function BreakEvenPage() {
     return (
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-4xl">
+          <BackToTools />
           <div className="card mb-8">
             <h1 className="heading-h2 mb-4">{t('tools-breakeven:breakEvenAnalysis')}</h1>
             
@@ -164,6 +167,7 @@ export default function BreakEvenPage() {
   return (
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-3xl">
+        <BackToTools />
         <CalculatorExplainer />
         <div className="card">
           <h1 className="heading-h2 mb-6">{t('tools-breakeven:title')}</h1>

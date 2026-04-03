@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { CalculatorExplainer } from '@/components/shared/calculator-explainer';
 import { calculateModelFit, type ModelFitInput, type ModelFitResult } from '@/lib/calculators/franchise/model-fit';
 import { trackCalculatorStart, trackCalculatorComplete, trackToolCompletedWithEmail } from '@/lib/analytics/events';
 import { ArrowLeft } from 'lucide-react';
+import { BackToTools } from '@/components/shared/back-to-tools';
 
 const TOOL_SLUG = 'franchise/model-fit';
 const DIMS: (keyof ModelFitInput)[] = ['grossMarginPercent', 'repeatCustomerRate', 'standardizableOperations', 'brandStrength'];
@@ -22,7 +22,8 @@ export default function ModelFitPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (k: keyof ModelFitInput, v: number) => setFormData((p) => ({ ...p, [k]: v }));
-  const handleCalculate = () => { trackCalculatorStart('franchise-model-fit'); setResult(calculateModelFit(formData)); setStep('result'); };
+  const handleCalculate = () => { trackCalculatorStart('franchise-model-fit'); setResult(calculateModelFit(formData)); setStep('result');
+    window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const handleSubmit = async () => {
     if (!result) return;
     setIsSubmitting(true);
@@ -41,7 +42,7 @@ export default function ModelFitPage() {
     return (
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-2xl">
-          <Link href="/consulting/tools/hub" className="inline-flex items-center gap-2 text-gray-600 hover:text-teal-600 mb-6"><ArrowLeft className="w-4 h-4" /> {t('common:backToTools')}</Link>
+          <BackToTools />
           <div className="card">
             <h1 className="heading-h2 mb-4">{t('tools:franchise.modelFit.name')}</h1>
             <div className="p-6 bg-teal-50 rounded-lg mb-6">
@@ -68,7 +69,7 @@ export default function ModelFitPage() {
   return (
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-2xl">
-        <Link href="/consulting/tools/hub" className="inline-flex items-center gap-2 text-gray-600 hover:text-teal-600 mb-6"><ArrowLeft className="w-4 h-4" /> {t('common:backToTools')}</Link>
+        <BackToTools />
         <CalculatorExplainer />
         <div className="card">
           <h1 className="heading-h2 mb-2">{t('tools:franchise.modelFit.name')}</h1>

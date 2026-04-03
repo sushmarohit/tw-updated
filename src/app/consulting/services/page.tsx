@@ -81,7 +81,7 @@ export default function ServicesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="primary" asChild size="lg">
-                <Link href="/consulting/tools/health-check">{t('services:startFreeDiagnostic')}</Link>
+                <Link href="/#operational-diagnostic-cta">{t('services:startFreeDiagnostic')}</Link>
               </Button>
               <Button variant="secondary" asChild size="lg">
                 <Link href="/consulting/booking">{t('services:bookDiscoveryCall')}</Link>

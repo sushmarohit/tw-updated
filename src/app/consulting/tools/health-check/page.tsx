@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { CalculatorExplainer } from '@/components/shared/calculator-explainer';
+import { BackToTools } from '@/components/shared/back-to-tools';
 import { OPERATIONAL_HEALTH_QUESTIONS, calculateHealthScore, type UserAnswer } from '@/lib/calculators/operational-health';
 import { trackCalculatorComplete } from '@/lib/analytics/events';
 
@@ -37,6 +38,7 @@ export default function OperationalHealthCheckPage() {
 
       const calculatedResult = calculateHealthScore(userAnswers);
       setResult(calculatedResult);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       setCurrentQuestion(currentQuestion + 1);
     }
@@ -82,6 +84,7 @@ export default function OperationalHealthCheckPage() {
     return (
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-4xl">
+          <BackToTools />
           <div className="card mb-8">
             <h1 className="heading-h2 mb-4">{t('tools-health-check:yourOperationalHealthScore')}</h1>
             <div className="text-center mb-8">
@@ -178,7 +181,7 @@ export default function OperationalHealthCheckPage() {
   return (
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-3xl">
-        {/* V5.2: Reusable explainer block — add to all calculator pages */}
+        <BackToTools />
         <CalculatorExplainer />
         <div className="card">
           <div className="mb-6">

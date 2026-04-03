@@ -25,8 +25,11 @@ export function ExitIntentModal({ onClose }: ExitIntentModalProps) {
   const handleCTAClick = (ctaText: string, href: string) => {
     trackCTAClick(ctaText, 'exit_intent_modal');
     onClose();
-    // Small delay to allow modal close animation before navigation
     setTimeout(() => {
+      if (typeof window !== 'undefined' && href.startsWith('/#')) {
+        window.location.href = `${window.location.origin}${href}`;
+        return;
+      }
       router.push(href);
     }, 100);
   };
@@ -76,7 +79,7 @@ export function ExitIntentModal({ onClose }: ExitIntentModalProps) {
               <Button
                 variant="primary"
                 className="w-full"
-                onClick={() => handleCTAClick(t('common:startFreeDiagnostic'), '/consulting/tools/health-check')}
+                onClick={() => handleCTAClick(t('common:startFreeDiagnostic'), '/#operational-diagnostic-cta')}
               >
                 {t('common:startFreeDiagnostic')}
               </Button>

@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { CalculatorExplainer } from '@/components/shared/calculator-explainer';
 import { calculateRaiseAmount, type RaiseAmountInput, type RaiseAmountResult } from '@/lib/calculators/fundraise/raise-amount';
 import { trackCalculatorStart, trackCalculatorComplete, trackToolCompletedWithEmail } from '@/lib/analytics/events';
 import { formatCurrency } from '@/lib/utils';
 import { ArrowLeft } from 'lucide-react';
+import { BackToTools } from '@/components/shared/back-to-tools';
 
 const TOOL_SLUG = 'fundraise/raise-amount';
 
@@ -25,6 +25,7 @@ export default function RaiseAmountPage() {
     trackCalculatorStart('fundraise-raise-amount');
     setResult(calculateRaiseAmount(formData));
     setStep('result');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSubmit = async () => {
@@ -56,9 +57,7 @@ export default function RaiseAmountPage() {
     return (
       <div className="min-h-screen bg-gray-50 section-padding">
         <div className="container-custom max-w-2xl">
-          <Link href="/consulting/tools/hub" className="inline-flex items-center gap-2 text-gray-600 hover:text-teal-600 mb-6">
-            <ArrowLeft className="w-4 h-4" /> {t('common:backToTools')}
-          </Link>
+          <BackToTools />
           <div className="card">
             <h1 className="heading-h2 mb-4">{t('tools:fundraise.raiseAmount.name')}</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -95,9 +94,7 @@ export default function RaiseAmountPage() {
   return (
     <div className="min-h-screen bg-gray-50 section-padding">
       <div className="container-custom max-w-2xl">
-        <Link href="/consulting/tools/hub" className="inline-flex items-center gap-2 text-gray-600 hover:text-teal-600 mb-6">
-          <ArrowLeft className="w-4 h-4" /> {t('common:backToTools')}
-        </Link>
+        <BackToTools />
         <CalculatorExplainer />
         <div className="card">
           <h1 className="heading-h2 mb-2">{t('tools:fundraise.raiseAmount.name')}</h1>

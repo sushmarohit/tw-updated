@@ -8,7 +8,10 @@ export function HeroSection() {
   const { t } = useTranslation(['hero', 'common']);
 
   return (
-    <section className="section-padding bg-gradient-to-br from-navy-500 via-navy-600 to-teal-600 text-white">
+    <section
+      id="operational-diagnostic-cta"
+      className="section-padding bg-gradient-to-br from-navy-500 via-navy-600 to-teal-600 text-white scroll-mt-16 md:scroll-mt-20"
+    >
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="font-serif font-bold leading-tight text-white mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-hero-desktop">
