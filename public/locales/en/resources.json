@@ -13,19 +13,20 @@
     "title": "Templates",
     "description": "Ready-to-use templates for SOPs, dashboards, and governance frameworks."
   },
-  "webinars": {
-    "title": "Webinars",
-    "description": "Recorded sessions and live webinars on operational excellence topics."
+  "founderExplainers": {
+    "title": "Founder Explainers",
+    "description": "Short videos that break down the operations concepts every business owner needs — plain language, under 10 minutes each."
   },
   "roiGuide": {
     "title": "ROI Guide",
-    "description": "Comprehensive guide to calculating and maximizing ROI from operational investments."
+    "description": "Learn how to think about and calculate returns from operational investments — before you open a spreadsheet."
   },
   "businessCaseKit": {
     "title": "Business Case Kit",
-    "description": "Build a compelling business case for operational investments. Templates, frameworks, and ROI guidance."
+    "description": "Working tools to build your investment case — CBA templates, impact measurement frameworks, and real client ROI data."
   },
   "explore": "Explore",
+  "watchNow": "Watch Now",
   "needGuidanceTitle": "Need Personalized Guidance?",
   "needGuidanceDescription": "Book a discovery call to discuss your specific operational challenges."
 }

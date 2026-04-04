@@ -10,6 +10,10 @@ import {
   trackExitIntentModalShown,
   trackLiveChatInitiated,
   trackReportDownload,
+  trackDownloadClick,
+  trackVideoPlay,
+  trackGateFormSubmit,
+  trackResourceCtaClick,
 } from '../events';
 
 describe('Analytics Events', () => {
@@ -222,6 +226,61 @@ describe('Analytics Events', () => {
       expect(global.window.gtag).toHaveBeenCalledWith('event', 'report_downloaded', {
         calculator_type: 'operational_health',
         report_type: 'full_report',
+        timestamp: expect.any(String),
+      });
+    });
+  });
+
+  describe('resource hub analytics', () => {
+    it('should track download_click', () => {
+      trackDownloadClick({
+        resource_type: 'business_case_kit',
+        template_code: 'ROI_FRAMEWORK',
+        gate_type: 'gated_modal',
+      });
+      expect(global.window.gtag).toHaveBeenCalledWith('event', 'download_click', {
+        resource_type: 'business_case_kit',
+        template_code: 'ROI_FRAMEWORK',
+        gate_type: 'gated_modal',
+        timestamp: expect.any(String),
+      });
+    });
+
+    it('should track video_play', () => {
+      trackVideoPlay({ video_id: 'abc123', series: 'Operations', title: 'Test' });
+      expect(global.window.gtag).toHaveBeenCalledWith('event', 'video_play', {
+        video_id: 'abc123',
+        series: 'Operations',
+        title: 'Test',
+        timestamp: expect.any(String),
+      });
+    });
+
+    it('should track gate_form_submit', () => {
+      trackGateFormSubmit({ form_type: 'resource_gate', challenge_selected: 'proving-roi' });
+      expect(global.window.gtag).toHaveBeenCalledWith('event', 'gate_form_submit', {
+        form_type: 'resource_gate',
+        challenge_selected: 'proving-roi',
+        timestamp: expect.any(String),
+      });
+    });
+
+    it('should track resource cta_click and cta_clicked', () => {
+      trackResourceCtaClick({
+        cta_text: 'Book',
+        destination: '/consulting/booking',
+        page: '/consulting/resources/roi-guide',
+      });
+      expect(global.window.gtag).toHaveBeenCalledWith('event', 'cta_click', {
+        cta_text: 'Book',
+        destination: '/consulting/booking',
+        page: '/consulting/resources/roi-guide',
+        timestamp: expect.any(String),
+      });
+      expect(global.window.gtag).toHaveBeenCalledWith('event', 'cta_clicked', {
+        cta_text: 'Book',
+        cta_location: '/consulting/resources/roi-guide',
+        destination: '/consulting/booking',
         timestamp: expect.any(String),
       });
     });

@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
-      { source: '/consulting/resources/roi-guide', destination: '/consulting/resources/business-case-kit', permanent: true },
+      { source: '/consulting/resources/webinars', destination: '/consulting/resources/founder-explainers', permanent: true },
       { source: '/consulting/framework', destination: '/consulting/process', permanent: true },
       { source: '/consulting/framework/g2p', destination: '/consulting/process', permanent: true },
       { source: '/consulting/framework/cycle', destination: '/consulting/process', permanent: true },
@@ -76,7 +76,7 @@ const nextConfig = {
               "img-src 'self' data: blob: https:",
               "font-src 'self' data:",
               "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com",
-              "frame-src 'self' https://calendar.google.com https://calendar.app.google",
+              "frame-src 'self' https://calendar.google.com https://calendar.app.google https://www.youtube.com https://www.youtube-nocookie.com",
               "frame-ancestors 'self'",
               "base-uri 'self'",
               "form-action 'self'"

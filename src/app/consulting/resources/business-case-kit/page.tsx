@@ -1,104 +1,125 @@
 'use client';
 
-import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 import Link from 'next/link';
-import { TrendingUp, Calculator, FileText, CheckCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { CheckCircle } from 'lucide-react';
+import { BusinessCaseKitTiles } from '@/components/resources/business-case-kit-tiles';
+import { ResourceGateModal } from '@/components/resources/resource-gate-modal';
+import { ResourcePageFooter } from '@/components/resources/resource-page-footer';
+import { trackDownloadClick, trackResourceCtaClick } from '@/lib/analytics/events';
+
+const PAGE = '/consulting/resources/business-case-kit';
 
 export default function BusinessCaseKitPage() {
-  const { t } = useTranslation(['business-case-kit', 'common']);
-
-  const sections = [
-    {
-      icon: Calculator,
-      title: t('business-case-kit:sections.calculation.title'),
-      description: t('business-case-kit:sections.calculation.description'),
-    },
-    {
-      icon: TrendingUp,
-      title: t('business-case-kit:sections.measuring.title'),
-      description: t('business-case-kit:sections.measuring.description'),
-    },
-    {
-      icon: FileText,
-      title: t('business-case-kit:sections.templates.title'),
-      description: t('business-case-kit:sections.templates.description'),
-    },
-    {
-      icon: CheckCircle,
-      title: t('business-case-kit:sections.caseStudies.title'),
-      description: t('business-case-kit:sections.caseStudies.description'),
-    },
-  ];
+  const [fullKitOpen, setFullKitOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="section-padding bg-gradient-to-br from-navy-500 to-teal-600 text-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="heading-hero mb-6 text-white">{t('business-case-kit:title')}</h1>
-            <p className="body-large text-gray-100">
-              {t('business-case-kit:subtitle')}
+            <h1 className="heading-hero mb-6 text-white">Business Case Kit</h1>
+            <p className="body-large text-gray-100 mb-8">
+              Working tools to build a compelling investment case for operational improvements — CBA templates, impact
+              measurement frameworks, and real client ROI data.
             </p>
+            <Button
+              variant="secondary"
+              size="lg"
+              type="button"
+              onClick={() => {
+                trackDownloadClick({
+                  resource_type: 'business_case_kit',
+                  template_code: 'FULL_KIT',
+                  gate_type: 'hero_cta',
+                });
+                setFullKitOpen(true);
+              }}
+            >
+              Download the Full Kit
+            </Button>
           </div>
         </div>
       </section>
 
       <section className="section-padding">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto mb-8">
-            <h2 className="heading-h2 mb-6">{t('business-case-kit:whyMattersTitle')}</h2>
-            <p className="body-large text-gray-700 mb-4">
-              {t('business-case-kit:whyMattersDescription')}
-            </p>
-            <ul className="space-y-3">
-              {[
-                t('business-case-kit:benefits.benefit1'),
-                t('business-case-kit:benefits.benefit2'),
-                t('business-case-kit:benefits.benefit3'),
-                t('business-case-kit:benefits.benefit4'),
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0 mt-1" />
-                  <span className="body-default text-gray-700">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {sections.map((section, index) => {
-              const Icon = section.icon;
-              return (
-                <div key={index} className="card">
-                  <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-teal-500" />
-                  </div>
-                  <h3 className="heading-h4 mb-2">{section.title}</h3>
-                  <p className="body-default text-gray-600">{section.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding bg-white">
-        <div className="container-custom text-center">
-          <h2 className="heading-h2 mb-4">{t('business-case-kit:calculateTitle')}</h2>
-          <p className="body-large text-gray-600 mb-8">
-            {t('business-case-kit:calculateDescription')}
+        <div className="container-custom max-w-3xl mx-auto mb-12">
+          <h2 className="heading-h2 mb-4 text-center">Stop Guessing. Start Measuring.</h2>
+          <p className="body-large text-gray-700 text-center mb-8">
+            Most operational investments fail to get approved — not because the case is weak, but because it was never built
+            properly. This kit gives you everything you need to quantify the value, structure the argument, and close the
+            decision.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <ul className="space-y-3 max-w-xl mx-auto">
+            {[
+              'Calculate accurate ROI — direct savings and indirect value',
+              'Quantify improvements in efficiency, quality, and governance maturity',
+              'Present a business case your board, CFO, or investors will approve',
+              'Track actual vs. projected returns after implementation',
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0 mt-1" aria-hidden />
+                <span className="body-default text-gray-700">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <BusinessCaseKitTiles />
+      </section>
+
+      <section className="section-padding bg-white border-t border-gray-200">
+        <div className="container-custom max-w-3xl mx-auto text-center space-y-10">
+          <div>
+            <h2 className="heading-h2 mb-4">Need a custom ROI analysis for your business?</h2>
             <Button variant="primary" size="lg" asChild>
-              <Link href="/consulting/tools/roi">{t('business-case-kit:tryCalculator')}</Link>
+              <Link
+                href="/consulting/booking"
+                onClick={() =>
+                  trackResourceCtaClick({
+                    cta_text: 'Get Custom ROI Analysis',
+                    destination: '/consulting/booking',
+                    page: PAGE,
+                  })
+                }
+              >
+                Get Custom ROI Analysis
+              </Link>
             </Button>
-            <Button variant="secondary" size="lg" asChild>
-              <Link href="/consulting/contact">{t('business-case-kit:getCustomAnalysis')}</Link>
+          </div>
+          <div>
+            <p className="body-large text-gray-600 mb-4">Prefer to start yourself?</p>
+            <Button variant="outline" size="lg" asChild>
+              <Link
+                href="/consulting/tools/roi"
+                onClick={() =>
+                  trackResourceCtaClick({
+                    cta_text: 'Try the ROI Calculator',
+                    destination: '/consulting/tools/roi',
+                    page: PAGE,
+                  })
+                }
+              >
+                Try the ROI Calculator
+              </Link>
             </Button>
           </div>
         </div>
       </section>
+
+      <ResourcePageFooter page={PAGE} />
+
+      <ResourceGateModal
+        open={fullKitOpen}
+        onOpenChange={setFullKitOpen}
+        title="Download the Full Kit"
+        templateCode="FULL_KIT"
+        gateType="full_kit"
+        onSuccessAfterSubmit={(url) => {
+          if (url) window.open(url, '_blank', 'noopener,noreferrer');
+        }}
+      />
     </div>
   );
 }

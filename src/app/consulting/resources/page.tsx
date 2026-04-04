@@ -4,14 +4,22 @@ import { useSearchParams } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { BookOpen, FileText, Video, TrendingUp, Calculator } from 'lucide-react';
+import { BookOpen, FileText, Play, TrendingUp, Calculator } from 'lucide-react';
 
 export default function ResourcesPage() {
   const { t } = useTranslation(['resources', 'common']);
   const searchParams = useSearchParams();
   const newsletterParam = searchParams.get('newsletter');
 
-  const resources = [
+  const resources: {
+    icon: typeof BookOpen;
+    title: string;
+    description: string;
+    href: string;
+    iconWrapClass: string;
+    iconClass: string;
+    ctaLabel?: string;
+  }[] = [
     {
       icon: BookOpen,
       title: t('resources:blog.title'),
@@ -29,14 +37,6 @@ export default function ResourcesPage() {
       iconClass: 'text-gold-600',
     },
     {
-      icon: Calculator,
-      title: t('resources:roiGuide.title'),
-      description: t('resources:roiGuide.description'),
-      href: '/consulting/resources/roi-guide',
-      iconWrapClass: 'bg-teal-100',
-      iconClass: 'text-teal-500',
-    },
-    {
       icon: FileText,
       title: t('resources:templates.title'),
       description: t('resources:templates.description'),
@@ -45,10 +45,10 @@ export default function ResourcesPage() {
       iconClass: 'text-gold-600',
     },
     {
-      icon: Video,
-      title: t('resources:webinars.title'),
-      description: t('resources:webinars.description'),
-      href: '/consulting/resources/webinars',
+      icon: Calculator,
+      title: t('resources:roiGuide.title'),
+      description: t('resources:roiGuide.description'),
+      href: '/consulting/resources/roi-guide',
       iconWrapClass: 'bg-teal-100',
       iconClass: 'text-teal-500',
     },
@@ -59,6 +59,15 @@ export default function ResourcesPage() {
       href: '/consulting/resources/business-case-kit',
       iconWrapClass: 'bg-gold-100',
       iconClass: 'text-gold-600',
+    },
+    {
+      icon: Play,
+      title: t('resources:founderExplainers.title'),
+      description: t('resources:founderExplainers.description'),
+      href: '/consulting/resources/founder-explainers',
+      iconWrapClass: 'bg-teal-100',
+      iconClass: 'text-teal-500',
+      ctaLabel: t('resources:watchNow'),
     },
   ];
 
@@ -109,7 +118,7 @@ export default function ResourcesPage() {
                   <h2 className="heading-h4 mb-3">{resource.title}</h2>
                   <p className="body-default text-gray-600 mb-6">{resource.description}</p>
                   <Button variant="outline" asChild>
-                    <Link href={resource.href}>{t('resources:explore')}</Link>
+                    <Link href={resource.href}>{resource.ctaLabel ?? t('resources:explore')}</Link>
                   </Button>
                 </div>
               );
