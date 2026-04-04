@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { serviceDetails } from '@/lib/services-catalog';
 import { caseStudyTabs } from '@/lib/case-studies-catalog';
+import { getAllBlogSlugs } from '@/data/blog-posts';
+import { getAllFounderExplainerSlugs } from '@/data/founder-explainers';
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://twelfthkey.com';
 
@@ -46,8 +48,9 @@ const STATIC_ROUTES: RouteEntry[] = [
   { path: '/consulting/blog', priority: 0.75, changeFrequency: 'weekly' },
   { path: '/consulting/resources/playbooks', priority: 0.75, changeFrequency: 'monthly' },
   { path: '/consulting/resources/templates', priority: 0.75, changeFrequency: 'monthly' },
-  { path: '/consulting/resources/webinars', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/consulting/resources/founder-explainers', priority: 0.75, changeFrequency: 'weekly' },
   { path: '/consulting/resources/business-case-kit', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/consulting/resources/roi-guide', priority: 0.75, changeFrequency: 'monthly' },
   { path: '/consulting/about', priority: 0.8, changeFrequency: 'weekly' },
   { path: '/consulting/about/team', priority: 0.75, changeFrequency: 'monthly' },
   { path: '/consulting/about/values', priority: 0.75, changeFrequency: 'monthly' },
@@ -79,7 +82,25 @@ const caseStudyRoutes: RouteEntry[] = caseStudySlugs.map((slug) => ({
   changeFrequency: 'monthly' as const,
 }));
 
-const ROUTES: RouteEntry[] = [...STATIC_ROUTES, ...serviceRoutes, ...caseStudyRoutes];
+const blogArticleRoutes: RouteEntry[] = getAllBlogSlugs().map((slug) => ({
+  path: `/consulting/blog/${slug}`,
+  priority: 0.72,
+  changeFrequency: 'monthly' as const,
+}));
+
+const founderExplainerRoutes: RouteEntry[] = getAllFounderExplainerSlugs().map((slug) => ({
+  path: `/consulting/resources/founder-explainers/${slug}`,
+  priority: 0.7,
+  changeFrequency: 'monthly' as const,
+}));
+
+const ROUTES: RouteEntry[] = [
+  ...STATIC_ROUTES,
+  ...serviceRoutes,
+  ...caseStudyRoutes,
+  ...blogArticleRoutes,
+  ...founderExplainerRoutes,
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return ROUTES.map(({ path, priority, changeFrequency }) => ({

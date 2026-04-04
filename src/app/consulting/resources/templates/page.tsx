@@ -63,7 +63,7 @@ export default function TemplatesPage() {
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-500">{category.count}</span>
                     <Button variant="outline" size="sm" asChild>
-                      <Link href="#">{t('templates:browse')}</Link>
+                      <Link href="/consulting/contact?topic=templates">{t('templates:browse')}</Link>
                     </Button>
                   </div>
                 </div>

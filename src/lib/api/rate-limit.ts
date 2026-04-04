@@ -55,3 +55,8 @@ export function rateLimitNewsletter(request: Request): { ok: boolean; remaining:
   const id = getClientId(request);
   return checkLimit(`newsletter:${id}`, NEWSLETTER_LIMIT);
 }
+
+export function rateLimitResourceGate(request: Request): { ok: boolean; remaining: number; resetAt: number } {
+  const id = getClientId(request);
+  return checkLimit(`resource-gate:${id}`, CONTACT_LIMIT);
+}

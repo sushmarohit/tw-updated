@@ -33,10 +33,12 @@
     "time": "समय",
     "tryAll": "सभी 8 टूल आज़माएं → टूल पेज",
     "operationalHealth": "ऑपरेशनल हेल्थ चेक",
+    "roiCalculator": "ROI कैलकुलेटर",
     "costLeakage": "कॉस्ट लीकेज एस्टिमेटर",
     "breakeven": "ब्रेक-ईवन कैलकुलेटर",
     "scaleReadiness": "स्केल रेडीनेस एनालाइज़र",
     "startDiagnostic": "डायग्नोस्टिक शुरू करें",
+    "estimateRoi": "ROI अनुमान",
     "findLeakage": "लीकेज ढूंढें",
     "calculateBEP": "BEP कैलकुलेट करें",
     "checkReadiness": "रेडीनेस चेक करें"

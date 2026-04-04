@@ -28,6 +28,7 @@
     }
   },
   "download": "Download Playbook",
+  "requestAccess": "Request access",
   "customTitle": "Need Custom Playbooks?",
   "customDescription": "Our team can create tailored playbooks for your specific industry and challenges.",
   "requestCustom": "Request Custom Playbook"

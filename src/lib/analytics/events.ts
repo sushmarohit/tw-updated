@@ -218,3 +218,37 @@ export function trackReportDownload(calculatorType: string, reportType: string):
   });
 }
 
+/** Gated resource download button click (handover 5.4B analytics) */
+export function trackDownloadClick(params: {
+  resource_type: string;
+  template_code: string;
+  gate_type: string;
+}): void {
+  trackEvent('download_click', params);
+}
+
+export function trackVideoPlay(params: { video_id: string; series: string; title: string }): void {
+  trackEvent('video_play', params);
+}
+
+export function trackGateFormSubmit(params: {
+  form_type: string;
+  challenge_selected: string;
+}): void {
+  trackEvent('gate_form_submit', params);
+}
+
+/** Resource hub CTA with page context */
+export function trackResourceCtaClick(params: {
+  cta_text: string;
+  destination: string;
+  page: string;
+}): void {
+  trackEvent('cta_click', params);
+  trackEvent('cta_clicked', {
+    cta_text: params.cta_text,
+    cta_location: params.page,
+    destination: params.destination,
+  });
+}
+

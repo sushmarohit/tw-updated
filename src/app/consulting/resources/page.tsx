@@ -4,48 +4,70 @@ import { useSearchParams } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { BookOpen, FileText, Video, TrendingUp } from 'lucide-react';
+import { BookOpen, FileText, Play, TrendingUp, Calculator } from 'lucide-react';
 
 export default function ResourcesPage() {
   const { t } = useTranslation(['resources', 'common']);
   const searchParams = useSearchParams();
   const newsletterParam = searchParams.get('newsletter');
 
-  const resources = [
+  const resources: {
+    icon: typeof BookOpen;
+    title: string;
+    description: string;
+    href: string;
+    iconWrapClass: string;
+    iconClass: string;
+    ctaLabel?: string;
+  }[] = [
     {
       icon: BookOpen,
       title: t('resources:blog.title'),
       description: t('resources:blog.description'),
       href: '/consulting/blog',
-      color: 'teal',
+      iconWrapClass: 'bg-teal-100',
+      iconClass: 'text-teal-500',
     },
     {
       icon: FileText,
       title: t('resources:playbooks.title'),
       description: t('resources:playbooks.description'),
       href: '/consulting/resources/playbooks',
-      color: 'gold',
+      iconWrapClass: 'bg-gold-100',
+      iconClass: 'text-gold-600',
     },
     {
       icon: FileText,
       title: t('resources:templates.title'),
       description: t('resources:templates.description'),
       href: '/consulting/resources/templates',
-      color: 'teal',
+      iconWrapClass: 'bg-gold-100',
+      iconClass: 'text-gold-600',
     },
     {
-      icon: Video,
-      title: t('resources:webinars.title'),
-      description: t('resources:webinars.description'),
-      href: '/consulting/resources/webinars',
-      color: 'gold',
+      icon: Calculator,
+      title: t('resources:roiGuide.title'),
+      description: t('resources:roiGuide.description'),
+      href: '/consulting/resources/roi-guide',
+      iconWrapClass: 'bg-teal-100',
+      iconClass: 'text-teal-500',
     },
     {
       icon: TrendingUp,
       title: t('resources:businessCaseKit.title'),
       description: t('resources:businessCaseKit.description'),
       href: '/consulting/resources/business-case-kit',
-      color: 'teal',
+      iconWrapClass: 'bg-gold-100',
+      iconClass: 'text-gold-600',
+    },
+    {
+      icon: Play,
+      title: t('resources:founderExplainers.title'),
+      description: t('resources:founderExplainers.description'),
+      href: '/consulting/resources/founder-explainers',
+      iconWrapClass: 'bg-teal-100',
+      iconClass: 'text-teal-500',
+      ctaLabel: t('resources:watchNow'),
     },
   ];
 
@@ -86,17 +108,17 @@ export default function ResourcesPage() {
       <section className="section-padding">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {resources.map((resource, index) => {
+            {resources.map((resource) => {
               const Icon = resource.icon;
               return (
-                <div key={index} className="card">
-                  <div className={`w-16 h-16 bg-${resource.color}-100 rounded-lg flex items-center justify-center mb-4`}>
-                    <Icon className={`w-8 h-8 text-${resource.color}-500`} aria-hidden="true" />
+                <div key={resource.href} className="card">
+                  <div className={`w-16 h-16 ${resource.iconWrapClass} rounded-lg flex items-center justify-center mb-4`}>
+                    <Icon className={`w-8 h-8 ${resource.iconClass}`} aria-hidden="true" />
                   </div>
                   <h2 className="heading-h4 mb-3">{resource.title}</h2>
                   <p className="body-default text-gray-600 mb-6">{resource.description}</p>
                   <Button variant="outline" asChild>
-                    <Link href={resource.href}>{t('resources:explore')}</Link>
+                    <Link href={resource.href}>{resource.ctaLabel ?? t('resources:explore')}</Link>
                   </Button>
                 </div>
               );
@@ -116,7 +138,7 @@ export default function ResourcesPage() {
               <Link href="/consulting/booking">{t('common:bookDiscoveryCall')}</Link>
             </Button>
             <Button variant="secondary" size="lg" asChild>
-              <Link href="/consulting/tools/health-check">{t('common:startFreeDiagnostic')}</Link>
+              <Link href="/#operational-diagnostic-cta">{t('common:startFreeDiagnostic')}</Link>
             </Button>
           </div>
         </div>

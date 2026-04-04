@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { trackFormSubmit } from '@/lib/analytics/events';
+import { BLOG_POSTS } from '@/data/blog-posts';
 
 export default function BlogPage() {
   const { t } = useTranslation(['blog', 'common']);
@@ -14,30 +15,18 @@ export default function BlogPage() {
   const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
 
-  // Placeholder blog posts - in production, these would come from a CMS
-  const blogPosts = [
-    {
-      title: t('blog:posts.post1.title'),
-      excerpt: t('blog:posts.post1.excerpt'),
-      date: '2025-01-15',
-      readTime: '5 min read',
-      category: t('blog:posts.post1.category'),
-    },
-    {
-      title: t('blog:posts.post2.title'),
-      excerpt: t('blog:posts.post2.excerpt'),
-      date: '2025-01-10',
-      readTime: '8 min read',
-      category: t('blog:posts.post2.category'),
-    },
-    {
-      title: t('blog:posts.post3.title'),
-      excerpt: t('blog:posts.post3.excerpt'),
-      date: '2025-01-05',
-      readTime: '6 min read',
-      category: t('blog:posts.post3.category'),
-    },
-  ];
+  const postKeys = ['post1', 'post2', 'post3'] as const;
+  const blogPosts = BLOG_POSTS.map((canonical, index) => {
+    const k = postKeys[index];
+    return {
+      slug: canonical.slug,
+      title: t(`blog:posts.${k}.title`),
+      excerpt: t(`blog:posts.${k}.excerpt`),
+      date: canonical.date,
+      readTime: canonical.readTimeLabel,
+      category: t(`blog:posts.${k}.category`),
+    };
+  });
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -55,8 +44,8 @@ export default function BlogPage() {
       <section className="section-padding">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto space-y-8">
-            {blogPosts.map((post, index) => (
-              <article key={index} className="card">
+            {blogPosts.map((post) => (
+              <article key={post.slug} className="card">
                 <div className="flex items-start justify-between mb-4">
                   <span className="px-3 py-1 bg-teal-100 text-teal-700 text-sm font-semibold rounded-full">
                     {post.category}
@@ -75,7 +64,7 @@ export default function BlogPage() {
                 <h2 className="heading-h3 mb-3">{post.title}</h2>
                 <p className="body-default text-gray-600 mb-6">{post.excerpt}</p>
                 <Button variant="outline" asChild>
-                  <Link href={`/consulting/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <Link href={`/consulting/blog/${post.slug}`}>
                     {t('blog:readMore')}
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
