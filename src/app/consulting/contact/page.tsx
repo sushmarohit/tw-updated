@@ -1,6 +1,8 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { getLeadTopicMessagePrefix } from '@/lib/lead-topics';
 import { Button } from '@/components/ui/button';
 import { Send } from 'lucide-react';
 import { trackFormSubmit } from '@/lib/analytics/events';
@@ -37,7 +39,9 @@ function isValidEmail(value: string): boolean {
   return value.length > 0 && EMAIL_REGEX.test(value.trim());
 }
 
-export default function ContactPage() {
+function ContactPageContent() {
+  const searchParams = useSearchParams();
+  const topicParam = searchParams.get('topic');
   const { t } = useTranslation('common');
   const { t: tNav } = useTranslation('navigation');
   const contactServiceCategories = useMemo(
@@ -61,6 +65,15 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [emailTouched, setEmailTouched] = useState(false);
+
+  useEffect(() => {
+    const prefix = getLeadTopicMessagePrefix(topicParam);
+    if (!prefix) return;
+    setFormData((prev) => {
+      if (prev.message.trim() !== '') return prev;
+      return { ...prev, message: `${prefix}\n` };
+    });
+  }, [topicParam]);
 
   const emailValid = isValidEmail(formData.email);
   const emailError = emailTouched && formData.email.length > 0 && !emailValid;
@@ -310,3 +323,16 @@ export default function ContactPage() {
   );
 }
 
+export default function ContactPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-50 section-padding flex flex-col items-center justify-center px-4">
+          <p className="body-default text-gray-600">Loading…</p>
+        </div>
+      }
+    >
+      <ContactPageContent />
+    </Suspense>
+  );
+}

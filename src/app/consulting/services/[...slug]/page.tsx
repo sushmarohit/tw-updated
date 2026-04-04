@@ -124,7 +124,7 @@ export default function ServiceSlugPage() {
                     <TestimonialsBlock indices={[0, 1]} variant="cards" className="mb-10 grid-cols-1 md:grid-cols-2" />
                     <h2 className="heading-h2 mb-6" suppressHydrationWarning>{t('services:successStoriesTitle')}</h2>
                     <SuccessStoriesPreview
-                      clients={['Solaraa', 'Anexx', 'Asta by Avim']}
+                      clients={['Solaraa', 'Xnexx', 'Asta by Avim']}
                       variant="mini"
                       viewAllHref={HUB_SUCCESS_STORIES}
                       viewAllLabel={t('services:viewAllSuccessStories')}
@@ -146,7 +146,7 @@ export default function ServiceSlugPage() {
                     ) : null}
                     <h2 className="heading-h2 mb-6" suppressHydrationWarning>{t('services:successStoriesTitle')}</h2>
                     <SuccessStoriesPreview
-                      clients={['Vasundhara Nirmiti Properties']}
+                      clients={['Nirmiti Group']}
                       variant="mini"
                       viewAllHref={HUB_SUCCESS_STORIES}
                       viewAllLabel={t('services:viewAllSuccessStories')}
@@ -163,7 +163,7 @@ export default function ServiceSlugPage() {
                     <h2 className="heading-h2 mt-12 mb-4" suppressHydrationWarning>{t('services:clienteleTitle')}</h2>
                     <ClienteleChipsStrip names={names} className="mb-6" />
                     <h2 className="heading-h2 mb-4" suppressHydrationWarning>{t('services:testimonialsTitle')}</h2>
-                    <TestimonialsBlock indices={[2]} variant="cards" className="grid-cols-1" />
+                    <TestimonialsBlock indices={[1]} variant="cards" className="grid-cols-1" />
                   </>
                 ) : null;
               })()}

@@ -8,6 +8,7 @@ import { PageSchema } from '@/components/seo/page-schema';
 import { caseStudyTabs, caseStudyTabKeyToCatalogKey, type CaseStudyTabKey } from '@/lib/case-studies-catalog';
 import { cn } from '@/lib/utils';
 import { TestimonialsBlock } from '@/components/shared/testimonials-block';
+import type { SuccessStoryKey } from '@/components/shared/success-stories-preview';
 
 const TRACK_KEYS: CaseStudyTabKey[] = ['process-excellence-solutions', 'fundraise-execution', 'franchise-scale-expansion'];
 
@@ -30,11 +31,11 @@ function getTrackFromSearchParams(searchParams: ReturnType<typeof useSearchParam
   return 'process-excellence-solutions';
 }
 
-const SUCCESS_STORY_ORDER: Array<'Solaraa' | 'Anexx' | 'Asta by Avim' | 'Vasundhara Nirmiti Properties'> = [
+const SUCCESS_STORY_ORDER: SuccessStoryKey[] = [
   'Solaraa',
-  'Anexx',
+  'Xnexx',
   'Asta by Avim',
-  'Vasundhara Nirmiti Properties',
+  'Nirmiti Group',
 ];
 
 export default function CaseStudiesHubPage() {
@@ -201,7 +202,7 @@ export default function CaseStudiesHubPage() {
 
             {mainTab === 'testimonials' && (
               <div className="max-w-4xl">
-                <TestimonialsBlock indices={[0, 1, 2]} variant="cards" className="grid-cols-1 md:grid-cols-3" />
+                <TestimonialsBlock indices={[0, 1]} variant="cards" className="grid-cols-1 md:grid-cols-2" />
               </div>
             )}
 
