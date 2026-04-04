@@ -4,7 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { BookOpen, FileText, Video, TrendingUp } from 'lucide-react';
+import { BookOpen, FileText, Video, TrendingUp, Calculator } from 'lucide-react';
 
 export default function ResourcesPage() {
   const { t } = useTranslation(['resources', 'common']);
@@ -17,35 +17,48 @@ export default function ResourcesPage() {
       title: t('resources:blog.title'),
       description: t('resources:blog.description'),
       href: '/consulting/blog',
-      color: 'teal',
+      iconWrapClass: 'bg-teal-100',
+      iconClass: 'text-teal-500',
     },
     {
       icon: FileText,
       title: t('resources:playbooks.title'),
       description: t('resources:playbooks.description'),
       href: '/consulting/resources/playbooks',
-      color: 'gold',
+      iconWrapClass: 'bg-gold-100',
+      iconClass: 'text-gold-600',
+    },
+    {
+      icon: Calculator,
+      title: t('resources:roiGuide.title'),
+      description: t('resources:roiGuide.description'),
+      href: '/consulting/resources/roi-guide',
+      iconWrapClass: 'bg-teal-100',
+      iconClass: 'text-teal-500',
     },
     {
       icon: FileText,
       title: t('resources:templates.title'),
       description: t('resources:templates.description'),
       href: '/consulting/resources/templates',
-      color: 'teal',
+      iconWrapClass: 'bg-gold-100',
+      iconClass: 'text-gold-600',
     },
     {
       icon: Video,
       title: t('resources:webinars.title'),
       description: t('resources:webinars.description'),
       href: '/consulting/resources/webinars',
-      color: 'gold',
+      iconWrapClass: 'bg-teal-100',
+      iconClass: 'text-teal-500',
     },
     {
       icon: TrendingUp,
       title: t('resources:businessCaseKit.title'),
       description: t('resources:businessCaseKit.description'),
       href: '/consulting/resources/business-case-kit',
-      color: 'teal',
+      iconWrapClass: 'bg-gold-100',
+      iconClass: 'text-gold-600',
     },
   ];
 
@@ -86,12 +99,12 @@ export default function ResourcesPage() {
       <section className="section-padding">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {resources.map((resource, index) => {
+            {resources.map((resource) => {
               const Icon = resource.icon;
               return (
-                <div key={index} className="card">
-                  <div className={`w-16 h-16 bg-${resource.color}-100 rounded-lg flex items-center justify-center mb-4`}>
-                    <Icon className={`w-8 h-8 text-${resource.color}-500`} aria-hidden="true" />
+                <div key={resource.href} className="card">
+                  <div className={`w-16 h-16 ${resource.iconWrapClass} rounded-lg flex items-center justify-center mb-4`}>
+                    <Icon className={`w-8 h-8 ${resource.iconClass}`} aria-hidden="true" />
                   </div>
                   <h2 className="heading-h4 mb-3">{resource.title}</h2>
                   <p className="body-default text-gray-600 mb-6">{resource.description}</p>

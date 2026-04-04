@@ -77,7 +77,7 @@ export default function WebinarsPage() {
                       </div>
                     </div>
                     <Button variant="outline" asChild>
-                      <Link href="#">
+                      <Link href="/consulting/contact?topic=webinars">
                         {index === 0 ? t('webinars:register') : t('webinars:watchRecording')}
                         {index !== 0 && <Play className="w-4 h-4 ml-2" />}
                       </Link>
@@ -97,7 +97,7 @@ export default function WebinarsPage() {
             {t('webinars:customDescription')}
           </p>
           <Button variant="primary" size="lg" asChild>
-            <Link href="/consulting/contact">{t('webinars:requestWebinar')}</Link>
+            <Link href="/consulting/contact?topic=webinars">{t('webinars:requestWebinar')}</Link>
           </Button>
         </div>
       </section>

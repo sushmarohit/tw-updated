@@ -1,11 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
+import { getLeadTopicMessagePrefix } from "@/lib/lead-topics";
 import { Button } from "@/components/ui/button";
 import { trackBookingCompleted } from "@/lib/analytics/events";
 
-export default function BookingPage() {
+function BookingPageContent() {
+  const searchParams = useSearchParams();
+  const topicParam = searchParams.get("topic");
   const { t } = useTranslation("common");
   const bookingUrl = process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_BOOKING_URL;
   const [formData, setFormData] = useState({
@@ -21,6 +25,15 @@ export default function BookingPage() {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+
+  useEffect(() => {
+    const prefix = getLeadTopicMessagePrefix(topicParam);
+    if (!prefix) return;
+    setFormData((prev) => {
+      if ((prev.message ?? "").trim() !== "") return prev;
+      return { ...prev, message: `${prefix}\n` };
+    });
+  }, [topicParam]);
 
   const handleRequestSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -256,3 +269,18 @@ export default function BookingPage() {
     </div>
   );
 }
+
+export default function BookingPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-50 section-padding flex items-center justify-center">
+          <p className="body-default text-gray-600">Loading…</p>
+        </div>
+      }
+    >
+      <BookingPageContent />
+    </Suspense>
+  );
+}
+
