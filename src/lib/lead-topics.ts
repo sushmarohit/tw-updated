@@ -9,7 +9,7 @@ export const LEAD_TOPIC_KEYS = [
   'playbook-sop',
   'playbook-dashboard',
   'templates',
-  'webinars',
+  'founder-explainers',
 ] as const;
 
 export type LeadTopicKey = (typeof LEAD_TOPIC_KEYS)[number];
@@ -22,7 +22,8 @@ const TOPIC_MESSAGE_PREFIX: Record<LeadTopicKey, string> = {
   'playbook-sop': '[topic:playbook-sop] Request: SOP Creation Template & Best Practices.\n',
   'playbook-dashboard': '[topic:playbook-dashboard] Request: Dashboard Design Playbook.\n',
   templates: '[topic:templates] Request: Templates / SOP or dashboard templates.\n',
-  webinars: '[topic:webinars] Request: Webinar / recorded session access.\n',
+  'founder-explainers':
+    '[topic:founder-explainers] Request: Founder Explainers / video series access.\n',
 };
 
 export function parseLeadTopic(raw: string | null): LeadTopicKey | null {

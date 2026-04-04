@@ -476,6 +476,123 @@ export async function sendEmailWithAttachment(
   });
 }
 
+export interface ResourceGateEmailPayload {
+  firstName: string;
+  email: string;
+  challengeLabel: string;
+  templateCode: string;
+  gateType: 'full_kit' | 'section_download';
+  resourceType: string;
+  displayName: string;
+  emailSubjectName: string;
+  downloadUrl: string | null;
+  /** Optional .xlsx when server could export a Google Sheet */
+  attachment?: { filename: string; content: Buffer; contentType: string };
+}
+
+/**
+ * Notify admin and confirm to user for a gated resource download (Business Case Kit, etc.).
+ */
+export async function sendResourceGateEmails(
+  payload: ResourceGateEmailPayload,
+  options: { adminEmail: string; sendConfirmationToUser?: boolean }
+): Promise<boolean> {
+  const { adminEmail, sendConfirmationToUser = true } = options;
+  const linkBlock =
+    payload.downloadUrl != null
+      ? `<p><strong>Template link:</strong> <a href="${escapeHtml(payload.downloadUrl)}">${escapeHtml(payload.downloadUrl)}</a></p>`
+      : '<p><strong>Template link:</strong> <em>Not configured — follow up manually.</em></p>';
+
+  const adminHtml = `
+    <!DOCTYPE html>
+    <html>
+      <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+      <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+          <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+            <h1 style="margin: 0;">Resource download request</h1>
+          </div>
+          <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
+            <p><strong>Resource:</strong> ${escapeHtml(payload.resourceType)}</p>
+            <p><strong>Template:</strong> ${escapeHtml(payload.displayName)} <code>(${escapeHtml(payload.templateCode)})</code></p>
+            <p><strong>Gate:</strong> ${escapeHtml(payload.gateType)}</p>
+            <p><strong>Name:</strong> ${escapeHtml(payload.firstName)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
+            <p><strong>Primary challenge:</strong> ${escapeHtml(payload.challengeLabel)}</p>
+            ${linkBlock}
+            <p style="color: #6B7280; font-size: 12px; margin-top: 20px;">Submitted at ${new Date().toISOString()}</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+
+  const adminSent = await sendEmail({
+    to: adminEmail,
+    subject: `[Resource] ${payload.emailSubjectName} — ${payload.firstName}`,
+    html: adminHtml,
+  });
+
+  if (!adminSent) return false;
+
+  if (sendConfirmationToUser) {
+    const hasLink = payload.downloadUrl != null;
+    const userLinkSection = hasLink
+      ? `<div style="text-align: center; margin: 28px 0;">
+           <a href="${escapeHtml(payload.downloadUrl!)}" style="background: #0D9488; color: white; padding: 12px 28px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: bold;">
+             Open your Google Sheet template
+           </a>
+         </div>
+         <p style="color: #4B5563; font-size: 14px;">If the button does not work, copy this link: <br/><span style="word-break: break-all;">${escapeHtml(payload.downloadUrl!)}</span></p>`
+      : `<p style="color: #4B5563;">We received your request for <strong>${escapeHtml(payload.emailSubjectName)}</strong>. Our team will send you the link shortly if it is not already attached.</p>`;
+
+    const attachmentNote = payload.attachment
+      ? '<p>We have also attached an Excel copy (.xlsx) of the template to this email when export was available.</p>'
+      : '';
+
+    const userHtml = `
+      <!DOCTYPE html>
+      <html>
+        <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1E3A5F;">
+          <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+            <div style="background: #1E3A5F; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+              <h1 style="margin: 0;">TwelfthKey</h1>
+            </div>
+            <div style="background: #FAFAFA; padding: 30px; border-radius: 0 0 8px 8px;">
+              <h2 style="color: #1E3A5F;">Your template is ready</h2>
+              <p>Hi ${escapeHtml(payload.firstName)},</p>
+              <p>Thanks for telling us about your context. Here is what you requested:</p>
+              <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #C7A566; margin: 16px 0;">
+                <p style="margin: 0;"><strong>${escapeHtml(payload.displayName)}</strong></p>
+                <p style="margin: 8px 0 0; color: #4B5563; font-size: 14px;">Primary challenge you selected: <strong>${escapeHtml(payload.challengeLabel)}</strong></p>
+              </div>
+              ${userLinkSection}
+              ${attachmentNote}
+              <p style="color: #6B7280; font-size: 14px;">If you would like help applying this to your business, reply to this email.</p>
+              <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
+              <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey. All rights reserved.</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+
+    const userAttachments = payload.attachment
+      ? [{ filename: payload.attachment.filename, content: payload.attachment.content, contentType: payload.attachment.contentType }]
+      : undefined;
+
+    await sendEmail({
+      to: payload.email,
+      subject: `Your ${payload.emailSubjectName} — TwelfthKey`,
+      html: userHtml,
+      attachments: userAttachments,
+    });
+  }
+
+  return true;
+}
+
 export interface ContactFormPayload {
   name: string;
   email: string;
