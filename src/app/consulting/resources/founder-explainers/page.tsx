@@ -91,7 +91,7 @@ function VideoCard({
           </div>
         )}
       </div>
-      <div className="p-5 flex flex-col flex-1">
+      <div className="p-5 flex flex-col flex-1 min-h-0">
         <p className="text-xs font-semibold uppercase tracking-wide text-teal-600 mb-2">{seriesLabel}</p>
         <h3 className="heading-h4 mb-2">
           <Link
@@ -101,21 +101,23 @@ function VideoCard({
             {video.title}
           </Link>
         </h3>
-        <p className="body-small text-gray-600 line-clamp-2 mb-3 flex-1">{video.description}</p>
-        <p className="text-xs text-gray-500 mb-4">{video.tagsLine}</p>
-        <Link
-          href={video.ctaHref}
-          className="text-sm font-semibold text-teal-600 hover:underline"
-          onClick={() =>
-            trackResourceCtaClick({
-              cta_text: video.ctaText,
-              destination: video.ctaHref,
-              page: PAGE,
-            })
-          }
-        >
-          {video.ctaText}
-        </Link>
+        <p className="body-small text-gray-600 line-clamp-2 mb-3">{video.description}</p>
+        <div className="mt-auto">
+          <p className="text-xs text-gray-500 mb-4">{video.tagsLine}</p>
+          <Link
+            href={video.ctaHref}
+            className="text-sm font-semibold text-teal-600 hover:underline"
+            onClick={() =>
+              trackResourceCtaClick({
+                cta_text: video.ctaText,
+                destination: video.ctaHref,
+                page: PAGE,
+              })
+            }
+          >
+            {video.ctaText}
+          </Link>
+        </div>
       </div>
     </article>
   );
