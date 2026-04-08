@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 /** Map client names to their logo file in /public */
 const LOGO_MAP: Record<string, string> = {
   'Solaraa':      '/solaraa.jpeg',
-  'Xnexx':        '/xnexx.jpeg',
+  'Anexx':        '/anexx.jpeg',
   'Asta by Avim': '/asta.jpeg',
   'Augrev':       '/augrev.jpeg',
   'Nirmiti Group':'/nirmiti.jpeg',

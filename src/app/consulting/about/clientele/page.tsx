@@ -9,7 +9,7 @@ import { Quote, Award, Building2 } from 'lucide-react';
 
 const LOGO_MAP: Record<string, string> = {
   'Solaraa':      '/solaraa.jpeg',
-  'Xnexx':        '/xnexx.jpeg',
+  'Anexx':        '/anexx.jpeg',
   'Asta by Avim': '/asta.jpeg',
   'Augrev':       '/augrev.jpeg',
   'Nirmiti Group':'/nirmiti.jpeg',

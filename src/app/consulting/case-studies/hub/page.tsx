@@ -33,7 +33,7 @@ function getTrackFromSearchParams(searchParams: ReturnType<typeof useSearchParam
 
 const SUCCESS_STORY_ORDER: SuccessStoryKey[] = [
   'Solaraa',
-  'Xnexx',
+  'Anexx',
   'Asta by Avim',
   'Nirmiti Group',
 ];

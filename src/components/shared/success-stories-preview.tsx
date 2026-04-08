@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 /** Client keys matching about-clientele successStories (client field) */
-export type SuccessStoryKey = 'Solaraa' | 'Xnexx' | 'Asta by Avim' | 'Nirmiti Group';
+export type SuccessStoryKey = 'Solaraa' | 'Anexx' | 'Asta by Avim' | 'Nirmiti Group';
 
 export interface SuccessStoriesPreviewProps {
   /** Client names to show (order preserved) */

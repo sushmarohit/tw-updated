@@ -10,7 +10,7 @@
     "govtLiaison": "Govt. Project Liaison"
   },
   "clientele": {
-    "processExcellence": ["Solaraa", "Xnexx", "Asta by Avim", "Augrev"],
+    "processExcellence": ["Solaraa", "Anexx", "Asta by Avim", "Augrev"],
     "fundraise": ["Nirmiti Group"],
     "govtLiaison": ["CAV Projects"]
   },
@@ -36,7 +36,7 @@
       "result": "Predictable execution, fewer escalations, and clearer accountability across teams."
     },
     {
-      "client": "Xnexx",
+      "client": "Anexx",
       "headline": "Reduced rework by fixing handoffs",
       "category": "processExcellence",
       "problem": "Work kept looping back due to unclear inputs, ownership, and approvals between teams.",
