@@ -20,7 +20,7 @@ export function FinalCTASection() {
               <Link href="/consulting/booking">{t('finalCta.bookCall')}</Link>
             </Button>
             <Button variant="secondary" asChild size="lg" className="bg-white border-navy-500 text-navy-500 hover:bg-navy-500 hover:text-white">
-              <Link href="/#operational-diagnostic-cta">{t('finalCta.tryDiagnostic')}</Link>
+              <Link href="/consulting/tools/health-check">{t('finalCta.tryDiagnostic')}</Link>
             </Button>
             <Button variant="outline" asChild size="lg" className="bg-transparent border-navy-500 text-navy-500 hover:bg-navy-500 hover:text-white">
               <Link href="/consulting/services">{t('finalCta.exploreServices')}</Link>

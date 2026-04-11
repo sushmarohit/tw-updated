@@ -75,7 +75,7 @@ export default function CaseStudiesHubPage() {
               <p className="body-large text-gray-100 mb-8">{t('case-studies-hub:subtitle')}</p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Button variant="primary" size="lg" asChild>
-                  <Link href="/#operational-diagnostic-cta">{t('case-studies-hub:startTransformation', 'Start Your Transformation')}</Link>
+                  <Link href="/consulting/tools/health-check">{t('case-studies-hub:startTransformation', 'Start Your Transformation')}</Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="border-white text-white hover:bg-white/10">
                   <Link href="/consulting/booking">{t('common:bookDiscoveryCall')}</Link>

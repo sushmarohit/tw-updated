@@ -79,7 +79,7 @@ export function ExitIntentModal({ onClose }: ExitIntentModalProps) {
               <Button
                 variant="primary"
                 className="w-full"
-                onClick={() => handleCTAClick(t('common:startFreeDiagnostic'), '/#operational-diagnostic-cta')}
+                onClick={() => handleCTAClick(t('common:startFreeDiagnostic'), '/consulting/tools/health-check')}
               >
                 {t('common:startFreeDiagnostic')}
               </Button>

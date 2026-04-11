@@ -73,7 +73,7 @@ export function MobileStickyCTA() {
                 asChild
                 className="flex-1"
               >
-                <Link href="/#operational-diagnostic-cta">
+                <Link href="/consulting/tools/health-check">
                   {t('common:startFreeDiagnostic')}
                 </Link>
               </Button>

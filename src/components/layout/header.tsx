@@ -379,7 +379,7 @@ export function Header() {
               asChild
               className="text-xs xl:text-sm px-3 xl:px-4 py-1 xl:py-2 whitespace-nowrap h-auto"
             >
-              <Link href="/#operational-diagnostic-cta" suppressHydrationWarning>{t('common:startFreeDiagnostic')}</Link>
+              <Link href="/consulting/tools/health-check" suppressHydrationWarning>{t('common:startFreeDiagnostic')}</Link>
             </Button>
           </div>
         </div>
@@ -494,7 +494,7 @@ export function Header() {
                       asChild
                       className="w-full"
                     >
-                      <Link href="/#operational-diagnostic-cta" suppressHydrationWarning>{t('common:startFreeDiagnostic')}</Link>
+                      <Link href="/consulting/tools/health-check" suppressHydrationWarning>{t('common:startFreeDiagnostic')}</Link>
                     </Button>
                   </div>
                 </div>
