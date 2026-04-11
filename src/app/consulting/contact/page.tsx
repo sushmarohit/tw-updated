@@ -2,12 +2,18 @@
 
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { getLeadTopicMessagePrefix } from '@/lib/lead-topics';
+import {
+  getLeadTopicContactPrefill,
+  getLeadTopicMessagePrefix,
+  getPlaybookPdfFilename,
+  getPlaybookPdfPublicPath,
+} from '@/lib/lead-topics';
 import { Button } from '@/components/ui/button';
 import { Send } from 'lucide-react';
 import { trackFormSubmit } from '@/lib/analytics/events';
 import { useTranslation } from 'react-i18next';
 import { serviceCategories } from '@/lib/services-catalog';
+import { downloadSameOriginFileWithForceFallback } from '@/lib/client-force-download';
 
 // V5.2: Include Govt. Project Liaison so Sub-Service field shows when selected
 const CONTACT_SERVICE_SLUGS = [
@@ -68,10 +74,17 @@ function ContactPageContent() {
 
   useEffect(() => {
     const prefix = getLeadTopicMessagePrefix(topicParam);
-    if (!prefix) return;
+    const prefill = getLeadTopicContactPrefill(topicParam);
     setFormData((prev) => {
-      if (prev.message.trim() !== '') return prev;
-      return { ...prev, message: `${prefix}\n` };
+      const next = { ...prev };
+      if (prefill) {
+        next.service = prefill.service;
+        next.sub_service = prefill.sub_service;
+      }
+      if (prefix && prev.message.trim() === '') {
+        next.message = `${prefix}\n`;
+      }
+      return next;
     });
   }, [topicParam]);
 
@@ -106,6 +119,13 @@ function ContactPageContent() {
 
       trackFormSubmit('contact', true, { email: formData.email, name: formData.name });
       setSubmitStatus('success');
+
+      const pdfPath = getPlaybookPdfPublicPath(topicParam);
+      const pdfName = getPlaybookPdfFilename(topicParam);
+      if (pdfPath && pdfName) {
+        await downloadSameOriginFileWithForceFallback(pdfPath, pdfName);
+      }
+
       setFormData({
         name: '',
         email: '',

@@ -14,7 +14,7 @@ export default function PlaybooksPage() {
       description: t('playbooks:playbooks.playbook1.description'),
       pages: t('playbooks:playbooks.playbook1.pages'),
       format: t('playbooks:playbooks.playbook1.format'),
-      href: '/consulting/booking?topic=opex-playbook',
+      href: '/consulting/contact?topic=opex-playbook',
     },
     {
       title: t('playbooks:playbooks.playbook2.title'),
@@ -72,7 +72,7 @@ export default function PlaybooksPage() {
                     <Button variant="outline" asChild>
                       <Link href={playbook.href}>
                         <Download className="w-4 h-4 mr-2" aria-hidden />
-                        {t('playbooks:requestAccess')}
+                        {t('playbooks:downloadNow')}
                       </Link>
                     </Button>
                   </div>
