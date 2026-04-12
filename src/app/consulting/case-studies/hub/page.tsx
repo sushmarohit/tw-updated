@@ -33,7 +33,7 @@ function getTrackFromSearchParams(searchParams: ReturnType<typeof useSearchParam
 
 const SUCCESS_STORY_ORDER: SuccessStoryKey[] = [
   'Solaraa',
-  'Xnexx',
+  'Anexx',
   'Asta by Avim',
   'Nirmiti Group',
 ];
@@ -75,7 +75,7 @@ export default function CaseStudiesHubPage() {
               <p className="body-large text-gray-100 mb-8">{t('case-studies-hub:subtitle')}</p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Button variant="primary" size="lg" asChild>
-                  <Link href="/#operational-diagnostic-cta">{t('case-studies-hub:startTransformation', 'Start Your Transformation')}</Link>
+                  <Link href="/consulting/tools/health-check">{t('case-studies-hub:startTransformation', 'Start Your Transformation')}</Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="border-white text-white hover:bg-white/10">
                   <Link href="/consulting/booking">{t('common:bookDiscoveryCall')}</Link>
@@ -121,19 +121,20 @@ export default function CaseStudiesHubPage() {
                     const catalogKey = caseStudyTabKeyToCatalogKey[tab.key];
                     const label = t('case-studies-catalog:' + catalogKey + '.label', tab.label);
                     const isActive = track === tab.key;
+                    const hubHref = `/consulting/case-studies/hub?tab=case-studies&track=${tab.key}`;
                     return (
-                      <button
+                      <Link
                         key={tab.key}
-                        type="button"
-                        onClick={() => router.replace(`/consulting/case-studies/hub?tab=case-studies&track=${tab.key}`)}
+                        href={hubHref}
                         className={cn(
-                          'px-4 py-2.5 rounded-lg font-semibold text-sm whitespace-nowrap transition-colors',
+                          'px-4 py-2.5 rounded-lg font-semibold text-sm whitespace-nowrap transition-colors inline-flex items-center focus-visible-ring',
                           isActive ? 'bg-teal-100 text-teal-800' : 'text-gray-600 hover:bg-gray-100'
                         )}
+                        aria-current={isActive ? 'page' : undefined}
                       >
                         {label}
                         {tab.cards.length > 0 && <span className="ml-1.5 text-xs opacity-90">({tab.cards.length})</span>}
-                      </button>
+                      </Link>
                     );
                   })}
                 </div>

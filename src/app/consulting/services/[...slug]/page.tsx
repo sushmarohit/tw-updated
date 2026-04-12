@@ -124,7 +124,7 @@ export default function ServiceSlugPage() {
                     <TestimonialsBlock indices={[0, 1]} variant="cards" className="mb-10 grid-cols-1 md:grid-cols-2" />
                     <h2 className="heading-h2 mb-6" suppressHydrationWarning>{t('services:successStoriesTitle')}</h2>
                     <SuccessStoriesPreview
-                      clients={['Solaraa', 'Xnexx', 'Asta by Avim']}
+                      clients={['Solaraa', 'Anexx', 'Asta by Avim']}
                       variant="mini"
                       viewAllHref={HUB_SUCCESS_STORIES}
                       viewAllLabel={t('services:viewAllSuccessStories')}

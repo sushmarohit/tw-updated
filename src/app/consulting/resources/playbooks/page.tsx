@@ -14,28 +14,28 @@ export default function PlaybooksPage() {
       description: t('playbooks:playbooks.playbook1.description'),
       pages: t('playbooks:playbooks.playbook1.pages'),
       format: t('playbooks:playbooks.playbook1.format'),
-      href: '/consulting/booking?topic=opex-playbook',
+      href: '/consulting/contact?topic=opex-playbook&from=playbooks',
     },
     {
       title: t('playbooks:playbooks.playbook2.title'),
       description: t('playbooks:playbooks.playbook2.description'),
       pages: t('playbooks:playbooks.playbook2.pages'),
       format: t('playbooks:playbooks.playbook2.format'),
-      href: '/consulting/contact?topic=playbook-governance',
+      href: '/consulting/contact?topic=playbook-governance&from=playbooks',
     },
     {
       title: t('playbooks:playbooks.playbook3.title'),
       description: t('playbooks:playbooks.playbook3.description'),
       pages: t('playbooks:playbooks.playbook3.pages'),
       format: t('playbooks:playbooks.playbook3.format'),
-      href: '/consulting/contact?topic=playbook-sop',
+      href: '/consulting/contact?topic=playbook-sop&from=playbooks',
     },
     {
       title: t('playbooks:playbooks.playbook4.title'),
       description: t('playbooks:playbooks.playbook4.description'),
       pages: t('playbooks:playbooks.playbook4.pages'),
       format: t('playbooks:playbooks.playbook4.format'),
-      href: '/consulting/contact?topic=playbook-dashboard',
+      href: '/consulting/contact?topic=playbook-dashboard&from=playbooks',
     },
   ];
 
@@ -72,7 +72,7 @@ export default function PlaybooksPage() {
                     <Button variant="outline" asChild>
                       <Link href={playbook.href}>
                         <Download className="w-4 h-4 mr-2" aria-hidden />
-                        {t('playbooks:requestAccess')}
+                        {t('playbooks:downloadNow')}
                       </Link>
                     </Button>
                   </div>

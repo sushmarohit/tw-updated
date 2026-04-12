@@ -42,7 +42,7 @@ export const serviceCategories: ServiceCategory[] = [
       'Fix leakage, speed up execution, and make daily operations predictable—with SOPs, dashboards, and governance routines.',
     primaryCta: {
       title: 'Start Free Diagnostic',
-      href: '/#operational-diagnostic-cta',
+      href: '/consulting/tools/health-check',
     },
     secondaryCta: {
       title: 'Book Discovery Call',
@@ -199,7 +199,7 @@ export const serviceDetails: ServiceDetailPage[] = [
     ],
     timelineLabel: 'Timeline / Engagement',
     timeline: '15 days, one-time.',
-    primaryCta: { title: 'Start Health Index', href: '/#operational-diagnostic-cta' },
+    primaryCta: { title: 'Start Health Index', href: '/consulting/tools/health-check' },
     secondaryCta: { title: 'Book Discovery Call', href: '/consulting/booking' },
   },
   {

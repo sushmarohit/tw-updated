@@ -613,9 +613,11 @@ export async function sendContactFormEmail(
   options: {
     adminEmail: string;
     sendConfirmationToUser?: boolean;
+    /** Attached to the user confirmation email only (e.g. gated playbook PDF). */
+    userConfirmationAttachment?: { filename: string; content: Buffer; contentType: string };
   }
 ): Promise<boolean> {
-  const { adminEmail, sendConfirmationToUser = true } = options;
+  const { adminEmail, sendConfirmationToUser = true, userConfirmationAttachment } = options;
 
   const adminHtml = `
     <!DOCTYPE html>
@@ -640,6 +642,11 @@ export async function sendContactFormEmail(
             ${payload.heardAboutUs ? `<p><strong>How they heard about us:</strong> ${escapeHtml(payload.heardAboutUs)}</p>` : ''}
             <p><strong>Message:</strong></p>
             <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #C7A566; white-space: pre-wrap;">${escapeHtml(payload.message)}</div>
+            ${
+              userConfirmationAttachment
+                ? '<p style="margin-top: 16px;"><strong>Playbook:</strong> The matching PDF was attached to the confirmation email sent to the submitter.</p>'
+                : ''
+            }
             <p style="color: #6B7280; font-size: 12px; margin-top: 20px;">Submitted at ${new Date().toISOString()}</p>
           </div>
         </div>
@@ -656,6 +663,9 @@ export async function sendContactFormEmail(
   if (!adminSent) return false;
 
   if (sendConfirmationToUser) {
+    const playbookNote = userConfirmationAttachment
+      ? '<p><strong>Your requested playbook (PDF) is attached to this email.</strong></p>'
+      : '';
     const userHtml = `
       <!DOCTYPE html>
       <html>
@@ -672,6 +682,7 @@ export async function sendContactFormEmail(
               <h2 style="color: #1E3A5F;">We received your message</h2>
               <p>Hi ${escapeHtml(payload.name)},</p>
               <p>Thank you for getting in touch. We have received your message and will get back to you as soon as possible.</p>
+              ${playbookNote}
               <p style="color: #6B7280; font-size: 14px;">If you have any urgent questions, please reply to this email.</p>
               <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
               <p style="color: #6B7280; font-size: 12px; text-align: center;">© 2026 TwelfthKey. All rights reserved.</p>
@@ -682,8 +693,19 @@ export async function sendContactFormEmail(
     `;
     await sendEmail({
       to: payload.email,
-      subject: 'We received your message - TwelfthKey',
+      subject: userConfirmationAttachment
+        ? 'Your TwelfthKey playbook (attached) — we received your message'
+        : 'We received your message - TwelfthKey',
       html: userHtml,
+      attachments: userConfirmationAttachment
+        ? [
+            {
+              filename: userConfirmationAttachment.filename,
+              content: userConfirmationAttachment.content,
+              contentType: userConfirmationAttachment.contentType,
+            },
+          ]
+        : undefined,
     });
   }
 

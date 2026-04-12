@@ -97,7 +97,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     endCta: {
       label: 'Start with a free operational diagnostic',
-      href: '/#operational-diagnostic-cta',
+      href: '/consulting/tools/health-check',
     },
     relatedSlugs: ['governance-maturity-guide'],
   },
