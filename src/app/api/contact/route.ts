@@ -1,9 +1,16 @@
+import fs from 'fs/promises';
+import path from 'path';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { sendContactFormEmail } from '@/lib/integrations/nodemailer';
 import { rateLimitContact } from '@/lib/api/rate-limit';
 import { serviceCategories } from '@/lib/services-catalog';
+import {
+  extractBracketedTopicSlugFromMessage,
+  getPlaybookPdfFilename,
+  parsePlaybookDownloadTopic,
+} from '@/lib/lead-topics';
 
 const INTERESTED_IN_KEYS = [
   'process-excellence',
@@ -93,6 +100,28 @@ export async function POST(request: NextRequest) {
       process.env.CONTACT_EMAIL ||
       process.env.EMAIL_FROM ||
       process.env.SMTP_USER;
+
+    let userConfirmationAttachment:
+      | { filename: string; content: Buffer; contentType: string }
+      | undefined;
+    const topicSlug = extractBracketedTopicSlugFromMessage(message);
+    if (topicSlug && parsePlaybookDownloadTopic(topicSlug)) {
+      const pdfFilename = getPlaybookPdfFilename(topicSlug);
+      if (pdfFilename) {
+        const filePath = path.join(process.cwd(), 'public', pdfFilename);
+        try {
+          const content = await fs.readFile(filePath);
+          userConfirmationAttachment = {
+            filename: pdfFilename,
+            content,
+            contentType: 'application/pdf',
+          };
+        } catch (err) {
+          console.error('[Contact API] Could not read playbook PDF for email attachment:', filePath, err);
+        }
+      }
+    }
+
     if (adminEmail) {
       await sendContactFormEmail(
         {
@@ -106,7 +135,7 @@ export async function POST(request: NextRequest) {
           heardAboutUs: contact.heardAboutUs ?? undefined,
           message: contact.message,
         },
-        { adminEmail, sendConfirmationToUser: true }
+        { adminEmail, sendConfirmationToUser: true, userConfirmationAttachment }
       );
     }
 

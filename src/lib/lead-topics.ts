@@ -100,6 +100,15 @@ export function parsePlaybookDownloadTopic(
     : null;
 }
 
+/**
+ * Reads `[topic:slug]` from the start of a contact message (prefill / CRM routing).
+ * Returns the slug for use with parsePlaybookDownloadTopic / getPlaybookPdfFilename.
+ */
+export function extractBracketedTopicSlugFromMessage(message: string): string | null {
+  const m = message.trimStart().match(/^\[topic:([a-z0-9-]+)\]/i);
+  return m ? m[1].trim().toLowerCase() : null;
+}
+
 /** Path under site root for the PDF (e.g. /Operational%20….pdf), or null if not a playbook download. */
 export function getPlaybookPdfPublicPath(topic: string | null): string | null {
   const key = parsePlaybookDownloadTopic(topic);

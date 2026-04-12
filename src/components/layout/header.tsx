@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils';
 import { trackNavigationClick } from '@/lib/analytics/events';
 import { serviceCategories, serviceCategorySlugToKey } from '@/lib/services-catalog';
 import { caseStudyTabs, caseStudyTabKeyToCatalogKey, type CaseStudyTabKey } from '@/lib/case-studies-catalog';
+import { toolsHubCatalog, toolsHubTabOrder, type ToolsHubTabId } from '@/lib/tools-hub-catalog';
 
 const navigationKeys = [
   // { key: 'home', href: '/' },
@@ -31,7 +32,7 @@ const knowUsDropdownItems = [
 ] as const;
 
 export function Header() {
-  const { t } = useTranslation(['navigation', 'common', 'services-catalog', 'case-studies-catalog']);
+  const { t } = useTranslation(['navigation', 'common', 'services-catalog', 'case-studies-catalog', 'tools']);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false);
@@ -39,6 +40,8 @@ export function Header() {
   const [isCaseStudiesMenuOpen, setIsCaseStudiesMenuOpen] = useState(false);
   const [activeCaseStudiesTab, setActiveCaseStudiesTab] = useState<CaseStudyTabKey>('process-excellence-solutions');
   const [isKnowUsMenuOpen, setIsKnowUsMenuOpen] = useState(false);
+  const [isToolsMenuOpen, setIsToolsMenuOpen] = useState(false);
+  const [activeToolsTab, setActiveToolsTab] = useState<ToolsHubTabId>('processExcellence');
   const [mounted, setMounted] = useState(false);
 
   const translatedServiceCategories = useMemo(
@@ -248,21 +251,25 @@ export function Header() {
                         <div className="flex flex-wrap gap-2 p-3 sm:p-5 pb-3 flex-shrink-0 border-b border-gray-100">
                           {caseStudyTabs.map((tab) => {
                             const catalogKey = caseStudyTabKeyToCatalogKey[tab.key];
+                            const hubHref = `/consulting/case-studies/hub?tab=case-studies&track=${tab.key}`;
                             return (
-                              <button
+                              <Link
                                 key={tab.key}
-                                type="button"
+                                href={hubHref}
                                 onMouseEnter={() => setActiveCaseStudiesTab(tab.key)}
                                 className={cn(
-                                  'px-3 py-1.5 rounded-full border text-xs font-semibold transition-colors whitespace-nowrap',
+                                  'px-3 py-1.5 rounded-full border text-xs font-semibold transition-colors whitespace-nowrap inline-flex items-center focus-visible-ring',
                                   tab.key === activeTab.key
                                     ? 'bg-teal-500 text-white border-teal-500'
                                     : 'bg-white text-navy-500 border-gray-200 hover:border-teal-300'
                                 )}
                                 suppressHydrationWarning
+                                onClick={() =>
+                                  trackNavigationClick(t('case-studies-catalog:' + catalogKey + '.label'), hubHref)
+                                }
                               >
                                 {t('case-studies-catalog:' + catalogKey + '.label')}
-                              </button>
+                              </Link>
                             );
                           })}
                         </div>
@@ -296,6 +303,95 @@ export function Header() {
                             suppressHydrationWarning
                           >
                             {t('case-studies-catalog:viewAll')}
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
+            if (item.key === 'tools') {
+              const toolsList = toolsHubCatalog[activeToolsTab];
+
+              return (
+                <div
+                  key={item.key}
+                  className="relative flex-shrink-0"
+                  onMouseEnter={() => setIsToolsMenuOpen(true)}
+                  onMouseLeave={() => setIsToolsMenuOpen(false)}
+                >
+                  <Link
+                    href={item.href}
+                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-sm text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap min-h-[2rem] inline-flex items-center flex-shrink-0"
+                    suppressHydrationWarning
+                    onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
+                  >
+                    {t(`navigation:${item.key}`)}
+                  </Link>
+
+                  <AnimatePresence>
+                    {isToolsMenuOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.16 }}
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[min(94vw,640px)] max-w-[calc(100vw-1.5rem)] max-h-[min(85vh,560px)] flex flex-col rounded-2xl bg-white border border-gray-200 shadow-2xl z-[120] overflow-hidden"
+                      >
+                        <div className="flex flex-wrap gap-2 p-3 sm:p-5 pb-3 flex-shrink-0 border-b border-gray-100">
+                          {toolsHubTabOrder.map((tabId) => {
+                            const hubHref = `/consulting/tools/hub?tab=${tabId}`;
+                            return (
+                              <Link
+                                key={tabId}
+                                href={hubHref}
+                                onMouseEnter={() => setActiveToolsTab(tabId)}
+                                className={cn(
+                                  'px-3 py-1.5 rounded-full border text-xs font-semibold transition-colors whitespace-nowrap inline-flex items-center focus-visible-ring',
+                                  tabId === activeToolsTab
+                                    ? 'bg-teal-500 text-white border-teal-500'
+                                    : 'bg-white text-navy-500 border-gray-200 hover:border-teal-300'
+                                )}
+                                suppressHydrationWarning
+                                onClick={() => trackNavigationClick(t('tools:tabs.' + tabId), hubHref)}
+                              >
+                                {t('tools:tabs.' + tabId)}
+                              </Link>
+                            );
+                          })}
+                        </div>
+
+                        <div className="overflow-y-auto flex-1 min-h-0 px-3 sm:px-5 pt-3 pb-2">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pr-2 pb-1 items-stretch">
+                            {toolsList.map((tool) => (
+                              <Link
+                                key={tool.href}
+                                href={tool.href}
+                                className="rounded-xl border border-gray-100 p-3 sm:p-3.5 hover:bg-gray-50 hover:border-teal-200 transition-colors min-h-[9rem] sm:min-h-[10rem] flex flex-col break-words min-w-0 max-w-full"
+                              >
+                                <p className="text-sm text-navy-500 font-semibold mb-1.5 line-clamp-2 leading-snug" suppressHydrationWarning>
+                                  {t('tools:' + tool.messageKey + '.name')}
+                                </p>
+                                <p className="text-xs text-gray-600 leading-relaxed line-clamp-3" suppressHydrationWarning>
+                                  {t('tools:' + tool.messageKey + '.description')}
+                                </p>
+                                <p className="text-xs text-gray-500 mt-auto pt-2" suppressHydrationWarning>
+                                  {t('tools:time')}: {t('tools:' + tool.messageKey + '.time')}
+                                </p>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="flex-shrink-0 border-t border-gray-100 px-3 sm:px-5 py-3 bg-gray-50/50">
+                          <Link
+                            href={`/consulting/tools/hub?tab=${activeToolsTab}`}
+                            className="text-sm font-semibold text-teal-600 hover:text-teal-700 inline-block"
+                            suppressHydrationWarning
+                          >
+                            {t('tools:viewAllHub')}
                           </Link>
                         </div>
                       </motion.div>

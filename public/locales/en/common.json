@@ -45,6 +45,7 @@
   "openBookingInNewTab": "Open booking page in a new tab",
   "getInTouch": "Get In Touch",
   "contactSubtitle": "Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+  "playbookDownloadPrefillLockedHint": "Service, sub-service, and message are set for this playbook download and can't be changed here.",
   "address": "Address",
   "messageSentSuccess": "Message sent successfully! We'll get back to you soon.",
   "messageSendFailed": "Failed to send message. Please try again or contact us directly.",

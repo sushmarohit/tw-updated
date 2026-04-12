@@ -121,19 +121,20 @@ export default function CaseStudiesHubPage() {
                     const catalogKey = caseStudyTabKeyToCatalogKey[tab.key];
                     const label = t('case-studies-catalog:' + catalogKey + '.label', tab.label);
                     const isActive = track === tab.key;
+                    const hubHref = `/consulting/case-studies/hub?tab=case-studies&track=${tab.key}`;
                     return (
-                      <button
+                      <Link
                         key={tab.key}
-                        type="button"
-                        onClick={() => router.replace(`/consulting/case-studies/hub?tab=case-studies&track=${tab.key}`)}
+                        href={hubHref}
                         className={cn(
-                          'px-4 py-2.5 rounded-lg font-semibold text-sm whitespace-nowrap transition-colors',
+                          'px-4 py-2.5 rounded-lg font-semibold text-sm whitespace-nowrap transition-colors inline-flex items-center focus-visible-ring',
                           isActive ? 'bg-teal-100 text-teal-800' : 'text-gray-600 hover:bg-gray-100'
                         )}
+                        aria-current={isActive ? 'page' : undefined}
                       >
                         {label}
                         {tab.cards.length > 0 && <span className="ml-1.5 text-xs opacity-90">({tab.cards.length})</span>}
-                      </button>
+                      </Link>
                     );
                   })}
                 </div>

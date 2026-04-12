@@ -62,6 +62,7 @@
     "capacity": { "name": "Capacity Planner", "description": "Plan capacity for franchise rollout", "time": "3 min" }
   },
   "comingSoon": "Coming soon",
+  "viewAllHub": "View all tools",
   "tryNow": "Try Now",
   "time": "Time",
   "howToolsWork": "How Tools Work",

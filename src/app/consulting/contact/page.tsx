@@ -7,7 +7,9 @@ import {
   getLeadTopicMessagePrefix,
   getPlaybookPdfFilename,
   getPlaybookPdfPublicPath,
+  parsePlaybookDownloadTopic,
 } from '@/lib/lead-topics';
+import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Send } from 'lucide-react';
 import { trackFormSubmit } from '@/lib/analytics/events';
@@ -48,6 +50,9 @@ function isValidEmail(value: string): boolean {
 function ContactPageContent() {
   const searchParams = useSearchParams();
   const topicParam = searchParams.get('topic');
+  const fromParam = searchParams.get('from');
+  const lockPlaybookPrefillFields =
+    fromParam === 'playbooks' && parsePlaybookDownloadTopic(topicParam) !== null;
   const { t } = useTranslation('common');
   const { t: tNav } = useTranslation('navigation');
   const contactServiceCategories = useMemo(
@@ -157,6 +162,11 @@ function ContactPageContent() {
 
         <div className="card">
           <form onSubmit={handleSubmit} className="space-y-6">
+            {lockPlaybookPrefillFields && (
+              <p className="body-small text-gray-600 rounded-lg border border-teal-100 bg-teal-50/60 px-3 py-2">
+                {t('playbookDownloadPrefillLockedHint')}
+              </p>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block font-semibold mb-2">
@@ -224,7 +234,7 @@ function ContactPageContent() {
               </label>
               <select
                 id="service"
-                className="input"
+                className={cn('input', lockPlaybookPrefillFields && 'bg-gray-100 text-gray-800 cursor-not-allowed')}
                 value={formData.service}
                 onChange={(e) =>
                   setFormData({
@@ -233,6 +243,7 @@ function ContactPageContent() {
                     sub_service: '',
                   })
                 }
+                disabled={lockPlaybookPrefillFields}
               >
                 <option value="">{t('selectService')}</option>
                 {contactServiceCategories.map((category) => (
@@ -248,10 +259,10 @@ function ContactPageContent() {
               </label>
               <select
                 id="sub_service"
-                className="input"
+                className={cn('input', lockPlaybookPrefillFields && 'bg-gray-100 text-gray-800 cursor-not-allowed')}
                 value={formData.sub_service}
                 onChange={(e) => setFormData({ ...formData, sub_service: e.target.value })}
-                disabled={!formData.service}
+                disabled={!formData.service || lockPlaybookPrefillFields}
               >
                 <option value="">
                   {formData.service ? 'Select sub-service' : 'Select a service first'}
@@ -313,9 +324,10 @@ function ContactPageContent() {
                 id="message"
                 required
                 rows={6}
-                className="input"
+                className={cn('input', lockPlaybookPrefillFields && 'bg-gray-100 text-gray-800 cursor-not-allowed')}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                readOnly={lockPlaybookPrefillFields}
               />
             </div>
             {submitStatus === 'success' && (
