@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '480px',
+        '3xl': '1440px',
+      },
       colors: {
         // V5.1 Primary brand colors
         // Primary Gold #c49a3c (60% usage - CTAs, highlights)

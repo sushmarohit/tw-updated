@@ -15,12 +15,15 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
     @apply bg-white text-navy-500;
     overflow-x: hidden;
     max-width: 100vw;
+    text-rendering: optimizeLegibility;
   }
 
   /* Respect reduced motion preference */
@@ -113,18 +116,34 @@
     @apply text-body-small text-gray-600;
   }
 
-  /* Container */
+  /* Container — wider cap on large desktops for alignment with 1440+ layouts */
   .container-custom {
-    @apply w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 xl:px-16;
+    @apply w-full max-w-7xl 3xl:max-w-[90rem] mx-auto px-4 xs:px-5 md:px-6 lg:px-8 xl:px-12 3xl:px-16;
   }
 
   /* Section Spacing */
   .section-padding {
     @apply py-8 md:py-12 lg:py-16;
   }
+
+  /* Hero / above-the-fold: less vertical padding on small screens, no “stretched” feel */
+  .section-hero {
+    @apply py-6 xs:py-7 sm:py-8 md:py-10 lg:py-12 xl:py-14;
+  }
 }
 
 @layer utilities {
+  /* Viewport height: vh fallback then svh (mobile browser chrome / Safari consistency) */
+  .min-h-screen-below-header {
+    min-height: calc(100vh - 5rem);
+    min-height: calc(100svh - 5rem);
+  }
+
+  .max-h-dropdown-svh {
+    max-height: min(85vh, 560px);
+    max-height: min(85svh, 560px);
+  }
+
   /* Shimmer animation for loading states */
   .animate-shimmer {
     background: linear-gradient(

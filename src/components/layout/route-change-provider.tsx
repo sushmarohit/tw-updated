@@ -71,7 +71,7 @@ export function RouteChangeProvider({ children }: { children: ReactNode }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="absolute inset-0 z-10 min-h-[calc(100vh-5rem)]"
+          className="absolute inset-0 z-10 min-h-screen-below-header"
           aria-hidden
         >
           <RouteLoadingOverlay />

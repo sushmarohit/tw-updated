@@ -31,6 +31,10 @@ const knowUsDropdownItems = [
   { key: 'contact', href: '/consulting/contact' },
 ] as const;
 
+/** Single-line desktop nav: scales down slightly before xl; keeps nowrap + no wrap */
+const desktopNavLinkClass =
+  'text-[clamp(10px,0.2vw+8px,14px)] text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-0.5 lg:px-1 xl:px-1.5 py-1 whitespace-nowrap min-h-[2rem] inline-flex items-center shrink-0';
+
 export function Header() {
   const { t } = useTranslation(['navigation', 'common', 'services-catalog', 'case-studies-catalog', 'tools']);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -99,14 +103,17 @@ export function Header() {
           : ' bg-white'
       )}
     >
-      <nav className="w-full h-full flex items-center justify-between px-2 sm:px-3 md:px-4 lg:px-6 xl:px-8 max-w-full gap-2 md:gap-3 min-w-0" aria-label="Main navigation">
+      <nav
+        className="w-full h-full flex flex-nowrap items-center justify-between px-2 sm:px-3 md:px-4 lg:px-4 xl:px-6 3xl:px-8 max-w-full gap-1.5 sm:gap-2 md:gap-3 min-w-0"
+        aria-label="Main navigation"
+      >
         {/* Logo - visible size across breakpoints; tagline unchanged */}
         <Link
           href="/"
           className="flex gap-2 sm:gap-3 md:gap-2 items-center space-x-2 focus-visible-ring rounded-lg p-1.5 sm:p-2 flex-shrink-0 min-w-0"
           aria-label="TwelfthKey Home"
         >
-          <div className="w-20 h-12 sm:w-24 sm:h-12 md:w-28 md:h-14 lg:w-32 lg:h-16 xl:w-32 xl:h-16 rounded-lg flex items-center justify-center flex-shrink-0">
+          <div className="w-20 h-12 sm:w-24 sm:h-12 md:w-28 md:h-14 lg:w-28 lg:h-14 xl:w-32 xl:h-16 rounded-lg flex items-center justify-center shrink-0">
             <img src='/tw_logo_no_bg.webp' alt='TwelfthKey logo' className='rounded-3xl w-full h-full object-contain'/>
           </div>
             <div className="flex flex-col min-w-0">
@@ -117,9 +124,9 @@ export function Header() {
             </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center flex-1 min-w-0">
-          <div className="flex items-center gap-0.5 md:gap-1 lg:gap-1 xl:gap-1.5 flex-shrink-0">
+        {/* Desktop Navigation — nowrap row; flex-1 + min-w-0 avoids pushing CTAs off-screen */}
+        <div className="hidden lg:flex items-center justify-center flex-1 min-w-0 mx-1 xl:mx-2">
+          <div className="flex flex-nowrap items-center justify-center gap-0.5 xl:gap-1 min-w-0">
           {navigationKeys.map((item) => {
             if (item.key === 'services') {
               if (!serviceCategories.length) {
@@ -143,7 +150,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-sm text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap min-h-[2rem] inline-flex items-center flex-shrink-0"
+                    className={desktopNavLinkClass}
                     suppressHydrationWarning
                     onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
                   >
@@ -232,7 +239,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-sm text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap min-h-[2rem] inline-flex items-center flex-shrink-0"
+                    className={desktopNavLinkClass}
                     suppressHydrationWarning
                     onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
                   >
@@ -246,7 +253,7 @@ export function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.16 }}
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[min(94vw,640px)] max-w-[calc(100vw-1.5rem)] max-h-[min(85vh,560px)] flex flex-col rounded-2xl bg-white border border-gray-200 shadow-2xl z-[120] overflow-hidden"
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[min(94vw,640px)] max-w-[calc(100vw-1.5rem)] max-h-dropdown-svh flex flex-col rounded-2xl bg-white border border-gray-200 shadow-2xl z-[120] overflow-hidden"
                       >
                         <div className="flex flex-wrap gap-2 p-3 sm:p-5 pb-3 flex-shrink-0 border-b border-gray-100">
                           {caseStudyTabs.map((tab) => {
@@ -324,7 +331,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-sm text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap min-h-[2rem] inline-flex items-center flex-shrink-0"
+                    className={desktopNavLinkClass}
                     suppressHydrationWarning
                     onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
                   >
@@ -338,7 +345,7 @@ export function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.16 }}
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[min(94vw,640px)] max-w-[calc(100vw-1.5rem)] max-h-[min(85vh,560px)] flex flex-col rounded-2xl bg-white border border-gray-200 shadow-2xl z-[120] overflow-hidden"
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[min(94vw,640px)] max-w-[calc(100vw-1.5rem)] max-h-dropdown-svh flex flex-col rounded-2xl bg-white border border-gray-200 shadow-2xl z-[120] overflow-hidden"
                       >
                         <div className="flex flex-wrap gap-2 p-3 sm:p-5 pb-3 flex-shrink-0 border-b border-gray-100">
                           {toolsHubTabOrder.map((tabId) => {
@@ -411,7 +418,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-sm text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap min-h-[2rem] inline-flex items-center flex-shrink-0"
+                    className={desktopNavLinkClass}
                     suppressHydrationWarning
                     onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
                   >
@@ -449,7 +456,7 @@ export function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-[11px] md:text-xs lg:text-xs xl:text-sm 2xl:text-sm text-navy-500 hover:text-gold-300 transition-colors focus-visible-ring rounded px-1 md:px-1.5 lg:px-1.5 xl:px-2 py-1 whitespace-nowrap flex-shrink-0 min-h-[2rem] inline-flex items-center"
+                className={desktopNavLinkClass}
                 suppressHydrationWarning
                 onClick={() => trackNavigationClick(t(`navigation:${item.key}`), item.href)}
               >
@@ -460,28 +467,28 @@ export function Header() {
           </div>
         </div>
 
-        {/* Desktop CTAs */}
-        <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 flex-shrink-0">
-          <div className="flex flex-col xl:flex-row items-stretch xl:items-center space-y-0.5 xl:space-y-0 xl:space-x-2">
+        {/* Desktop CTAs — single row from lg so header height stays within bar; compact copy on narrow laptops */}
+        <div className="hidden lg:flex items-center shrink-0">
+          <div className="flex flex-nowrap flex-row items-center gap-1 xl:gap-2">
             <Button
               variant="secondary"
               asChild
-              className="text-xs xl:text-sm px-3 xl:px-4 py-1 xl:py-2 whitespace-nowrap bg-teal-500 text-white hover:bg-teal-600 border-0 h-auto"
+              className="text-[clamp(10px,0.15vw+8px,14px)] px-2 xl:px-3 2xl:px-4 py-1 xl:py-1.5 whitespace-nowrap bg-teal-500 text-white hover:bg-teal-600 border-0 h-auto shrink-0"
             >
               <Link href="/consulting/booking" suppressHydrationWarning>{t('common:bookDiscoveryCall')}</Link>
             </Button>
             <Button
               variant="primary"
               asChild
-              className="text-xs xl:text-sm px-3 xl:px-4 py-1 xl:py-2 whitespace-nowrap h-auto"
+              className="text-[clamp(10px,0.15vw+8px,14px)] px-2 xl:px-3 2xl:px-4 py-1 xl:py-1.5 whitespace-nowrap h-auto shrink-0"
             >
               <Link href="/consulting/tools/health-check" suppressHydrationWarning>{t('common:startFreeDiagnostic')}</Link>
             </Button>
           </div>
         </div>
 
-        {/* Mobile + Tablet: hamburger menu button */}
-        <div className="flex lg:hidden items-center gap-0.5">
+        {/* Mobile + tablet: hamburger; shrink-0 avoids overlap with logo */}
+        <div className="flex lg:hidden items-center gap-1 shrink-0">
           {/* <LanguageSwitcher /> */}
           <button
             type="button"
@@ -521,9 +528,9 @@ export function Header() {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'tween', duration: 0.3 }}
-                className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-navy-500 z-[101] lg:hidden overflow-y-auto"
+                className="fixed top-0 right-0 bottom-0 w-[min(100%,20rem)] max-w-sm bg-navy-500 z-[101] lg:hidden overflow-y-auto overflow-x-hidden overscroll-contain pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)]"
               >
-                <div className="p-6">
+                <div className="p-5 sm:p-6 max-w-full">
                   <div className="flex items-center justify-between mb-8">
                     <span className="font-serif font-bold text-2xl text-white">
                       TwelfthKey
