@@ -590,14 +590,26 @@ export function Header() {
                       asChild
                       className="w-full bg-teal-500 text-white hover:bg-teal-600 border-0"
                     >
-                      <Link href="/consulting/booking" suppressHydrationWarning>{t('common:bookDiscoveryCall')}</Link>
+                      <Link
+                        href="/consulting/booking"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        suppressHydrationWarning
+                      >
+                        {t('common:bookDiscoveryCall')}
+                      </Link>
                     </Button>
                     <Button
                       variant="primary"
                       asChild
                       className="w-full"
                     >
-                      <Link href="/consulting/tools/health-check" suppressHydrationWarning>{t('common:startFreeDiagnostic')}</Link>
+                      <Link
+                        href="/consulting/tools/health-check"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        suppressHydrationWarning
+                      >
+                        {t('common:startFreeDiagnostic')}
+                      </Link>
                     </Button>
                   </div>
                 </div>
