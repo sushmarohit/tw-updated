@@ -32,10 +32,10 @@ export function SliderSection() {
   };
 
   return (
-    <section className="bg-navy-500 text-white py-6 text-center min-h-[350px] md:min-h-[400px] lg:min-h-[450px] flex items-center">
+    <section className="section-hero bg-navy-500 text-white text-center flex flex-col items-center">
       <div className="container-custom w-full">
-        <div className="relative max-w-4xl mx-auto">
-          <div className="min-h-[300px] md:min-h-[350px] lg:min-h-[400px] flex items-center justify-center">
+        <div className="relative max-w-4xl mx-auto w-full flex flex-col items-center">
+          <div className="w-full flex items-center justify-center min-h-[11rem] xs:min-h-[12rem] sm:min-h-[13rem] md:min-h-[14rem] lg:min-h-[15rem]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -43,16 +43,16 @@ export function SliderSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.5 }}
-                className="text-center w-full"
+                className="text-center w-full flex items-center justify-center"
               >
-                <h1 className="text-balance text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight animate-fade-in">
+                <h1 className="text-balance font-bold text-white leading-tight animate-fade-in text-[clamp(1.75rem,2.8vw+1rem,4.5rem)] max-w-[min(100%,42rem)] mx-auto px-1">
                   {t(`slider.${slideKeys[currentIndex]}`)}
                 </h1>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          <div className="flex items-center justify-center gap-4 mt-4">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-3 sm:mt-4 shrink-0">
             <button
               onClick={goToPrevious}
               className="p-2 hover:bg-navy-400 rounded-lg transition-colors focus-visible-ring"

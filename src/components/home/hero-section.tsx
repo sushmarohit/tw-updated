@@ -10,17 +10,17 @@ export function HeroSection() {
   return (
     <section
       id="operational-diagnostic-cta"
-      className="section-padding bg-gradient-to-br from-navy-500 via-navy-600 to-teal-600 text-white scroll-mt-16 md:scroll-mt-20"
+      className="section-hero bg-gradient-to-br from-navy-500 via-navy-600 to-teal-600 text-white scroll-mt-16 md:scroll-mt-20 flex flex-col items-center"
     >
-      <div className="container-custom">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="font-serif font-bold leading-tight text-white mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-hero-desktop">
+      <div className="container-custom w-full">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center">
+          <h1 className="font-serif font-bold leading-tight text-white mb-4 sm:mb-5 md:mb-6 text-[clamp(1.25rem,2vw+0.75rem,4rem)] max-w-[min(100%,48rem)] mx-auto">
             {t('hero:title')}
           </h1>
-          <p className="body-large mb-8 text-gray-100">
+          <p className="body-large mb-6 sm:mb-7 md:mb-8 text-gray-100 max-w-[min(100%,40rem)] mx-auto">
             {t('hero:subtitle')}
           </p>
-          <p className="body-default mb-8 text-gold-300 italic">
+          <p className="body-default mb-6 sm:mb-7 md:mb-8 text-gold-300 italic">
             <span className="block">"{t('hero:quote').split('. ')[0]}"</span>
             {/* <span className="block">{t('hero:quote').split('. ').slice(1).join('. ')}"</span> */}
           </p>
